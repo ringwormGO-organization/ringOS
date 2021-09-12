@@ -14,6 +14,7 @@ Picture of Beta 1 is above
 
 # BIOS supprot
 In src folder
+Run build.bat to run BIOS supprot
 
 # ringwormGO GitHub repo link
 https://github.com/ringwormGO/ringwormGO
