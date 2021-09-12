@@ -1,0 +1,33 @@
+//REGS
+
+AA = 1
+AB = 2
+AC = 3
+AD = 4
+AE = 5
+AF = 6
+AG = 7
+AH = 8
+AI = 9
+AJ = 10
+AK = 11
+AL = 12
+
+//Opreands
+
+MOV = 30
+MOVR = 31
+PUSH = 32
+POP = 33
+CMD = 34
+ADD = 35
+ADDR = 36
+SUB = 37
+SUBR = 38
+JUMP = 39
+JNZ = 40
+SMALL = 41
+BIG = 42
+EQU = 43
+OUTB = 44
+INTB = 45
