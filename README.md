@@ -1,5 +1,5 @@
 # LockOS
-LockOS source code
+LockOS source code.
 
 # About LockOS
 LockOS or ringOS is ringwormGO operating system. This repo is for developing and invitation new contributors for this project.
