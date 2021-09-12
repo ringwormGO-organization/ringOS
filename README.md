@@ -12,6 +12,9 @@ Project is based on https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0
 https://github.com/ringwormGO/ringwormGO#registrator-project
 Picture of Beta 1 is above
 
+# BIOS supprot
+In src folder
+
 # ringwormGO GitHub repo link
 https://github.com/ringwormGO/ringwormGO
 
