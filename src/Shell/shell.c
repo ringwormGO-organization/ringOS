@@ -11,7 +11,7 @@ void ImageViewr_pre();
 void memory_init();
 
 void shell_main(){
-  printW("Radical OS [Version 2.0.0]\n");
+  printW("ringOS [Version 2.0.0]\n");
   printW("Copyright (c) 2021 Radical Foundation and ringwormGO. All rights reserved.\n\n");
   printW("Welcome to ringOS BIOS version. Hope you have fun :)\n\n");
   printW("Setting up Memory Manager...    ");
