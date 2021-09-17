@@ -19,5 +19,8 @@ Run build.bat to run BIOS supprot
 # ringwormGO GitHub repo link
 https://github.com/ringwormGO/ringwormGO
 
+# DISCORD SERVER
+https://discord.gg/G9ScDxz8
+
 # Final version
 Download final version on ringwormGO GitHub repo.
