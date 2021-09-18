@@ -16,6 +16,12 @@ Run build.bat to run BIOS supprot
 
 BIOS version is not officialy supproted by ringwormGO. Check out https://github.com/lightning-speed/Radical for genuine supprot
 
+# RUNNING LOCKOS BIOS
+**Windows**
+"qemu-system-x86_64.exe -M q35 -cpu max -smp 2 -m 512M -boot d -rtc base=localtime -serial stdio -cdrom C:\Users\vangu\Downloads\LockOS.iso"
+
+C:\Users\vangu\Downloads\LockOS.iso = ISO path
+
 # ringwormGO GitHub repo link
 https://github.com/ringwormGO/ringwormGO
 Also, here is final version (when come)
