@@ -12,14 +12,16 @@ Project is based on https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0
 ![image](https://user-images.githubusercontent.com/83548580/133824416-455bc2d8-3364-4ffd-abd6-24bff779af32.png)
 Beta 4
 
-# BIOS supprot
+# BIOS version
 In src folder
 Run build.bat to run BIOS supprot
+
+BIOS version is not officialy supproted
 
 # ringwormGO GitHub repo link
 https://github.com/ringwormGO/ringwormGO
 
-# DISCORD SERVER
+# Discord Server
 https://discord.gg/G9ScDxz8
 
 # Final version
