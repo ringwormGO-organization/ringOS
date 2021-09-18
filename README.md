@@ -24,5 +24,5 @@ Also, here is final version (when come)
 https://discord.gg/G9ScDxz8
 
 # Resources used:
-https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
+https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ | 
 https://discord.gg/KFjvywqr
