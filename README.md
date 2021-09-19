@@ -11,11 +11,9 @@ This repo is for developing and invitation new contributors for this project.
 Beta 4
 
 # System requiratmens
-**UEFI VERSION**
-|x| UEFI 64 bit PC
+**UEFI VERSION** | UEFI 64 bit PC
 
-**BIOS VERSION**
-|x| BIOS 32/64 bit PC
+**BIOS VERSION** | BIOS 32/64 bit PC
 
 # BIOS version
 In src folder
