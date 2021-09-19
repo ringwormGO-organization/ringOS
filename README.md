@@ -21,7 +21,7 @@ BIOS version is not officialy supproted by ringwormGO. Check out https://github.
 "qemu-system-x86_64.exe -M q35 -cpu max -smp 2 -m 512M -boot d -rtc base=localtime -serial stdio -cdrom C:\Users\vangu\Downloads\LockOS.iso"
 
 **Linux**
-"qemu-system-x86_64.exe -accel kvm -M q35 -cpu max -smp 12 -m 512M -boot d -rtc base=localtime -serial stdio -cdrom (Path here)
+"qemu-system-x86_64 -accel kvm -M q35 -cpu max -smp 12 -m 512M -boot d -rtc base=localtime -serial stdio -cdrom (Path here)
 
 C:\Users\vangu\Downloads\LockOS.iso = ISO path on Windows
 
