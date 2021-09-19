@@ -17,7 +17,6 @@ Beta 4
 
 # BIOS version
 In src folder
-Run build.bat to run BIOS supprot
 
 BIOS version is not officialy supproted by ringwormGO. Check out https://github.com/lightning-speed/Radical for genuine supprot
 
