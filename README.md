@@ -29,6 +29,8 @@ BIOS version is not officialy supproted by ringwormGO. Check out https://github.
 
 C:\Users\vangu\Downloads\LockOS.iso = ISO path on Windows
 
+**-smp2** Cores
+
 # ringwormGO GitHub repo link
 https://github.com/ringwormGO/ringwormGO
 Also, here is final version (when come)
