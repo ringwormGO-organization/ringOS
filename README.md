@@ -1,8 +1,8 @@
-# LockOS
+# ringOS
 LockOS source code
 
-# About LockOS
-LockOS is beta version of ringOS. ringOS is ringwormGO operating system
+# About ringOS
+ringOS is ringwormGO operating system
 ringOS is keyboard oriented OS with GUI elements
 
 This repo is for developing and invitation new contributors for this project.
@@ -20,7 +20,7 @@ In src folder
 
 BIOS version is not officialy supproted by ringwormGO. Check out https://github.com/lightning-speed/Radical for genuine supprot
 
-# Run LockOS BIOS
+# Run ringOS BIOS
 **Windows**
 "qemu-system-x86_64.exe -M q35 -cpu max -smp 2 -m 512M -boot d -rtc base=localtime -serial stdio -cdrom C:\Users\vangu\Downloads\LockOS.iso"
 
