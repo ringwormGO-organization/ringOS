@@ -1,5 +1,5 @@
 # ringOS
-LockOS source code
+ringOS source code
 
 # About ringOS
 ringOS is ringwormGO operating system
