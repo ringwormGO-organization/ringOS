@@ -45,4 +45,4 @@ If the above command fails, try one of the following:
  - Linux: [`qemu-system-x86_64 -cdrom dist/x86_64/kernel.iso -L /usr/share/qemu/`](https://unix.stackexchange.com/questions/134893/cannot-start-kvm-vm-because-missing-bios)
  - Alternatively, install a custom BIOS binary file and link it to Qemu using the `-L` option.
 
-Alternatively, you should be able to load the operating system on a USB drive and boot into it when you turn on your computer.
+Alternatively, you should be able to load the operating system on a USB drive (MBR partition style) and boot into it when you turn on your computer.
