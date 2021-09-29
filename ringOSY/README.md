@@ -2,6 +2,16 @@
 # Developing
 https://www.youtube.com/playlist?list=PLZQftyCk7_SeZRitx5MjBKzTtvk0pHMtp
 
+# System requiretmens for developing:
+  1. Qemu (for virtual machine)
+  2. WSL 2
+  3. Docker Desktop
+  4. Visual Studio Code
+  5. Rufus (for real hardware)
+  6. Powershell (if you use Windows)
+  
+If you have problem with running ringOSY, create new issue or check out https://github.com/davidcallanan/os-series
+
 
 ## Setup
 
