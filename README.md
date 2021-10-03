@@ -4,7 +4,7 @@ ringOS source code
 # About ringOS
 ringOS is UEFI ringwormGO operating system
 
-ringOS is keyboard oriented OS with GUI elements
+ringOS is keyboard oriented operating system with GUI elements
 
 This repo is for developing and invitation new contributors for this project.
 
@@ -23,6 +23,8 @@ ringOSY is BIOS ringwormGO operating system
 https://discord.gg/G9ScDxz8
 
 # Resources used:
-https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ | 
-https://discord.gg/KFjvywqr | 
+https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
+
+https://discord.gg/KFjvywqr
+
 https://github.com/davidcallanan/os-series
