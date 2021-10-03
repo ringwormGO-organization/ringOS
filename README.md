@@ -3,6 +3,7 @@ ringOS source code
 
 # About ringOS
 ringOS is UEFI ringwormGO operating system
+
 ringOS is keyboard oriented OS with GUI elements
 
 This repo is for developing and invitation new contributors for this project.
