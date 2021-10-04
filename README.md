@@ -2,7 +2,7 @@
 ringOS source code
 
 # About ringOS
-ringOS is UEFI ringwormGO operating system
+ringOS is UEFI ringwormGO operating system based on PonchoOS
 
 ringOS is keyboard oriented operating system with GUI elements
 
