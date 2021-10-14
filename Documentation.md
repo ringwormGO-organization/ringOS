@@ -11,6 +11,6 @@ Download zip file in Qemu release (https://github.com/Andrej123456789/ringOS/rel
 
 # Install Qemu
 
-**Windows** https://www.qemu.org/download/#windows and add Qemu to PATH
+**Windows** Download executable file, run it (https://www.qemu.org/download/#windows) and add Qemu to PATH
 
 **Linux** `sudo apt install qemu-system-x86` [Ubuntu based Linux distros]
