@@ -16,16 +16,21 @@ If you first time running WSL or Linux installation, follow these steps:
 
 `sudo apt-get install build-essential mtools`
 
+___________________________________________________________________
+
 For compiling bootloader,
 `cd gnu-efi`
 
 `make bootloader`
 
+________________________________________________________________
 
 For compiling kernel,
 
 `cd kernel` or (if you are in gnu-efi folder) cd `../kernel`
 `make kernel`
+
+______________________________________________________________
 
 For running image,
 
