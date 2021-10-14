@@ -34,10 +34,11 @@ ______________________________________________________________
 
 For running image,
 
+`make buildimg` [kernel folder]
+
 **Windows** run `run2.bat` file
 
 **Linux** `make run`
-
 
 
 # Install Qemu
