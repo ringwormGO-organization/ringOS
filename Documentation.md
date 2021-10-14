@@ -27,7 +27,8 @@ ________________________________________________________________
 
 For compiling kernel,
 
-`cd kernel` or (if you are in gnu-efi folder) cd `../kernel`
+`cd kernel` or (if you are in gnu-efi folder) `cd ../kernel`
+
 `make kernel`
 
 ______________________________________________________________
