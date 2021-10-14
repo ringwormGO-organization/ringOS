@@ -3,7 +3,7 @@ Documentation is for ringOS.
 
 # Compile
 ### Software you need
-1. [Qemu](#InstallQemu)
+1. [Qemu](#install-qemu)
 2. [WSL]
 3. [About](#about)
 4. [FAQ](#faq)
