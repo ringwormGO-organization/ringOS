@@ -19,6 +19,7 @@ If you first time running WSL or Linux installation, follow these steps:
 ___________________________________________________________________
 
 For compiling bootloader,
+
 `cd gnu-efi`
 
 `make bootloader`
