@@ -6,9 +6,13 @@ Documentation is for ringOS.
 1. [Qemu](#install-qemu)
 2. WSL or Linux
 
+### Type of release
 Download zip file in Qemu release (https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
 
+### Compiling
 Unzip zip file and navigate folder to your Terminal (Linux) or WSL on Windows (`cd`).
+
+This commands is for Linux based distros and WSL.
 
 If you first time running WSL or Linux installation, follow these steps:
 
@@ -47,7 +51,7 @@ For running image,
 
 **Windows** Download executable file, run it (https://www.qemu.org/download/#windows) and add Qemu to PATH
 
-**Linux** `sudo apt install qemu-system-x86_64` [Ubuntu based Linux distros]
+**Linux** `sudo apt install qemu-system-x86_64`
 
 # Other
 
