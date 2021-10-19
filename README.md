@@ -24,6 +24,8 @@ ringOSY is BIOS ringwormGO operating system
 # Discord Server
 https://discord.gg/G9ScDxz8
 
+https://discord.gg/4gzsrD2c6h (More advanced Discord server)
+
 # Resources used:
 https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
 
