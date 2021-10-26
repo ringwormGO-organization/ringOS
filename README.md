@@ -17,8 +17,7 @@ Beta 4 of ringOS
 ringOSY is BIOS ringwormGO operating system
 
 # System requiratmens
-**ringOS** | UEFI 64 bit PC
-             38MB of RAM
+**ringOS** | UEFI 64 bit PC, 38MB of RAM
 
 **ringOSY** | BIOS 64 bit PC
 
