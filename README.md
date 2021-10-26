@@ -32,3 +32,5 @@ https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
 https://discord.gg/KFjvywqr
 
 https://github.com/davidcallanan/os-series
+
+Other
