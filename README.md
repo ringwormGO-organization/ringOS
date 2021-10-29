@@ -17,14 +17,14 @@ Beta 4 of ringOS
 ringOSY is BIOS ringwormGO operating system
 
 # System requiratmens
-**ringOS** | UEFI 64 bit PC, 38MB of RAM
+**ringOS** | UEFI x86_64 64 bit PC, 38MB of RAM
 
-**ringOSY** | BIOS 64 bit PC
+**ringOSY** | BIOS/UEFI x86_64 64 bit PC
 
 # Discord Server
 https://discord.gg/G9ScDxz8
 
-https://discord.gg/4gzsrD2c6h (More advanced Discord server)
+https://discord.gg/zyzbdrDRQF (More advanced Discord server)
 
 # Resources used:
 https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
