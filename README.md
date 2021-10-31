@@ -8,7 +8,7 @@ If you want contribute in this project create issue that you want contribute
 # About ringOS
 ringOS is UEFI ringwormGO operating system based on PonchoOS
 
-ringOS is keyboard oriented operating system with GUI elements
+ringOS is keyboard oriented operating system with GUI elements.
 
 This repo is for developing and invitation new contributors for this project.
 
