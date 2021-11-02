@@ -3,7 +3,7 @@ ringOS source code
 
 Documentation: https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md
 
-If you want contribute in this project create issue that you want contribute
+If you want contribute in this project create **Pull Request**
 
 # About ringOS
 ringOS is UEFI ringwormGO operating system based on PonchoOS
