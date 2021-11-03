@@ -77,6 +77,6 @@ This documentation will continue improving based on new features in ringOS.
 For ringOSY documentation visit: https://github.com/Andrej123456789/ringOS/blob/Beta11_Qemu/ringOSY/README.md
 ____
 
-Thanks for choosing ringOS
+Thank you for choosing ringOS
 
 ©ringwormGO 2021
