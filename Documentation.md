@@ -54,15 +54,28 @@ For running image,
 
 **Linux** `sudo apt install qemu-system-x86_64`
 
+___
+
+# Modules
+[Modules](https://github.com/Andrej123456789/ringOS/blob/main/UEFI%20version/kernel/Info.txt) are for customizing ringOS.
+
+You can currently personalize by [official modules printing](https://github.com/Andrej123456789/ringOS/blob/main/UEFI%20version/kernel/Info.txt) text in kernel.cpp.
+
+Fell free to customize some other parts like panic.cpp
+
+### License for modules
+USE THIS MODULES FOR PRIVATE USE
+IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE ASK ringwormGO FOR PERMISSION
+___
+
 # Other
 
-If you have probelm or idea create issue.
+If you have problem or idea create issue.
 
 This documentation will continue improving based on new features in ringOS.
 
 For ringOSY documentation visit: https://github.com/Andrej123456789/ringOS/blob/Beta11_Qemu/ringOSY/README.md
-
-___
+____
 
 Thanks for choosing ringOS
 
