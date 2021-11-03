@@ -55,7 +55,7 @@ For running image,
 
 **Windows** Download executable file, run it (https://www.qemu.org/download/#windows) and add Qemu to PATH
 
-**Linux** `sudo apt install qemu-system-x86_64`
+**Linux** `sudo apt install qemu-system-x86`
 
 ___
 
