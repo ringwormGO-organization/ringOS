@@ -30,4 +30,6 @@ https://discord.gg/KFjvywqr
 
 https://github.com/davidcallanan/os-series
 
+Poncho's Discord server
+
 Other
