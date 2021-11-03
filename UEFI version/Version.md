@@ -6,3 +6,6 @@ Resolution info moved to kernel.cpp
 
 # Beta13
 GDT, Assembler
+
+# Beta14
+Exceptions handler and PS/2 keyboard
