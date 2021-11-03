@@ -1,5 +1,5 @@
-#Type ./ringOS-Builder.sh to run script from terminal
-#If don't work, chmod +x ringOS-Builder.sh and run script normally
+#Type ./ringOS-Builder-full.sh to run script from terminal
+#If don't work, chmod +x ringOS-Builder-full.sh and run script normally
 
 #This script clonning Beta14 template
 
