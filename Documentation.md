@@ -2,6 +2,9 @@
 Documentation is for ringOS.
 
 # Compile
+You can use this script: https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh
+or continue manually.
+
 ### Software you need
 1. [Qemu](#install-qemu)
 2. WSL or Linux
