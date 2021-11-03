@@ -3,6 +3,8 @@ ringOS source code
 
 Documentation: https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md
 
+Automatic build tool: https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh
+
 If you want contribute in this project create **Pull Request**
 
 # About ringOS
