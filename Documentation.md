@@ -9,8 +9,8 @@ or continue manually.
 1. [Qemu recommended](#install-qemu) or [Virtual Box](#running-in-virtual-box)
 2. WSL or Linux (recommended)
 
-### Type of release
-Download zip file in Qemu release (https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
+### Type of release for running in Qemu
+Download zip fileof Qemu release (example: https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
 
 ### Compiling
 Unzip zip file and navigate folder to your Terminal (Linux) or WSL on Windows (`cd`).
