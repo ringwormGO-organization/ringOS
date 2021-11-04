@@ -82,6 +82,8 @@ Open Virtual Box, create new virtual machine and put ISO as CD-ROM device.
 
 ![image](https://user-images.githubusercontent.com/83548580/140312483-09db7765-e788-41d1-b005-c47cb27cb57e.png)
 
+(You can execute this commands in WSL and run Virtual Box on Windows)
+
 Operating system must be marked as EFI.
 
 ___
