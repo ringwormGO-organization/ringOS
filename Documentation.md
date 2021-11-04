@@ -118,7 +118,7 @@ ___
 
 If you have problem or idea create **issue**.
 
-For contributiing create Pull **Request**.
+For contributiing create **Pull Request**.
 
 This documentation will continue improving based on new features in ringOS.
 
