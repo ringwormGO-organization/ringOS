@@ -5,7 +5,9 @@ Documentation: https://github.com/Andrej123456789/ringOS/blob/main/Documentation
 
 Automatic build tool for Linux (run ringOS in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh
 
-If you want contribute in this project create **Pull Request**
+If you have problem or idea create **issue**.
+
+If you want contribute in this project create **Pull Request**.
 
 # About ringOS
 ringOS is UEFI ringwormGO operating system based on PonchoOS
