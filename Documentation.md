@@ -2,12 +2,12 @@
 Documentation is for ringOS.
 
 # Compile
-You can use this script: https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh
+You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh
 or continue manually.
 
 ### Software you need
-1. [Qemu](#install-qemu)
-2. WSL or Linux
+1. [Qemu recommended](#install-qemu) or [Virtual Box]
+2. WSL or Linux (recommended)
 
 ### Type of release
 Download zip file in Qemu release (https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
@@ -56,6 +56,15 @@ For running image,
 **Windows** Download executable file, run it (https://www.qemu.org/download/#windows) and add Qemu to PATH
 
 **Linux** `sudo apt install qemu-system-x86`
+___
+# Running in Virtual Box
+You need install two more apps:
+
+`sudo apt-get install xorriso`
+
+`sudo apt-get install mkisofs`
+
+Enter kernel/bin directory
 
 ___
 
