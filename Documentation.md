@@ -1,7 +1,7 @@
 # DOCUMENTATION
-Documentation is for ringOS.
+Documentation is for compiling and running ringOS.
 
-# Compile
+# Compile and run in Qemu
 You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh
 or continue manually.
 
@@ -85,7 +85,21 @@ Open Virtual Box, create new virtual machine and put ISO as CD-ROM device.
 (You can execute this commands in WSL and run Virtual Box on Windows)
 
 Operating system must be marked as EFI.
+_____
+# Running on real hardware
+*Files in [version] - image*
 
+Format USB as MBR/GPT partition style (tool for example: Rufus).
+
+Create EFI folder.
+
+Inside EFI folder create BOOT folder.
+
+Copy `bootx64.efi` file into BOOT folder.
+
+In root directory of USB copy `kernel.elf` and `zap-light16.psf`.
+
+Restart computer, enter Boot Menu and boot from USB.
 ___
 
 # Modules
@@ -102,7 +116,9 @@ ___
 
 # Other
 
-If you have problem or idea create issue.
+If you have problem or idea create **issue**.
+
+For contributiing create Pull **Request**.
 
 This documentation will continue improving based on new features in ringOS.
 
