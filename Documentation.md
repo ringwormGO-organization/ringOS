@@ -6,7 +6,7 @@ You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789
 or continue manually.
 
 ### Software you need
-1. [Qemu recommended](#install-qemu) or [Virtual Box]
+1. [Qemu recommended](#install-qemu) or [Virtual Box](##running-in-virtual-box)
 2. WSL or Linux (recommended)
 
 ### Type of release
@@ -64,7 +64,25 @@ You need install two more apps:
 
 `sudo apt-get install mkisofs`
 
-Enter kernel/bin directory
+Enter kernel/bin directory.
+
+Type this commands in order:
+
+`mkdir -p iso`
+
+`rm -rf iso/*.iso`
+
+`rm -rf iso/*.img`
+
+`cp CustomOS.img iso`
+
+`xorriso -as mkisofs -R -f -e CustomOS.img -no-emul-boot -o ./iso/cdimage.iso iso`
+
+Open Virtual Box, create new virtual machine and put ISO as CD-ROM device.
+
+![image](https://user-images.githubusercontent.com/83548580/140312483-09db7765-e788-41d1-b005-c47cb27cb57e.png)
+
+Operating system must be marked as EFI.
 
 ___
 
