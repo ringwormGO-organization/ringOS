@@ -5,12 +5,14 @@ Documentation: https://github.com/Andrej123456789/ringOS/blob/main/Documentation
 
 Automatic build tool for Linux (run ringOS in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool
 
+Modules: https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt
+
 If you have problem or idea create **issue**.
 
 If you want contribute in this project create **Pull Request**.
 
 # About ringOS
-ringOS is UEFI ringwormGO operating system based on PonchoOS
+ringOS is ringwormGO operating system based on PonchoOS with upprot UEFI boot mode only.
 
 ringOS is keyboard oriented operating system with GUI elements.
 
@@ -20,7 +22,7 @@ This repo is for developing and invitation new contributors for this project.
 Beta 4 version image of ringOS
 
 # ringOSY
-ringOSY is ringwormGO operating system for older PCs - PCs with BIOS
+ringOSY is ringwormGO operating system for older PCs - PCs with BIOS boot mode.
 
 # System requiratmens
 **ringOS** | UEFI x86_64 64 bit PC, 38MB of RAM
