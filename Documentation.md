@@ -103,9 +103,9 @@ Restart computer, enter Boot Menu and boot from USB.
 ___
 
 # Modules
-[Modules](https://github.com/Andrej123456789/ringOS/blob/main/UEFI%20version/kernel/Info.txt) are for customizing ringOS.
+[Modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) are for customizing ringOS.
 
-You can currently personalize by [official modules printing](https://github.com/Andrej123456789/ringOS/blob/main/UEFI%20version/kernel/Info.txt) text in kernel.cpp.
+You can currently personalize by [official modules printing](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) text in kernel.cpp.
 
 Fell free to customize some other parts like panic.cpp
 
