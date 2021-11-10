@@ -9,3 +9,6 @@ GDT, Assembler
 
 # Beta14
 Exceptions handler and PS/2 keyboard
+
+# Beta15
+TaskBar and keyboard improvments
