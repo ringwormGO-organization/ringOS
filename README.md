@@ -29,6 +29,8 @@ ringOSY is ringwormGO operating system for older PCs - PCs with BIOS boot mode.
 
 **ringOSY** | BIOS/UEFI x86_64 64 bit PC
 
+*Note: Some new PCs don't supprot booting in BIOS mode*
+
 # Resources used:
 https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
 
