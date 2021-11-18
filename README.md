@@ -44,6 +44,7 @@ _______________
 ### In emulator
 
 **Both**
+
 RAM: 256MB
 
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
