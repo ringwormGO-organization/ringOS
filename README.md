@@ -25,11 +25,30 @@ Beta 4 version image of ringOS
 ringOSY is ringwormGO operating system for older PCs - PCs with BIOS boot mode.
 
 # System requiratmens
-**ringOS** | UEFI x86_64 64 bit PC, 38MB of RAM
 
-**ringOSY** | BIOS/UEFI x86_64 64 bit PC
+### Real hardware
+
+**ringOS**
+SYSTEM: UEFI x86_64 PC
+
+RAM: minimum - 38MB, recommended - 256MB
+____________________
+
+**ringOSY**
+
+BIOS/UEFI x86_64 64 bit PC
 
 *Note: Some new PCs don't supprot booting in BIOS mode*
+_______________
+
+### In emulator
+
+**Both**
+RAM: 256MB
+
+CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
+
+*Note: Qemu on Windows use more gigahertzs*
 
 # Resources used:
 https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
