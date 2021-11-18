@@ -29,6 +29,7 @@ ringOSY is ringwormGO operating system for older PCs - PCs with BIOS boot mode.
 ### Real hardware
 
 **ringOS**
+
 SYSTEM: UEFI x86_64 PC
 
 RAM: minimum - 38MB, recommended - 256MB
