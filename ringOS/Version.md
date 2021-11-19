@@ -12,3 +12,6 @@ Exceptions handler and PS/2 keyboard
 
 # Beta15
 TaskBar and keyboard improvments
+
+# Beta16
+Mouse, CAPS LOCK bug fixed and more
