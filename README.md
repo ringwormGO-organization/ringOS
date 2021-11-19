@@ -21,8 +21,7 @@ This repo is for developing and invitation new contributors for this project.
 ![image](https://user-images.githubusercontent.com/83548580/133824416-455bc2d8-3364-4ffd-abd6-24bff779af32.png)
 Beta 4 version image of ringOS
 
-# ringOSY
-ringOSY is ringwormGO operating system for older PCs - PCs with BIOS boot mode.
+
 
 # System requiratmens
 
@@ -33,18 +32,9 @@ ringOSY is ringwormGO operating system for older PCs - PCs with BIOS boot mode.
 SYSTEM: UEFI x86_64 PC
 
 RAM: minimum - 38MB, recommended - 256MB
-____________________
 
-**ringOSY**
-
-BIOS/UEFI x86_64 64 bit PC
-
-*Note: Some new PCs don't supprot booting in BIOS mode*
-_______________
 
 ### In emulator
-
-**Both**
 
 RAM: 256MB
 
