@@ -105,7 +105,7 @@ ___
 # Modules
 [Modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) are for customizing ringOS.
 
-You can currently personalize by [official modules printing](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) text in kernel.cpp.
+You can currently personalize by [official modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) printing text in kernel.cpp.
 
 Fell free to customize some other parts like panic.cpp
 
