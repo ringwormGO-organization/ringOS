@@ -28,12 +28,9 @@ Beta 4 version image of ringOS
 
 ### Real hardware
 
-**ringOS**
-
 SYSTEM: UEFI x86_64 PC
 
 RAM: minimum - 38MB, recommended - 256MB
-
 
 ### In emulator
 
