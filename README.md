@@ -21,6 +21,9 @@ This repo is for developing and invitation new contributors for this project.
 ![image](https://user-images.githubusercontent.com/83548580/133824416-455bc2d8-3364-4ffd-abd6-24bff779af32.png)
 Beta 4 version image of ringOS
 
+![ringOSBeta16](https://user-images.githubusercontent.com/83548580/142688916-7d1e3b52-946d-441e-acf1-137eb4c534c3.png)
+Beta16 version image of ringOS
+
 # ringOSY
 [ringOSY](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY)
 
