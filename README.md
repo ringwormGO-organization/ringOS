@@ -12,7 +12,7 @@ If you have problem or idea create **issue**.
 If you want contribute in this project create **Pull Request**.
 
 # About ringOS
-ringOS is ringwormGO operating system based on PonchoOS with upprot UEFI boot mode only.
+ringOS is ringwormGO operating system based on PonchoOS with supprot UEFI boot mode only.
 
 ringOS is keyboard oriented operating system with GUI elements.
 
