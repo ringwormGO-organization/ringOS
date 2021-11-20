@@ -111,6 +111,7 @@ Fell free to customize some other parts like panic.cpp
 
 ### License for modules
 USE THIS MODULES FOR PRIVATE USE
+
 IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE ASK ringwormGO FOR PERMISSION
 ___
 
@@ -122,7 +123,7 @@ For contributiing create **Pull Request**.
 
 This documentation will continue improving based on new features in ringOS.
 
-For ringOSY documentation visit: https://github.com/Andrej123456789/ringOS/blob/Beta11_Qemu/ringOSY/README.md
+[ringOSY documentation](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY) 
 ____
 
 Thank you for choosing ringOS
