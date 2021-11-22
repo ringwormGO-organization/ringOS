@@ -57,3 +57,9 @@ https://github.com/davidcallanan/os-series
 Poncho's Discord server
 
 Other
+
+______________________
+
+Thank you for choosing ringOS
+
+© ringwormGO 2021
