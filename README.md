@@ -37,7 +37,11 @@ RAM: minimum - 38MB, recommended - 256MB
 
 ### In emulator
 
-RAM: 256MB
+RAM: 
+
+Qemu: 38MB min, 256MB recommended
+
+Virtual Box: 4096MB minimum
 
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
