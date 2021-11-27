@@ -6,7 +6,7 @@ You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789
 or continue manually.
 
 ### Software you need
-1. [Qemu recommended](#install-qemu) or [Virtual Box, VmWare](#running-in-virtual-box)
+1. [Qemu recommended](#install-qemu) or [Virtual Box, VmWare](#running-in-virtual-box-or-vmware)
 2. WSL or Linux (recommended)
 
 ### Type of release for running in Qemu
