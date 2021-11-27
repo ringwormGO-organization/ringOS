@@ -9,6 +9,8 @@ Modules: https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modul
 
 [**ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1)
 
+[**ringOSY stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY)
+
 If you have problem or idea create **issue**.
 
 If you want contribute in this project create **Pull Request**.
@@ -43,7 +45,7 @@ RAM:
 
 Qemu: 38MB min, 256MB recommended
 
-Virtual Box: 4096MB minimum
+Virtual Box, VmWare: 4096MB minimum ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
 
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
