@@ -6,7 +6,7 @@ You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789
 or continue manually.
 
 ### Software you need
-1. [Qemu recommended](#install-qemu) or [Virtual Box](#running-in-virtual-box)
+1. [Qemu recommended](#install-qemu) or [Virtual Box, VmWare](#running-in-virtual-box)
 2. WSL or Linux (recommended)
 
 ### Type of release for running in Qemu
@@ -57,7 +57,10 @@ For running image,
 
 **Linux** `sudo apt install qemu-system-x86`
 ___
-# Running in Virtual Box
+# Running in Virtual Box or VmWare
+
+**Minimum RAM: 4096MB**
+
 You need install two more apps:
 
 `sudo apt-get install xorriso`
@@ -78,13 +81,23 @@ Type this commands in order:
 
 `xorriso -as mkisofs -R -f -e CustomOS.img -no-emul-boot -o ./iso/cdimage.iso iso`
 
-Open Virtual Box, create new virtual machine and put ISO as CD-ROM device.
+Open Virtual Box, create new virtual machine and put ISO as CD-ROM device and enable ICH9 CPU chipset.
+
+Open VmWare, create new virtual machine, put ISO, enter Boot Manager and select **EFI Internal Shell**.
+
+![image](https://user-images.githubusercontent.com/83548580/143719557-aee05602-e163-4693-a124-2307aa09eac0.png)
+
+![image](https://user-images.githubusercontent.com/83548580/143719800-0600b9fe-8ca7-48bd-bd24-edc6c3048d56.png)
+
+- - - - - - 
 
 ![image](https://user-images.githubusercontent.com/83548580/140312483-09db7765-e788-41d1-b005-c47cb27cb57e.png)
 
+![image](https://user-images.githubusercontent.com/83548580/143719473-982e21ff-def5-4383-aa4f-3b249eab4e90.png)
+
 (You can execute this commands in WSL and run Virtual Box on Windows)
 
-Operating system must be marked as EFI.
+Operating system must be marked as EFI (Virtual box) or UEFI Firmware type (VmWare).
 _____
 # Running on real hardware
 *Files in [version] - image*
