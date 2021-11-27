@@ -41,7 +41,7 @@ RAM:
 
 Qemu: 38MB min, 256MB recommended
 
-Virtual Box: 4096MB minimum
+Virtual Box, VmWare: 4096MB minimum ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
 
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
