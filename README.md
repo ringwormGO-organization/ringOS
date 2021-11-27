@@ -1,12 +1,18 @@
 # ringOS
 ringOS source code
 
-Documentation: https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md
+[Documentation](https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md)
 
 Automatic build tool for Linux (run ringOS in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool
 
-Modules: https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt
+[Modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt)
 
+### Stable releases
+[**ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1)
+
+[**ringOSY stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY)
+
+### Contributing and issues
 If you have problem or idea create **issue**.
 
 If you want contribute in this project create **Pull Request**.
@@ -57,7 +63,6 @@ https://github.com/davidcallanan/os-series
 Poncho's Discord server
 
 Other
-
 ______________________
 
 Thank you for choosing ringOS
