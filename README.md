@@ -7,6 +7,8 @@ Automatic build tool for Linux (run ringOS in Qemu): https://github.com/Andrej12
 
 Modules: https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt
 
+[**ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1)
+
 If you have problem or idea create **issue**.
 
 If you want contribute in this project create **Pull Request**.
