@@ -5,7 +5,7 @@ ringOS source code
 
 Automatic build tool for Linux (run ringOS in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool
 
-[Modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt)
+[Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)
 
 ### Stable releases
 [**ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1)
