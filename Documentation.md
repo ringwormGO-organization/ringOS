@@ -116,9 +116,9 @@ Restart computer, enter Boot Menu and boot from USB.
 ___
 
 # Modules
-[Modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) are for customizing ringOS.
+[Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) are for customizing ringOS.
 
-You can currently personalize by [official modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) printing text in kernel.cpp.
+You can currently personalize by [official modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) printing text in kernel.cpp.
 
 Fell free to customize some other parts like panic.cpp
 
