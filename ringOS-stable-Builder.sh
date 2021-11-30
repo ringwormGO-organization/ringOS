@@ -12,8 +12,8 @@ sudo apt-get install build-essential mtools && echo build-essential mtools insat
 sudo apt install nasm && echo NASM insatlled successfully || echo FAILED to install nasm
 sudo apt install qemu-system-x86 && echo Qemu insatlled successfully || echo FAILED to install Qemu
 
-mkdir "ringOS-stable" && echo ringOS-stable directory successfully created || echo FAILED to create directory
-gOS && echo In 
+mkdir "ringOS-stable" && echo ringOS-stable directory successfully created || echo FAILED to create ringOS directory
+
 cd ringOS-stable && Successfully enter ringOS-stable directory || echo FAILED to enter ringOS-stable directory
 
 git clone -b ringOS-stable1 https://github.com/ringwormGO-organization/ringOS && echo Cloning successful || echo FAILED to clone
