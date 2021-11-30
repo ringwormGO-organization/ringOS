@@ -1,7 +1,7 @@
 # DOCUMENTATION
 Documentation is for compiling and running ringOS.
 
-# Compile and run in Qemu
+# Compile and run in Qemu (betas)
 You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool
 or continue manually.
 
@@ -50,14 +50,20 @@ For running image,
 
 **Linux** `make run`
 
+# Compile and run stable release
 
+https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh
+
+https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1
+
+______
 # Install Qemu
 
 **Windows** Download executable file, run it (https://www.qemu.org/download/#windows) and add Qemu to PATH
 
 **Linux** `sudo apt install qemu-system-x86`
 ___
-# Running in Virtual Box or VmWare
+# Running in Virtual Box or VMWare
 
 **Minimum RAM: 4096MB**
 
@@ -83,7 +89,7 @@ Type this commands in order:
 
 Open Virtual Box, create new virtual machine and put ISO as CD-ROM device and enable ICH9 CPU chipset.
 
-Open VmWare, create new virtual machine, put ISO, enter Boot Manager and select **EFI Internal Shell**.
+Open VMWare, create new virtual machine, put ISO, enter Boot Manager and select **EFI Internal Shell**.
 
 ![image](https://user-images.githubusercontent.com/83548580/143719557-aee05602-e163-4693-a124-2307aa09eac0.png)
 
@@ -97,7 +103,7 @@ Open VmWare, create new virtual machine, put ISO, enter Boot Manager and select 
 
 (You can execute this commands in WSL and run Virtual Box on Windows)
 
-Operating system must be marked as EFI (Virtual box) or UEFI Firmware type (VmWare).
+Operating system must be marked as EFI (Virtual box) or UEFI Firmware type (VMWare).
 _____
 # Running on real hardware
 *Files in [version] - image*
@@ -116,9 +122,9 @@ Restart computer, enter Boot Menu and boot from USB.
 ___
 
 # Modules
-[Modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) are for customizing ringOS.
+[Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) are for customizing ringOS.
 
-You can currently personalize by [official modules](https://github.com/Andrej123456789/ringOS/blob/main/ringOS/kernel/Modules.txt) printing text in kernel.cpp.
+You can currently personalize by [official modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) printing text in kernel.cpp.
 
 Fell free to customize some other parts like panic.cpp
 
