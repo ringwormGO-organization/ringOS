@@ -71,6 +71,8 @@ sudo apt install libmpfr-dev
 
 sudo apt install texinfo
 
+sudo apt install xorriso
+
 export PREFIX="/usr/local/x86_64elfgcc"
 
 export TARGET=x86_64-elf
