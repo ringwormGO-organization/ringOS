@@ -2,6 +2,8 @@
 # How to develop for ringOSY
 https://www.youtube.com/playlist?list=PLZQftyCk7_SeZRitx5MjBKzTtvk0pHMtp
 
+https://github.com/ringwormGO-organization/ringOS/blob/ringOSY/README.md#non-docker-build-enviroment
+
 # System requiretmens for developing:
   1. Qemu (for virtual machine)
   2. WSL 2
@@ -46,3 +48,85 @@ If the above command fails, try one of the following:
  - Alternatively, install a custom BIOS binary file and link it to Qemu using the `-L` option.
 
 Alternatively, you should be able to load the operating system on a USB drive (MBR partition style) and boot into it when you turn on your computer.
+
+
+# NON-DOCKER BUILD ENVIROMENT
+This work on native Linux and WSL
+
+Type all commands in terminal:
+
+sudo apt update
+
+sudo apt install build-essential
+
+sudo apt install bison
+
+sudo apt install flex
+
+sudo apt install libgmp3-dev
+
+sudo apt install libmpc-dev
+
+sudo apt install libmpfr-dev
+
+sudo apt install texinfo
+
+export PREFIX="/usr/local/x86_64elfgcc"
+
+export TARGET=x86_64-elf
+
+export PATH="$PREFIX/bin:$PATH"
+
+mkdir /tmp/src
+
+cd /tmp/src
+
+curl -O http://ftp.gnu.org/gnu/binutils/binutils-2.35.1.tar.gz
+
+tar xf binutils-2.35.1.tar.gz
+
+mkdir binutils-build
+
+cd binutils-build
+
+../binutils-2.35.1/configure --target=$TARGET --enable-interwork --enable-multilib --disable-nls --disable-werror --prefix=$PREFIX 2>&1 | tee configure.log
+
+sudo make all install 2>&1 | tee make.log
+
+cd /tmp/src
+
+curl -O https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
+
+tar xf gcc-10.2.0.tar.gz
+
+mkdir gcc-build
+
+cd gcc-build
+
+../gcc-10.2.0/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --disable-libssp --enable-languages=c++ --without-headers
+
+sudo make all-gcc
+
+sudo make all-target-libgcc
+
+sudo make install-gcc
+
+sudo make install-target-libgcc
+
+-----------
+
+Now you need add folder to variable.
+
+Type ```sudo nano ~/.bashrc```
+
+Scroll to end of file and type: ```export PATH="$PATH:/usr/local/x86_64/elfgcc/bin"``` save it and restart system (if you are using native Linux) or WSL.
+
+Check if it was successful with: ```x86_64-elf-gcc```.
+
+ringOSY compile with: ```make build-x86_64```.
+
+_________
+
+Thanks for choosing ringOSY
+
+©2021 ringwormGO
