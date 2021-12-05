@@ -21,6 +21,7 @@ extern "C" void _start(BootInfo* bootInfo)
         GlobalRenderer->Colour = 0x00ff0000;
         GlobalRenderer->CursorPosition = {0, 1000};
         GlobalRenderer->Print("START");
+
     }
     else if (ResoWidth == 1366 && ResoHeight == 768)
     {
@@ -51,7 +52,7 @@ extern "C" void _start(BootInfo* bootInfo)
         GlobalRenderer->Print("START");
     }
     
-
+    
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
 	GlobalRenderer->CursorPosition = {0, 0};
