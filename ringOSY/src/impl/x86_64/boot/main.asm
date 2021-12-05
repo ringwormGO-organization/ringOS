@@ -3,23 +3,31 @@ extern long_mode_start
 
 section .text
 bits 32
+; Main function of this OS
 start:
+    ; Push the stack
     mov esp, stack_top
 
+    ; Check i multiboot is supported
     call check_multiboot
+    ; Check is CPUID is supported
     call check_cpuid
+    ; Check is Long Mode is supported
     call check_long_mode
 
+    ; Setup paging
     call setup_page_tables
     call enable_paging
 
+    ; Start 64 bit mode
     lgdt [gdt64.pointer]
     jmp gdt64.code_segment:long_mode_start
 
-    ; print 'OK'
+    ; print 'OK' to indicate that everything is ok
     mov dword [0xb8000], 0x2f4b2f4f
     hlt
 
+; Definations
 check_multiboot:
     cmp eax, 0x36d76289
     jne .no_multiboot
