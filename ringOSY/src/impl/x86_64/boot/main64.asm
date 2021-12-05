@@ -4,6 +4,7 @@ extern kernel_main
 section .text
 bits64
 long_mode_start:
+    ; Initlize the registers
     mov ax, 0
     mov ss, ax
     mov ds, ax
@@ -11,5 +12,6 @@ long_mode_start:
     mov fs, ax
     mov gs, ax
 
+    ; Start the kernel (in the main.c)
     call kernel_main
     hlt

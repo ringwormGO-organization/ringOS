@@ -1,18 +1,27 @@
+// Includes
 #include "print.h"
 
-const static size_t NUM_COLS = 80;
-const static size_t NUM_ROWS = 25;
+// Screen size
+const static size_t NUM_COLS = 80; // Screen Colomns
+const static size_t NUM_ROWS = 25; // Screen Rows
 
+// Charator information
 struct Char {
     uint8_t character;
     uint8_t color;
 };
 
+// Screen buffer address
 struct Char* buffer = (struct Char*) 0xb8000;
-size_t col = 0;
-size_t row = 0;
+
+// Cursor information
+size_t col = 0; // Current cursor coloum
+size_t row = 0; // Current cursor row
+
+// Text Color
 uint8_t color = PRINT_COLOR_WHITE | PRINT_COLOR_BLACK << 4;
 
+// Clear a row
 void clear_row(size_t row) {
     struct Char empty = (struct Char) {
         character: ' ',
@@ -24,6 +33,7 @@ void clear_row(size_t row) {
     }
 }
 
+// Clear the entire screen
 void print_clear() {
     for (size_t i = 0; i < NUM_ROWS; i++) {
         clear_row(i);
