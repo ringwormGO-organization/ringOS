@@ -3,6 +3,8 @@
 #include "../math.h"
 #include "../BasicRenderer.h"
 
+#include "../Windowing-System/Window.h"
+
 #define PS2Leftbutton 0b00000001
 #define PS2Middlebutton 0b00000100
 #define PS2Rightbutton 0b00000010

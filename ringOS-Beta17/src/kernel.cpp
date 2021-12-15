@@ -60,7 +60,7 @@ extern "C" void _start(BootInfo* bootInfo)
 	GlobalRenderer->Print(" ");
 
 	GlobalRenderer->Colour = 0xffffff00;
-    GlobalRenderer->CursorPosition = {0, 16};
+    GlobalRenderer->Next();
 
 	//Resolution
     GlobalRenderer->Print("Resolution: ");
@@ -71,6 +71,7 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();
     GlobalRenderer->Next();
+    GlobalRenderer->Print("žđšćč");
 
     while(true)
     {

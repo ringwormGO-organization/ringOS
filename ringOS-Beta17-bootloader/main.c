@@ -90,7 +90,7 @@ PSF1_FONT* LoadPSF1Font(EFI_FILE* Directory, CHAR16* Path, EFI_HANDLE ImageHandl
 	}
 
 	UINTN glyphBufferSize = fontHeader->charsize * 256;
-	if (fontHeader->mode == 1) { //512 glyph mode
+	if (fontHeader->mode == 2) { //512 glyph mode
 		glyphBufferSize = fontHeader->charsize * 512;
 	}
 
@@ -140,14 +140,17 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	Print(L"FirmwareVendor: ");
 	Print(SystemTable->FirmwareVendor);
 	Print(L" \n\r");
+	Print(L" \n\r");
 
 	EFI_FILE* Kernel = LoadFile(NULL, L"kernel.elf", ImageHandle, SystemTable);
-	if (Kernel == NULL){
+	if (Kernel == NULL)
+	{
 		Print(L"Could not load kernel \n\r");
 	}
 	else{
 		Print(L"Kernel Loaded Successfully \n\r");
 	}
+	
 
 	Elf64_Ehdr header;
 	{
@@ -248,14 +251,16 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	
 
 	PSF1_FONT* newFont = LoadPSF1Font(NULL, L"zap-light16.psf", ImageHandle, SystemTable);
-	if (newFont == NULL){
+	if (newFont == NULL)
+	{
 		Print(L"Font is not valid or is not found\n\r");
 	}
 	else
 	{
 		Print(L"Font found. char size = %d\n\r", newFont->psf1_Header->charsize);
 	}
-	
+
+
 
 	Framebuffer* newBuffer = InitializeGOP();
 
