@@ -2,7 +2,7 @@
 Documentation is for compiling and running ringOS.
 
 # Compile and run in Qemu (betas)
-[You can use this script (Linux, run in Qemu)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool)
+[You can use this script (Linux, run in Qemu)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh)
 
 [Stable release (Linux, run in Qemu)](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
 or continue manually.
