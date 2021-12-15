@@ -2,7 +2,9 @@
 Documentation is for compiling and running ringOS.
 
 # Compile and run in Qemu (betas)
-You can use this script (Linux, run in Qemu): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool
+[You can use this script (Linux, run in Qemu)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool)
+
+[Stable release (Linux, run in Qemu)](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
 or continue manually.
 
 ### Software you need
@@ -11,6 +13,8 @@ or continue manually.
 
 ### Type of release for running in Qemu
 Download zip file of Qemu release (example: https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
+
+Otherwise, you can download some branches, [stable release](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1) or clone entire repo and found files which you need.
 
 ### Compiling
 Unzip zip file and navigate folder to your Terminal (Linux) or WSL on Windows (`cd`).
