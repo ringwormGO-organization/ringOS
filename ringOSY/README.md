@@ -51,6 +51,9 @@ Alternatively, you should be able to load the operating system on a USB drive (M
 
 
 # NON-DOCKER BUILD ENVIROMENT
+
+## https://github.com/ringwormGO-organization/ringOS/issues/7
+
 This work on native Linux and WSL
 
 Type all commands in terminal:
