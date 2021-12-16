@@ -1,5 +1,5 @@
 
-OSNAME = CustomOS
+OSNAME = ringOS
 
 GNUEFI = ../gnu-efi
 OVMFDIR = ../OVMFbin
