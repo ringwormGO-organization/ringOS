@@ -71,7 +71,6 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();
     GlobalRenderer->Next();
-    GlobalRenderer->Print("žđšćč");
 
     while(true)
     {
