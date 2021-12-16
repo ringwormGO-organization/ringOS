@@ -87,9 +87,9 @@ Type this commands in order:
 
 `rm -rf iso/*.img`
 
-`cp CustomOS.img iso`
+`cp ringOS.img iso`
 
-`xorriso -as mkisofs -R -f -e CustomOS.img -no-emul-boot -o ./iso/cdimage.iso iso`
+`xorriso -as mkisofs -R -f -e ringOS.img -no-emul-boot -o ./iso/ringOS.iso iso`
 
 Open Virtual Box, create new virtual machine and put ISO as CD-ROM device and enable ICH9 CPU chipset.
 
