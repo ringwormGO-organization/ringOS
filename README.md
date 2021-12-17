@@ -47,7 +47,7 @@ RAM: minimum - 38MB, recommended - 256MB
 
 RAM: 
 
-Qemu: 38MB min, 256MB recommended
+Qemu: 38MB min, 3G recommended
 
 Virtual Box, VmWare: 4096MB minimum ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
 
