@@ -1,6 +1,8 @@
 # DOCUMENTATION
 Documentation is for compiling and running ringOS.
 
+[SYSTEM REQUIRATMENS](https://github.com/ringwormGO-organization/ringOS#system-requiratmens)
+
 # Compile and run in Qemu (betas)
 [You can use this script (Linux, run in Qemu)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh)
 
