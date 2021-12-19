@@ -2,9 +2,11 @@
 #include "math.h"
 #include "Framebuffer.h"
 #include "simpleFonts.h" 
+#include "tga/tga.h"
 #include <stdint.h>
 
-class BasicRenderer{
+class BasicRenderer
+{
     public:
     BasicRenderer(Framebuffer* targetFramebuffer, PSF1_FONT* psf1_Font);
     Point CursorPosition;
@@ -26,6 +28,7 @@ class BasicRenderer{
     void ClearMouseCursor(uint8_t* cursor, Point position);
     bool MouseDrawn;
     void TaskBar(uint32_t colour, int verticalScanline);
+    void Square(int x, int y, uint32_t color);
 };
 
 extern BasicRenderer* GlobalRenderer;

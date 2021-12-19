@@ -182,12 +182,12 @@ void Draw()
         GlobalRenderer->Colour = colour;*/
 
 
-        /*GlobalRenderer->Print((to_string(MousePosition.Y)));
+        GlobalRenderer->Print((to_string(MousePosition.Y)));
         GlobalRenderer->Print("|");
         GlobalRenderer->Print((to_string(MousePosition.X)));
-        GlobalRenderer->Print(" ");*/
+        GlobalRenderer->Print(" ");
 
-        Window::DrawTerminal(0xff00f00f);
+        GlobalRenderer->Square(600, 600, 0xff00f00f);
     }
 
     if (MousePacket[0] & PS2Rightbutton)

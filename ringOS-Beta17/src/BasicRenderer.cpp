@@ -181,3 +181,14 @@ void BasicRenderer::TaskBar(uint32_t colour, int verticalScanline)
         }
     }
 }
+
+void BasicRenderer::Square(int x, int y, uint32_t color)
+{
+    for (y = 600; y < 1000; y++)
+    {
+            for (x = 600; x < 1000; x++)
+            {
+                GlobalRenderer->PutPix(x, y, color);
+            }
+    }
+}
