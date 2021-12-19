@@ -3,9 +3,9 @@ ringOS source code
 
 [Documentation](https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md)
 
-Automatic build tool for Linux (run ringOS in Qemu, beta): https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh, https://github.com/Andrej123456789/ringOS/releases/tag/AutomaticBuildTool
+[Automatic build tool for Linux (run ringOS in Qemu, beta)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh)
 
-Automatic Build Tool - stable release : https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh, https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1
+[Automatic Build Tool - stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)
 
@@ -38,18 +38,14 @@ Beta16 version image of ringOS
 # System requiratmens
 
 ### Real hardware
+Firmware: UEFI x86_64 PC
 
-SYSTEM: UEFI x86_64 PC
-
-RAM: minimum - 38MB, recommended - 256MB
+RAM: uncertain, recommended 3GB based on 
 
 ### In emulator
+Qemu: 38MB RAM min, 3G recommended
 
-RAM: 
-
-Qemu: 38MB min, 3G recommended
-
-Virtual Box, VmWare: 4096MB minimum ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
+Virtual Box, VmWare: 4096MB RAM minimum, ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
 
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
