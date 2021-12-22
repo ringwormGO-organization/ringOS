@@ -2,6 +2,7 @@
 #include "memory/heap.h"
 #include "scheduling/pit/pit.h"
 
+
 extern "C" void _start(BootInfo* bootInfo)
 {
     KernelInfo kernelInfo = InitializeKernel(bootInfo);
@@ -55,7 +56,7 @@ extern "C" void _start(BootInfo* bootInfo)
     
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
-	GlobalRenderer->CursorPosition = {0, 0};
+	GlobalRenderer->Next();
 	GlobalRenderer->Print("Welcome to ringOS!!");
 	GlobalRenderer->Print(" ");
 

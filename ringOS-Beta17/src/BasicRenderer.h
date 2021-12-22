@@ -4,6 +4,7 @@
 #include "simpleFonts.h" 
 #include "tga/tga.h"
 #include <stdint.h>
+#include "cstr.h"
 
 class BasicRenderer
 {
@@ -28,7 +29,8 @@ class BasicRenderer
     void ClearMouseCursor(uint8_t* cursor, Point position);
     bool MouseDrawn;
     void TaskBar(uint32_t colour, int verticalScanline);
-    void Square(int x, int y, uint32_t color);
+    void Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour);
+    void Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour);
 };
 
 extern BasicRenderer* GlobalRenderer;

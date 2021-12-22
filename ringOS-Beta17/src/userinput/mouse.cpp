@@ -187,7 +187,7 @@ void Draw()
         GlobalRenderer->Print((to_string(MousePosition.X)));
         GlobalRenderer->Print(" ");
 
-        GlobalRenderer->Square(600, 600, 0xff00f00f);
+        GlobalRenderer->Square(600, 600, 300, 300, 0xff00f00f);
     }
 
     if (MousePacket[0] & PS2Rightbutton)

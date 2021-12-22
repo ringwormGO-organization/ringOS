@@ -182,13 +182,18 @@ void BasicRenderer::TaskBar(uint32_t colour, int verticalScanline)
     }
 }
 
-void BasicRenderer::Square(int x, int y, uint32_t color)
+void BasicRenderer::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
 {
-    for (y = 600; y < 1000; y++)
+    for (size_t y1 = y; y1 < y + height; y1++)
     {
-            for (x = 600; x < 1000; x++)
-            {
-                GlobalRenderer->PutPix(x, y, color);
-            }
+        for (size_t x1 = x; x1 < x + width; x1++)
+        {
+            GlobalRenderer->PutPix(x1, y1, colour);
+        }
     }
+}
+
+void BasicRenderer::Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
+{
+    Rectangle(x, y, width, height, colour);
 }

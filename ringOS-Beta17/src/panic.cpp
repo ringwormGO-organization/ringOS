@@ -4,6 +4,10 @@
 #include "scheduling/pit/pit.h"
 #include "Reboot.h"
 
+#include "BasicRenderer.h"
+#include "paging/PageFrameAllocator.h"
+#include "kernel.h"
+
 void Panic(const char* panicMessage){
     GlobalRenderer->ClearColour = 0xff00ffff;
     GlobalRenderer->Clear();
@@ -22,7 +26,26 @@ void Panic(const char* panicMessage){
 
     GlobalRenderer->Print(panicMessage);
 
+    GlobalRenderer->Next();
+    GlobalRenderer->Next();
 
-    PIT::Sleep(20000);
+
+    GlobalRenderer->Print("Free RAM: ");
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024));
+    GlobalRenderer->Print(" KB ");
+
+    GlobalRenderer->Next();
+
+    GlobalRenderer->Print("Used RAM: ");
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetUsedRAM() / 1024));
+    GlobalRenderer->Print(" KB ");
+
+    GlobalRenderer->Next();
+
+    GlobalRenderer->Print("Reserved RAM: ");
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024));
+    GlobalRenderer->Print(" KB ");
+
+    PIT::Sleep(10000);
     Reboot();
 }

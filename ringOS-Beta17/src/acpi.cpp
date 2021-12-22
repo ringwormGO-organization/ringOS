@@ -1,4 +1,6 @@
 #include "acpi.h"
+#include "IO.h"
+#include "pci.h"
 
 namespace ACPI
 {
@@ -21,5 +23,4 @@ namespace ACPI
         }
         return 0;
     }
-
 }
