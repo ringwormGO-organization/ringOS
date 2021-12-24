@@ -11,6 +11,7 @@ sudo apt upgrade && echo Upgrade successful || echo FAILED to upgrade
 sudo apt-get install build-essential mtools && echo build-essential mtools insatlled successfully || echo FAILED to install build-essential tools
 sudo apt install nasm && echo NASM insatlled successfully || echo FAILED to install nasm
 sudo apt install qemu-system-x86 && echo Qemu insatlled successfully || echo FAILED to install Qemu
+sudo apt install git && echo git insatlled successfully || echo FAILED to install git
 
 mkdir "ringOS-stable" && echo ringOS-stable directory successfully created || echo FAILED to create ringOS directory
 
