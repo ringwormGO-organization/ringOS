@@ -7,9 +7,9 @@
 
 sudo apt upgrade && continue || echo FAILED to upgrade
 sudo apt-get install build-essential mtools && continue || echo FAILED to install build-essential tools
-sudo apt install nasm && continue || echo FAILED to install nasm
-sudo apt install qemu-system-x86 && continue || echo FAILED to install Qemu
-sudo apt install git && echo git insatlled successfully || echo FAILED to install git
+sudo apt-get install nasm && continue || echo FAILED to install nasm
+sudo apt-get install qemu-system-x86 && continue || echo FAILED to install Qemu
+sudo apt-get install git && echo git insatlled successfully || echo FAILED to install git
 
 
 [ -d "ringOS" ] && echo Directory exist || mkdir "ringOS"
