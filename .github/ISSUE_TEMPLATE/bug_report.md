@@ -11,7 +11,7 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **Version of ringOS**
-Name of version (ringOSY, Beta14, ...)
+Name of version (Beta14, ...)
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
