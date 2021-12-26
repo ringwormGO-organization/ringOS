@@ -33,7 +33,7 @@ Beta 4 version image of ringOS
 Beta16 version image of ringOS
 
 # ringOSY
-[ringOSY](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY)
+[ringOSY](https://github.com/ringwormGO-organization/ringOSY)
 
 # System requiratmens
 
