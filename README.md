@@ -60,7 +60,7 @@ https://github.com/davidcallanan/os-series
 
 Poncho's Discord server
 
-Other
+Other 
 ______________________
 
 Thank you for choosing ringOS
