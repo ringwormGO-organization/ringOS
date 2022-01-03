@@ -93,12 +93,13 @@ Beta16 version image of ringOS
 - [x] ACPI
 - [x] AHCI
 - [ ] Audio
+- [x] BMP images
 - [x] Mouse
 - [ ] Networking
 - [x] PCI
 - [ ] PCIe
+- [ ] TGA images
 - [ ] USB
-
 - [x] Own build tool
 - [ ] Real hardware support
 - [ ] Book
