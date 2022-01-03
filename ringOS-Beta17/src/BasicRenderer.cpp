@@ -139,6 +139,21 @@ void BasicRenderer::Print(const char* str)
     }
 }
 
+void BasicRenderer::Print2(const char* str)
+{
+    char* chr = (char*)str;
+    while(*chr != 0){
+        PutChar(*chr, CursorPosition2.X, CursorPosition2.Y);
+        CursorPosition2.X+=8;
+        if(CursorPosition2.X + 8 > TargetFramebuffer->Width)
+        {
+            CursorPosition2.X = 0;
+            CursorPosition2.Y += 16;
+        }
+        chr++;
+    }
+}
+
 void BasicRenderer::PutChar(char chr, unsigned int xOff, unsigned int yOff)
 {
     unsigned int* pixPtr = (unsigned int*)TargetFramebuffer->BaseAddress;
@@ -148,7 +163,6 @@ void BasicRenderer::PutChar(char chr, unsigned int xOff, unsigned int yOff)
             if ((*fontPtr & (0b10000000 >> (x - xOff))) > 0){
                     *(unsigned int*)(pixPtr + x + (y * TargetFramebuffer->PixelsPerScanLine)) = Colour;
                 }
-
         }
         fontPtr++;
     }
@@ -180,20 +194,4 @@ void BasicRenderer::TaskBar(uint32_t colour, int verticalScanline)
             *pixPtr = colour;
         }
     }
-}
-
-void BasicRenderer::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
-{
-    for (size_t y1 = y; y1 < y + height; y1++)
-    {
-        for (size_t x1 = x; x1 < x + width; x1++)
-        {
-            GlobalRenderer->PutPix(x1, y1, colour);
-        }
-    }
-}
-
-void BasicRenderer::Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
-{
-    Rectangle(x, y, width, height, colour);
 }

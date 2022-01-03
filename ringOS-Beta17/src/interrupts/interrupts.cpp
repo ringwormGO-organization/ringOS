@@ -19,6 +19,11 @@ __attribute__((interrupt)) void GPFault_Handler(interrupt_frame* frame){
     while(true);
 }
 
+__attribute__((interrupt)) void DebugFault_Handler(interrupt_frame* frame){
+    Panic("Debug Fault Detected");
+    while(true);
+}
+
 
 
 __attribute__((interrupt)) void KeyboardInt_Handler(interrupt_frame* frame){

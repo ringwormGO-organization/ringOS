@@ -5,7 +5,7 @@
 #include "IO.h"
 #include "memory/heap.h"
 
-KernelInfo kernelInfo; 
+KernelInfo kernelInfo;
 
 void PrepareMemory(BootInfo* bootInfo){
     uint64_t mMapEntries = bootInfo->mMapSize / bootInfo->mMapDescSize;
@@ -55,6 +55,7 @@ void PrepareInterrupts(){
     SetIDTGate((void*)PageFault_Handler, 0xE, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)DoubleFault_Handler, 0x8, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)GPFault_Handler, 0xD, IDT_TA_InterruptGate, 0x08);
+    SetIDTGate((void*)DebugFault_Handler, 0x1, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)KeyboardInt_Handler, 0x21, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)MouseInt_Handler, 0x2C, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)PITInt_Handler, 0x20, IDT_TA_InterruptGate, 0x08);

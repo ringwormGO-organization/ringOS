@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include "BMPImageFile.h"
 #include "BasicRenderer.h"
 #include "cstr.h"
 #include "efiMemory.h"
@@ -17,6 +18,7 @@
 struct BootInfo {
 	Framebuffer* framebuffer;
 	PSF1_FONT* psf1_Font;
+	BMPImage* bmpImage;
 	EFI_MEMORY_DESCRIPTOR* mMap;
 	uint64_t mMapSize;
 	uint64_t mMapDescSize;

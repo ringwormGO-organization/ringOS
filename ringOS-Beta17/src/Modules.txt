@@ -48,17 +48,17 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
 
     GlobalRenderer->CursorPosition = {0, GlobalRenderer->CursorPosition->Y + 16};
     GlobalRenderer->Print("Free RAM: ");
-    GlobalRenderer->Print(to_string(newAllocator.GetFreeRAM() / 1024));
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024));
     GlobalRenderer->Print(" KB ");
     GlobalRenderer->CursorPosition = {0, GlobalRenderer->CursorPosition.Y + 16};
 
     GlobalRenderer->Print("Used RAM: ");
-    GlobalRenderer->Print(to_string(newAllocator->GetUsedRAM() / 1024));
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetUsedRAM() / 1024));
     GlobalRenderer->Print(" KB ");
     GlobalRenderer->CursorPosition = {0, GlobalRenderer->CursorPosition.Y + 16};
 
     GlobalRenderer->Print("Reserved RAM: ");
-    GlobalRenderer->Print(to_string(newAllocator.GetReservedRAM() / 1024));
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024));
     GlobalRenderer->Print(" KB ");
     GlobalRenderer->CursorPosition = {0, GlobalRenderer->CursorPosition.Y + 16};
 
@@ -66,6 +66,9 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
     for(unsigned int x = 0; x < bootInfo->framebuffer->Width / 2 * BBP; x+=BBP) {
 		*(unsigned int*)(x + (y * bootInfo->framebuffer->PixelsPerScanLine * BBP) + bootInfo->framebuffer->BaseAddress) = 0xff00ffff;
 	}
+
+//Terminal
+    GlobalRenderer->Print("ringOS> ");
 
 //RSDP check
     GlobalRenderer->Next();
@@ -80,6 +83,39 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
     GlobalRenderer->PutChar(*((uint8_t*)bootInfo->rsdp + 6));
     GlobalRenderer->PutChar(*((uint8_t*)bootInfo->rsdp + 7));
     GlobalRenderer->Next();
+
+// malloc example
+    GlobalRenderer->Next();
+    GlobalRenderer->Print(to_hstring((uint64_t)bootInfo->rsdp));  
+    GlobalRenderer->Next();
+    GlobalRenderer->Print(to_hstring((uint64_t)malloc(0x800)));
+    GlobalRenderer->Next();
+    void* address = malloc(0x800);
+    GlobalRenderer->Print(to_hstring((uint64_t)address));
+    GlobalRenderer->Next();
+    free(address);
+
+//BMP picture loading
+    if (bootInfo->bmpImage->height != bootInfo->framebuffer->Height || bootInfo->bmpImage->width != bootInfo->framebuffer->Width)
+    {
+        uint32_t previousColour = GlobalRenderer->Colour;
+        GlobalRenderer->Colour = 0xffff0000;
+        GlobalRenderer->Print("BMP image is not the same resolution as the screen resolution!");
+        GlobalRenderer->Next();
+        GlobalRenderer->Colour= previousColour;
+    }
+
+    // Bottom-up rendering
+    for (unsigned int y = 0; y < bootInfo->bmpImage->height; ++y)
+    {
+        for (unsigned int x = 0; x < bootInfo->bmpImage->width; ++x)
+        {
+            unsigned int* framebufferPtr = bootInfo->framebuffer->BaseAddress + bootInfo->bmpImage->width * y + x;
+            unsigned int* pixPtr = bootInfo->bmpImage->bitmapBuffer + (bootInfo->bmpImage->height - 1 - y) * bootInfo->bmpImage->width + x;
+            *framebufferPtr = *pixPtr;
+        }
+    }
+
 
 # ERRORS
 // Page Fault

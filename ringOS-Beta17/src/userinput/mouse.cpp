@@ -23,6 +23,29 @@ uint8_t cursor[]
     0b00000001, 0b10011000,
 };
 
+uint8_t cursor2[]
+{
+    0b10000000, 0b00000000,
+    0b11000000, 0b00000000,
+    0b11100000, 0b00000000,
+    0b11110000, 0b00000000,
+    0b11111000, 0b00000000,
+    0b11111100, 0b00000000,
+    0b11111110, 0b00000000,
+    0b11111111, 0b00000000,
+    0b11111111, 0b10000000,
+    0b11111111, 0b11000000,
+    0b11111111, 0b11100000,
+    0b11111111, 0b11110000,
+    0b11111111, 0b11110000,
+    0b11111111, 0b00000000,
+    0b11110111, 0b10000000,
+    0b11100111, 0b10000000,
+    0b11000011, 0b11100000,
+    0b00000011, 0b11100000,
+    0b00000001, 0b10011000,
+};
+
 void MouseWait()
 {
     uint64_t timeout = 100000;
@@ -169,10 +192,56 @@ void Draw()
 
     if (MousePacket[0] & PS2Leftbutton)
     {
-        uint32_t colour = GlobalRenderer->Colour;
-        GlobalRenderer->Colour = 0x0ff00ff0;
-        GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
-        GlobalRenderer->Colour = colour;
+        switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+        {
+            case 1920 | 1080:
+                if (MousePosition.Y >= 1000 && MousePosition.X <= 100)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        WindowStuff->ClearStartMenu();
+                        WindowStuff->StartMenuStatus = false;
+                    }
+                    else
+                    {
+                        WindowStuff->DrawStartMenu(0xff00ffff);
+                        WindowStuff->StartMenuStatus = true;
+                    }
+                }
+
+            case 1366 | 768:
+                if (MousePosition.Y >= 650 && MousePosition.X <= 100)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        WindowStuff->ClearStartMenu();
+                        WindowStuff->StartMenuStatus = false;
+                    }
+                    else
+                    {
+                        WindowStuff->DrawStartMenu(0xff00ffff);
+                        WindowStuff->StartMenuStatus = true;
+                    }   
+                }
+
+            case 1024 | 768:
+                if (MousePosition.Y >= 650 && MousePosition.X <= 100)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        WindowStuff->ClearStartMenu();
+                        WindowStuff->StartMenuStatus = false;
+                    }
+                    else
+                    {
+                        WindowStuff->DrawStartMenu(0xff00ffff);
+                        WindowStuff->StartMenuStatus = true;
+                    }
+                }
+            
+            default:
+                break;
+        }
     }
     if (MousePacket[0] & PS2Middlebutton)
     {
@@ -186,16 +255,96 @@ void Draw()
         GlobalRenderer->Print("|");
         GlobalRenderer->Print((to_string(MousePosition.X)));
         GlobalRenderer->Print(" ");
-
-        GlobalRenderer->Square(600, 600, 300, 300, 0xff00f00f);
     }
 
     if (MousePacket[0] & PS2Rightbutton)
     {
-        uint32_t colour = GlobalRenderer->Colour;
+        /*uint32_t colour = GlobalRenderer->Colour;
         GlobalRenderer->Colour = 0x0000ff00;
         GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
-        GlobalRenderer->Colour = colour;
+        GlobalRenderer->Colour = colour;*/
+
+        switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+        {
+            case 1920 | 1080:
+                if (MousePosition.Y >= 895 && MousePosition.Y <= 905)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        if (MousePosition.X <= 88)
+                        {
+                            WindowStuff->OpenCalculator(300, 300, 300, 300, 0xffcc0000);
+                            break;
+                        }
+                    }
+                }
+
+                else if (MousePosition.Y >= 925 && MousePosition.Y <= 930)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        if (MousePosition.X <= 88)
+                        {
+                            shutdown();
+                            break;
+                        }
+                    }
+                }
+
+            case 1366 | 768:
+                if (MousePosition.Y >= 580 && MousePosition.Y <= 590)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        if (MousePosition.X <= 88)
+                        {
+                            WindowStuff->OpenCalculator(300, 300, 300, 300, 0xffcc0000);
+                            break;
+                        }
+                    }
+                }
+
+                else if (MousePosition.Y >= 625 && MousePosition.Y <= 635)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        if (MousePosition.X <= 88)
+                        {
+                            shutdown();
+                            break;
+                        }
+                    }
+                }
+
+                    
+            case 1024 | 768:
+                if (MousePosition.Y >= 580 && MousePosition.Y <= 590)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        if (MousePosition.X <= 88)
+                        {
+                            WindowStuff->OpenCalculator(300, 300, 300, 300, 0xffcc0000);
+                            break;
+                        }
+                    }
+                }
+
+                else if (MousePosition.Y >= 625 && MousePosition.Y <= 635)
+                {
+                    if (WindowStuff->StartMenuStatus == true)
+                    {
+                        if (MousePosition.X <= 88)
+                        {
+                            shutdown();
+                            break;
+                        }
+                    }
+                }
+            
+            default:
+                break;
+        }
     }
 
     MousePacketReady = false;

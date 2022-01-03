@@ -1,16 +1,20 @@
 #pragma once
+
 #include "math.h"
 #include "Framebuffer.h"
-#include "simpleFonts.h" 
+#include "simpleFonts.h"
 #include "tga/tga.h"
-#include <stdint.h>
 #include "cstr.h"
+#include "IO.h"
+#include "Window/Window.h"
+#include <stdint.h>
 
 class BasicRenderer
 {
     public:
     BasicRenderer(Framebuffer* targetFramebuffer, PSF1_FONT* psf1_Font);
     Point CursorPosition;
+    Point CursorPosition2;
     Framebuffer* TargetFramebuffer;
     PSF1_FONT* PSF1_Font;
     uint32_t MouseCursorBuffer[16 * 16];
@@ -18,6 +22,7 @@ class BasicRenderer
     unsigned int Colour;
     unsigned int ClearColour;
     void Print(const char* str);
+    void Print2(const char* str);
     void PutChar(char chr, unsigned int xOff, unsigned int yOff);
     void PutChar(char chr);
     void PutPix(uint32_t x, uint32_t y, uint32_t colour);
@@ -29,8 +34,6 @@ class BasicRenderer
     void ClearMouseCursor(uint8_t* cursor, Point position);
     bool MouseDrawn;
     void TaskBar(uint32_t colour, int verticalScanline);
-    void Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour);
-    void Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour);
 };
 
 extern BasicRenderer* GlobalRenderer;

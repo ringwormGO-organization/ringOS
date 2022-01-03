@@ -3,12 +3,13 @@
 #include "IO.h"
 #include "scheduling/pit/pit.h"
 #include "Reboot.h"
+#include "shutdown.h"
 
 #include "BasicRenderer.h"
 #include "paging/PageFrameAllocator.h"
-#include "kernel.h"
 
-void Panic(const char* panicMessage){
+void Panic(const char* panicMessage)
+{
     GlobalRenderer->ClearColour = 0xff00ffff;
     GlobalRenderer->Clear();
 
@@ -45,7 +46,4 @@ void Panic(const char* panicMessage){
     GlobalRenderer->Print("Reserved RAM: ");
     GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024));
     GlobalRenderer->Print(" KB ");
-
-    PIT::Sleep(10000);
-    Reboot();
 }
