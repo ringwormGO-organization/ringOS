@@ -32,6 +32,78 @@ Beta 4 version image of ringOS
 ![ringOSBeta16](https://user-images.githubusercontent.com/83548580/142688916-7d1e3b52-946d-441e-acf1-137eb4c534c3.png)
 Beta16 version image of ringOS
 
+# Checklist
+
+### Bootloaders
+- [x] gnu-efi
+- [ ] Limine
+
+### Framebuffer info and printing to the screen
+- [x] Framebuffer info
+- [x] Printing to the screen
+- [ ] ```\n``` implementaion
+
+### Memory
+- [x] Bitmap
+- [x] Paging
+- [x] ```malloc``` and ```free```
+
+### Interrupts
+- [x] GDT
+- [x] IDT
+- [x] Exceptions
+- [x] IO
+
+### Virtual Machine supprot
+- [ ] VMWare Tools
+- [ ] Virtual Box Additions
+
+### File systems
+- [ ] VFS
+- [ ] DEVFS
+- [ ] FAT32
+- [ ] NTFS
+- [ ] ISO9660
+- [ ] Ext2
+
+### Storage
+
+- [x] SATA
+- [ ] IDE
+- [ ] NVMe
+
+### Timers
+- [x] PIT
+
+### Shell
+- [x] Keyboard
+- [ ] Shell
+
+### GUI - Windowing system
+- [ ] Windowing-system
+
+### User 
+- [ ] TSS
+- [ ] ELF
+- [ ] syscall
+- [ ] Ring3
+
+### Other
+
+- [x] ACPI
+- [x] AHCI
+- [ ] Audio
+- [x] Mouse
+- [ ] Networking
+- [x] PCI
+- [ ] PCIe
+- [ ] USB
+
+- [x] Own build tool
+- [ ] Real hardware support
+- [ ] Book
+
+
 # ringOSY
 [ringOSY](https://github.com/ringwormGO-organization/ringOSY)
 
