@@ -15,6 +15,9 @@ typedef struct {
 #define PSF1_MAGIC0 0x36
 #define PSF1_MAGIC1 0x04
 
+#define BMP_MAGIC0 'B'
+#define BMP_MAGIC1 'M'
+
 typedef struct {
 	unsigned char magic[2];
 	unsigned char mode;
@@ -26,6 +29,64 @@ typedef struct {
 	void* glyphBuffer;
 } PSF1_FONT;
 
+typedef struct __attribute__((packed))
+{
+    unsigned char magic[2];
+    uint32_t fileSize;
+    uint16_t reserved0;
+    uint16_t reserved1;
+    uint32_t offset;
+} BMPHeader;
+
+typedef struct __attribute__((packed))
+{
+    uint32_t dibSize;
+    uint32_t width; // LONG
+    uint32_t height; // LONG
+    uint16_t planesCount;
+    uint16_t bitsPerPixel;
+    uint32_t compressionMethod;
+    uint32_t bitmapSize;
+    uint32_t printWidth; // LONG
+    uint32_t printHeight; // LONG
+    uint32_t colorCountInColorPalette;
+    uint32_t importantColors;
+    uint32_t redBitMask;
+    uint32_t greenBitMask;
+    uint32_t blueBitMask;
+    uint32_t alphaBitMask;
+    uint32_t colorSpace;
+    unsigned char endpoints[36];
+    uint32_t gammaRed;
+    uint32_t gammaGreen;
+    uint32_t gammaBlue;
+//    uint32_t intent;
+//    uint32_t profileData;
+//    uint32_t profileSize;
+//    uint32_t reserved;
+} BITMAPV4HEADER;
+
+typedef struct
+{
+    uint32_t width;
+    uint32_t height;
+    uint32_t bitmapSize;
+    uint32_t* bitmapBuffer;
+    uint32_t redBitMask;
+    uint32_t greenBitMask;
+    uint32_t blueBitMask;
+    uint32_t alphaBitMask;
+} BMPImage;
+
+typedef struct {
+	Framebuffer* framebuffer;
+	PSF1_FONT* psf1_Font;
+	BMPImage* bmpImage;
+	EFI_MEMORY_DESCRIPTOR* mMap;
+	UINTN mMapSize;
+	UINTN mMapDescSize;
+	void* rsdp;
+} BootInfo;
 
 Framebuffer framebuffer;
 Framebuffer* InitializeGOP(){
@@ -109,6 +170,90 @@ PSF1_FONT* LoadPSF1Font(EFI_FILE* Directory, CHAR16* Path, EFI_HANDLE ImageHandl
 
 }
 
+BMPImage* LoadBMPImage(EFI_FILE* directory, CHAR16* path, EFI_HANDLE image, EFI_SYSTEM_TABLE* SystemTable, BootInfo* bootInfo)
+{
+    // Load BMP file
+    EFI_FILE* bmpFile = LoadFile(directory, path, image, SystemTable);
+    if (bmpFile == NULL)
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+        Print(L"An error occurred while attempting to load BMP file\n\r");
+        return NULL;
+    }
+
+    // Store BMP header in memory
+    BMPHeader* bmpHeader;
+    UINTN headerSize = sizeof(BMPHeader);
+    BS->AllocatePool(EfiLoaderData, headerSize, (void**)&bmpHeader);
+    bmpFile->Read(bmpFile, &headerSize, bmpHeader);
+
+    // Check if BMP file has valid header using magic bytes
+    if (bmpHeader->magic[0] != BMP_MAGIC0 || bmpHeader->magic[1] != BMP_MAGIC1)
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+        Print(L"An error occurred while attempting to load BMP file\n\r");
+        return NULL;
+    }
+
+    UINTN dibSize;
+    bmpFile->SetPosition(bmpFile, headerSize);
+    UINTN dibSizeSize = 4;
+    bmpFile->Read(bmpFile, &dibSizeSize, &dibSize);
+    if (dibSize != 124 && dibSize != 108) // BITMAPV4HEADER or BITMAPV5HEADER
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+        Print(L"Invalid or unsupported BMP DIB header\n\r");
+        return NULL;
+    }
+
+    // The BITMAPV5HEADER has the same structure as the BITMAPV4HEADER except for 4 uint32_t at the end
+    // that are not necessary for the rendering of the bitmap. (for now)
+    // As such, we only need to read the first 108 bytes of the BITMAPV5HEADER.
+    if (dibSize == 124) dibSize = 108;
+    BITMAPV4HEADER* dibHeader;
+    bmpFile->SetPosition(bmpFile, headerSize);
+    BS->AllocatePool(EfiLoaderData, dibSize, (void**)&dibHeader);
+    bmpFile->Read(bmpFile, &dibSize, dibHeader);
+
+    if (dibHeader->bitsPerPixel != 32)
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+        Print(L"Unsupported BPP in BMP file\n\r");
+        return NULL;
+    }
+
+    if (dibHeader->compressionMethod != 3) // BI_BITFIELDS
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+        Print(L"Unsupported BMP file compression format\n\r");
+        return NULL;
+    }
+
+    uint32_t* bitmapBuffer;
+    UINTN bitmapSize = dibHeader->bitmapSize;
+    bmpFile->SetPosition(bmpFile, bmpHeader->offset);
+    BS->AllocatePool(EfiLoaderData, dibHeader->bitmapSize, (void**)&bitmapBuffer);
+
+    Print(L"Reading BMP file contents...\n\r");
+    bmpFile->Read(bmpFile, &bitmapSize, bitmapBuffer);
+    Print(L"Successfully read BMP File contents into memory.\n\r");
+
+    BMPImage* bmpImage;
+    BS->AllocatePool(EfiLoaderData, sizeof(BMPImage), (void**)&bmpImage);
+
+    bmpImage->width = dibHeader->width;
+    bmpImage->height = dibHeader->height;
+    bmpImage->bitmapSize = dibHeader->bitmapSize;
+    bmpImage->bitmapBuffer = bitmapBuffer;
+    bmpImage->alphaBitMask = dibHeader->alphaBitMask;
+    bmpImage->redBitMask = dibHeader->redBitMask;
+    bmpImage->greenBitMask = dibHeader->greenBitMask;
+    bmpImage->blueBitMask = dibHeader->blueBitMask;
+
+    bootInfo->bmpImage = bmpImage;
+    return bmpImage;
+}
+
 int memcmp(const void* aptr, const void* bptr, size_t n){
 	const unsigned char* a = aptr, *b = bptr;
 	for (size_t i = 0; i < n; i++){
@@ -118,14 +263,6 @@ int memcmp(const void* aptr, const void* bptr, size_t n){
 	return 0;
 }
 
-typedef struct {
-	Framebuffer* framebuffer;
-	PSF1_FONT* psf1_Font;
-	EFI_MEMORY_DESCRIPTOR* mMap;
-	UINTN mMapSize;
-	UINTN mMapDescSize;
-	void* rsdp;
-} BootInfo;
 
 UINTN strcmp(CHAR8* a, CHAR8* b, UINTN length){
 	for (UINTN i = 0; i < length; i++){
@@ -147,10 +284,11 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	{
 		Print(L"Could not load kernel \n\r");
 	}
-	else{
+	else
+	{
 		Print(L"Kernel Loaded Successfully \n\r");
 	}
-	
+
 
 	Elf64_Ehdr header;
 	{
@@ -257,8 +395,9 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	}
 	else
 	{
-		Print(L"Font found. char size = %d\n\r", newFont->psf1_Header->charsize);
+		Print(L"Font found. Char size = %d\n\r", newFont->psf1_Header->charsize);
 	}
+
 
 
 
@@ -291,8 +430,6 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		configTable++;
 	}
 
-	void (*KernelStart)(BootInfo*) = ((__attribute__((sysv_abi)) void (*)(BootInfo*) ) header.e_entry);
-
 	BootInfo bootInfo;
 	bootInfo.framebuffer = newBuffer;
 	bootInfo.psf1_Font = newFont;
@@ -300,6 +437,23 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	bootInfo.mMapSize = MapSize;
 	bootInfo.mMapDescSize = DescriptorSize;
 	bootInfo.rsdp = rsdp;
+
+	// Load BMP desktop background image
+    BMPImage* bmpImage = LoadBMPImage(NULL, L"Test.bmp", ImageHandle, SystemTable, &bootInfo);
+    if (bmpImage == NULL)
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+        Print(L"Could not load BMP image\n\r");
+    }
+    else
+    {
+        ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
+        Print(L"BMP image loaded %dx%d\n\r", bmpImage->width, bmpImage->height);
+    }
+
+	void (*KernelStart)(BootInfo*) = ((__attribute__((sysv_abi)) void (*)(BootInfo*) ) header.e_entry);
+
+	bootInfo.bmpImage = bmpImage;
 
 	SystemTable->BootServices->ExitBootServices(ImageHandle, MapKey);
 
