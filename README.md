@@ -83,10 +83,10 @@ Beta16 version image of ringOS
 - [ ] Windowing-system
 
 ### User 
+- [ ] Ring3
 - [ ] TSS
 - [ ] ELF
 - [ ] syscall
-- [ ] Ring3
 
 ### Other
 
