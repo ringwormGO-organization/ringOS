@@ -89,18 +89,22 @@ typedef struct {
 } BootInfo;
 
 Framebuffer framebuffer;
-Framebuffer* InitializeGOP(){
+Framebuffer* InitializeGOP()
+{
 	EFI_GUID gopGuid = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
 	EFI_GRAPHICS_OUTPUT_PROTOCOL* gop;
 	EFI_STATUS status;
 
 	status = uefi_call_wrapper(BS->LocateProtocol, 3, &gopGuid, NULL, (void**)&gop);
-	if(EFI_ERROR(status)){
+	if(EFI_ERROR(status))
+	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Unable to locate GOP\n\r");
 		return NULL;
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"GOP located\n\r");
 	}
 
@@ -282,10 +286,12 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	EFI_FILE* Kernel = LoadFile(NULL, L"kernel.elf", ImageHandle, SystemTable);
 	if (Kernel == NULL)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Could not load kernel \n\r");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel Loaded Successfully \n\r");
 	}
 
@@ -304,55 +310,67 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 
 	if (memcmp(&header.e_ident[EI_MAG0], ELFMAG, SELFMAG) != 0)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Kernel ELF Magic is invalid.\r\n");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel ELF Magic is valid.\n\r");
 	}
 
 	if (header.e_ident[EI_CLASS] != ELFCLASS64)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Kernel is not a 64 bit ELF binary.\r\n");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel is ELF 64bit binary.\n\r");
 	}
 
 	if (header.e_ident[EI_DATA] != ELFDATA2LSB)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Kernel data segment endianess is incorrect.\r\n");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel data segment is correct.\n\r");
 	}
 
 	if (header.e_type != ET_EXEC)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Kernel ELF Binary type is not an executable.\r\n");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel ELF Binray type is executable.\n\r");
 	}
 
 	if (header.e_machine != EM_X86_64)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Kernel machine type is not valid for this system\r\n");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel machine type is valid for this system.\n\r");
 	}
 
 	if (header.e_version != EV_CURRENT)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Kernel ELF version mismatch\r\n");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel ELF version is valid.\n\r");
 	}
 	
@@ -385,20 +403,21 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		}
 	}
 
+	ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 	Print(L"Kernel Loaded\n\r");
 	
 
 	PSF1_FONT* newFont = LoadPSF1Font(NULL, L"zap-light16.psf", ImageHandle, SystemTable);
 	if (newFont == NULL)
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
 		Print(L"Font is not valid or is not found\n\r");
 	}
 	else
 	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Font found. Char size = %d\n\r", newFont->psf1_Header->charsize);
 	}
-
-
 
 
 	Framebuffer* newBuffer = InitializeGOP();

@@ -56,8 +56,10 @@ void BasicRenderer::DrawOverlayMouseCursor(uint8_t* cursor, Point position, uint
     if (differenceX < 16) xMax = differenceX;
     if (differenceY < 16) yMax = differenceY;
 
-    for (int y = 0; y < yMax; y++){
-        for (int x = 0; x < xMax; x++){
+    for (int y = 0; y < yMax; y++)
+    {
+        for (int x = 0; x < xMax; x++)
+        {
             int bit = y * 16 + x;
             int byte = bit / 8;
             if ((cursor[byte] & (0b10000000 >> (x % 8))))
@@ -80,9 +82,11 @@ void BasicRenderer::Clear()
     uint64_t fbHeight = TargetFramebuffer->Height;
     uint64_t fbSize = TargetFramebuffer->BufferSize;
 
-    for (int verticalScanline = 0; verticalScanline < fbHeight; verticalScanline ++){
+    for (int verticalScanline = 0; verticalScanline < fbHeight; verticalScanline ++)
+    {
         uint64_t pixPtrBase = fbBase + (bytesPerScanline * verticalScanline);
-        for (uint32_t* pixPtr = (uint32_t*)pixPtrBase; pixPtr < (uint32_t*)(pixPtrBase + bytesPerScanline); pixPtr ++){
+        for (uint32_t* pixPtr = (uint32_t*)pixPtrBase; pixPtr < (uint32_t*)(pixPtrBase + bytesPerScanline); pixPtr ++)
+        {
             *pixPtr = ClearColour;
         }
     }
@@ -101,9 +105,11 @@ void BasicRenderer::ClearChar()
     unsigned int yOff = CursorPosition.Y;
 
     unsigned int* pixPtr = (unsigned int*)TargetFramebuffer->BaseAddress;
-    for (unsigned long y = yOff; y < yOff + 16; y++){
-        for (unsigned long x = xOff - 8; x < xOff; x++){
-                    *(unsigned int*)(pixPtr + x + (y * TargetFramebuffer->PixelsPerScanLine)) = ClearColour;
+    for (unsigned long y = yOff; y < yOff + 16; y++)
+    {
+        for (unsigned long x = xOff - 8; x < xOff; x++)
+        {
+            *(unsigned int*)(pixPtr + x + (y * TargetFramebuffer->PixelsPerScanLine)) = ClearColour;
         }
     }
 
@@ -124,10 +130,16 @@ void BasicRenderer::Next()
 }
 
 void BasicRenderer::Print(const char* str)
-{
-    
+{  
     char* chr = (char*)str;
-    while(*chr != 0){
+    while(*chr != 0)
+    {
+        if (*chr == '\n')
+        {
+            Next();
+            chr++;
+            continue;
+        }
         PutChar(*chr, CursorPosition.X, CursorPosition.Y);
         CursorPosition.X+=8;
         if(CursorPosition.X + 8 > TargetFramebuffer->Width)
@@ -142,7 +154,15 @@ void BasicRenderer::Print(const char* str)
 void BasicRenderer::Print2(const char* str)
 {
     char* chr = (char*)str;
-    while(*chr != 0){
+    while(*chr != 0)
+    {
+        if (*chr == '\n')
+        {
+            CursorPosition2.X = 0;
+            CursorPosition2.Y += 16;
+            chr++;
+            continue;
+        }
         PutChar(*chr, CursorPosition2.X, CursorPosition2.Y);
         CursorPosition2.X+=8;
         if(CursorPosition2.X + 8 > TargetFramebuffer->Width)
@@ -158,11 +178,14 @@ void BasicRenderer::PutChar(char chr, unsigned int xOff, unsigned int yOff)
 {
     unsigned int* pixPtr = (unsigned int*)TargetFramebuffer->BaseAddress;
     char* fontPtr = (char*)PSF1_Font->glyphBuffer + (chr * PSF1_Font->psf1_Header->charsize);
-    for (unsigned long y = yOff; y < yOff + 16; y++){
-        for (unsigned long x = xOff; x < xOff+8; x++){
-            if ((*fontPtr & (0b10000000 >> (x - xOff))) > 0){
-                    *(unsigned int*)(pixPtr + x + (y * TargetFramebuffer->PixelsPerScanLine)) = Colour;
-                }
+    for (unsigned long y = yOff; y < yOff + 16; y++)
+    {
+        for (unsigned long x = xOff; x < xOff+8; x++)
+        {
+            if ((*fontPtr & (0b10000000 >> (x - xOff))) > 0)
+            {
+                *(unsigned int*)(pixPtr + x + (y * TargetFramebuffer->PixelsPerScanLine)) = Colour;
+            }
         }
         fontPtr++;
     }

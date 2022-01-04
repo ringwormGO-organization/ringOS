@@ -3,7 +3,7 @@
 Basic* BasicStuff;
 Window* WindowStuff;
 
-//BootInfo* bootInfo;
+BootInfo* bootInfo;
 
 void Basic::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
 {
@@ -37,10 +37,39 @@ uint64_t Window::Height(uint64_t height)
     return ResoHeight = height;
 }
 
-
-void Window::Edge(int buttons, size_t pos1, size_t pos2, size_t width, uint32_t color)
+void Window::DrawBMPPicture()
 {
-    BasicStuff->Rectangle(pos1, pos2, width, 30, colour);
+
+}
+
+void Window::Edge(int buttons, size_t posx, size_t posy, size_t width, uint32_t color)
+{
+    EdgeStatus = true;
+
+    posxbuttonclose = posx + width - 30;
+    posybuttonclose = posy;
+
+    posxbuttonminus = posx + width - 60;
+    posybuttonminus = posy;
+
+    GlobalRenderer->Print(to_string((uint64_t)posxbuttonclose));
+    GlobalRenderer->Next();
+    GlobalRenderer->Print(to_string((uint64_t)posybuttonclose));
+    GlobalRenderer->Next();
+    GlobalRenderer->Print(to_string((uint64_t)posxbuttonclose));
+    GlobalRenderer->Next();
+    GlobalRenderer->Print(to_string((uint64_t)posybuttonminus));
+    GlobalRenderer->Next();
+
+    BasicStuff->Rectangle(posx, posy, width, 30, colour);
+
+    BasicStuff->Square(posx + width - 30, posy, 30, 30, 0xffff0000);
+    GlobalRenderer->CursorPosition2 = {posx + width - 20, posy + 5};
+    GlobalRenderer->Print2("X");
+
+    BasicStuff->Square(posx + width - 60, posy, 30, 30, 0xffff0000);
+    GlobalRenderer->CursorPosition2 = {posx + width - 50, posy + 5};
+    GlobalRenderer->Print2("-");
 }
 
 void Window::DrawStartMenu(uint32_t color)
@@ -75,7 +104,7 @@ void Window::DrawStartMenu(uint32_t color)
             break;
         
         default:
-            Error("Resolution unsupported, see kernel.cpp for supported resolution... Unable to open Start Menu");
+            Error("Resolution unsupported, \nsee kernel.cpp for supported resolution... \nUnable to open Start Menu");
             break;
     }
 
@@ -90,10 +119,10 @@ void Window::ClearStartMenu()
             BasicStuff->Rectangle(0, 700, 300, 300, 0x00000000);
             break;
         case 1366 | 768:
-            BasicStuff->Rectangle(0, 488, 200, 200, 0x00000000);
+            BasicStuff->Rectangle(0, 388, 300, 300, 0x00000000);
             break;
         case 1024 | 768:
-            BasicStuff->Rectangle(0, 488, 200, 200, 0x00000000);
+            BasicStuff->Rectangle(0, 388, 300, 300, 0x00000000);
             break;
         default:
             Error("Unable to close Start Menu");
@@ -111,7 +140,7 @@ void Window::OpenCalculator(size_t pos1, size_t pos2, size_t width, size_t heigh
 
 void Window::CloseCalculator()
 {
-
+    BasicStuff->Rectangle(300, 300, 300, 300, 0x00000000);
 }
 
 void Window::Error(const char* message)

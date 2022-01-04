@@ -20,13 +20,21 @@ class Window
 {
     public:
         bool StartMenuStatus;
+        bool EdgeStatus;
 
         uint64_t ResoWidth;
         uint64_t ResoHeight;
         uint64_t Width(uint64_t width);
         uint64_t Height(uint64_t height);
 
+        size_t posxbuttonclose;
+        size_t posybuttonclose;
+        size_t posxbuttonminus;
+        size_t posybuttonminus;
+
         uint32_t colour = 0x580002;
+
+        void DrawBMPPicture();
 
         void Edge(int buttons, size_t pos1, size_t pos2, size_t width, uint32_t color);
 

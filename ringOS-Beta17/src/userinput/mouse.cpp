@@ -208,6 +208,15 @@ void Draw()
                         WindowStuff->StartMenuStatus = true;
                     }
                 }
+                else if (MousePosition.Y == WindowStuff->posybuttonclose && MousePosition.X == WindowStuff->posxbuttonclose)
+                {
+                    //if (MousePosition.Y == WindowStuff->posybuttonclose && MousePosition.X == WindowStuff->posxbuttonclose)
+                    //{
+                        WindowStuff->CloseCalculator();
+                    //}
+                }
+                
+                
 
             case 1366 | 768:
                 if (MousePosition.Y >= 650 && MousePosition.X <= 100)

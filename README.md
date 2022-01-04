@@ -41,7 +41,7 @@ Beta16 version image of ringOS
 ### Framebuffer info and printing to the screen
 - [x] Framebuffer info
 - [x] Printing to the screen
-- [ ] ```\n``` implementaion
+- [x] ```\n``` implementaion
 
 ### Memory
 - [x] Bitmap
@@ -81,12 +81,14 @@ Beta16 version image of ringOS
 
 ### GUI - Windowing system
 - [x] Framebuffer windowing-system
+- [ ] Own scripting language for GUI
 
 ### User 
 - [ ] Ring3
 - [ ] TSS
 - [ ] ELF
 - [ ] syscall
+- [ ] Task Manager
 
 ### Other
 
