@@ -1,7 +1,3 @@
-
-#ifndef RINGOS_BMPIMAGEFILE_H
-#define RINGOS_BMPIMAGEFILE_H
-
 #include <stdint.h>
 
 typedef struct
@@ -15,5 +11,3 @@ typedef struct
     uint32_t blueBitMask;
     uint32_t alphaBitMask;
 } BMPImage;
-
-#endif
