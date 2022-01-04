@@ -80,7 +80,7 @@ Beta16 version image of ringOS
 - [ ] Shell
 
 ### GUI - Windowing system
-- [ ] Windowing-system
+- [x] Framebuffer windowing-system
 
 ### User 
 - [ ] Ring3
