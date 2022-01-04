@@ -30,10 +30,6 @@ static struct stivale2_header header = {
   .tags = (uint64_t)&buff
 };
 
-#include "basics.h"
-#include "io.h"
-#include "pci.h"
-
 void *stivale2_get_tag(struct stivale2_struct *stivale2_struct, uint64_t id) {
     struct stivale2_tag *current_tag = (void *)stivale2_struct->tags;
     for (;;) {
