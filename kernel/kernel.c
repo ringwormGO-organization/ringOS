@@ -126,6 +126,7 @@ void _start(struct stivale2_struct *stivale2_struct) {
     // We should now be able to call the above function pointer to print out
     // a simple "Hello World" to screen.
     term_write("Welcome to ringOS!\n\r", 21);
+    term_write("This is rushed as hell but there is nothing I can do. Neither me or Andrej know how to make proper Limine development\n\r",121);
 
     // We're done, just hang...
     for (;;) {
