@@ -2,6 +2,10 @@
 #include <stddef.h>
 #include <stivale2.h>
 
+// I dont think that this will be finished by 5/1/2022
+// It will prob be rushed as fuck
+// - StjepanBM1
+
 // We need to tell the stivale bootloader where we want our stack to be.
 // We are going to allocate our stack as an array in .bss.
 static uint8_t stack[8192];
