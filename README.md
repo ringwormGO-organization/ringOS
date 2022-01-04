@@ -33,7 +33,6 @@ Beta 4 version image of ringOS
 Beta16 version image of ringOS
 
 # Checklist
-
 ### Bootloaders
 - [x] gnu-efi
 - [ ] Limine
@@ -48,11 +47,14 @@ Beta16 version image of ringOS
 - [x] Paging
 - [x] ```malloc``` and ```free```
 
-### Interrupts
+### Interrupts and IO
 - [x] GDT
 - [x] IDT
 - [x] Exceptions
+- [x] Panic screen
 - [x] IO
+- [x] Keyboard
+- [x] Mouse
 
 ### Virtual Machine supprot
 - [ ] VMWare Tools
@@ -65,6 +67,7 @@ Beta16 version image of ringOS
 - [ ] NTFS
 - [ ] ISO9660
 - [ ] Ext2
+- [ ] Ext4
 
 ### Storage
 
@@ -76,14 +79,15 @@ Beta16 version image of ringOS
 - [x] PIT
 
 ### Shell
-- [x] Keyboard
 - [ ] Shell
 
 ### GUI - Windowing system
 - [x] Framebuffer windowing-system
+- [x] BMP images
+- [ ] TGA images
 - [ ] Own scripting language for GUI
 
-### User 
+### User Mode
 - [ ] Ring3
 - [ ] TSS
 - [ ] ELF
@@ -91,20 +95,16 @@ Beta16 version image of ringOS
 - [ ] Task Manager
 
 ### Other
-
 - [x] ACPI
 - [x] AHCI
 - [ ] Audio
-- [x] BMP images
-- [x] Mouse
+- [ ] Book
 - [ ] Networking
-- [x] PCI
-- [ ] PCIe
-- [ ] TGA images
-- [ ] USB
 - [x] Own build tool
 - [ ] Real hardware support
-- [ ] Book
+- [x] PCI
+- [ ] PCIe
+- [ ] USB
 
 
 # ringOSY
@@ -127,13 +127,13 @@ CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 *Note: Qemu on Windows use more gigahertzs*
 
 # Resources used:
-https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ
-
-https://discord.gg/KFjvywqr
-
-https://github.com/davidcallanan/os-series
+[Poncho OSDEV 2](https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ)
 
 Poncho's Discord server
+
+[LuftOS](https://github.com/Kyota-exe/LuftOS)
+
+[wiki.osdev.org](https://wiki.osdev.org/Main_Page)
 
 Other 
 ______________________
