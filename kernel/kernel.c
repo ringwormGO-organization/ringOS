@@ -1,6 +1,5 @@
 #include "stivale2.h"
 #include "cstr.h"
-#include "cstr.cpp"
 
 static uint8_t stack[0x4000];
 
