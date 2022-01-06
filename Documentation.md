@@ -30,6 +30,8 @@ If you first time running WSL or Linux installation, follow these steps:
 `sudo apt-get install build-essential mtools`
 
 `sudo apt install nasm`
+
+`sudo apt-get install lld`
 ___________________________________________________________________
 
 For compiling bootloader,
