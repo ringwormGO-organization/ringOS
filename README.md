@@ -35,7 +35,7 @@ Beta16 version image of ringOS
 # Checklist
 ### Bootloaders
 - [x] gnu-efi
-- [ ] Limine
+- [ ] Limine (we left developing Limine)
 
 ### Framebuffer info and printing to the screen
 - [x] Framebuffer info
