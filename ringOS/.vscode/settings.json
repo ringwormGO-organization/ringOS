@@ -1,0 +1,6 @@
+{
+    "debug.onTaskErrors": "debugAnyway",
+    "editor.suggest.showStatusBar": true,
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+}
