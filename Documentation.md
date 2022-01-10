@@ -1,5 +1,5 @@
 # DOCUMENTATION
-Documentation is for compiling and running ringOS.
+Documentation is for compiling, running and debugging ringOS.
 
 [SYSTEM REQUIRATMENS](https://github.com/ringwormGO-organization/ringOS#system-requiratmens)
 
@@ -60,9 +60,9 @@ For running image,
 
 # Compile and run stable release
 
-https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh
+[Shell scipt](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
 
-https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1
+[Manually download binary](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 
 ______
 # Install Qemu
@@ -128,7 +128,17 @@ In root directory of USB copy `kernel.elf` and `zap-light16.psf`.
 
 Restart computer, enter Boot Menu and boot from USB.
 ___
+# Debug
+We have [debug branch](https://github.com/ringwormGO-organization/ringOS/tree/Debug) but code is not updated and is only for Windows platform.
 
+If you want debug new code follow these steps:
+
+Download code, install gdb (```sudo apt-get install gdb```), open Visual Studio Code and create two JSON files.
+
+[Code](https://www.youtube.com/watch?v=XLw_K4rEl1I)
+
+Click F5 to run.
+______
 # Modules
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) are for customizing ringOS.
 
