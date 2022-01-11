@@ -15,16 +15,16 @@ ringOS source code
 [**ringOSY stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY)
 
 ### Contributing and issues
-If you have problem or idea create **issue**.
+If you have problem or idea create an **issue**.
 
-If you want contribute in this project create **Pull Request**.
+If you want contribute to this project create a **Pull Request**.
 
 # About ringOS
-ringOS is ringwormGO operating system based on PonchoOS with supprot UEFI boot mode only.
+ringOS is ringwormGO operating system based on PonchoOS with support for UEFI boot mode only.
 
 ringOS is keyboard oriented operating system with GUI elements.
 
-This repo is for developing and invitation new contributors for this project.
+This repo is for active development and invitation of new contributors to this project.
 
 ![image](https://user-images.githubusercontent.com/83548580/133824416-455bc2d8-3364-4ffd-abd6-24bff779af32.png)
 Beta 4 version image of ringOS
@@ -115,16 +115,16 @@ Beta16 version image of ringOS
 ### Real hardware
 Firmware: UEFI x86_64 PC
 
-RAM: uncertain, recommended 3GB based on 
+RAM: Uncertain, but we recommend 3GB of RAM based on testing 
 
 ### In emulator
-Qemu: 38MB RAM min, 3G recommended
+Qemu: 38MB RAM min, 3GB recommended
 
-Virtual Box, VmWare: 4096MB RAM minimum, ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
+Virtual Box, VMWare: 4096MB RAM minimum, ([check this for more information](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/Documentation.md#running-in-virtual-box-or-vmware))
 
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
-*Note: Qemu on Windows use more gigahertzs*
+*Note: Qemu on Windows requires more processor power than Qemu on Linux/macOS*
 
 # Resources used:
 [Poncho OSDEV 2](https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ)
