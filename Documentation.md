@@ -1,5 +1,5 @@
 # DOCUMENTATION
-This documentation is intended to guide you in developing, compiling and running ringOS
+This documentation is intended to guide you in developing, compiling, debugging and running ringOS
 
 [SYSTEM REQUIREMENTS](https://github.com/ringwormGO-organization/ringOS#system-requiratmens)
 
