@@ -178,7 +178,7 @@ namespace AHCI
     AHCIDriver::AHCIDriver(PCI::PCIDeviceHeader* pciBaseAddress)
     {
         this->PCIBaseAddress = pciBaseAddress;
-        GlobalRenderer->Print("AHCI Driver instance initialized");
+        GlobalRenderer->Print("AHCI Driver instance initialized", 1);
         GlobalRenderer->Next();
 
         ABAR = (HBAMemory*)((PCI::PCIHeader0*)pciBaseAddress)->BAR5;

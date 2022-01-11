@@ -208,12 +208,10 @@ void Draw()
                         WindowStuff->StartMenuStatus = true;
                     }
                 }
-                else if (MousePosition.Y == WindowStuff->posybuttonclose && MousePosition.X == WindowStuff->posxbuttonclose)
+                else if (MousePosition.Y > WindowStuff->ybuttonclose 
+                && MousePosition.Y < WindowStuff->ybuttonclose + 20 && MousePosition.X > WindowStuff->xbuttonclose && MousePosition.X < WindowStuff->xbuttonclose + 20)
                 {
-                    //if (MousePosition.Y == WindowStuff->posybuttonclose && MousePosition.X == WindowStuff->posxbuttonclose)
-                    //{
-                        WindowStuff->CloseCalculator();
-                    //}
+                    WindowStuff->CloseApplication(300, 300, 300, 300);
                 }
                 
                 
@@ -232,6 +230,11 @@ void Draw()
                         WindowStuff->StartMenuStatus = true;
                     }   
                 }
+                else if (MousePosition.Y > WindowStuff->ybuttonclose 
+                && MousePosition.Y < WindowStuff->ybuttonclose + 20 && MousePosition.X > WindowStuff->xbuttonclose && MousePosition.X < WindowStuff->xbuttonclose + 20)
+                {
+                    WindowStuff->CloseApplication(300, 300, 300, 300);
+                }
 
             case 1024 | 768:
                 if (MousePosition.Y >= 650 && MousePosition.X <= 100)
@@ -247,6 +250,11 @@ void Draw()
                         WindowStuff->StartMenuStatus = true;
                     }
                 }
+                else if (MousePosition.Y > WindowStuff->ybuttonclose 
+                && MousePosition.Y < WindowStuff->ybuttonclose + 20 && MousePosition.X > WindowStuff->xbuttonclose && MousePosition.X < WindowStuff->xbuttonclose + 20)
+                {
+                    WindowStuff->CloseApplication(300, 300, 300, 300);
+                }
             
             default:
                 break;
@@ -260,10 +268,10 @@ void Draw()
         GlobalRenderer->Colour = colour;*/
 
 
-        GlobalRenderer->Print((to_string(MousePosition.Y)));
-        GlobalRenderer->Print("|");
-        GlobalRenderer->Print((to_string(MousePosition.X)));
-        GlobalRenderer->Print(" ");
+        GlobalRenderer->Print((to_string(MousePosition.Y)), 1);
+        GlobalRenderer->Print("|", 1);
+        GlobalRenderer->Print((to_string(MousePosition.X)), 1);
+        GlobalRenderer->Print(" ", 1);
     }
 
     if (MousePacket[0] & PS2Rightbutton)
@@ -282,7 +290,7 @@ void Draw()
                     {
                         if (MousePosition.X <= 88)
                         {
-                            WindowStuff->OpenCalculator(300, 300, 300, 300, 0xffcc0000);
+                            WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
                             break;
                         }
                     }
@@ -294,7 +302,7 @@ void Draw()
                     {
                         if (MousePosition.X <= 88)
                         {
-                            shutdown();
+                            Shutdown();
                             break;
                         }
                     }
@@ -307,7 +315,7 @@ void Draw()
                     {
                         if (MousePosition.X <= 88)
                         {
-                            WindowStuff->OpenCalculator(300, 300, 300, 300, 0xffcc0000);
+                            WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
                             break;
                         }
                     }
@@ -319,7 +327,7 @@ void Draw()
                     {
                         if (MousePosition.X <= 88)
                         {
-                            shutdown();
+                            Shutdown();
                             break;
                         }
                     }
@@ -333,7 +341,7 @@ void Draw()
                     {
                         if (MousePosition.X <= 88)
                         {
-                            WindowStuff->OpenCalculator(300, 300, 300, 300, 0xffcc0000);
+                            WindowStuff->OpenApplication(2, 300, 300, 300, 300, 0xffcc0000);
                             break;
                         }
                     }
@@ -345,7 +353,7 @@ void Draw()
                     {
                         if (MousePosition.X <= 88)
                         {
-                            shutdown();
+                            Shutdown();
                             break;
                         }
                     }

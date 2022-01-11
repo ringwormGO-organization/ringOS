@@ -2,6 +2,7 @@
 #include "memory/heap.h"
 #include "scheduling/pit/pit.h"
 #include "Window/Window.h"
+#include "shell/shell.h"
 
 extern "C" void _start(BootInfo* bootInfo)
 {
@@ -26,21 +27,21 @@ extern "C" void _start(BootInfo* bootInfo)
             GlobalRenderer->TaskBar(0xff00ffff, 1000);
             GlobalRenderer->Colour = 0x00ff0000;
             GlobalRenderer->CursorPosition = {0, 1000};
-            GlobalRenderer->Print("START");
+            GlobalRenderer->Print("START", 1);
             break;
         
         case 1366 | 768:
             GlobalRenderer->TaskBar(0xff00ffff, 688);
             GlobalRenderer->Colour = 0x00ff0000;
             GlobalRenderer->CursorPosition = {0, 688};
-            GlobalRenderer->Print("START");
+            GlobalRenderer->Print("START", 1);
             break;
 
         case 1024 | 768:
             GlobalRenderer->TaskBar(0xff00ffff, 688);
             GlobalRenderer->Colour = 0x00ff0000;
             GlobalRenderer->CursorPosition = {0, 688};
-            GlobalRenderer->Print("START");
+            GlobalRenderer->Print("START", 1);
             break;
 
         default:
@@ -52,24 +53,23 @@ extern "C" void _start(BootInfo* bootInfo)
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
 	GlobalRenderer->Next();
-	GlobalRenderer->Print("Welcome to ringOS!!\n");
+	GlobalRenderer->Print("Welcome to ringOS!!\n", 1);
 
 	GlobalRenderer->Colour = 0xffffff00;
 
 	//Resolution
-    GlobalRenderer->Print("Resolution: ");
-    GlobalRenderer->Print(to_string((uint64_t)ResoWidth));
-    GlobalRenderer->Print(" x ");
-    GlobalRenderer->Print(to_string((uint64_t)ResoHeight));
+    GlobalRenderer->Print("Resolution: ", 1);
+    GlobalRenderer->Print(to_string((uint64_t)ResoWidth), 1);
+    GlobalRenderer->Print(" x ", 1);
+    GlobalRenderer->Print(to_string((uint64_t)ResoHeight), 1);
 
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();
     GlobalRenderer->Next();
 
-    //Terminal
-    GlobalRenderer->Print("ringOS> ");
+    shell();
 
-    while(true)
+    while (true)
     {
         asm ("hlt");
     }

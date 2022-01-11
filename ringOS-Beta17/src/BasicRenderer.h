@@ -22,7 +22,7 @@ class BasicRenderer
     unsigned int Colour;
     unsigned int ClearColour;
     void Print(const char* str);
-    void Print2(const char* str);
+    void Print(const char* str, int type);
     void PutChar(char chr, unsigned int xOff, unsigned int yOff);
     void PutChar(char chr);
     void PutPix(uint32_t x, uint32_t y, uint32_t colour);
@@ -30,6 +30,7 @@ class BasicRenderer
     void ClearChar();
     void Clear();
     void Next();
+    void Next(int type);
     void DrawOverlayMouseCursor(uint8_t* cursor, Point position, uint32_t colour);
     void ClearMouseCursor(uint8_t* cursor, Point position);
     bool MouseDrawn;

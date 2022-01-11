@@ -37,6 +37,8 @@ bool isLeftShiftPressed;
 bool isRightShiftPressed;
 bool isCapsLockPressed;
 
+const char* command;
+
 void HandleKeyboard(uint8_t scancode){
 
     switch (scancode){
@@ -60,7 +62,7 @@ void HandleKeyboard(uint8_t scancode){
             return;
         case Enter:
             GlobalRenderer->Next();
-            GlobalRenderer->Print("ringOS> ");
+            GlobalRenderer->Print("ringOS> ", 1);
             return;
         case Spacebar:
             GlobalRenderer->PutChar(' ');

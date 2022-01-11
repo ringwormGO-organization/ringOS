@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "../BasicRenderer.h"
 #include "../Window/Window.h"
+#include "../library/string.h"
 
 namespace QWERTYKeyboard
 {
@@ -16,5 +17,7 @@ namespace QWERTYKeyboard
 
     char Translate(uint8_t scancode, bool uppercase);
 }
+
+extern const char* command;
 
 void HandleKeyboard(uint8_t scancode);

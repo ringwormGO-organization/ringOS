@@ -4,6 +4,8 @@
 
 #include "../kernelUtil.h"
 #include "../BasicRenderer.h"
+#include "../ColorCodes.h"
+#include "../Numbers.h"
 #include "../scheduling/pit/pit.h"
 #include "../userinput/keyboard.h"
 #include "../shutdown.h"
@@ -20,31 +22,39 @@ class Window
 {
     public:
         bool StartMenuStatus;
-        bool EdgeStatus;
+        bool check();
 
         uint64_t ResoWidth;
         uint64_t ResoHeight;
         uint64_t Width(uint64_t width);
         uint64_t Height(uint64_t height);
 
-        size_t posxbuttonclose;
-        size_t posybuttonclose;
-        size_t posxbuttonminus;
-        size_t posybuttonminus;
-
-        uint32_t colour = 0x580002;
+        size_t winheight;
+        size_t winwidth;
+        size_t xbuttonclose;
+        size_t ybuttonclose;
+        size_t xbuttonminus;
+        size_t ybuttonminus;
+ 
+        uint32_t colour = DARK_GREEN2;
+        int buttons = 2;
+        size_t edgeheight;
 
         void DrawBMPPicture();
-
-        void Edge(int buttons, size_t pos1, size_t pos2, size_t width, uint32_t color);
 
         void DrawStartMenu(uint32_t color);
         void ClearStartMenu();
 
-        void OpenCalculator(size_t pos1, size_t pos2, size_t width, size_t height, uint32_t color);
-        void CloseCalculator();
+        void OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color);
+        void CloseApplication(size_t x, size_t y, size_t width, size_t height);
 
         void Error(const char* message);
+
+    private:
+        void Edge(int buttons, size_t x, size_t y, size_t width, uint32_t color);
+
+        void OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color);
+        void Caluclator(size_t x, size_t y, size_t width, size_t height);
 };
 
 extern Basic* BasicStuff;

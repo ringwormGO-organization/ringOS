@@ -17,33 +17,33 @@ void Panic(const char* panicMessage)
 
     GlobalRenderer->Colour = 0;
 
-    GlobalRenderer->Print(":( Kernel Panic");
+    GlobalRenderer->Print(":( Kernel Panic", 1);
     GlobalRenderer->Next();
-    GlobalRenderer->Print("Restart your computer!!");
+    GlobalRenderer->Print("Restart your computer!!", 1);
 
-
-    GlobalRenderer->Next();
-    GlobalRenderer->Next();
-
-    GlobalRenderer->Print(panicMessage);
 
     GlobalRenderer->Next();
     GlobalRenderer->Next();
 
+    GlobalRenderer->Print(panicMessage, 1);
 
-    GlobalRenderer->Print("Free RAM: ");
-    GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024));
-    GlobalRenderer->Print(" KB ");
+    GlobalRenderer->Next();
+    GlobalRenderer->Next();
+
+
+    GlobalRenderer->Print("Free RAM: ", 1);
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024), 1);
+    GlobalRenderer->Print(" KB ", 1);
 
     GlobalRenderer->Next();
 
-    GlobalRenderer->Print("Used RAM: ");
-    GlobalRenderer->Print(to_string(GlobalAllocator.GetUsedRAM() / 1024));
-    GlobalRenderer->Print(" KB ");
+    GlobalRenderer->Print("Used RAM: ", 1);
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetUsedRAM() / 1024), 1);
+    GlobalRenderer->Print(" KB ", 1);
 
     GlobalRenderer->Next();
 
-    GlobalRenderer->Print("Reserved RAM: ");
-    GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024));
-    GlobalRenderer->Print(" KB ");
+    GlobalRenderer->Print("Reserved RAM: ", 1);
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024), 1);
+    GlobalRenderer->Print(" KB ", 1);
 }
