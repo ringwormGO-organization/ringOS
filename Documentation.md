@@ -1,7 +1,7 @@
 # DOCUMENTATION
-Documentation is for compiling, running and debugging ringOS.
+This documentation is intended to guide you in developing, compiling and running ringOS
 
-[SYSTEM REQUIRATMENS](https://github.com/ringwormGO-organization/ringOS#system-requiratmens)
+[SYSTEM REQUIREMENTS](https://github.com/ringwormGO-organization/ringOS#system-requiratmens)
 
 # Compile and run in Qemu (betas)
 [You can use this script (Linux, run in Qemu)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh)
@@ -11,19 +11,19 @@ or continue manually.
 
 ### Software you need
 1. [Qemu recommended](#install-qemu) or [Virtual Box, VmWare](#running-in-virtual-box-or-vmware)
-2. WSL or Linux (recommended)
+2. WSL/WSL2 (If developing on Windows) or Linux (recommended)
 
 ### Type of release for running in Qemu
-Download zip file of Qemu release (example: https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
+Download a Zip file of Qemu release (example: https://github.com/Andrej123456789/ringOS/releases/tag/Beta11_Qemu).
 
-Otherwise, you can download some branches, [stable release](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1) or clone entire repo and found files which you need.
+Otherwise, you can download your chosen branch, [stable release](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1) or clone the entire repo and find the files you need.
 
 ### Compiling
-Unzip zip file and navigate folder to your Terminal (Linux) or WSL on Windows (`cd`).
+Unzip the downloaded Zip folder and navigate to the contents in your Terminal (Linux) or using WSL/WSL2 on Windows ('cd')
 
-This commands is for Linux based distros and WSL.
+The following commands work on Debian-based (ex. Ubuntu) Linux distros and within WSL/WSL2 on Windows. Users of non-Debian distros will need to locate the correct packages for their chosen operating system.
 
-If you first time running WSL or Linux installation, follow these steps:
+If this is your first time attemtping to to compile ringOS, you will need to run the following commands in your Terminal (Linux) or using WSL/WSL2 on Windows:
 
 `sudo apt update`
 
@@ -34,7 +34,7 @@ If you first time running WSL or Linux installation, follow these steps:
 `sudo apt-get install lld`
 ___________________________________________________________________
 
-For compiling bootloader,
+To compile the bootloader (gnu-efi) you will need to run the following commands in your Terminal (Linux) or using WSL/WSL2 on Windows:
 
 `cd gnu-efi`
 
@@ -42,7 +42,7 @@ For compiling bootloader,
 
 ________________________________________________________________
 
-For compiling kernel,
+To compile the ringOS kernel you will need to run the following commands in your Terminal (Linux) or using WSL/WSL2 on Windows:
 
 `cd kernel` or (if you are in gnu-efi folder) `cd ../kernel`
 
@@ -50,15 +50,15 @@ For compiling kernel,
 
 ______________________________________________________________
 
-For running image,
+To run ringOS within Qemu on Linux or Windows:
 
-`make buildimg` [kernel folder]
+**Windows** double-click the  `run2.bat` file to initialize a Qemu VM and run ringOS.
 
-**Windows** run `run2.bat` file
+**Linux** `make buildimg` [run from with the 'kernel' folder]
 
 **Linux** `make run`
 
-# Compile and run stable release
+# Compile and run the latest stable release from shell script
 
 [Shell scipt](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
 
@@ -83,7 +83,7 @@ You need install two more apps:
 
 Enter kernel/bin directory.
 
-Type this commands in order:
+Type these commands in order:
 
 `mkdir -p iso`
 
@@ -126,14 +126,14 @@ Copy `bootx64.efi` file into BOOT folder.
 
 In root directory of USB copy `kernel.elf` and `zap-light16.psf`.
 
-Restart computer, enter Boot Menu and boot from USB.
+Restart computer, enter UEFI Menu and boot from USB.
 ___
 # Debug
-We have [debug branch](https://github.com/ringwormGO-organization/ringOS/tree/Debug) but code is not updated and is only for Windows platform.
+We have a [debug branch](https://github.com/ringwormGO-organization/ringOS/tree/Debug) but the code is not updated and is only for Windows platform developers.
 
-If you want debug new code follow these steps:
+If you want to debug new code follow these steps:
 
-Download code, install gdb (```sudo apt-get install gdb```), open Visual Studio Code and create two JSON files.
+Download code to be debugged, install gdb (```sudo apt-get install gdb```), open Visual Studio Code and create two JSON files.
 
 [Code](https://www.youtube.com/watch?v=XLw_K4rEl1I)
 
@@ -142,21 +142,21 @@ ______
 # Modules
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) are for customizing ringOS.
 
-You can currently personalize by [official modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) printing text in kernel.cpp.
+You can currently personalize the operating system output by using the provided [official modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)  and printing text in kernel.cpp.
 
-Fell free to customize some other parts like panic.cpp
+Feel free to customize some other parts like panic.cpp as appropriate for your use case.
 
 ### License for modules
-USE THIS MODULES FOR PRIVATE USE
+The modules provided for customization are intended for private, non-commerical use only.
 
-IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE ASK ringwormGO FOR PERMISSION
+IF YOU PLANNING USE THESE MODULES TO MODIFY ringOS AND PUBLISH ringOS AS YOUR OWN DISTRIBUTION, PERMISSION MUST FIRST BE OBTAINED FROM ringwormGO.
 ___
 
 # Other
 
-If you have problem or idea create **issue**.
+If you have problems or ideas plese create an **issue**.
 
-For contributiing create **Pull Request**.
+To contribute to ringOS, please create a **Pull Request**.
 
 This documentation will continue improving based on new features in ringOS.
 
