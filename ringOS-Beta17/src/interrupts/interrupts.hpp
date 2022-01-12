@@ -1,6 +1,6 @@
 #pragma once
-#include "../BasicRenderer.h"
-#include "../userinput/mouse.h"
+#include "../BasicRenderer.hpp"
+#include "../userinput/mouse.hpp"
 
 #define PIC1_COMMAND 0x20
 #define PIC1_DATA 0x21

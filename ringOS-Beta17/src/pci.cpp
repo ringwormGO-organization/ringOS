@@ -1,6 +1,6 @@
-#include "pci.h"
-#include "ahci/ahci.h"
-#include "memory/heap.h"
+#include "pci.hpp"
+#include "ahci/ahci.hpp"
+#include "memory/heap.hpp"
 
 namespace PCI
 {

@@ -4,9 +4,9 @@
 #include "Framebuffer.h"
 #include "simpleFonts.h"
 #include "tga/tga.h"
-#include "cstr.h"
-#include "IO.h"
-#include "Window/Window.h"
+#include "cstr.hpp"
+#include "IO.hpp"
+#include "Window/Window.hpp"
 #include <stdint.h>
 
 class BasicRenderer

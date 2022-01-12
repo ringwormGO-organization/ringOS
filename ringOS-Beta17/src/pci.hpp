@@ -1,9 +1,9 @@
 #pragma once
 #include <stdint.h>
-#include "acpi.h"
-#include "paging/PageTableManager.h"
-#include "BasicRenderer.h"
-#include "cstr.h"
+#include "acpi.hpp"
+#include "paging/PageTableManager.hpp"
+#include "BasicRenderer.hpp"
+#include "cstr.hpp"
 
 namespace PCI
 {

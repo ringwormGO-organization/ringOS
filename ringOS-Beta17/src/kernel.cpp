@@ -1,8 +1,8 @@
 #include "kernelUtil.h"
-#include "memory/heap.h"
-#include "scheduling/pit/pit.h"
-#include "Window/Window.h"
-#include "shell/shell.h"
+#include "memory/heap.hpp"
+#include "scheduling/pit/pit.hpp"
+#include "Window/Window.hpp"
+#include "shell/shell.hpp"
 
 extern "C" void _start(BootInfo* bootInfo)
 {
@@ -27,21 +27,21 @@ extern "C" void _start(BootInfo* bootInfo)
             GlobalRenderer->TaskBar(0xff00ffff, 1000);
             GlobalRenderer->Colour = 0x00ff0000;
             GlobalRenderer->CursorPosition = {0, 1000};
-            GlobalRenderer->Print("START", 1);
+            GlobalRenderer->Print("START");
             break;
         
         case 1366 | 768:
             GlobalRenderer->TaskBar(0xff00ffff, 688);
             GlobalRenderer->Colour = 0x00ff0000;
             GlobalRenderer->CursorPosition = {0, 688};
-            GlobalRenderer->Print("START", 1);
+            GlobalRenderer->Print("START");
             break;
 
         case 1024 | 768:
             GlobalRenderer->TaskBar(0xff00ffff, 688);
             GlobalRenderer->Colour = 0x00ff0000;
             GlobalRenderer->CursorPosition = {0, 688};
-            GlobalRenderer->Print("START", 1);
+            GlobalRenderer->Print("START");
             break;
 
         default:

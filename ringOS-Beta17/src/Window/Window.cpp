@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Window.hpp"
 
 Basic* BasicStuff;
 Window* WindowStuff;

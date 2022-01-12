@@ -1,9 +1,9 @@
 #include "kernelUtil.h"
 #include "gdt/gdt.h"
-#include "interrupts/IDT.h"
-#include "interrupts/interrupts.h"
-#include "IO.h"
-#include "memory/heap.h"
+#include "interrupts/IDT.hpp"
+#include "interrupts/interrupts.hpp"
+#include "IO.hpp"
+#include "memory/heap.hpp"
 
 KernelInfo kernelInfo;
 

@@ -1,6 +1,6 @@
-#include "acpi.h"
-#include "IO.h"
-#include "pci.h"
+#include "acpi.hpp"
+#include "IO.hpp"
+#include "pci.hpp"
 
 namespace ACPI
 {

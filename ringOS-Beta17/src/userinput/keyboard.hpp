@@ -1,8 +1,7 @@
 #pragma once
 #include <stdint.h>
-#include "../BasicRenderer.h"
-#include "../Window/Window.h"
-#include "../library/string.h"
+#include "../BasicRenderer.hpp"
+#include "../library/string.hpp"
 
 namespace QWERTYKeyboard
 {

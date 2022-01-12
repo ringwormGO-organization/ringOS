@@ -1,5 +1,5 @@
 #include "tga.h"
-#include "../memory/heap.h"
+#include "../memory/heap.hpp"
 
 /**
  * Parse TGA format into pixels. Returns NULL or error, otherwise the returned data looks like

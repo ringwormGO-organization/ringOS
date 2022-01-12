@@ -3,13 +3,13 @@
 #include <stdint.h> 
 
 #include "../kernelUtil.h"
-#include "../BasicRenderer.h"
+#include "../BasicRenderer.hpp"
 #include "../ColorCodes.h"
 #include "../Numbers.h"
-#include "../scheduling/pit/pit.h"
-#include "../userinput/keyboard.h"
-#include "../shutdown.h"
-#include "../Reboot.h"
+#include "../scheduling/pit/pit.hpp"
+#include "../userinput/keyboard.hpp"
+#include "../shutdown.hpp"
+#include "../Reboot.hpp"
 
 class Basic
 {

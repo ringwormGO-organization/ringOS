@@ -1,8 +1,8 @@
-#include "ahci.h"
-#include "../BasicRenderer.h"
-#include "../paging/PageTableManager.h"
-#include "../memory/heap.h"
-#include "../paging/PageFrameAllocator.h"
+#include "ahci.hpp"
+#include "../BasicRenderer.hpp"
+#include "../paging/PageTableManager.hpp"
+#include "../memory/heap.hpp"
+#include "../paging/PageFrameAllocator.hpp"
 
 namespace AHCI
 {

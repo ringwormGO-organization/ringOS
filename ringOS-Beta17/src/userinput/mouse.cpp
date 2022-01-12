@@ -1,4 +1,4 @@
-#include "mouse.h"
+#include "mouse.hpp"
 
 uint8_t cursor[]
 {

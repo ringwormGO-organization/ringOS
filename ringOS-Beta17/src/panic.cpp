@@ -1,12 +1,11 @@
-#include "panic.h"
-#include "BasicRenderer.h"
-#include "IO.h"
-#include "scheduling/pit/pit.h"
-#include "Reboot.h"
-#include "shutdown.h"
+#include "panic.hpp"
+#include "BasicRenderer.hpp"
+#include "IO.hpp"
+#include "Reboot.hpp"
+#include "shutdown.hpp"
 
-#include "BasicRenderer.h"
-#include "paging/PageFrameAllocator.h"
+#include "BasicRenderer.hpp"
+#include "paging/PageFrameAllocator.hpp"
 
 void Panic(const char* panicMessage)
 {

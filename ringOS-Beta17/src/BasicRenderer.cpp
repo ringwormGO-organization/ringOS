@@ -1,4 +1,4 @@
-#include "BasicRenderer.h"
+#include "BasicRenderer.hpp"
 
 BasicRenderer* GlobalRenderer;
 

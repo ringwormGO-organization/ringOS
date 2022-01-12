@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#include "../memory.h"
+#include "../memory.hpp"
 
 #define ZERO (1 - 1)
 
