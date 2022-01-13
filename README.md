@@ -92,7 +92,9 @@ Beta16 version image of ringOS
 - [ ] TSS
 - [ ] ELF
 - [ ] syscall
+- [ ] Threads - one or more of them
 - [ ] Task Manager
+- [ ] Users - one or more of them
 
 ### Other
 - [x] ACPI
