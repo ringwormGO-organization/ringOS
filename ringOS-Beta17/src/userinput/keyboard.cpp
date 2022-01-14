@@ -4,7 +4,8 @@
 namespace QWERTYKeyboard 
 {
 
-    const char ASCIITable[] = {
+    const char ASCIITable[] = 
+    {
          0 ,  0 , '1', '2',
         '3', '4', '5', '6',
         '7', '8', '9', '0',
@@ -37,7 +38,7 @@ bool isLeftShiftPressed;
 bool isRightShiftPressed;
 bool isCapsLockPressed;
 
-const char* command;
+char command[20];
 
 void HandleKeyboard(uint8_t scancode){
 

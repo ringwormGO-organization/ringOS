@@ -85,6 +85,7 @@ Beta16 version image of ringOS
 - [x] Framebuffer windowing-system
 - [x] BMP images
 - [ ] TGA images
+- [ ] Put GUI as process
 - [ ] Own scripting language for GUI
 
 ### User Mode
@@ -106,6 +107,7 @@ Beta16 version image of ringOS
 - [ ] Real hardware support
 - [x] PCI
 - [ ] PCIe
+- [x] SMBIOS
 - [ ] USB
 
 

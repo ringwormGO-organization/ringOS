@@ -17,6 +17,4 @@ namespace QWERTYKeyboard
     char Translate(uint8_t scancode, bool uppercase);
 }
 
-extern const char* command;
-
 void HandleKeyboard(uint8_t scancode);

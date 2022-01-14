@@ -204,7 +204,7 @@ void Draw()
                     }
                     else
                     {
-                        WindowStuff->DrawStartMenu(0xff00ffff);
+                        WindowStuff->DrawStartMenu();
                         WindowStuff->StartMenuStatus = true;
                     }
                 }
@@ -226,7 +226,7 @@ void Draw()
                     }
                     else
                     {
-                        WindowStuff->DrawStartMenu(0xff00ffff);
+                        WindowStuff->DrawStartMenu();
                         WindowStuff->StartMenuStatus = true;
                     }   
                 }
@@ -246,7 +246,7 @@ void Draw()
                     }
                     else
                     {
-                        WindowStuff->DrawStartMenu(0xff00ffff);
+                        WindowStuff->DrawStartMenu();
                         WindowStuff->StartMenuStatus = true;
                     }
                 }
@@ -280,6 +280,7 @@ void Draw()
         GlobalRenderer->Colour = 0x0000ff00;
         GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
         GlobalRenderer->Colour = colour;*/
+
 
         switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
         {

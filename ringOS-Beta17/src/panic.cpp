@@ -24,8 +24,37 @@ void Panic(const char* panicMessage)
     GlobalRenderer->Next();
     GlobalRenderer->Next();
 
-    GlobalRenderer->Print(panicMessage, 1);
+    GlobalRenderer->Print(panicMessage);
 
+    MorePanic();
+}
+
+void Panic(const char* panicMessage, unsigned long int code)
+{
+    GlobalRenderer->ClearColour = 0xff00ffff;
+    GlobalRenderer->Clear();
+
+    GlobalRenderer->CursorPosition = {0, 0};
+
+    GlobalRenderer->Colour = 0;
+
+    GlobalRenderer->Print(":( Kernel Panic", 1);
+    GlobalRenderer->Next();
+    GlobalRenderer->Print("Restart your computer!!", 1);
+
+    GlobalRenderer->Next();
+    GlobalRenderer->Next();
+
+    GlobalRenderer->Print(panicMessage);
+    GlobalRenderer->Next();
+    GlobalRenderer->Print("Error code: ");
+    GlobalRenderer->Print(to_string((long int)code));
+
+    MorePanic();
+}
+
+void MorePanic()
+{
     GlobalRenderer->Next();
     GlobalRenderer->Next();
 

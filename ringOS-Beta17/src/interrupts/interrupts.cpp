@@ -4,29 +4,34 @@
 #include "../userinput/keyboard.hpp"
 #include "../scheduling/pit/pit.hpp"
 
-__attribute__((interrupt)) void PageFault_Handler(interrupt_frame* frame){
-    Panic("Page Fault Detected");
+__attribute__((interrupt)) void PageFault_Handler(interrupt_frame* frame, unsigned long int error_code)
+{
+    Panic("Page Fault Detected", error_code);
     while(true);
 }
 
-__attribute__((interrupt)) void DoubleFault_Handler(interrupt_frame* frame){
-    Panic("Double Fault Detected");
+__attribute__((interrupt)) void DoubleFault_Handler(interrupt_frame* frame, unsigned long int error_code)
+{
+    Panic("Double Fault Detected", 10);
     while(true);
 }
 
-__attribute__((interrupt)) void GPFault_Handler(interrupt_frame* frame){
-    Panic("General Protection Fault Detected");
+__attribute__((interrupt)) void GPFault_Handler(interrupt_frame* frame, unsigned long int error_code)
+{
+    Panic("General Protection Fault Detected", 10);
     while(true);
 }
 
-__attribute__((interrupt)) void DebugFault_Handler(interrupt_frame* frame){
+__attribute__((interrupt)) void DebugFault_Handler(interrupt_frame* frame)
+{
     Panic("Debug Fault Detected");
     while(true);
 }
 
 
 
-__attribute__((interrupt)) void KeyboardInt_Handler(interrupt_frame* frame){
+__attribute__((interrupt)) void KeyboardInt_Handler(interrupt_frame* frame)
+{
     uint8_t scancode = inb(0x60);
 
     HandleKeyboard(scancode);
@@ -34,7 +39,8 @@ __attribute__((interrupt)) void KeyboardInt_Handler(interrupt_frame* frame){
     PIC_EndMaster();
 }
 
-__attribute__((interrupt)) void MouseInt_Handler(interrupt_frame* frame){
+__attribute__((interrupt)) void MouseInt_Handler(interrupt_frame* frame)
+{
 
     uint8_t mouseData = inb(0x60);
 
@@ -43,7 +49,8 @@ __attribute__((interrupt)) void MouseInt_Handler(interrupt_frame* frame){
     PIC_EndSlave();
 }
 
-__attribute__((interrupt)) void PITInt_Handler(interrupt_frame* frame){
+__attribute__((interrupt)) void PITInt_Handler(interrupt_frame* frame)
+{
     PIT::Tick();
     PIC_EndMaster();
 }
@@ -58,7 +65,8 @@ void PIC_EndSlave(){
 }
    
 
-void RemapPIC(){
+void RemapPIC()
+{
     uint8_t a1, a2; 
 
     a1 = inb(PIC1_DATA);
@@ -89,5 +97,4 @@ void RemapPIC(){
     outb(PIC1_DATA, a1);
     io_wait();
     outb(PIC2_DATA, a2);
-
 }

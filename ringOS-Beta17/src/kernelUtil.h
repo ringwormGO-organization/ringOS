@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+
 #include "BMPImageFile.h"
 #include "BasicRenderer.hpp"
 #include "cstr.hpp"
@@ -14,6 +15,7 @@
 #include "userinput/mouse.hpp"
 #include "acpi.hpp"
 #include "pci.hpp"
+#include "smbios.h"
 
 struct BootInfo {
 	Framebuffer* framebuffer;
@@ -23,6 +25,7 @@ struct BootInfo {
 	uint64_t mMapSize;
 	uint64_t mMapDescSize;
 	ACPI::RSDP2* rsdp;
+	struct SMBiosHeader* SMBIOS;
 } ;
 
 extern uint64_t _KernelStart;

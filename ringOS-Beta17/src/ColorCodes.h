@@ -1,5 +1,7 @@
 #pragma once
 
+#define DEFAULT WHITE
+
 //source: https://www.rapidtables.com/web/color/gray-color.html
 
 enum COLOR

@@ -5,7 +5,7 @@
 typedef unsigned long long size_t;
 
 typedef struct {
-	void* BaseAddress;
+	unsigned int* BaseAddress;
 	size_t BufferSize;
 	unsigned int Width;
 	unsigned int Height;
@@ -18,13 +18,15 @@ typedef struct {
 #define BMP_MAGIC0 'B'
 #define BMP_MAGIC1 'M'
 
-typedef struct {
+typedef struct 
+{
 	unsigned char magic[2];
 	unsigned char mode;
 	unsigned char charsize;
 } PSF1_HEADER;
 
-typedef struct {
+typedef struct 
+{
 	PSF1_HEADER* psf1_Header;
 	void* glyphBuffer;
 } PSF1_FONT;
@@ -78,7 +80,8 @@ typedef struct
     uint32_t alphaBitMask;
 } BMPImage;
 
-typedef struct {
+typedef struct 
+{
 	Framebuffer* framebuffer;
 	PSF1_FONT* psf1_Font;
 	BMPImage* bmpImage;
@@ -86,6 +89,7 @@ typedef struct {
 	UINTN mMapSize;
 	UINTN mMapDescSize;
 	void* rsdp;
+	void* SMBIOS;
 } BootInfo;
 
 Framebuffer framebuffer;
@@ -435,6 +439,7 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 
 	}
 
+	//Get RSDP
 	EFI_CONFIGURATION_TABLE* configTable = SystemTable->ConfigurationTable;
 	void* rsdp = NULL; 
 	EFI_GUID Acpi2TableGuid = ACPI_20_TABLE_GUID;
@@ -449,6 +454,21 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		configTable++;
 	}
 
+	//Get SMBIOS
+	configTable = SystemTable->ConfigurationTable;
+	void* SMBIOS = NULL;
+	EFI_GUID SMBIOSGUID = SMBIOS_TABLE_GUID;
+	for(UINTN i = 0;i < SystemTable->NumberOfTableEntries;i++) {
+		if(CompareGuid(&configTable[i].VendorGuid, &SMBIOSGUID)){
+			if(strcmp((CHAR8*)"_SM_", (CHAR8*)configTable->VendorTable,4)) {
+				SMBIOS = (void*)configTable->VendorTable;
+				break;
+			}
+		}
+			
+		configTable++;
+	}
+
 	BootInfo bootInfo;
 	bootInfo.framebuffer = newBuffer;
 	bootInfo.psf1_Font = newFont;
@@ -456,9 +476,10 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	bootInfo.mMapSize = MapSize;
 	bootInfo.mMapDescSize = DescriptorSize;
 	bootInfo.rsdp = rsdp;
+	bootInfo.SMBIOS = SMBIOS;
 
 	// Load BMP desktop background image
-    BMPImage* bmpImage = LoadBMPImage(NULL, L"Test.bmp", ImageHandle, SystemTable, &bootInfo);
+    BMPImage* bmpImage = LoadBMPImage(NULL, L"Picture.bmp", ImageHandle, SystemTable, &bootInfo);
     if (bmpImage == NULL)
     {
         ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);

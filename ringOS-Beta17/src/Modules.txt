@@ -84,7 +84,7 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
     GlobalRenderer->PutChar(*((uint8_t*)bootInfo->rsdp + 7));
     GlobalRenderer->Next();
 
-// malloc example
+// malloc example - not working properly with GUI
     GlobalRenderer->Next();
     GlobalRenderer->Print(to_hstring((uint64_t)bootInfo->rsdp));  
     GlobalRenderer->Next();
@@ -94,6 +94,13 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
     GlobalRenderer->Print(to_hstring((uint64_t)address));
     GlobalRenderer->Next();
     free(address);
+
+//malloc example 2
+    void* test = malloc(0x100);
+    free(test);
+
+    WindowStuff->Width(ResoWidth);
+    WindowStuff->Height(ResoHeight);
 
 //BMP picture loading
     if (bootInfo->bmpImage->height != bootInfo->framebuffer->Height || bootInfo->bmpImage->width != bootInfo->framebuffer->Width)

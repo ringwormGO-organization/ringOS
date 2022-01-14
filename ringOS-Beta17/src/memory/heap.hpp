@@ -2,7 +2,8 @@
 #include <stdint.h>
 #include <stddef.h>
 
-struct HeapSegHdr{
+struct HeapSegHdr
+{
     size_t length;
     HeapSegHdr* next;
     HeapSegHdr* last;

@@ -6,7 +6,8 @@ void* heapStart;
 void* heapEnd;
 HeapSegHdr* LastHdr;
 
-void InitializeHeap(void* heapAddress, size_t pageCount){
+void InitializeHeap(void* heapAddress, size_t pageCount)
+{
     void* pos = heapAddress;
 
     for (size_t i = 0; i < pageCount; i++){
@@ -26,14 +27,16 @@ void InitializeHeap(void* heapAddress, size_t pageCount){
     LastHdr = startSeg;
 }
 
-void free(void* address){
+void free(void* address)
+{
     HeapSegHdr* segment = (HeapSegHdr*)address - 1;
     segment->free = true;
     segment->CombineForward();
     segment->CombineBackward();
 }
 
-void* malloc(size_t size){
+void* malloc(size_t size)
+{
     if (size % 0x10 > 0){ // it is not a multiple of 0x10
         size -= (size % 0x10);
         size += 0x10;
@@ -61,7 +64,8 @@ void* malloc(size_t size){
     return malloc(size);
 }
 
-HeapSegHdr* HeapSegHdr::Split(size_t splitLength){
+HeapSegHdr* HeapSegHdr::Split(size_t splitLength)
+{
     if (splitLength < 0x10) return NULL;
     int64_t splitSegLength = length - splitLength - (sizeof(HeapSegHdr));
     if (splitSegLength < 0x10) return NULL;
@@ -79,7 +83,8 @@ HeapSegHdr* HeapSegHdr::Split(size_t splitLength){
     return newSplitHdr;
 }
 
-void ExpandHeap(size_t length){
+void ExpandHeap(size_t length)
+{
     if (length % 0x1000) {
         length -= length % 0x1000;
         length += 0x1000;
@@ -100,10 +105,10 @@ void ExpandHeap(size_t length){
     newSegment->next = NULL;
     newSegment->length = length - sizeof(HeapSegHdr);
     newSegment->CombineBackward();
-
 }
 
-void HeapSegHdr::CombineForward(){
+void HeapSegHdr::CombineForward()
+{
     if (next == NULL) return;
     if (!next->free) return;
 
@@ -120,7 +125,7 @@ void HeapSegHdr::CombineForward(){
     next = next->next;
 }
 
-void HeapSegHdr::CombineBackward(){
+void HeapSegHdr::CombineBackward()
+{
     if (last != NULL && last->free) last->CombineForward();
 }
-

@@ -34,7 +34,7 @@ class BasicRenderer
     void DrawOverlayMouseCursor(uint8_t* cursor, Point position, uint32_t colour);
     void ClearMouseCursor(uint8_t* cursor, Point position);
     bool MouseDrawn;
-    void TaskBar(uint32_t colour, int verticalScanline);
+    void TaskBar();
 };
 
 extern BasicRenderer* GlobalRenderer;

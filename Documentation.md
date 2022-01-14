@@ -124,7 +124,7 @@ Inside EFI folder create BOOT folder.
 
 Copy `bootx64.efi` file into BOOT folder.
 
-In root directory of USB copy `kernel.elf` and `zap-light16.psf`.
+In root directory of USB copy `kernel.elf`, `zap-light16.psf` and `Picture.bmp` files.
 
 Restart computer, enter UEFI Menu and boot from USB.
 ___

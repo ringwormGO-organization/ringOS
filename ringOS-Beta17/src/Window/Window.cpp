@@ -50,7 +50,7 @@ uint64_t Window::Height(uint64_t height)
 
 void Window::DrawBMPPicture() //don't call this function, cause Page Fault
 {
-    GlobalRenderer->CursorPosition = {-20, -20};
+    //GlobalRenderer->CursorPosition = {-20, -20};
 
     if (bootInfo->bmpImage->height != bootInfo->framebuffer->Height || bootInfo->bmpImage->width != bootInfo->framebuffer->Width)
     {
@@ -73,31 +73,12 @@ void Window::DrawBMPPicture() //don't call this function, cause Page Fault
     }
 }
 
-void Window::Edge(int buttons, size_t x, size_t y, size_t width, uint32_t color)
-{
-    xbuttonclose = x + width - 30;
-    ybuttonclose = y;
-
-    xbuttonminus = x + width - 60;
-    ybuttonminus = y;
-
-    BasicStuff->Rectangle(x, y, width, 30, colour);
-
-    BasicStuff->Square(x + width - 30, y, 30, 30, 0xffff0000);
-    GlobalRenderer->CursorPosition2 = {x + width - 20, y + 5};
-    GlobalRenderer->Print("X", 2);
-
-    BasicStuff->Square(x + width - 60, y, 30, 30, 0xffff0000);
-    GlobalRenderer->CursorPosition2 = {x + width - 50, y + 5};
-    GlobalRenderer->Print("-", 2);
-}
-
-void Window::DrawStartMenu(uint32_t color)
+void Window::DrawStartMenu()
 {
     switch (ResoWidth | ResoHeight)
     {
         case 1920 | 1080:
-            BasicStuff->Rectangle(0, 700, 300, 300, color);
+            BasicStuff->Rectangle(0, 700, 300, 300, STARTMENU_COLOR);
             GlobalRenderer->Colour = 0xffff0000;
             GlobalRenderer->CursorPosition2 = {0, 895};
             GlobalRenderer->Print("CALCULATOR", 2);
@@ -106,7 +87,7 @@ void Window::DrawStartMenu(uint32_t color)
             break;
 
         case 1366 | 768:
-            BasicStuff->Rectangle(0, 388, 300, 300, color);
+            BasicStuff->Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
             GlobalRenderer->Colour = 0xffff0000;
             GlobalRenderer->CursorPosition2 = {0, 588};
             GlobalRenderer->Print("CALCULATOR", 2);
@@ -115,7 +96,7 @@ void Window::DrawStartMenu(uint32_t color)
             break;
 
         case 1024 | 768:
-            BasicStuff->Rectangle(0, 388, 300, 300, color);
+            BasicStuff->Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
             GlobalRenderer->Colour = 0xffff0000;
             GlobalRenderer->CursorPosition2 = {0, 588};
             GlobalRenderer->Print("CALCULATOR", 2);
@@ -154,16 +135,29 @@ void Window::ClearStartMenu()
 
 void Window::OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color)
 {
+    const char* name;
+
     switch (type)
     {
         case 1:
             OpenCalculator(x, y, width, height, 0xffcc0000);
+            name = "Calculator";
+            break;
+
+        case 2:
+            ShellStuff->shellx = x;
+            ShellStuff->shelly = y;
+            ShellStuff->ShellInit();    
+            name = "Shell";
             break;
         
         default:
             Error("Application unsupproted... Unable to open it");
+            error = 1;
             break;
     }
+
+    Edge(x, y, width, name);
 }
 
 void Window::CloseApplication(size_t x, size_t y, size_t width, size_t height)
@@ -177,14 +171,56 @@ void Window::Error(const char* message)
     GlobalRenderer->Next();
     GlobalRenderer->Print(message);
     GlobalRenderer->Next();
+    GlobalRenderer->Colour = DEFAULT;
 }
 
 
 /*                              PRIVATE                             */
+void Window::Edge(size_t x, size_t y, size_t width, const char* name)
+{
+    /* Declare a number of buttons */
+    int buttons = BUTTONS;
+
+    /* Check if there is an error */
+    if (error == 1)
+    {
+        goto end;
+    }
+
+    /* Deeclare a button positions*/
+    xbuttonclose = x + width - 30;
+    ybuttonclose = y;
+
+    xbuttonminus = x + width - 60;
+    ybuttonminus = y;
+
+    /* Draw a buttons */
+    BasicStuff->Rectangle(x, y, width, 30, EDGE_COLOR);
+
+    BasicStuff->Square(x + width - 30, y, 30, 30, 0xffff0000);
+    GlobalRenderer->CursorPosition2 = {x + width - 20, y + 5};
+    GlobalRenderer->Print("X", 2);
+
+    BasicStuff->Square(x + width - 60, y, 30, 30, 0xffff0000);
+    GlobalRenderer->CursorPosition2 = {x + width - 50, y + 5};
+    GlobalRenderer->Print("-", 2);
+
+    /* Print a application name */
+    GlobalRenderer->CursorPosition2 = {x + 10, y + 5};
+    GlobalRenderer->Print(name, 2);
+
+    end:
+        int number = 0;
+}
+
+void Window::AdvancedTaskbar()
+{
+    
+}
+
 void Window::OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color)
 {
     BasicStuff->Rectangle(x, y, width, height, color);
-    Edge(3, x, y, width, colour);
 
     Caluclator(x, y, winwidth, winheight);
 }

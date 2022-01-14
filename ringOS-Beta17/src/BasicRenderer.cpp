@@ -256,15 +256,20 @@ void BasicRenderer::PutChar(char chr)
     }
 }
 
-void BasicRenderer::TaskBar(uint32_t colour, int verticalScanline)
+void BasicRenderer::TaskBar()
 {
     uint64_t fbBase = (uint64_t)TargetFramebuffer->BaseAddress;
     uint64_t bytesPerScanline = TargetFramebuffer->PixelsPerScanLine * 4;
     uint64_t fbHeight = TargetFramebuffer->Height;
     uint64_t fbSize = TargetFramebuffer->BufferSize;
 
+    int verticalScanline = TargetFramebuffer->Height - 80;
 
-    for (verticalScanline; verticalScanline < fbHeight; verticalScanline ++)
+    uint32_t colour = TASKBAR_COLOR;
+    WindowStuff->taskbar_width = verticalScanline;
+    WindowStuff->taskbar_height = 80;
+
+    for (verticalScanline; verticalScanline < fbHeight; verticalScanline++)
     {
         uint64_t pixPtrBase = fbBase + (bytesPerScanline * verticalScanline);
         for (uint32_t* pixPtr = (uint32_t*)pixPtrBase; pixPtr < (uint32_t*)(pixPtrBase + bytesPerScanline); pixPtr ++)
