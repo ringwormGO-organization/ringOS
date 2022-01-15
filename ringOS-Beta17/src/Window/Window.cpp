@@ -18,7 +18,7 @@ void Basic::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t 
 
 void Basic::Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
 {
-    BasicStuff->Rectangle(x, y, width, height, colour);
+    Rectangle(x, y, width, height, colour);
 }
 
 
@@ -78,7 +78,7 @@ void Window::DrawStartMenu()
     switch (ResoWidth | ResoHeight)
     {
         case 1920 | 1080:
-            BasicStuff->Rectangle(0, 700, 300, 300, STARTMENU_COLOR);
+            Rectangle(0, 700, 300, 300, STARTMENU_COLOR);
             GlobalRenderer->Colour = 0xffff0000;
             GlobalRenderer->CursorPosition2 = {0, 895};
             GlobalRenderer->Print("CALCULATOR", 2);
@@ -87,7 +87,7 @@ void Window::DrawStartMenu()
             break;
 
         case 1366 | 768:
-            BasicStuff->Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
+            Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
             GlobalRenderer->Colour = 0xffff0000;
             GlobalRenderer->CursorPosition2 = {0, 588};
             GlobalRenderer->Print("CALCULATOR", 2);
@@ -96,7 +96,7 @@ void Window::DrawStartMenu()
             break;
 
         case 1024 | 768:
-            BasicStuff->Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
+            Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
             GlobalRenderer->Colour = 0xffff0000;
             GlobalRenderer->CursorPosition2 = {0, 588};
             GlobalRenderer->Print("CALCULATOR", 2);
@@ -117,13 +117,13 @@ void Window::ClearStartMenu()
     switch (ResoWidth | ResoHeight)
     {
         case 1920 | 1080:
-            BasicStuff->Rectangle(0, 700, 300, 300, 0x00000000);
+            Rectangle(0, 700, 300, 300, 0x00000000);
             break;
         case 1366 | 768:
-            BasicStuff->Rectangle(0, 388, 300, 300, 0x00000000);
+            Rectangle(0, 388, 300, 300, 0x00000000);
             break;
         case 1024 | 768:
-            BasicStuff->Rectangle(0, 388, 300, 300, 0x00000000);
+            Rectangle(0, 388, 300, 300, 0x00000000);
             break;
         default:
             Error("Unable to close Start Menu");
@@ -162,7 +162,7 @@ void Window::OpenApplication(int type, size_t x, size_t y, size_t width, size_t 
 
 void Window::CloseApplication(size_t x, size_t y, size_t width, size_t height)
 {
-    BasicStuff->Rectangle(x, y, width, height, 0x00000000);
+    Rectangle(x, y, width, height, 0x00000000);
 }
 
 void Window::Error(const char* message)
@@ -195,13 +195,13 @@ void Window::Edge(size_t x, size_t y, size_t width, const char* name)
     ybuttonminus = y;
 
     /* Draw a buttons */
-    BasicStuff->Rectangle(x, y, width, 30, EDGE_COLOR);
+    Rectangle(x, y, width, 30, EDGE_COLOR);
 
-    BasicStuff->Square(x + width - 30, y, 30, 30, 0xffff0000);
+    Square(x + width - 30, y, 30, 30, 0xffff0000);
     GlobalRenderer->CursorPosition2 = {x + width - 20, y + 5};
     GlobalRenderer->Print("X", 2);
 
-    BasicStuff->Square(x + width - 60, y, 30, 30, 0xffff0000);
+    Square(x + width - 60, y, 30, 30, 0xffff0000);
     GlobalRenderer->CursorPosition2 = {x + width - 50, y + 5};
     GlobalRenderer->Print("-", 2);
 
@@ -220,7 +220,7 @@ void Window::AdvancedTaskbar()
 
 void Window::OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color)
 {
-    BasicStuff->Rectangle(x, y, width, height, color);
+    Rectangle(x, y, width, height, color);
 
     Caluclator(x, y, winwidth, winheight);
 }
@@ -229,16 +229,16 @@ void Window::Caluclator(size_t x, size_t y, size_t width, size_t height)
 {
     for (int i = 40; i < 160; i+=40)
     {
-        BasicStuff->Square(x + i, y + 80, 30, 30, WHITE);
+        Square(x + i, y + 80, 30, 30, WHITE);
     }
 
     for (int i = 40; i < 160; i+=40)
     {
-        BasicStuff->Square(x + i, y + 112, 30, 30, WHITE);
+        Square(x + i, y + 112, 30, 30, WHITE);
     }
 
     for (int i = 40; i < 160; i+=40)
     {
-        BasicStuff->Square(x + i, y + 144, 30, 30, WHITE);
+        Square(x + i, y + 144, 30, 30, WHITE);
     }
 }

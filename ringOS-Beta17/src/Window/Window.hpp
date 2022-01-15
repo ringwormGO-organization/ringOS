@@ -24,7 +24,7 @@ class Basic
         void Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour);
 };
 
-class Window
+class Window : Basic
 {
     public:
         bool StartMenuStatus;
