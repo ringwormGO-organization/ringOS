@@ -21,10 +21,12 @@ Unzip the downloaded Zip folder and navigate to the contents in your Terminal (L
 --------------------------------------------------------------------------------------------------------------------------------
 For compiling Beta version.
 
-`git clone https://github.com/VanGutan/gnu-efi-files` 
+`git clone https://github.com/VanGutan/gnu-efi` 
 
-Create one ringOS folder, this cloned repo rename as `gnu-efi`, `ringOS-beta17` rename as `kernel` and clone `git clone https://github.com/VanGutan/ringOS-Beta14-OVMFTemplate` and rename as `OVMFbin`.
+Create one ringOS folder, clone `gnu-efi`, `ringOS-beta17` rename as `kernel` and clone `git clone https://github.com/VanGutan/ringOS-Beta14-OVMFTemplate` and rename as `OVMFbin`.
 Copy `ringOS-Beta17-bootloader` folder into `gnu-efi` folder and rename it to `bootloader`.
+
+For cloning bootloader, you can [Makefile](https://github.com/ringwormGO-organization/ringOS/blob/main/Makefile)
 
 ### Compiling
 The following commands work on Debian-based (ex. Ubuntu) Linux distros and within WSL/WSL2 on Windows. Users of non-Debian distros will need to locate the correct packages for their chosen operating system.
