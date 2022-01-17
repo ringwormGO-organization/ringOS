@@ -104,7 +104,7 @@ Beta16 version image of ringOS
 - [ ] Book
 - [ ] Networking
 - [x] Own build tool
-- [ ] Real hardware support
+- [x] Real hardware support
 - [x] PCI
 - [ ] PCIe
 - [x] SMBIOS
@@ -119,7 +119,7 @@ Beta16 version image of ringOS
 ### Real hardware
 Firmware: UEFI x86_64 PC
 
-RAM: Uncertain, but we recommend 3GB of RAM based on testing 
+RAM: Uncertain, but we recommend 3GB of RAM based on testing, 1 GB minimum
 
 ### In emulator
 Qemu: 38MB RAM min, 3GB recommended
