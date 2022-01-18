@@ -34,6 +34,16 @@ FunctionCall(arg1,
              arg3);
 ```
 
+When making new functions, use an return type.
+Right:
+```
+int func() {}
+```
+Wrong:
+```
+func() {}
+```
+
 ### Spacing
 1. Do not use spaces around unary operators.
 
