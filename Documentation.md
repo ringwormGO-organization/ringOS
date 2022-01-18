@@ -455,12 +455,8 @@ Wrong:
 ```
 
 ### Null, false and 0
-
 1. The null pointer should be written as NULL.
 2. In the rare case that your environment recommends a different null pointer (e.g. C++11 nullptr), you may use this one of course. Just don’t use the value 0.
-3. Win32/NT Boolean values should be written as TRUE and FALSE.
-4. In the rare case that you use C/C++ bool variables, you should write them as true and false.
-5. When you need to terminate ANSI or OEM string, or check for its terminator, use ANSI_NULL. If the string is Unicode or Wide string, use UNICODE_NULL.
 
 ### Notes on reformatting existing code
 1. Never totally reformat a file and put a code change into it. Do this in separate commits.
