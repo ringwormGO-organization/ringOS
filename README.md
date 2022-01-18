@@ -83,7 +83,7 @@ Beta16 version image of ringOS
 
 ### GUI - Windowing system
 - [x] Framebuffer windowing-system
-- [x] BMP images
+- [ ] BMP images
 - [ ] TGA images
 - [ ] Put GUI as process
 - [ ] Own scripting language for GUI
