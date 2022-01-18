@@ -62,7 +62,7 @@ buildimg:
 	mcopy -i $(BUILDDIR)/$(OSNAME).img startup.nsh ::
 	mcopy -i $(BUILDDIR)/$(OSNAME).img $(BUILDDIR)/kernel.elf ::
 	mcopy -i $(BUILDDIR)/$(OSNAME).img $(BUILDDIR)/zap-light16.psf ::
-	mcopy -i $(BUILDDIR)/$(OSNAME).img $(BUILDDIR)/Test.bmp ::
+	mcopy -i $(BUILDDIR)/$(OSNAME).img $(BUILDDIR)/Picture.bmp ::
 
 run:
 	qemu-system-x86_64 -machine q35 -drive file=$(BUILDDIR)/$(OSNAME).img -m 3G -cpu qemu64 -drive if=pflash,format=raw,unit=0,file="$(OVMFDIR)/OVMF_CODE-pure-efi.fd",readonly=on -drive if=pflash,format=raw,unit=1,file="$(OVMFDIR)/OVMF_VARS-pure-efi.fd" -net none
