@@ -144,4 +144,4 @@ ______________________
 
 Thank you for choosing ringOS
 
-© ringwormGO 2021
+© ringwormGO 2022
