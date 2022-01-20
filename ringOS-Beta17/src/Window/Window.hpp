@@ -52,9 +52,7 @@ class Window : Basic
         size_t ybuttonclose;
         size_t xbuttonminus;
         size_t ybuttonminus;
-
-        void DrawBMPPicture();
-
+        
         void DrawStartMenu();
         void ClearStartMenu();
 

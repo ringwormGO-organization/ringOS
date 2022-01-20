@@ -3,6 +3,9 @@
 #include "scheduling/pit/pit.hpp"
 #include "Window/Window.hpp"
 
+using namespace Renderer;
+using namespace PIT;
+
 extern "C" void _start(BootInfo* bootInfo)
 {
     KernelInfo kernelInfo = InitializeKernel(bootInfo);
@@ -10,16 +13,17 @@ extern "C" void _start(BootInfo* bootInfo)
     uint64_t ResoWidth = (uint64_t)bootInfo->framebuffer->Width;
     uint64_t ResoHeight = (uint64_t)bootInfo->framebuffer->Height;
 
-    //WindowStuff->DrawBMPPicture(); 
 
     //for Start Menu
     WindowStuff->Width(ResoWidth);
     WindowStuff->Height(ResoHeight);
 
     //Clear
-    PIT::Sleep(20000);
+    Sleep(20000);
     GlobalRenderer->ClearColour = 0x00000000;
     GlobalRenderer->Clear();
+
+    GlobalRenderer->BMPPicture();
 
     //taskbar
     switch (ResoWidth | ResoHeight)
@@ -54,15 +58,15 @@ extern "C" void _start(BootInfo* bootInfo)
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
 	GlobalRenderer->Next();
-	GlobalRenderer->Print("Welcome to ringOS!!\n", 1);
+	GlobalRenderer->printf("Welcome to ringOS!!\n");
 
 	GlobalRenderer->Colour = 0xffffff00;
 
 	//Resolution
-    GlobalRenderer->Print("Resolution: ", 1);
-    GlobalRenderer->Print(to_string((uint64_t)ResoWidth), 1);
-    GlobalRenderer->Print(" x ", 1);
-    GlobalRenderer->Print(to_string((uint64_t)ResoHeight), 1);
+    GlobalRenderer->printf("Resolution: ");
+    GlobalRenderer->printf(to_string((uint64_t)ResoWidth));
+    GlobalRenderer->printf(" x ");
+    GlobalRenderer->printf(to_string((uint64_t)ResoHeight));
 
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();

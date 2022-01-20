@@ -5,9 +5,12 @@
 #include "IO.hpp"
 #include "memory/heap.hpp"
 
+using namespace Renderer;
+
 KernelInfo kernelInfo;
 
-void PrepareMemory(BootInfo* bootInfo){
+void PrepareMemory(BootInfo* bootInfo)
+{
     uint64_t mMapEntries = bootInfo->mMapSize / bootInfo->mMapDescSize;
 
     GlobalAllocator = PageFrameAllocator();
@@ -40,7 +43,8 @@ void PrepareMemory(BootInfo* bootInfo){
 }
 
 IDTR idtr;
-void SetIDTGate(void* handler, uint8_t entryOffset, uint8_t type_attr, uint8_t selector){
+void SetIDTGate(void* handler, uint8_t entryOffset, uint8_t type_attr, uint8_t selector)
+{
 
     IDTDescEntry* interrupt = (IDTDescEntry*)(idtr.Offset + entryOffset * sizeof(IDTDescEntry));
     interrupt->SetOffset((uint64_t)handler);
@@ -48,7 +52,8 @@ void SetIDTGate(void* handler, uint8_t entryOffset, uint8_t type_attr, uint8_t s
     interrupt->selector = selector;
 }
 
-void PrepareInterrupts(){
+void PrepareInterrupts()
+{
     idtr.Limit = 0x0FFF;
     idtr.Offset = (uint64_t)GlobalAllocator.RequestPage();
 
@@ -65,7 +70,8 @@ void PrepareInterrupts(){
     RemapPIC();
 }
 
-void PrepareACPI(BootInfo* bootInfo){
+void PrepareACPI(BootInfo* bootInfo)
+{
     ACPI::SDTHeader* xsdt = (ACPI::SDTHeader*)(bootInfo->rsdp->XSDTAddress);
     
     ACPI::MCFGHeader* mcfg = (ACPI::MCFGHeader*)ACPI::FindTable(xsdt, (char*)"MCFG");
@@ -73,9 +79,10 @@ void PrepareACPI(BootInfo* bootInfo){
     PCI::EnumeratePCI(mcfg);
 }
 
-BasicRenderer r = BasicRenderer(NULL, NULL);
-KernelInfo InitializeKernel(BootInfo* bootInfo){
-    r = BasicRenderer(bootInfo->framebuffer, bootInfo->psf1_Font);
+BasicRenderer r = BasicRenderer(NULL, NULL, NULL);
+KernelInfo InitializeKernel(BootInfo* bootInfo)
+{
+    r = BasicRenderer(bootInfo->framebuffer, bootInfo->psf1_Font, bootInfo->bmpImage);
     GlobalRenderer = &r;
 
     GDTDescriptor gdtDescriptor;

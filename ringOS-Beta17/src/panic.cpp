@@ -7,6 +7,8 @@
 #include "BasicRenderer.hpp"
 #include "paging/PageFrameAllocator.hpp"
 
+using namespace Renderer;
+
 void Panic(const char* panicMessage)
 {
     GlobalRenderer->ClearColour = 0xff00ffff;

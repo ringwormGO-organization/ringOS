@@ -1,5 +1,6 @@
 #include "keyboard.hpp"
 
+using namespace Renderer;
 
 namespace QWERTYKeyboard 
 {
@@ -40,9 +41,11 @@ bool isCapsLockPressed;
 
 char command[20];
 
-void HandleKeyboard(uint8_t scancode){
+void HandleKeyboard(uint8_t scancode)
+{
 
-    switch (scancode){
+    switch (scancode)
+    {
         case LeftShift:
             isLeftShiftPressed = true;
             return;

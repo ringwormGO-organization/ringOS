@@ -3,7 +3,8 @@
 
 namespace PCI
 {
-    const char* DeviceClasses[] {
+    const char* DeviceClasses[] 
+    {
         "Unclassified",
         "Mass Storage Controller",
         "Network Controller",
@@ -28,7 +29,8 @@ namespace PCI
 
     const char* GetVendorName(uint16_t vendorID)
     {
-        switch (vendorID){
+        switch (vendorID)
+        {
             case 0x8086:
                 return "Intel Corp";
             case 0x1022:
@@ -41,9 +43,11 @@ namespace PCI
 
     const char* GetDeviceName(uint16_t vendorID, uint16_t deviceID)
     {
-        switch (vendorID){
+        switch (vendorID)
+        {
             case 0x8086: // Intel
-                switch(deviceID){
+                switch(deviceID)
+                {
                     case 0x29C0:
                         return "Express DRAM Controller";
                     case 0x2918:
@@ -59,7 +63,8 @@ namespace PCI
 
     const char* MassStorageControllerSubclassName(uint8_t subclassCode)
     {
-        switch (subclassCode){
+        switch (subclassCode)
+        {
             case 0x00:
                 return "SCSI Bus Controller";
             case 0x01:
@@ -86,7 +91,8 @@ namespace PCI
 
     const char* SerialBusControllerSubclassName(uint8_t subclassCode)
     {
-        switch (subclassCode){
+        switch (subclassCode)
+        {
             case 0x00:
                 return "FireWire (IEEE 1394) Controller";
             case 0x01:
@@ -115,7 +121,8 @@ namespace PCI
 
     const char* BridgeDeviceSubclassName(uint8_t subclassCode)
     {
-        switch (subclassCode){
+        switch (subclassCode)
+        {
             case 0x00:
                 return "Host Bridge";
             case 0x01:
@@ -146,11 +153,13 @@ namespace PCI
 
     const char* GetSubclassName(uint8_t classCode, uint8_t subclassCode)
     {
-        switch (classCode){
+        switch (classCode)
+        {
             case 0x01:
                 return MassStorageControllerSubclassName(subclassCode);
             case 0x03:
-                switch (subclassCode){
+                switch (subclassCode)
+                {
                     case 0x00:
                         return "VGA Compatible Controller";
                 }
@@ -164,11 +173,14 @@ namespace PCI
 
     const char* GetProgIFName(uint8_t classCode, uint8_t subclassCode, uint8_t progIF)
     {
-        switch (classCode){
+        switch (classCode)
+        {
             case 0x01:
-                switch (subclassCode){
+                switch (subclassCode)
+                {
                     case 0x06:
-                        switch (progIF){
+                        switch (progIF)
+                        {
                             case 0x00:
                                 return "Vendor Specific Interface";
                             case 0x01:
@@ -178,7 +190,8 @@ namespace PCI
                         }
                 }
             case 0x03:
-                switch (subclassCode){
+                switch (subclassCode)
+                {
                     case 0x00:
                         switch (progIF){
                             case 0x00:
@@ -188,9 +201,11 @@ namespace PCI
                         }
                 }
             case 0x0C:
-                switch (subclassCode){
+                switch (subclassCode)
+                {
                     case 0x03:
-                        switch (progIF){
+                        switch (progIF)
+                        {
                             case 0x00:
                                 return "UHCI Controller";
                             case 0x10:

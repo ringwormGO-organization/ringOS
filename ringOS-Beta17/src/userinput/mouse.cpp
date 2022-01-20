@@ -1,5 +1,7 @@
 #include "mouse.hpp"
 
+using namespace Renderer;
+
 uint8_t cursor[]
 {
     0b10000000, 0b00000000,

@@ -5,6 +5,8 @@ Window* WindowStuff;
 
 BootInfo* bootInfo;
 
+using namespace Renderer;
+
 void Basic::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
 {
     for (size_t y1 = y; y1 < y + height; y1++)
@@ -46,31 +48,6 @@ uint64_t Window::Width(uint64_t width)
 uint64_t Window::Height(uint64_t height)
 {
     return ResoHeight = height;
-}
-
-void Window::DrawBMPPicture() //don't call this function, cause Page Fault
-{
-    //GlobalRenderer->CursorPosition = {-20, -20};
-
-    if (bootInfo->bmpImage->height != bootInfo->framebuffer->Height || bootInfo->bmpImage->width != bootInfo->framebuffer->Width)
-    {
-        uint32_t previousColour = GlobalRenderer->Colour;
-        GlobalRenderer->Colour = 0xffff0000;
-        GlobalRenderer->Print("BMP image is not the same resolution as the screen resolution!");
-        GlobalRenderer->Next();
-        GlobalRenderer->Colour= previousColour;
-    }
-
-    // Bottom-up rendering
-    for (unsigned int y = 0; y < bootInfo->bmpImage->height; ++y)
-    {
-        for (unsigned int x = 0; x < bootInfo->bmpImage->width; ++x)
-        {
-            unsigned int* framebufferPtr = bootInfo->framebuffer->BaseAddress + bootInfo->bmpImage->width * y + x;
-            unsigned int* pixPtr = bootInfo->bmpImage->bitmapBuffer + (bootInfo->bmpImage->height - 1 - y) * bootInfo->bmpImage->width + x;
-            *framebufferPtr = *pixPtr;
-        }
-    }
 }
 
 void Window::DrawStartMenu()
@@ -118,12 +95,18 @@ void Window::ClearStartMenu()
     {
         case 1920 | 1080:
             Rectangle(0, 700, 300, 300, 0x00000000);
+            GlobalRenderer->BMPPicture();
+            GlobalRenderer->TaskBar();
             break;
         case 1366 | 768:
             Rectangle(0, 388, 300, 300, 0x00000000);
+            GlobalRenderer->BMPPicture();
+            GlobalRenderer->TaskBar();
             break;
         case 1024 | 768:
             Rectangle(0, 388, 300, 300, 0x00000000);
+            GlobalRenderer->BMPPicture();
+            GlobalRenderer->TaskBar();
             break;
         default:
             Error("Unable to close Start Menu");

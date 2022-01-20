@@ -2,6 +2,8 @@
 #include "ahci/ahci.hpp"
 #include "memory/heap.hpp"
 
+using namespace Renderer;
+
 namespace PCI
 {
 

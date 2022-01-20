@@ -1,16 +1,17 @@
 #include "smbios.h"
 
+using namespace Renderer;
+
 SMBiosHeader* hdr;
 
-void SMBiosParse()
+void SMBiosParse(SMBiosHeader* hdr)
 {
     SMBiosEntry* entry = (SMBiosEntry*)((uint64_t)hdr->TableAddress);
-    GlobalRenderer->Print("SMBIOS entries: ");
-    GlobalRenderer->Print(to_hstring((uint16_t)hdr->TableLength));
+    GlobalRenderer->printf("SMBios entries: %u\n",hdr->TableLength);
     for(int i = 0; i<hdr->TableLength; i++)
     {
-        GlobalRenderer->Print(to_hstring((uint8_t)entry->Type));
+        GlobalRenderer->printf("%u ",entry->Type);
         entry += entry->Lenght+sizeof(SMBiosEntry);
     }
-    GlobalRenderer->Print("\n");
+    GlobalRenderer->printf("\n");
 }
