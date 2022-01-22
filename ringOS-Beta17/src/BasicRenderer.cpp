@@ -1,5 +1,7 @@
 #include "BasicRenderer.hpp"
 
+using namespace GUI;
+
 namespace Renderer
 {
     BasicRenderer* GlobalRenderer;
@@ -345,6 +347,7 @@ namespace Renderer
         va_end(ap);
     }
 
+    TaskBar taskbar;
     void BasicRenderer::TaskBar()
     {
         uint64_t fbBase = (uint64_t)TargetFramebuffer->BaseAddress;
@@ -355,8 +358,8 @@ namespace Renderer
         int verticalScanline = TargetFramebuffer->Height - 80;
 
         uint32_t colour = TASKBAR_COLOR;
-        WindowStuff->taskbar_width = verticalScanline;
-        WindowStuff->taskbar_height = 80;
+        taskbar.taskbar_width = verticalScanline;
+        taskbar.taskbar_height = 80;
 
         for (verticalScanline; verticalScanline < fbHeight; verticalScanline++)
         {
@@ -366,11 +369,22 @@ namespace Renderer
                 *pixPtr = colour;
             }
         }
+
+        CursorPosition = {0, verticalScanline};
     }
 
-    void BasicRenderer::BMPPicture()
+    int BasicRenderer::BMPPicture()
     {
         GlobalRenderer->CursorPosition = {-20, -20};
+
+        if (TargetFramebuffer->Width == 1920 && TargetFramebuffer->Height == 1080)
+        {
+
+        }
+        else
+        {
+            return -1;
+        }
 
         if (BMPimage->height != TargetFramebuffer->Height || BMPimage->width != TargetFramebuffer->Width)
         {
@@ -391,5 +405,7 @@ namespace Renderer
                 *framebufferPtr = *pixPtr;
             }
         }
+
+        return 0;
     }
 }

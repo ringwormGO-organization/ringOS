@@ -1,6 +1,7 @@
 #include "mouse.hpp"
 
 using namespace Renderer;
+using namespace GUI;
 
 uint8_t cursor[]
 {
@@ -181,194 +182,208 @@ void ProcessMousePacket()
         MousePositionOld = MousePosition;
 }
 
-void Draw()
+namespace GUI
 {
-    if (MousePosition.X < 0) MousePosition.X = 0;
-    if (MousePosition.X > GlobalRenderer->TargetFramebuffer->Width-1) MousePosition.X = GlobalRenderer->TargetFramebuffer->Width-1;
+    window win2;
+    SubMenu sub;
 
-    if (MousePosition.Y < 0) MousePosition.Y = 0;
-    if (MousePosition.Y > GlobalRenderer->TargetFramebuffer->Height-1) MousePosition.Y = GlobalRenderer->TargetFramebuffer->Height-1;
-
-    
-    GlobalRenderer->DrawOverlayMouseCursor(cursor, MousePosition, 0xffffffff);
-
-    if (MousePacket[0] & PS2Leftbutton)
+    void Draw()
     {
-        switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+        if (MousePosition.X < 0) MousePosition.X = 0;
+        if (MousePosition.X > GlobalRenderer->TargetFramebuffer->Width-1) MousePosition.X = GlobalRenderer->TargetFramebuffer->Width-1;
+
+        if (MousePosition.Y < 0) MousePosition.Y = 0;
+        if (MousePosition.Y > GlobalRenderer->TargetFramebuffer->Height-1) MousePosition.Y = GlobalRenderer->TargetFramebuffer->Height-1;
+
+        
+        GlobalRenderer->DrawOverlayMouseCursor(cursor, MousePosition, 0xffffffff);
+
+        if (MousePacket[0] & PS2Leftbutton)
         {
-            case 1920 | 1080:
-                if (MousePosition.Y >= 1000 && MousePosition.X <= 100)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
+            switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+            {
+                case 1920 | 1080:
+                    if (MousePosition.Y >= 1000 && MousePosition.X <= 100)
                     {
-                        WindowStuff->ClearStartMenu();
-                        WindowStuff->StartMenuStatus = false;
-                    }
-                    else
-                    {
-                        WindowStuff->DrawStartMenu();
-                        WindowStuff->StartMenuStatus = true;
-                    }
-                }
-                else if (MousePosition.Y > WindowStuff->ybuttonclose 
-                && MousePosition.Y < WindowStuff->ybuttonclose + 20 && MousePosition.X > WindowStuff->xbuttonclose && MousePosition.X < WindowStuff->xbuttonclose + 20)
-                {
-                    WindowStuff->CloseApplication(300, 300, 300, 300);
-                }
-                
-                
-
-            case 1366 | 768:
-                if (MousePosition.Y >= 650 && MousePosition.X <= 100)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
-                    {
-                        WindowStuff->ClearStartMenu();
-                        WindowStuff->StartMenuStatus = false;
-                    }
-                    else
-                    {
-                        WindowStuff->DrawStartMenu();
-                        WindowStuff->StartMenuStatus = true;
-                    }   
-                }
-                else if (MousePosition.Y > WindowStuff->ybuttonclose 
-                && MousePosition.Y < WindowStuff->ybuttonclose + 20 && MousePosition.X > WindowStuff->xbuttonclose && MousePosition.X < WindowStuff->xbuttonclose + 20)
-                {
-                    WindowStuff->CloseApplication(300, 300, 300, 300);
-                }
-
-            case 1024 | 768:
-                if (MousePosition.Y >= 650 && MousePosition.X <= 100)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
-                    {
-                        WindowStuff->ClearStartMenu();
-                        WindowStuff->StartMenuStatus = false;
-                    }
-                    else
-                    {
-                        WindowStuff->DrawStartMenu();
-                        WindowStuff->StartMenuStatus = true;
-                    }
-                }
-                else if (MousePosition.Y > WindowStuff->ybuttonclose 
-                && MousePosition.Y < WindowStuff->ybuttonclose + 20 && MousePosition.X > WindowStuff->xbuttonclose && MousePosition.X < WindowStuff->xbuttonclose + 20)
-                {
-                    WindowStuff->CloseApplication(300, 300, 300, 300);
-                }
-            
-            default:
-                break;
-        }
-    }
-    if (MousePacket[0] & PS2Middlebutton)
-    {
-        /*uint32_t colour = GlobalRenderer->Colour;
-        GlobalRenderer->Colour = 0xffff0000;
-        GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
-        GlobalRenderer->Colour = colour;*/
-
-
-        GlobalRenderer->Print((to_string(MousePosition.Y)), 1);
-        GlobalRenderer->Print("|", 1);
-        GlobalRenderer->Print((to_string(MousePosition.X)), 1);
-        GlobalRenderer->Print(" ", 1);
-    }
-
-    if (MousePacket[0] & PS2Rightbutton)
-    {
-        /*uint32_t colour = GlobalRenderer->Colour;
-        GlobalRenderer->Colour = 0x0000ff00;
-        GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
-        GlobalRenderer->Colour = colour;*/
-
-
-        switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
-        {
-            case 1920 | 1080:
-                if (MousePosition.Y >= 895 && MousePosition.Y <= 905)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
-                    {
-                        if (MousePosition.X <= 88)
+                        if (WindowStuff->StartMenuStatus == true)
                         {
-                            WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
-                            break;
+                            WindowStuff->ClearStartMenu();
+                            WindowStuff->StartMenuStatus = false;
+                        }
+                        else
+                        {
+                            WindowStuff->DrawStartMenu();
+                            WindowStuff->StartMenuStatus = true;
                         }
                     }
-                }
-
-                else if (MousePosition.Y >= 925 && MousePosition.Y <= 930)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
+                    else if (MousePosition.Y > win2.ybuttonclose 
+                    && MousePosition.Y < win2.ybuttonclose + 20 && MousePosition.X > win2.xbuttonclose && MousePosition.X < win2.xbuttonclose + 20)
                     {
-                        if (MousePosition.X <= 88)
-                        {
-                            Shutdown();
-                            break;
-                        }
+                        WindowStuff->CloseApplication(300, 300, 300, 300);
                     }
-                }
-
-            case 1366 | 768:
-                if (MousePosition.Y >= 580 && MousePosition.Y <= 590)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
-                    {
-                        if (MousePosition.X <= 88)
-                        {
-                            WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
-                            break;
-                        }
-                    }
-                }
-
-                else if (MousePosition.Y >= 625 && MousePosition.Y <= 635)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
-                    {
-                        if (MousePosition.X <= 88)
-                        {
-                            Shutdown();
-                            break;
-                        }
-                    }
-                }
-
                     
-            case 1024 | 768:
-                if (MousePosition.Y >= 580 && MousePosition.Y <= 590)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
-                    {
-                        if (MousePosition.X <= 88)
-                        {
-                            WindowStuff->OpenApplication(2, 300, 300, 300, 300, 0xffcc0000);
-                            break;
-                        }
-                    }
-                }
+                    
 
-                else if (MousePosition.Y >= 625 && MousePosition.Y <= 635)
-                {
-                    if (WindowStuff->StartMenuStatus == true)
+                case 1366 | 768:
+                    if (MousePosition.Y >= 650 && MousePosition.X <= 100)
                     {
-                        if (MousePosition.X <= 88)
+                        if (WindowStuff->StartMenuStatus == true)
                         {
-                            Shutdown();
-                            break;
+                            WindowStuff->ClearStartMenu();
+                            WindowStuff->StartMenuStatus = false;
+                        }
+                        else
+                        {
+                            WindowStuff->DrawStartMenu();
+                            WindowStuff->StartMenuStatus = true;
+                        }   
+                    }
+                    else if (MousePosition.Y > win2.ybuttonclose 
+                    && MousePosition.Y < win2.ybuttonclose + 20 && MousePosition.X > win2.xbuttonclose && MousePosition.X < win2.xbuttonclose + 20)
+                    {
+                        WindowStuff->CloseApplication(300, 300, 300, 300);
+                    }
+
+                case 1024 | 768:
+                    if (MousePosition.Y >= 650 && MousePosition.X <= 100)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            WindowStuff->ClearStartMenu();
+                            WindowStuff->StartMenuStatus = false;
+                        }
+                        else
+                        {
+                            WindowStuff->DrawStartMenu();
+                            WindowStuff->StartMenuStatus = true;
                         }
                     }
-                }
-            
-            default:
-                break;
+                    else if (MousePosition.Y > win2.ybuttonclose 
+                    && MousePosition.Y < win2.ybuttonclose + 20 && MousePosition.X > win2.xbuttonclose && MousePosition.X < win2.xbuttonclose + 20)
+                    {
+                        WindowStuff->CloseApplication(300, 300, 300, 300);
+                    }
+                
+                default:
+                    break;
+            }
         }
-    }
+        if (MousePacket[0] & PS2Middlebutton)
+        {
+            /*uint32_t colour = GlobalRenderer->Colour;
+            GlobalRenderer->Colour = 0xffff0000;
+            GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
+            GlobalRenderer->Colour = colour;*/
 
-    MousePacketReady = false;
-    MousePositionOld = MousePosition;
+
+            GlobalRenderer->Print((to_string(MousePosition.Y)), 1);
+            GlobalRenderer->Print("|", 1);
+            GlobalRenderer->Print((to_string(MousePosition.X)), 1);
+            GlobalRenderer->Print(" ", 1);
+        }
+
+        if (MousePacket[0] & PS2Rightbutton)
+        {
+            /*uint32_t colour = GlobalRenderer->Colour;
+            GlobalRenderer->Colour = 0x0000ff00;
+            GlobalRenderer->PutChar('a', MousePosition.X, MousePosition.Y);
+            GlobalRenderer->Colour = colour;*/
+
+
+            switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+            {
+                case 1920 | 1080:
+                    if (MousePosition.Y >= 895 && MousePosition.Y <= 905)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            if (MousePosition.X <= 88)
+                            {
+                                WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
+                                break;
+                            }
+                        }
+                    }
+
+                    else if (MousePosition.Y >= 925 && MousePosition.Y <= 930)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            if (MousePosition.X <= 88)
+                            {
+                                WindowStuff->DrawSubMenu(2);
+                                break;
+                            }
+                        }
+                    }
+
+                case 1366 | 768:
+                    if (MousePosition.Y >= 580 && MousePosition.Y <= 590)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            if (MousePosition.X <= 42)
+                            {
+                                WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
+                                break;
+                            }
+                        }
+                    }
+
+                    else if (MousePosition.Y >= 625 && MousePosition.Y <= 635)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            if (MousePosition.X <= 42)
+                            {
+                                WindowStuff->DrawSubMenu(2);
+                                break;
+                            }
+                        }
+                    }
+
+                        
+                case 1024 | 768:
+                    if (MousePosition.Y >= 580 && MousePosition.Y <= 590)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            if (MousePosition.X <= 88)
+                            {
+                                WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
+                                break;
+                            }
+                        }
+                    }
+
+                    else if (MousePosition.Y >= 625 && MousePosition.Y <= 635)
+                    {
+                        if (WindowStuff->StartMenuStatus == true)
+                        {
+                            if (MousePosition.X <= 42)
+                            {
+                                WindowStuff->DrawSubMenu(2);
+                                
+                                if (MousePosition.Y >= sub.y - 5 && MousePosition.Y <= sub.y + 30)
+                                {
+                                    if (MousePosition.X >= sub.x + 75 && MousePosition.X <= sub.x + 85)
+                                    {
+                                        Shutdown();
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                
+                default:
+                    break;
+            }
+        }
+
+        MousePacketReady = false;
+        MousePositionOld = MousePosition;
+    }
 }
 
 void Clear()

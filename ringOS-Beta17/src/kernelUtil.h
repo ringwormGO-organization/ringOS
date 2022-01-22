@@ -17,7 +17,8 @@
 #include "pci.hpp"
 #include "smbios.h"
 
-struct BootInfo {
+struct BootInfo 
+{
 	Framebuffer* framebuffer;
 	PSF1_FONT* psf1_Font;
 	BMPImage* bmpImage;
@@ -31,7 +32,8 @@ struct BootInfo {
 extern uint64_t _KernelStart;
 extern uint64_t _KernelEnd;
 
-struct KernelInfo {
+struct KernelInfo 
+{
     PageTableManager* pageTableManager;
 };
 

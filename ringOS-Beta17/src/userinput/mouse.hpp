@@ -17,6 +17,11 @@ extern uint8_t cursor2[];
 void InitPS2Mouse();
 void HandlePS2Mouse(uint8_t data);
 void ProcessMousePacket();
-void Draw();
+
+namespace GUI
+{
+    void Draw();
+}
+
 void Clear();
 extern Point MousePosition;

@@ -40,7 +40,7 @@ namespace Renderer
         void ClearMouseCursor(uint8_t* cursor, Point position);
         bool MouseDrawn;
         void TaskBar();
-        void BMPPicture();
+        int BMPPicture();
     };
 
     extern BasicRenderer* GlobalRenderer;

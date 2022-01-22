@@ -2,9 +2,12 @@
 #include "memory/heap.hpp"
 #include "scheduling/pit/pit.hpp"
 #include "Window/Window.hpp"
+#include "test.h"
 
 using namespace Renderer;
+using namespace GUI;
 using namespace PIT;
+
 
 extern "C" void _start(BootInfo* bootInfo)
 {
@@ -31,27 +34,24 @@ extern "C" void _start(BootInfo* bootInfo)
         case 1920 | 1080:
             GlobalRenderer->TaskBar();
             GlobalRenderer->Colour = 0x00ff0000;
-            GlobalRenderer->CursorPosition = {0, 1000};
-            GlobalRenderer->Print("START");
             break;
         
         case 1366 | 768:
             GlobalRenderer->TaskBar();
             GlobalRenderer->Colour = 0x00ff0000;
-            GlobalRenderer->CursorPosition = {0, 688};
-            GlobalRenderer->Print("START");
             break;
 
         case 1024 | 768:
             GlobalRenderer->TaskBar();
             GlobalRenderer->Colour = 0x00ff0000;
-            GlobalRenderer->CursorPosition = {0, 688};
-            GlobalRenderer->Print("START");
             break;
 
         default:
             break;
     }
+
+    GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
+    GlobalRenderer->Print("START");
 
     GlobalRenderer->CursorPosition = {0, 0};
 
@@ -66,7 +66,7 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->printf("Resolution: ");
     GlobalRenderer->printf(to_string((uint64_t)ResoWidth));
     GlobalRenderer->printf(" x ");
-    GlobalRenderer->printf(to_string((uint64_t)ResoHeight));
+    GlobalRenderer->Print(to_string((uint64_t)ResoHeight));
 
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();
