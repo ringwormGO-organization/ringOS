@@ -23,7 +23,7 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->ClearColour = 0x00000000;
     GlobalRenderer->Clear();
 
-    GlobalRenderer->BMPPicture();
+    if(ResoWidth >= 1920 && ResoHeight >= 1080) GlobalRenderer->BMPPicture();
 
     //taskbar
     switch (ResoWidth | ResoHeight)
