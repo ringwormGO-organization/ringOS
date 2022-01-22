@@ -12,6 +12,7 @@ sudo apt-get install build-essential mtools && echo build-essential mtools insat
 sudo apt-get install nasm && echo NASM insatlled successfully || echo FAILED to install nasm
 sudo apt-get install qemu-system-x86 && echo Qemu insatlled successfully || echo FAILED to install Qemu
 sudo apt-get install git && echo git insatlled successfully || echo FAILED to install git
+sudo apt-get install lld && echo lld installed successfully || echo FAILED to install lld
 
 mkdir "ringOS-stable" && echo ringOS-stable directory successfully created || echo FAILED to create ringOS directory
 
