@@ -276,9 +276,9 @@ namespace GUI
             GlobalRenderer->Colour = colour;*/
 
 
-            GlobalRenderer->Print((to_string(MousePosition.Y)), 1);
+            GlobalRenderer->Print((to_string(MousePosition.X)));
             GlobalRenderer->Print("|", 1);
-            GlobalRenderer->Print((to_string(MousePosition.X)), 1);
+            GlobalRenderer->Print((to_string(MousePosition.Y)));
             GlobalRenderer->Print(" ", 1);
         }
 
@@ -364,12 +364,37 @@ namespace GUI
                             {
                                 WindowStuff->DrawSubMenu(2);
                                 
-                                if (MousePosition.Y >= sub.y - 5 && MousePosition.Y <= sub.y + 30)
+                                switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
                                 {
-                                    if (MousePosition.X >= sub.x + 75 && MousePosition.X <= sub.x + 85)
-                                    {
-                                        Shutdown();
-                                    }
+                                    case 1920 | 1080:
+                                        break;
+
+                                    case 1366 | 768:
+                                        break;
+                                    case 1024 | 768:
+                                        if (MousePosition.Y > 622 && MousePosition.Y < 650
+                                        && MousePosition.X > 75 && MousePosition.X < 200)
+                                        {
+                                            Shutdown();
+                                        }
+                                        else if (MousePosition.Y > 651 && MousePosition.Y < 680
+                                        && MousePosition.X < 200)
+                                        {
+                                            Reboot();
+                                        }
+                                        else if (MousePosition.Y > 685 && MousePosition.Y < 700
+                                        && MousePosition.X < 200)
+                                        {
+                                            WindowStuff->DrawSubMenu(1);
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                        break;
+                                    
+                                    default:
+                                        break;
                                 }
                                 break;
                             }
