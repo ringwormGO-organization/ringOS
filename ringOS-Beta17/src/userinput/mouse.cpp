@@ -127,22 +127,26 @@ void ProcessMousePacket()
         if (MousePacket[0] & PS2XSign)
         {
             xNegative = true;
-        }else xNegative = false;
+        }
+        else xNegative = false;
 
         if (MousePacket[0] & PS2YSign)
         {
             yNegative = true;
-        }else yNegative = false;
+        }
+        else yNegative = false;
 
         if (MousePacket[0] & PS2XOverflow)
         {
             xOverflow = true;
-        }else xOverflow = false;
+        }
+        else xOverflow = false;
 
         if (MousePacket[0] & PS2YOverflow)
         {
             yOverflow = true;
-        }else yOverflow = false;
+        }
+        else yOverflow = false;
 
         if (!xNegative)
         {
@@ -150,7 +154,8 @@ void ProcessMousePacket()
             if (xOverflow){
                 MousePosition.X += 255;
             }
-        } else
+        } 
+        else
         {
             MousePacket[1] = 256 - MousePacket[1];
             MousePosition.X -= MousePacket[1];
@@ -166,7 +171,8 @@ void ProcessMousePacket()
             if (yOverflow){
                 MousePosition.Y -= 255;
             }
-        } else
+        } 
+        else
         {
             MousePacket[2] = 256 - MousePacket[2];
             MousePosition.Y += MousePacket[2];
@@ -262,6 +268,30 @@ namespace GUI
                     && MousePosition.Y < win2.ybuttonclose + 20 && MousePosition.X > win2.xbuttonclose && MousePosition.X < win2.xbuttonclose + 20)
                     {
                         WindowStuff->CloseApplication(300, 300, 300, 300);
+                    }
+
+
+                    if (WindowStuff->SubMenuStatus == true)
+                    {
+                        if (MousePosition.Y > 622 && MousePosition.Y < 650
+                        && MousePosition.X > 75 && MousePosition.X < 200)
+                        {
+                            Shutdown();
+                        }
+                        else if (MousePosition.Y > 651 && MousePosition.Y < 680
+                        && MousePosition.X < 200)
+                        {
+                            Reboot();
+                        }
+                        else if (MousePosition.Y > 685 && MousePosition.Y < 700
+                        && MousePosition.X < 200)
+                        {
+                            WindowStuff->DrawSubMenu(1);
+                        }
+                        else
+                        {
+
+                        }
                     }
                 
                 default:
@@ -363,39 +393,7 @@ namespace GUI
                             if (MousePosition.X <= 42)
                             {
                                 WindowStuff->DrawSubMenu(2);
-                                
-                                switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
-                                {
-                                    case 1920 | 1080:
-                                        break;
 
-                                    case 1366 | 768:
-                                        break;
-                                    case 1024 | 768:
-                                        if (MousePosition.Y > 622 && MousePosition.Y < 650
-                                        && MousePosition.X > 75 && MousePosition.X < 200)
-                                        {
-                                            Shutdown();
-                                        }
-                                        else if (MousePosition.Y > 651 && MousePosition.Y < 680
-                                        && MousePosition.X < 200)
-                                        {
-                                            Reboot();
-                                        }
-                                        else if (MousePosition.Y > 685 && MousePosition.Y < 700
-                                        && MousePosition.X < 200)
-                                        {
-                                            WindowStuff->DrawSubMenu(1);
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                        break;
-                                    
-                                    default:
-                                        break;
-                                }
                                 break;
                             }
                         }

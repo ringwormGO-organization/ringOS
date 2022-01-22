@@ -1,6 +1,7 @@
 #pragma once
 
 #define DEFAULT WHITE
+#define DEF_BLACK BLACK
 
 //source: https://www.rapidtables.com/web/color/gray-color.html
 

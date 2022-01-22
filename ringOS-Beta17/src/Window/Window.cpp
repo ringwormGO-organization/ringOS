@@ -135,7 +135,21 @@ namespace GUI
         {
             case 1: //close
                 subMenu.type = 1;
-                Square(subMenu.x, subMenu.y, subMenu.width, subMenu.height, STARTMENU_COLOR);
+
+                if (StartMenuStatus == false)
+                {
+                    Square(subMenu.x, subMenu.y, subMenu.width, subMenu.height, DEF_BLACK);
+                }
+                else if (StartMenuStatus == true)
+                {
+                    Square(subMenu.x, subMenu.y, subMenu.width, subMenu.height, STARTMENU_COLOR);
+                }
+                else
+                {
+
+                }
+
+                SubMenuStatus = false;
                 break;
 
             case 2: //power
@@ -151,6 +165,9 @@ namespace GUI
 
                 GlobalRenderer->CursorPosition2 = {subMenu.x, subMenu.y + 64};
                 GlobalRenderer->Print("CLOSE", 2);
+                
+                SubMenuStatus = true;
+
                 break;
             
             default:
@@ -223,7 +240,7 @@ namespace GUI
 
 
     /*                              PRIVATE                             */
-    void Window::Edge(size_t x, size_t y, size_t width, const char* name)
+    void Window::Edge(long x, long y, long width, const char* name)
     {
         /* Declare a number of buttons */
         int buttons = BUTTONS;

@@ -60,6 +60,7 @@ namespace GUI
     {
         public:
             bool StartMenuStatus;
+            bool SubMenuStatus;
             bool check();
 
             int error;
@@ -80,7 +81,7 @@ namespace GUI
             void Error(const char* message);
 
         private:
-            void Edge(size_t x, size_t y, size_t width, const char* name);
+            void Edge(long x, long y, long width, const char* name);
             void AdvancedTaskbar();
 
             void OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color);
