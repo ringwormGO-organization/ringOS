@@ -130,7 +130,7 @@ namespace GUI
                 GlobalRenderer->TaskBar();
                 GlobalRenderer->Colour = RED;
                 GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
-                GlobalRenderer->printf("START");
+                GlobalRenderer->Print("START");
                 GlobalRenderer->Colour = DEFAULT;
                 break;
             default:
