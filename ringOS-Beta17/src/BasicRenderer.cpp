@@ -301,6 +301,11 @@ namespace Renderer
                         _putc('%');
                         continue;
                     case 'd':
+                        s = va_arg(ap, char*);
+                        if (s == (void*)0)
+                            s = (char*)"<NULL>";
+                        Print(to_string((int64_t) s));
+                        continue;
                     case 'i':
                         c = 'u';
                     case 'u':

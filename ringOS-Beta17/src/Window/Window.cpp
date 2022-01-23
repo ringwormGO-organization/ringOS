@@ -54,79 +54,25 @@ namespace GUI
 
     void Window::DrawStartMenu()
     {
-        switch (ResoWidth | ResoHeight)
-        {
-            case 1920 | 1080:
-                Rectangle(0, 700, 300, 300, STARTMENU_COLOR);
-                taskbar.taskbar_x = 0;
-                taskbar.taskbar_y = 700;
-                taskbar.taskbar_width = 300;
-                taskbar.taskbar_height = 300;
+        Rectangle(0, ResoHeight - 380, 300, 300, STARTMENU_COLOR);
+        taskbar.taskbar_x = 0;
+        taskbar.taskbar_y = ResoHeight - 380;
+        taskbar.taskbar_width = 300;
+        taskbar.taskbar_height = 300;
 
-                GlobalRenderer->Colour = 0xffff0000;
-                GlobalRenderer->CursorPosition2 = {0, 895};
-                GlobalRenderer->Print("CALCULATOR", 2);
-                GlobalRenderer->CursorPosition2 = {0, 930};
-                GlobalRenderer->Print("POWER", 2);
-                break;
-
-            case 1366 | 768:
-                Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
-                taskbar.taskbar_x = 0;
-                taskbar.taskbar_y = 388;
-                taskbar.taskbar_width = 300;
-                taskbar.taskbar_height = 300;
-                
-                GlobalRenderer->Colour = 0xffff0000;
-                GlobalRenderer->CursorPosition2 = {0, 588};
-                GlobalRenderer->Print("CALCULATOR", 2);
-                GlobalRenderer->CursorPosition2 = {0, 620};
-                GlobalRenderer->Print("POWER", 2);
-                break;
-
-            case 1024 | 768:
-                Rectangle(0, 388, 300, 300, STARTMENU_COLOR);
-                taskbar.taskbar_x = 0;
-                taskbar.taskbar_y = 388;
-                taskbar.taskbar_width = 300;
-                taskbar.taskbar_height = 300;
-
-                GlobalRenderer->Colour = 0xffff0000;
-                GlobalRenderer->CursorPosition2 = {0, 588};
-                GlobalRenderer->Print("CALCULATOR", 2);
-                GlobalRenderer->CursorPosition2 = {0, 620};
-                GlobalRenderer->Print("POWER", 2);
-                break;
-            
-            default:
-                Error("Resolution unsupported, \nsee kernel.cpp for supported resolution... \nUnable to open Start Menu");
-                break;
-        }
-
+        GlobalRenderer->Colour = 0xffff0000;
+        GlobalRenderer->CursorPosition2 = {0, ResoHeight - 185};
+        GlobalRenderer->Print("CALCULATOR", 2);
+        GlobalRenderer->CursorPosition2 = {0, ResoHeight - 150};
+        GlobalRenderer->Print("POWER", 2);
+        
         GlobalRenderer->Colour = 0xffffffff;
     }
 
     void Window::DrawSubMenu(int type)
     {
         subMenu.x = taskbar.taskbar_x + 80;
-
-        switch (ResoWidth | ResoHeight)
-        {
-            case 1920 | 1080:
-                subMenu.y = 930;
-                break;
-
-            case 1366 | 768:
-                subMenu.y = 620;
-                break;
-
-            case 1024 | 768:
-                subMenu.y = 620;
-                break;
-        
-            default:
-                break;
-        }
+        subMenu.y = ResoHeight - 150;
 
         subMenu.width = 100;
         subMenu.height = 100;
@@ -183,14 +129,8 @@ namespace GUI
                 GlobalRenderer->BMPPicture();
                 GlobalRenderer->TaskBar();
                 break;
-            case 1366 | 768:
-                Rectangle(0, 388, 300, 300, 0x00000000);
-                break;
-            case 1024 | 768:
-                Rectangle(0, 388, 300, 300, 0x00000000);
-                break;
             default:
-                Error("Unable to close Start Menu");
+                Rectangle(0, ResoHeight - 380, 300, 300, 0x00000000);
                 break;
         }
 
