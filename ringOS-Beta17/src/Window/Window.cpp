@@ -128,6 +128,8 @@ namespace GUI
             case 1920 | 1080:
                 GlobalRenderer->BMPPicture();
                 GlobalRenderer->TaskBar();
+                GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
+                GlobalRenderer->printf("START");
                 break;
             default:
                 Rectangle(0, ResoHeight - 380, 300, 300, 0x00000000);
