@@ -28,6 +28,12 @@ __attribute__((interrupt)) void DebugFault_Handler(interrupt_frame* frame)
     while(true);
 }
 
+__attribute__((interrupt)) void TSSFault_Handler(interrupt_frame* frame, unsigned long int error_code)
+{
+    Panic("TSS Fault Detected");
+    while(true);
+}
+
 
 
 __attribute__((interrupt)) void KeyboardInt_Handler(interrupt_frame* frame)

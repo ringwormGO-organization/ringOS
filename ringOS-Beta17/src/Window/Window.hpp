@@ -26,6 +26,21 @@ namespace GUI
             void Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour);
     };
 
+    struct Canvas
+    {
+        uint64_t width;
+        uint64_t height;
+    };
+    
+    struct TaskBar
+    {
+        size_t taskbar_x;
+        size_t taskbar_y;
+        size_t taskbar_width;
+        size_t taskbar_height;
+        uint32_t taskbar_colour = 0xff00ffff;
+    };
+
     struct window
     {
         size_t winheight;
@@ -36,15 +51,6 @@ namespace GUI
         size_t ybuttonminus;
     };
 
-    struct TaskBar
-    {
-        size_t taskbar_x;
-        size_t taskbar_y;
-        size_t taskbar_width;
-        size_t taskbar_height;
-        uint32_t taskbar_colour = 0xff00ffff;
-    };
-    
     struct SubMenu
     {
         int type;
@@ -53,6 +59,21 @@ namespace GUI
         long y;
         long width;
         long height;
+    };
+
+    struct windowStatus
+    {
+        bool status;
+        int sType;
+    };
+
+    struct Application : windowStatus
+    {
+        long x;
+        long y;
+        long width;
+        long height;
+        uint32_t color;
     };
     
 
@@ -76,7 +97,7 @@ namespace GUI
             void ClearStartMenu();
 
             void OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color);
-            void CloseApplication(size_t x, size_t y, size_t width, size_t height);
+            void CloseApplication();
 
             void Error(const char* message);
 

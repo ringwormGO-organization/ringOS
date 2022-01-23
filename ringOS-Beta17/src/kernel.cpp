@@ -29,8 +29,8 @@ extern "C" void _start(BootInfo* bootInfo)
     //taskbar
     GlobalRenderer->TaskBar();
     GlobalRenderer->Colour = 0x00ff0000;
-    GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
-    GlobalRenderer->Print("START");
+    GlobalRenderer->CursorPosition2 = {0, (long) ResoHeight - 80};
+    GlobalRenderer->Print("START", 2);
 
     GlobalRenderer->CursorPosition = {0, 0};
 

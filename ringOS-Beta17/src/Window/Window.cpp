@@ -23,9 +23,12 @@ namespace GUI
         Rectangle(x, y, width, height, colour);
     }
 
-    window win;
+    Canvas canvas;
     TaskBar taskbar;
     SubMenu subMenu;
+    window win;
+    windowStatus winStatus;
+    Application app;
 
     /* ------------------------- WINDOWING SYSTEM ------------------------- */
 
@@ -128,6 +131,12 @@ namespace GUI
             case 1920 | 1080:
                 GlobalRenderer->BMPPicture();
                 GlobalRenderer->TaskBar();
+
+                if (winStatus.status == true)
+                {
+                    OpenApplication(app.sType, app.x, app.y, app.width, app.height, app.color);
+                }
+
                 GlobalRenderer->Colour = RED;
                 GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
                 GlobalRenderer->Print("START");
@@ -165,12 +174,39 @@ namespace GUI
                 break;
         }
 
+        app.x = x;
+        app.y = y;
+        app.width = width;
+        app.height = height;
+        app.color = color;
+
+        winStatus.status = true;
+        winStatus.sType = type;
         Edge(x, y, width, name);
     }
 
-    void Window::CloseApplication(size_t x, size_t y, size_t width, size_t height)
+    void Window::CloseApplication()
     {
-        Rectangle(x, y, width, height, 0x00000000);
+        switch (ResoWidth | ResoHeight)
+        {
+            case 1920 | 1080:
+                GlobalRenderer->BMPPicture();
+
+                if (StartMenuStatus == true)
+                {
+                    DrawStartMenu();
+
+                    if (SubMenuStatus == true)
+                    {
+                        DrawSubMenu(subMenu.type);
+                    }
+                }
+                break;
+            
+            default:
+                Rectangle(app.x, app.y, app.width, app.height, DEF_BLACK);
+                break;
+        }
     }
 
     void Window::Error(const char* message)

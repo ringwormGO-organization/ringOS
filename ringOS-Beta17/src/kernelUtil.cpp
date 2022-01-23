@@ -60,6 +60,7 @@ void PrepareInterrupts()
     SetIDTGate((void*)PageFault_Handler, 0xE, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)DoubleFault_Handler, 0x8, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)GPFault_Handler, 0xD, IDT_TA_InterruptGate, 0x08);
+    SetIDTGate((void*)TSSFault_Handler, 0xA, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)DebugFault_Handler, 0x1, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)KeyboardInt_Handler, 0x21, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)MouseInt_Handler, 0x2C, IDT_TA_InterruptGate, 0x08);
@@ -85,10 +86,7 @@ KernelInfo InitializeKernel(BootInfo* bootInfo)
     r = BasicRenderer(bootInfo->framebuffer, bootInfo->psf1_Font, bootInfo->bmpImage);
     GlobalRenderer = &r;
 
-    GDTDescriptor gdtDescriptor;
-    gdtDescriptor.Size = sizeof(GDT) - 1;
-    gdtDescriptor.Offset = (uint64_t)&DefaultGDT;
-    LoadGDT(&gdtDescriptor);
+    gdtInit();
 
     PrepareMemory(bootInfo);
 
