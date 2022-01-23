@@ -110,12 +110,11 @@ Beta16 version image of ringOS
 - [x] SMBIOS
 - [ ] USB
 
-
 # ringOSY
 [ringOSY](https://github.com/ringwormGO-organization/ringOSY)
 
 # System requiratmens
-
+## Hardware
 ### Real hardware
 Firmware: UEFI x86_64 PC
 
@@ -129,6 +128,14 @@ Virtual Box, VMWare: 4096MB RAM minimum, ([check this for more information](http
 CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
 *Note: Qemu on Windows requires more processor power than Qemu on Linux/macOS*
+
+## Software
+- build-essential
+- mtools
+- lld
+- Qemu
+
+*See shell script to install software.*
 
 # Resources used:
 [Poncho OSDEV 2](https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ)
