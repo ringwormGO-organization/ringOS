@@ -8,14 +8,12 @@ using namespace Renderer;
 using namespace GUI;
 using namespace PIT;
 
-
 extern "C" void _start(BootInfo* bootInfo)
 {
     KernelInfo kernelInfo = InitializeKernel(bootInfo);
 
     uint64_t ResoWidth = (uint64_t)bootInfo->framebuffer->Width;
     uint64_t ResoHeight = (uint64_t)bootInfo->framebuffer->Height;
-
 
     //for Start Menu
     WindowStuff->Width(ResoWidth);
@@ -29,27 +27,8 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->BMPPicture();
 
     //taskbar
-    switch (ResoWidth | ResoHeight)
-    {
-        case 1920 | 1080:
-            GlobalRenderer->TaskBar();
-            GlobalRenderer->Colour = 0x00ff0000;
-            break;
-        
-        case 1366 | 768:
-            GlobalRenderer->TaskBar();
-            GlobalRenderer->Colour = 0x00ff0000;
-            break;
-
-        case 1024 | 768:
-            GlobalRenderer->TaskBar();
-            GlobalRenderer->Colour = 0x00ff0000;
-            break;
-
-        default:
-            break;
-    }
-
+    GlobalRenderer->TaskBar();
+    GlobalRenderer->Colour = 0x00ff0000;
     GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
     GlobalRenderer->Print("START");
 
@@ -64,9 +43,9 @@ extern "C" void _start(BootInfo* bootInfo)
 
 	//Resolution
     GlobalRenderer->printf("Resolution: ");
-    GlobalRenderer->printf(to_string((uint64_t)ResoWidth));
+    GlobalRenderer->printf("%d", ResoWidth);
     GlobalRenderer->printf(" x ");
-    GlobalRenderer->Print(to_string((uint64_t)ResoHeight));
+    GlobalRenderer->printf("%d", ResoHeight);
 
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();
@@ -79,8 +58,5 @@ extern "C" void _start(BootInfo* bootInfo)
     WindowStuff->Width(ResoWidth);
     WindowStuff->Height(ResoHeight);
 
-    while (true)
-    {
-        asm ("hlt");
-    }
+    while(true) asm ("hlt");
 }

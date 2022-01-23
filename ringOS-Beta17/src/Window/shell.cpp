@@ -9,6 +9,6 @@ void Shell::ShellInit()
 {
     BasicStuff->Square(300, 300, 200, 200, GRAY);
 
-    GlobalRenderer->CursorPosition2 = {shellx + 20, shelly + 20};
+    GlobalRenderer->CursorPosition2 = {shellx + 20, shelly + 50};
     GlobalRenderer->printf("ringOS> ");
 }
