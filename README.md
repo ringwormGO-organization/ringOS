@@ -82,15 +82,17 @@ Beta16 version image of ringOS
 - [ ] Shell
 
 ### GUI - Windowing system
-- [x] Framebuffer windowing-system
+- [x] Basic framebuffer windowing-system
+- [ ] Advanced framebuffer windowing-system
 - [x] BMP images
 - [ ] TGA images
 - [ ] Put GUI as process
-- [ ] Own scripting language for GUI
+- [ ] GUI support in User Mode
+- [ ] [Own scripting language for GUI](https://github.com/ringwormGO-organization/ringwormGO-Standard-Code)
 
 ### User Mode
 - [ ] Ring3
-- [ ] TSS
+- [x] TSS
 - [ ] ELF
 - [ ] syscall
 - [ ] Threads - one or more of them
@@ -143,6 +145,8 @@ CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 Poncho's Discord server
 
 [LuftOS](https://github.com/Kyota-exe/LuftOS)
+
+[KonectOS-2](https://github.com/Keep-Konect/KonectOS-2)
 
 [wiki.osdev.org](https://wiki.osdev.org/Main_Page)
 
