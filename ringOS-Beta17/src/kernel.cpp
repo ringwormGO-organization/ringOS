@@ -26,26 +26,23 @@ extern "C" void _start(BootInfo* bootInfo)
 
     GlobalRenderer->BMPPicture();
 
-    //taskbar
-    GlobalRenderer->TaskBar();
-    GlobalRenderer->Colour = 0x00ff0000;
-    GlobalRenderer->CursorPosition2 = {0, (long) ResoHeight - 80};
-    GlobalRenderer->Print("START", 2);
+    //GUI initialization
+    Init();
 
     GlobalRenderer->CursorPosition = {0, 0};
 
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
 	GlobalRenderer->Next();
-	GlobalRenderer->printf("Welcome to ringOS!!\n");
+	printf("Welcome to ringOS!!\n");
 
 	GlobalRenderer->Colour = 0xffffff00;
 
 	//Resolution
-    GlobalRenderer->printf("Resolution: ");
-    GlobalRenderer->printf("%d", ResoWidth);
-    GlobalRenderer->printf(" x ");
-    GlobalRenderer->printf("%d", ResoHeight);
+    printf("Resolution: ");
+    printf("%d", ResoWidth);
+    printf(" x ");
+    printf("%d", ResoHeight);
 
     GlobalRenderer->Colour = 0xffffffff;
     GlobalRenderer->Next();

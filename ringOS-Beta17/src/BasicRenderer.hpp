@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "math.h"
 #include "BMPImageFile.h"
 #include "Framebuffer.h"
@@ -7,8 +9,8 @@
 #include "tga/tga.h"
 #include "cstr.hpp"
 #include "IO.hpp"
+#include "library/libc/stdio.hpp"
 #include "Window/Window.hpp"
-#include <stdint.h>
 
 namespace Renderer
 {
@@ -29,7 +31,6 @@ namespace Renderer
         void Print(const char* str, int type);
         void PutChar(char chr, unsigned int xOff, unsigned int yOff);
         void PutChar(char chr);
-        void printf(const char* fmt, ...);
         void PutPix(uint32_t x, uint32_t y, uint32_t colour);
         uint32_t GetPix(uint32_t x, uint32_t y);
         void ClearChar();

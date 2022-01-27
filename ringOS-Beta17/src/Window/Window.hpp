@@ -67,16 +67,20 @@ namespace GUI
         int sType;
     };
 
-    struct Application : windowStatus
+    typedef struct Application : windowStatus
     {
         long x;
         long y;
         long width;
         long height;
         uint32_t color;
-    };
-    
+    } App;
 
+    void NewApp(int type);
+
+    int Init();
+    int UnInit();
+    
     class Window : Basic
     {
         public:
@@ -102,7 +106,7 @@ namespace GUI
             void Error(const char* message);
 
         private:
-            void Edge(long x, long y, long width, const char* name);
+            int Edge(long x, long y, long width, const char* name);
             void AdvancedTaskbar();
 
             void OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color);

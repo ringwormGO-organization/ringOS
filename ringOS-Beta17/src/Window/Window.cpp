@@ -28,7 +28,43 @@ namespace GUI
     SubMenu subMenu;
     window win;
     windowStatus winStatus;
-    Application app;
+
+    App* app;
+
+    void NewApp(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                App* calculator;
+                break;
+            
+            default:
+                break;
+        }
+    }
+
+    int Init()
+    {
+        if (!(app = (App*)malloc(sizeof(App))))
+        {
+            return 1;
+        }
+        else
+        {
+            
+        }
+        
+        GlobalRenderer->BMPPicture();
+        GlobalRenderer->TaskBar();
+        return 0; 
+    }
+
+    int UnInit()
+    {
+        free(app);
+        return 0;
+    }
 
     /* ------------------------- WINDOWING SYSTEM ------------------------- */
 
@@ -134,7 +170,7 @@ namespace GUI
 
                 if (winStatus.status == true)
                 {
-                    OpenApplication(app.sType, app.x, app.y, app.width, app.height, app.color);
+                    OpenApplication(app->sType, app->x, app->y, app->width, app->height, app->color);
                 }
 
                 GlobalRenderer->Colour = RED;
@@ -174,11 +210,13 @@ namespace GUI
                 break;
         }
 
-        app.x = x;
-        app.y = y;
-        app.width = width;
-        app.height = height;
-        app.color = color;
+        
+
+        app->x = x;
+        app->y = y;
+        app->width = width;
+        app->height = height;
+        app->color = color;
 
         winStatus.status = true;
         winStatus.sType = type;
@@ -204,7 +242,7 @@ namespace GUI
                 break;
             
             default:
-                Rectangle(app.x, app.y, app.width, app.height, DEF_BLACK);
+                Rectangle(app->x, app->y, app->width, app->height, DEF_BLACK);
                 break;
         }
     }
@@ -220,7 +258,7 @@ namespace GUI
 
 
     /*                              PRIVATE                             */
-    void Window::Edge(long x, long y, long width, const char* name)
+    int Window::Edge(long x, long y, long width, const char* name)
     {
         /* Declare a number of buttons */
         int buttons = BUTTONS;
@@ -228,7 +266,7 @@ namespace GUI
         /* Check if there is an error */
         if (error == 1)
         {
-            goto end;
+            return 1;
         }
 
         /* Deeclare a button positions*/
@@ -253,8 +291,7 @@ namespace GUI
         GlobalRenderer->CursorPosition2 = {x + 10, y + 5};
         GlobalRenderer->Print(name, 2);
 
-        end:
-            int number = 0;
+        return 0;
     }
 
     void Window::AdvancedTaskbar()

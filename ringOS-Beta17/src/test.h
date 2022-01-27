@@ -1,6 +1,6 @@
 #pragma once
 
-#include "library/cprint.h"
+#include "library/clibc/cprint.h"
 
 extern int number;
 

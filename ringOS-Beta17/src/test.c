@@ -9,5 +9,5 @@ int test()
 
 void sum()
 {
-    printf("Sum of numbers 30 and 20 is: %d", 50);
+    cprintf("Sum of numbers 30 and 20 is: %d", 50);
 }
