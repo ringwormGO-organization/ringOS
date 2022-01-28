@@ -88,6 +88,7 @@ Beta16 version image of ringOS
 - [ ] TGA images
 - [ ] Put GUI as process
 - [ ] GUI support in User Mode
+- [ ] Own GUI library
 - [ ] [Own scripting language for GUI](https://github.com/ringwormGO-organization/ringwormGO-Standard-Code)
 
 ### User Mode
