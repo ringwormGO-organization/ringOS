@@ -41,14 +41,12 @@ namespace GUI
         uint32_t taskbar_colour = 0xff00ffff;
     };
 
-    struct window
+    struct Windows_close
     {
-        size_t winheight;
-        size_t winwidth;
-        size_t xbuttonclose;
-        size_t ybuttonclose;
-        size_t xbuttonminus;
-        size_t ybuttonminus;
+        long xbuttonclose;
+        long ybuttonclose;
+        long xbuttonminus;
+        long ybuttonminus;
     };
 
     struct SubMenu
@@ -72,8 +70,6 @@ namespace GUI
         long height;
         uint32_t color;
     };
-
-    void NewApp(int type);
 
     Application* Init();
     int UnInit();

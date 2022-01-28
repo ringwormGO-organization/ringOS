@@ -26,7 +26,7 @@ namespace GUI
     Canvas canvas;
     TaskBar taskbar;
     SubMenu subMenu;
-    window win;
+    Windows_close close;
 
     Application* app;
 
@@ -56,8 +56,8 @@ namespace GUI
 
     bool Window::check()
     {
-        if (win.winwidth != 0 && win.winheight != 0 && win.xbuttonclose != 0 && win.ybuttonclose 
-        != 0 && win.xbuttonminus != 0 && win.ybuttonminus != 0)
+        if (close.xbuttonclose != 0 && close.ybuttonclose 
+        != 0 && close.xbuttonminus != 0 && close.ybuttonminus != 0)
         {
             return true;
         }
@@ -92,6 +92,8 @@ namespace GUI
         GlobalRenderer->Print("POWER", 2);
         
         GlobalRenderer->Colour = 0xffffffff;
+
+        StartMenuStatus = true;
     }
 
     void Window::DrawSubMenu(int type)
@@ -170,6 +172,8 @@ namespace GUI
         }
 
         GlobalRenderer->Colour = 0xffffffff;
+
+        StartMenuStatus = false;
     }
 
     void Window::OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color)
@@ -195,8 +199,6 @@ namespace GUI
                 error = 1;
                 break;
         }
-
-        
 
         app->x = x;
         app->y = y;
@@ -226,10 +228,12 @@ namespace GUI
                         DrawSubMenu(subMenu.type);
                     }
                 }
+                app->status = true;
                 break;
             
             default:
                 Rectangle(app->x, app->y, app->width, app->height, DEF_BLACK);
+                app->status = false;
                 break;
         }
     }
@@ -256,12 +260,12 @@ namespace GUI
             return 1;
         }
 
-        /* Deeclare a button positions*/
-        win.xbuttonclose = x + width - 30;
-        win.ybuttonclose = y;
+        /* Declare a button positions */
+        close.xbuttonclose = x + width - 30;
+        close.xbuttonminus = y;
 
-        win.xbuttonminus = x + width - 60;
-        win.ybuttonminus = y;
+        close.ybuttonclose = x + width - 60;
+        close.ybuttonminus = y;
 
         /* Draw a buttons */
         Rectangle(x, y, width, 30, EDGE_COLOR);
@@ -290,7 +294,7 @@ namespace GUI
     {
         Rectangle(x, y, width, height, color);
 
-        Caluclator(x, y, win.winwidth, win.winheight);
+        Caluclator(x, y, app->width, app->height);
     }
 
     void Window::Caluclator(long x, long y, long width, long height)

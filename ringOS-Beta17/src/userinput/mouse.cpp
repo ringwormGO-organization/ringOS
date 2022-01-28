@@ -192,7 +192,7 @@ void ProcessMousePacket()
 
 namespace GUI
 {
-    window win2;
+    Windows_close cls;
     SubMenu sub;
 
     void Draw()
@@ -213,16 +213,15 @@ namespace GUI
                 if (WindowStuff->StartMenuStatus == true)
                 {
                     WindowStuff->ClearStartMenu();
-                    WindowStuff->StartMenuStatus = false;
                 }
                 else
                 {
                     WindowStuff->DrawStartMenu();
-                    WindowStuff->StartMenuStatus = true;
                 }
             }
-            else if (MousePosition.Y >= win2.ybuttonclose 
-            && MousePosition.Y <= win2.ybuttonclose + 20 && MousePosition.X >= win2.xbuttonclose && MousePosition.X <= win2.xbuttonclose + 20)
+            else if (MousePosition.Y >= cls.ybuttonclose 
+            && MousePosition.Y <= cls.ybuttonclose + 20 && MousePosition.X >= cls.xbuttonclose 
+            && MousePosition.X <= cls.xbuttonclose + 20)
             {
                 WindowStuff->CloseApplication();
             }

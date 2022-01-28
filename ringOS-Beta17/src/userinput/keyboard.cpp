@@ -61,14 +61,48 @@ void HandleKeyboard(uint8_t scancode)
             isRightShiftPressed = false;
             return;
         case CapsLock:
-            if (isCapsLockPressed = true)
-                isCapsLockPressed = false;
-            else if (isCapsLockPressed == false)
-                isCapsLockPressed = true;
+            isCapsLockPressed = true;
             return;
+        case CapsLock + 0x80:
+            isCapsLockPressed = false;
+            return;
+    
+        case LALT | F1:
+            GlobalRenderer->CursorPosition2 = {0, 0};
+            if (WindowStuff->StartMenuStatus == true)
+            {
+                WindowStuff->ClearStartMenu();
+            }
+            else if (WindowStuff->StartMenuStatus == false)
+            {
+                WindowStuff->DrawStartMenu();
+            }
+            return;
+        case LALT | F2:
+            GlobalRenderer->CursorPosition2 = {0, 0};
+            if (WindowStuff->SubMenuStatus == true)
+            {
+                WindowStuff->DrawSubMenu(1);
+            }
+            else if (WindowStuff->SubMenuStatus == false)
+            {
+                WindowStuff->DrawSubMenu(2);
+            }
+            return;
+        case LALT | F3:
+            GlobalRenderer->CursorPosition2 = {0, 0};
+            if (application->status == true)
+            {
+                WindowStuff->CloseApplication();
+            }
+            else if (application->status == false)
+            {
+                WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
+            }
+            return;
+
         case Enter:
-            GlobalRenderer->Next();
-            GlobalRenderer->Print("ringOS> ");
+            printf("\nringOS> ");
             return;
         case Spacebar:
             GlobalRenderer->PutChar(' ');
@@ -76,6 +110,7 @@ void HandleKeyboard(uint8_t scancode)
         case BackSpace:
            GlobalRenderer->ClearChar();
            return;
+      
         case ESC:
             if (application->status == true)
                 WindowStuff->CloseApplication();
