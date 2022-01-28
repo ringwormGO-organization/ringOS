@@ -24,8 +24,6 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->ClearColour = 0x00000000;
     GlobalRenderer->Clear();
 
-    GlobalRenderer->BMPPicture();
-
     //GUI initialization
     Init();
 

@@ -110,7 +110,7 @@ namespace GUI
             void AdvancedTaskbar();
 
             void OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color);
-            void Caluclator(size_t x, size_t y, size_t width, size_t height);
+            void Caluclator(long x, long y, long width, long height);
     };
 
     extern Basic* BasicStuff;

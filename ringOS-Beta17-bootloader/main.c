@@ -281,7 +281,7 @@ UINTN strcmp(CHAR8* a, CHAR8* b, UINTN length){
 
 EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	InitializeLib(ImageHandle, SystemTable);
-	Print(L"ringOS ©2021\nCredits: Poncho\n\r");
+	Print(L"ringOS (C)2021-2022\nCredits: Poncho\n\r");
 	Print(L"FirmwareVendor: ");
 	Print(SystemTable->FirmwareVendor);
 	Print(L" \n\r");

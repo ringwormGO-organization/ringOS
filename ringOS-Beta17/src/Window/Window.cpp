@@ -306,21 +306,41 @@ namespace GUI
         Caluclator(x, y, win.winwidth, win.winheight);
     }
 
-    void Window::Caluclator(size_t x, size_t y, size_t width, size_t height)
+    void Window::Caluclator(long x, long y, long width, long height)
     {
-        for (int i = 40; i < 160; i+=40)
+        for (int i = 40, num = 1; i < 160, num < 4; i+=40, num++)
         {
             Square(x + i, y + 80, 30, 30, WHITE);
+
+            GlobalRenderer->Colour = RED;
+            GlobalRenderer->CursorPosition2 = {x + i, y + 80};
+            GlobalRenderer->Print(to_string((int64_t)num), 2);
         }
 
-        for (int i = 40; i < 160; i+=40)
+        for (int i = 40, num = 4; i < 160, num < 7; i+=40, num++)
         {
             Square(x + i, y + 112, 30, 30, WHITE);
+
+            GlobalRenderer->Colour = RED;
+            GlobalRenderer->CursorPosition2 = {x + i, y + 112};
+            GlobalRenderer->Print(to_string((int64_t)num), 2);
         }
 
-        for (int i = 40; i < 160; i+=40)
+        for (int i = 40, num = 7; i < 160, num < 10; i+=40, num++)
         {
             Square(x + i, y + 144, 30, 30, WHITE);
+
+            GlobalRenderer->Colour = RED;
+            GlobalRenderer->CursorPosition2 = {x + i, y + 144};
+            GlobalRenderer->Print(to_string((int64_t)num), 2);
         }
+
+        Square(x + 80, y + 176, 30, 30, WHITE);
+
+        GlobalRenderer->Colour = RED;
+        GlobalRenderer->CursorPosition2 = {x + 80, y + 176};
+        GlobalRenderer->Print(to_string((int64_t)0), 2);
+
+        GlobalRenderer->Colour = DEFAULT;
     }
 }
