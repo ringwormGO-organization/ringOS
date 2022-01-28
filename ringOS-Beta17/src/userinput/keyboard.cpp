@@ -1,6 +1,9 @@
 #include "keyboard.hpp"
 
 using namespace Renderer;
+using namespace GUI;
+
+Application* application;
 
 namespace QWERTYKeyboard 
 {
@@ -43,7 +46,6 @@ char command[20];
 
 void HandleKeyboard(uint8_t scancode)
 {
-
     switch (scancode)
     {
         case LeftShift:
@@ -59,14 +61,14 @@ void HandleKeyboard(uint8_t scancode)
             isRightShiftPressed = false;
             return;
         case CapsLock:
-            isCapsLockPressed = true;
-            return;
-        case CapsLock + 0x80:
-            isCapsLockPressed = false;
+            if (isCapsLockPressed = true)
+                isCapsLockPressed = false;
+            else if (isCapsLockPressed == false)
+                isCapsLockPressed = true;
             return;
         case Enter:
             GlobalRenderer->Next();
-            GlobalRenderer->Print("ringOS> ", 1);
+            GlobalRenderer->Print("ringOS> ");
             return;
         case Spacebar:
             GlobalRenderer->PutChar(' ');
@@ -74,9 +76,13 @@ void HandleKeyboard(uint8_t scancode)
         case BackSpace:
            GlobalRenderer->ClearChar();
            return;
+        case ESC:
+            if (application->status == true)
+                WindowStuff->CloseApplication();
+            return;
     }
 
-    char ascii = QWERTYKeyboard::Translate(scancode, isLeftShiftPressed | isRightShiftPressed);
+    char ascii = QWERTYKeyboard::Translate(scancode, isLeftShiftPressed | isRightShiftPressed | isCapsLockPressed);
 
     if (ascii != 0)
     {

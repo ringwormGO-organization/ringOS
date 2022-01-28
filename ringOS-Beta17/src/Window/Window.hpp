@@ -61,24 +61,21 @@ namespace GUI
         long height;
     };
 
-    struct windowStatus
+    struct Application
     {
         bool status;
-        int sType;
-    };
+        int type;
 
-    typedef struct Application : windowStatus
-    {
         long x;
         long y;
         long width;
         long height;
         uint32_t color;
-    } App;
+    };
 
     void NewApp(int type);
 
-    int Init();
+    Application* Init();
     int UnInit();
     
     class Window : Basic

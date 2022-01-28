@@ -27,28 +27,14 @@ namespace GUI
     TaskBar taskbar;
     SubMenu subMenu;
     window win;
-    windowStatus winStatus;
 
-    App* app;
+    Application* app;
 
-    void NewApp(int type)
+    Application* Init()
     {
-        switch (type)
+        if (!(app = (Application*)malloc(sizeof(Application))))
         {
-            case 1:
-                App* calculator;
-                break;
-            
-            default:
-                break;
-        }
-    }
-
-    int Init()
-    {
-        if (!(app = (App*)malloc(sizeof(App))))
-        {
-            return 1;
+            return app;
         }
         else
         {
@@ -57,7 +43,7 @@ namespace GUI
         
         GlobalRenderer->BMPPicture();
         GlobalRenderer->TaskBar();
-        return 0; 
+        return app;
     }
 
     int UnInit()
@@ -168,9 +154,9 @@ namespace GUI
                 GlobalRenderer->BMPPicture();
                 GlobalRenderer->TaskBar();
 
-                if (winStatus.status == true)
+                if (app->status == true)
                 {
-                    OpenApplication(app->sType, app->x, app->y, app->width, app->height, app->color);
+                    OpenApplication(app->type, app->x, app->y, app->width, app->height, app->color);
                 }
 
                 GlobalRenderer->Colour = RED;
@@ -218,8 +204,8 @@ namespace GUI
         app->height = height;
         app->color = color;
 
-        winStatus.status = true;
-        winStatus.sType = type;
+        app->status = true;
+        app->type = type;
         Edge(x, y, width, name);
     }
 
@@ -229,6 +215,7 @@ namespace GUI
         {
             case 1920 | 1080:
                 GlobalRenderer->BMPPicture();
+                GlobalRenderer->TaskBar();
 
                 if (StartMenuStatus == true)
                 {
