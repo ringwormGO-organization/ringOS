@@ -35,7 +35,8 @@ Beta16 version image of ringOS
 # Checklist
 ### Bootloaders
 - [x] gnu-efi
-- [ ] Limine (we left developing Limine)
+- [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev)
+- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX)
 
 ### Framebuffer info and printing to the screen
 - [x] Framebuffer info
@@ -79,7 +80,7 @@ Beta16 version image of ringOS
 - [x] PIT
 
 ### Shell
-- [ ] Shell
+- [ ] [Shell](https://github.com/ringwormGO-organization/ringOS/tree/POSIX)
 
 ### GUI - Windowing system
 - [x] Basic framebuffer windowing-system
