@@ -3,7 +3,8 @@
 
 static uint8_t stack[0x4000];
 
-static struct stivale2_header_tag_terminal terminal = {
+static struct stivale2_header_tag_terminal terminal = 
+{
   .tag = {
     .identifier = STIVALE2_HEADER_TAG_TERMINAL_ID,
     .next = 0
@@ -11,23 +12,24 @@ static struct stivale2_header_tag_terminal terminal = {
   .flags = 0
 };
 
-
-static struct stivale2_struct_tag_framebuffer buff = {
+static struct stivale2_struct_tag_framebuffer buff = 
+{
   .tag = {
     .identifier = STIVALE2_HEADER_TAG_FRAMEBUFFER_ID,
     .next = (uint64_t)&terminal
   },
-  .framebuffer_height = STIVALE2_MMAP_FRAMEBUFFER,
+  .framebuffer_height = 0,
   .framebuffer_width = 0,
   .framebuffer_bpp = 0
 };
 
 typedef struct Framebuffer
 {
-    uint64_t framebuffer_addr;
-    uint32_t height;
-    uint32_t width;
-    uint32_t pitch;
+  void *base_address;
+  uint16_t width;
+  uint16_t height;
+  uint16_t pitch; // Bytes in row
+  uint16_t bpp;   // bits per one pixel
 
 } Framebuffer;
 
@@ -39,7 +41,7 @@ static struct stivale2_header header = {
   .tags = (uint64_t)&buff
 };
 
-#include "basics.h"
+#include "basic.h"
 #include "io.h"
 #include "pci.h"
 
@@ -48,19 +50,33 @@ void *stivale2_get_tag(struct stivale2_struct *stivale2_struct, uint64_t id) {
     for (;;) {
         // If the tag pointer is NULL (end of linked list), we did not find
         // the tag. Return NULL to signal this.
-        if (current_tag == NULL) {
+        if (current_tag == NULL) 
+        {
             return NULL;
         }
  
         // Check whether the identifier matches. If it does, return a pointer
         // to the matching tag.
-        if (current_tag->identifier == id) {
+        if (current_tag->identifier == id) 
+        {
             return current_tag;
         }
  
         // Get a pointer to the next tag in the linked list and repeat.
         current_tag = (void *)current_tag->next;
     }
+}
+
+void stivale2_get_framebuffer(struct stivale2_struct* stivale2_struct, Framebuffer *framebuffer)
+{
+  struct stivale2_struct_tag_framebuffer *fb = (struct stivale2_struct_tag_framebuffer*)stivale2_get_tag(stivale2_struct, STIVALE2_STRUCT_TAG_FRAMEBUFFER_ID);
+  if (fb == NULL) return;
+
+  framebuffer->base_address = (void*)fb->framebuffer_addr;
+  framebuffer->width = fb->framebuffer_width;
+  framebuffer->height = fb->framebuffer_height;
+  framebuffer->pitch = fb->framebuffer_pitch;
+  framebuffer->bpp = fb->framebuffer_bpp;
 }
 
 int strcmp(char* str1,char* str2,int len)
@@ -77,36 +93,8 @@ int strcmp(char* str1,char* str2,int len)
   return status;
 }
 
-/*struct stivale2_struct_tag_memmap memmap = {
-    static truct stivale2_tag tag;      // Identifier: 0x2187f79e8612de07
-    uint64_t entries;             // Count of memory map entries
-    struct stivale2_mmap_entry memmap[];  // Array of memory map entries
-};
-
-struct stivale2_struct_tag_memmap memmap2 = {
-    struct stivale2_tag tag;      // Identifier: 0x2187f79e8612de07
-    uint64_t entries;             // Count of memory map entries
-    struct stivale2_mmap_entry memmap[];  // Array of memory map entries
-};
-struct stivale2_mmap_entry mapentry = {
-    uint64_t base;      // Physical address of base of the memory section
-    uint64_t length;    // Length of the section
-    uint32_t type;      // Type (described below)
-    uint32_t unused;
-};
-
-enum stivale2_mmap_type {
-    uint32_t USABLE                 = 1,
-    uint32_t RESERVED               = 2,
-    uint32_t ACPI_RECLAIMABLE       = 3,
-    uint32_t ACPI_NVS               = 4,
-    uint32_t BAD_MEMORY             = 5,
-    uint32_t BOOTLOADER_RECLAIMABLE = 0x1000,
-    uint32_t KERNEL_AND_MODULES     = 0x1001,
-    uint32_t FRAMEBUFFER            = 0x1002
-};*/
-
-void _start(struct stivale2_struct* stivale2) {
+void _start(struct stivale2_struct* stivale2) 
+{
     struct stivale2_struct_tag_terminal *term_str_tag;
     term_str_tag = stivale2_get_tag(stivale2, STIVALE2_STRUCT_TAG_TERMINAL_ID);
     if(term_str_tag == NULL)
@@ -130,17 +118,10 @@ void _start(struct stivale2_struct* stivale2) {
       }
     }
 
-    /*Framebuffer framebuffer;//creates framebuffer structure
-    framebuffer.framebuffer_addr = stivale->framebuffer_addr;//get framebuffer address from stivale
-    framebuffer.height = stivale->framebuffer_height;//get height of screen from stivale
-    framebuffer.width = stivale->framebuffer_width;
-    framebuffer.pitch = stivale->framebuffer_pitch;*/
-    
     term_write("Welcome to ringOS!\n\r", 21);
-    term_write(rsdp_tag->rsdp,8);
+    term_write(rsdp_tag->rsdp, 8);
 
-    term_write(to_string((uint64_t)buff.framebuffer_height), 8);
-    
+
     asm("cli");
     asm ("hlt");
 }

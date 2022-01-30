@@ -31,6 +31,7 @@ $(ISO_IMAGE): limine kernel
 .PHONY: clean
 clean:
 	rm -f $(ISO_IMAGE)
+	rm -rf limine
 	$(MAKE) -C kernel clean
 
 .PHONY: distclean

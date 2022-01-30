@@ -1,6 +1,7 @@
-#include "pci.h"
-#include "basics.h"
 #include <stdint.h>
+
+#include "pci.h"
+#include "basic.h"
 
 void EnumareteFunc(uint64_t dev_addr,uint64_t func,void print(const char*,uint64_t length))
 {
