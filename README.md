@@ -80,7 +80,7 @@ Beta16 version image of ringOS
 - [x] PIT
 
 ### Shell
-- [ ] [Shell](https://github.com/ringwormGO-organization/ringOS/tree/POSIX)
+- [ ] [Shell](https://github.com/ringwormGO-organization/ringOS/pull/26)
 
 ### GUI - Windowing system
 - [x] Basic framebuffer windowing-system
