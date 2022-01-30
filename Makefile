@@ -1,3 +1,5 @@
+#Makefile to set up all stuff to compile ringOS
+
 gnu-efi:
 	@git clone https://github.com/VanGutan/gnu-efi
 	@mv ringOS-Beta17-bootloader gnu-efi/bootloader
