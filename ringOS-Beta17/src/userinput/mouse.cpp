@@ -1,7 +1,6 @@
 #include "mouse.hpp"
 
 using namespace Renderer;
-using namespace GUI;
 
 uint8_t cursor[]
 {
@@ -183,7 +182,7 @@ void ProcessMousePacket()
 
 
         Clear();
-        Draw();
+        GUI::Draw();
 
 
         MousePacketReady = false;

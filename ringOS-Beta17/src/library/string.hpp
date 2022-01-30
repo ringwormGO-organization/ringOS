@@ -30,3 +30,6 @@ char** strsplit_count(const char* s, const char* delim, size_t &nb);
 
 char *strstr(const char *str, const char *substr);
 int lstrstr(const char *str, const char *substr, int skip = 0);
+
+uint16_t strlength(char* ch);
+uint8_t strEql(char* ch1, char* ch2);

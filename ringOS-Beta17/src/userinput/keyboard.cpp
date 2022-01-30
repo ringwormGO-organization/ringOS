@@ -42,7 +42,7 @@ bool isLeftShiftPressed;
 bool isRightShiftPressed;
 bool isCapsLockPressed;
 
-char command[20];
+char command[MAX];
 
 void HandleKeyboard(uint8_t scancode)
 {
@@ -51,22 +51,29 @@ void HandleKeyboard(uint8_t scancode)
         case LeftShift:
             isLeftShiftPressed = true;
             return;
+
         case LeftShift + 0x80:
             isLeftShiftPressed = false;
             return;
+
         case RightShift:
             isRightShiftPressed = true;
             return;
+
         case RightShift + 0x80:
             isRightShiftPressed = false;
             return;
+
         case CapsLock:
             isCapsLockPressed = true;
             return;
+
         case CapsLock + 0x80:
             isCapsLockPressed = false;
             return;
-    
+
+/* --------------------------------------------------------------- */    
+
         case LALT | F1:
             GlobalRenderer->CursorPosition2 = {0, 0};
             if (WindowStuff->StartMenuStatus == true)
@@ -78,6 +85,7 @@ void HandleKeyboard(uint8_t scancode)
                 WindowStuff->DrawStartMenu();
             }
             return;
+
         case LALT | F2:
             GlobalRenderer->CursorPosition2 = {0, 0};
             if (WindowStuff->SubMenuStatus == true)
@@ -89,6 +97,7 @@ void HandleKeyboard(uint8_t scancode)
                 WindowStuff->DrawSubMenu(2);
             }
             return;
+
         case LALT | F3:
             GlobalRenderer->CursorPosition2 = {0, 0};
             if (application->status == true)
@@ -101,16 +110,22 @@ void HandleKeyboard(uint8_t scancode)
             }
             return;
 
+/* --------------------------------------------------------------- */  
+
         case Enter:
             printf("\nringOS> ");
             return;
+
         case Spacebar:
             GlobalRenderer->PutChar(' ');
             return;
+
         case BackSpace:
            GlobalRenderer->ClearChar();
            return;
-      
+
+/* --------------------------------------------------------------- */
+
         case ESC:
             if (application->status == true)
                 WindowStuff->CloseApplication();
