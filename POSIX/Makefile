@@ -1,3 +1,3 @@
-TARGET = helloworld.efi
+TARGET=BOOTX64.efi
  
 include uefi/Makefile
