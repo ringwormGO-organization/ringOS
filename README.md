@@ -13,3 +13,5 @@ In development
 `sudo apt-get install build-essential mtools` 
 
 `sudo apt-get install build-essential xorriso`
+
+`sudo apt-get install build-essential lld clang`
