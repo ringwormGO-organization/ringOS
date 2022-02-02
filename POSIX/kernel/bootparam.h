@@ -1,7 +1,10 @@
+#pragma once
+
 /**
  * Struct passed to the "kernel" from the exit_bs loader
  */
-typedef struct {
+typedef struct 
+{
     unsigned int    *framebuffer;
     unsigned int    width;
     unsigned int    height;
