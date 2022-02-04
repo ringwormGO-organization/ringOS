@@ -7,7 +7,7 @@
 
 using namespace Renderer;
 
-KernelInfo kernelInfo;
+KernelInfo kernelInfo; 
 
 void PrepareMemory(BootInfo* bootInfo)
 {
@@ -26,14 +26,16 @@ void PrepareMemory(BootInfo* bootInfo)
 
     g_PageTableManager = PageTableManager(PML4);
 
-    for (uint64_t t = 0; t < GetMemorySize(bootInfo->mMap, mMapEntries, bootInfo->mMapDescSize); t+= 0x1000){
+    for (uint64_t t = 0; t < GetMemorySize(bootInfo->mMap, mMapEntries, bootInfo->mMapDescSize); t+= 0x1000)
+    {
         g_PageTableManager.MapMemory((void*)t, (void*)t);
     }
 
     uint64_t fbBase = (uint64_t)bootInfo->framebuffer->BaseAddress;
     uint64_t fbSize = (uint64_t)bootInfo->framebuffer->BufferSize + 0x1000;
     GlobalAllocator.LockPages((void*)fbBase, fbSize/ 0x1000 + 1);
-    for (uint64_t t = fbBase; t < fbBase + fbSize; t += 4096){
+    for (uint64_t t = fbBase; t < fbBase + fbSize; t += 4096)
+    {
         g_PageTableManager.MapMemory((void*)t, (void*)t);
     }
 
@@ -52,16 +54,13 @@ void SetIDTGate(void* handler, uint8_t entryOffset, uint8_t type_attr, uint8_t s
     interrupt->selector = selector;
 }
 
-void PrepareInterrupts()
-{
+void PrepareInterrupts(){
     idtr.Limit = 0x0FFF;
     idtr.Offset = (uint64_t)GlobalAllocator.RequestPage();
 
     SetIDTGate((void*)PageFault_Handler, 0xE, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)DoubleFault_Handler, 0x8, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)GPFault_Handler, 0xD, IDT_TA_InterruptGate, 0x08);
-    SetIDTGate((void*)TSSFault_Handler, 0xA, IDT_TA_InterruptGate, 0x08);
-    SetIDTGate((void*)DebugFault_Handler, 0x1, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)KeyboardInt_Handler, 0x21, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)MouseInt_Handler, 0x2C, IDT_TA_InterruptGate, 0x08);
     SetIDTGate((void*)PITInt_Handler, 0x20, IDT_TA_InterruptGate, 0x08);
@@ -71,8 +70,7 @@ void PrepareInterrupts()
     RemapPIC();
 }
 
-void PrepareACPI(BootInfo* bootInfo)
-{
+void PrepareACPI(BootInfo* bootInfo){
     ACPI::SDTHeader* xsdt = (ACPI::SDTHeader*)(bootInfo->rsdp->XSDTAddress);
     
     ACPI::MCFGHeader* mcfg = (ACPI::MCFGHeader*)ACPI::FindTable(xsdt, (char*)"MCFG");
@@ -92,7 +90,7 @@ KernelInfo InitializeKernel(BootInfo* bootInfo)
 
     //memset(bootInfo->framebuffer->BaseAddress, 0, bootInfo->framebuffer->BufferSize);
 
-    InitializeHeap((void*)0x0000100000000000, 0x10);
+    InitializeHeap((void*)0x0000100000000000, 0x20);
 
     PrepareInterrupts();
 

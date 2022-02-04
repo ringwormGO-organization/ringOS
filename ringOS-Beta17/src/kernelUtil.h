@@ -6,8 +6,6 @@
 #include "BasicRenderer.hpp"
 #include "cstr.hpp"
 #include "efiMemory.hpp"
-#include "memory.hpp"
-#include "Bitmap.hpp"
 #include "paging/PageFrameAllocator.hpp"
 #include "paging/PageMapIndexer.hpp"
 #include "paging/paging.hpp"
@@ -32,8 +30,7 @@ struct BootInfo
 extern uint64_t _KernelStart;
 extern uint64_t _KernelEnd;
 
-struct KernelInfo 
-{
+struct KernelInfo {
     PageTableManager* pageTableManager;
 };
 

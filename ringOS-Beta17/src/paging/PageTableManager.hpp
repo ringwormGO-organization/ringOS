@@ -1,7 +1,9 @@
 #pragma once
+
 #include "paging.hpp"
 
-class PageTableManager {
+class PageTableManager 
+{
     public:
     PageTableManager(PageTable* PML4Address);
     PageTable* PML4;

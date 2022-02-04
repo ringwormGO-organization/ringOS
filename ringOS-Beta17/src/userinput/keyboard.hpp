@@ -3,6 +3,8 @@
 #include "../BasicRenderer.hpp"
 #include "../library/string.hpp"
 
+#define MAX 100
+
 namespace QWERTYKeyboard
 {
     /* Capital letters */
@@ -37,7 +39,11 @@ namespace QWERTYKeyboard
     #define F11 0x57
     #define F12 0x58
 
+    /* Numbers */
+
     char Translate(uint8_t scancode, bool uppercase);
 }
+
+extern char command[MAX];
 
 void HandleKeyboard(uint8_t scancode);

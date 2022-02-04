@@ -2,6 +2,7 @@
 #include "memory/heap.hpp"
 #include "scheduling/pit/pit.hpp"
 #include "Window/Window.hpp"
+#include "Serial.hpp"
 #include "test.h"
 
 using namespace Renderer;

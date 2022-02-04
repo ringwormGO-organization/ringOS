@@ -3,8 +3,6 @@
 using namespace Renderer;
 using namespace GUI;
 
-Application* application;
-
 namespace QWERTYKeyboard 
 {
 
@@ -42,7 +40,7 @@ bool isLeftShiftPressed;
 bool isRightShiftPressed;
 bool isCapsLockPressed;
 
-char command[20];
+char command[MAX];
 
 void HandleKeyboard(uint8_t scancode)
 {
@@ -51,22 +49,29 @@ void HandleKeyboard(uint8_t scancode)
         case LeftShift:
             isLeftShiftPressed = true;
             return;
+
         case LeftShift + 0x80:
             isLeftShiftPressed = false;
             return;
+
         case RightShift:
             isRightShiftPressed = true;
             return;
+
         case RightShift + 0x80:
             isRightShiftPressed = false;
             return;
+
         case CapsLock:
             isCapsLockPressed = true;
             return;
+
         case CapsLock + 0x80:
             isCapsLockPressed = false;
             return;
-    
+
+/* --------------------------------------------------------------- */    
+
         case LALT | F1:
             GlobalRenderer->CursorPosition2 = {0, 0};
             if (WindowStuff->StartMenuStatus == true)
@@ -78,41 +83,57 @@ void HandleKeyboard(uint8_t scancode)
                 WindowStuff->DrawStartMenu();
             }
             return;
+
         case LALT | F2:
             GlobalRenderer->CursorPosition2 = {0, 0};
-            if (WindowStuff->SubMenuStatus == true)
-            {
-                WindowStuff->DrawSubMenu(1);
-            }
-            else if (WindowStuff->SubMenuStatus == false)
-            {
-                WindowStuff->DrawSubMenu(2);
+            if (WindowStuff->StartMenuStatus == true) 
+            { 
+                if (WindowStuff->SubMenuStatus == true)
+                {
+                    WindowStuff->DrawSubMenu(1);
+                }
+            
+                else if (WindowStuff->SubMenuStatus == false)
+                {
+                    WindowStuff->DrawSubMenu(2);
+                }
             }
             return;
+
         case LALT | F3:
             GlobalRenderer->CursorPosition2 = {0, 0};
-            if (application->status == true)
-            {
-                WindowStuff->CloseApplication();
-            }
-            else if (application->status == false)
-            {
-                WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
-            }
+            WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
             return;
+
+        case LALT | F4:
+                if (App->status == true)
+                {
+                    WindowStuff->CloseApplication();
+                }
+                else if (App->status == false)
+                {
+                    Shutdown();
+                }
+            	break;
+
+/* --------------------------------------------------------------- */  
 
         case Enter:
             printf("\nringOS> ");
             return;
+
         case Spacebar:
             GlobalRenderer->PutChar(' ');
             return;
+
         case BackSpace:
            GlobalRenderer->ClearChar();
            return;
-      
+
+/* --------------------------------------------------------------- */
+
         case ESC:
-            if (application->status == true)
+            if (App->status == true)
                 WindowStuff->CloseApplication();
             return;
     }

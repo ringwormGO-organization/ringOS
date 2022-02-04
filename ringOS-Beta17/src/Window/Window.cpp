@@ -7,6 +7,8 @@ namespace GUI
     Basic* BasicStuff;
     Window* WindowStuff;
 
+    Application* App;
+
     void Basic::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
     {
         for (size_t y1 = y; y1 < y + height; y1++)
@@ -28,13 +30,11 @@ namespace GUI
     SubMenu subMenu;
     Windows_close close;
 
-    Application* app;
-
     Application* Init()
     {
-        if (!(app = (Application*)malloc(sizeof(Application))))
+        if (!(App = (Application*)malloc(sizeof(Application))))
         {
-            return app;
+            return App;
         }
         else
         {
@@ -43,12 +43,12 @@ namespace GUI
         
         GlobalRenderer->BMPPicture();
         GlobalRenderer->TaskBar();
-        return app;
+        return App;
     }
 
     int UnInit()
     {
-        free(app);
+        free(App);
         return 0;
     }
 
@@ -156,9 +156,9 @@ namespace GUI
                 GlobalRenderer->BMPPicture();
                 GlobalRenderer->TaskBar();
 
-                if (app->status == true)
+                if (App->status == true)
                 {
-                    OpenApplication(app->type, app->x, app->y, app->width, app->height, app->color);
+                    OpenApplication(App->type, App->x, App->y, App->width, App->height, App->color);
                 }
 
                 GlobalRenderer->Colour = RED;
@@ -180,10 +180,18 @@ namespace GUI
     {
         const char* name;
 
+        App->x = x;
+        App->y = y;
+        App->width = width;
+        App->height = height;
+        App->color = color;
+        App->status = true;
+        App->type = type;
+
         switch (type)
         {
             case 1:
-                OpenCalculator(x, y, width, height, 0xffcc0000);
+                Caluclator();
                 name = "Calculator";
                 break;
 
@@ -197,17 +205,16 @@ namespace GUI
             default:
                 Error("Application unsupproted... Unable to open it");
                 error = 1;
+                App->x = NULL;
+                App->y = NULL;
+                App->width = NULL;
+                App->height = NULL;
+                App->color = NULL;
+                App->status = false;
+                App->type = NULL;
                 break;
         }
 
-        app->x = x;
-        app->y = y;
-        app->width = width;
-        app->height = height;
-        app->color = color;
-
-        app->status = true;
-        app->type = type;
         Edge(x, y, width, name);
     }
 
@@ -228,12 +235,12 @@ namespace GUI
                         DrawSubMenu(subMenu.type);
                     }
                 }
-                app->status = true;
+                App->status = false;
                 break;
             
             default:
-                Rectangle(app->x, app->y, app->width, app->height, DEF_BLACK);
-                app->status = false;
+                Rectangle(App->x, App->y, App->width, App->height, DEF_BLACK);
+                App->status = false;
                 break;
         }
     }
@@ -290,15 +297,18 @@ namespace GUI
         
     }
 
-    void Window::OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color)
+    void Window::Caluclator()
     {
-        Rectangle(x, y, width, height, color);
 
-        Caluclator(x, y, app->width, app->height);
-    }
+        Rectangle(App->x, App->y, App->width, App->height, App->color);
 
-    void Window::Caluclator(long x, long y, long width, long height)
-    {
+        long x, y, width, height;
+
+        x = App->x;
+        y = App->y;
+        width = App->width;
+        height = App->height;
+        
         for (int i = 40, num = 1; i < 160, num < 4; i+=40, num++)
         {
             Square(x + i, y + 80, 30, 30, WHITE);

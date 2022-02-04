@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "../BasicRenderer.hpp"
+#include "../library/string.hpp"
 
 class Shell
 {
@@ -13,6 +14,7 @@ class Shell
         long shelly;
 
         void ShellInit();
+        void Command();
 };
 
 extern Shell* ShellStuff;

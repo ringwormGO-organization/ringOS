@@ -102,10 +102,11 @@ namespace GUI
             int Edge(long x, long y, long width, const char* name);
             void AdvancedTaskbar();
 
-            void OpenCalculator(size_t x, size_t y, size_t width, size_t height, uint32_t color);
-            void Caluclator(long x, long y, long width, long height);
+            void Caluclator();
     };
 
     extern Basic* BasicStuff;
     extern Window* WindowStuff;
+
+    extern Application* App;
 }

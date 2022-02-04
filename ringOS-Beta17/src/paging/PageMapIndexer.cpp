@@ -1,6 +1,7 @@
 #include "PageMapIndexer.hpp"
 
-PageMapIndexer::PageMapIndexer(uint64_t virtualAddress){
+PageMapIndexer::PageMapIndexer(uint64_t virtualAddress)
+{
     virtualAddress >>= 12;
     P_i = virtualAddress & 0x1ff;
     virtualAddress >>= 9;

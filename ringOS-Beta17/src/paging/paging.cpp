@@ -15,7 +15,8 @@ bool PageDirectoryEntry::GetFlag(PT_Flag flag)
     return Value & bitSelector > 0 ? true : false;
 }
 
-uint64_t PageDirectoryEntry::GetAddress(){
+uint64_t PageDirectoryEntry::GetAddress()
+{
     return (Value & 0x000ffffffffff000) >> 12;
 }
 

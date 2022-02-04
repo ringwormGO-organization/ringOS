@@ -1,7 +1,6 @@
 #include "mouse.hpp"
 
 using namespace Renderer;
-using namespace GUI;
 
 uint8_t cursor[]
 {
@@ -183,7 +182,7 @@ void ProcessMousePacket()
 
 
         Clear();
-        Draw();
+        GUI::Draw();
 
 
         MousePacketReady = false;
@@ -234,13 +233,11 @@ namespace GUI
                         if (MousePosition.Y > 930 && MousePosition.Y < 950
                         && MousePosition.X > 75 && MousePosition.X < 200)
                         {
-                            UnInit();
                             Shutdown();
                         }
                         else if (MousePosition.Y > 951 && MousePosition.Y < 980
                         && MousePosition.X < 200)
                         {
-                            UnInit();
                             Reboot();
                         }
                         else if (MousePosition.Y > 985 && MousePosition.Y < 1000
