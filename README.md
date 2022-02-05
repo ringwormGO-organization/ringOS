@@ -35,7 +35,7 @@ Beta16 version image of ringOS
 # Checklist
 ### Bootloaders
 - [x] gnu-efi
-- [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev)
+- [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev) (outside support)
 - [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX)
 
 ### Framebuffer info and printing to the screen
@@ -65,10 +65,10 @@ Beta16 version image of ringOS
 - [ ] VFS
 - [ ] DEVFS
 - [ ] FAT32
-- [ ] NTFS
 - [ ] ISO9660
 - [ ] Ext2
 - [ ] Ext4
+- [ ] NTFS
 
 ### Storage
 
@@ -80,7 +80,7 @@ Beta16 version image of ringOS
 - [x] PIT
 
 ### Shell
-- [ ] [Shell](https://github.com/ringwormGO-organization/ringOS/pull/26)
+- [ ] Shell
 
 ### GUI - Windowing system
 - [x] Basic framebuffer windowing-system
@@ -122,7 +122,7 @@ Beta16 version image of ringOS
 ### Real hardware
 Firmware: UEFI x86_64 PC
 
-RAM: Uncertain, but we recommend 3GB of RAM based on testing 
+RAM: 3GB is the **MAXIMUM** 
 
 ### In emulator
 Qemu: 38MB RAM min, 3GB recommended
