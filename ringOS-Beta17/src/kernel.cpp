@@ -38,14 +38,11 @@ extern "C" void _start(BootInfo* bootInfo)
 	GlobalRenderer->Colour = 0xffffff00;
 
 	//Resolution
-    printf("Resolution: ");
-    printf("%d", ResoWidth);
-    printf(" x ");
-    printf("%d", ResoHeight);
+    printf("Resolution: %d x %d", ResoWidth, ResoHeight);
 
     GlobalRenderer->Colour = 0xffffffff;
-    GlobalRenderer->Next();
-    GlobalRenderer->Next();
+    
+    printf("\n\nClose application with ESC or Alt+F4\n\n");
 
     //malloc example 2
     void* test = malloc(0x100);

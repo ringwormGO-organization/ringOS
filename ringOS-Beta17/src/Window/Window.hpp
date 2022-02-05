@@ -71,6 +71,16 @@ namespace GUI
         uint32_t color;
     };
 
+    struct calculator
+    {
+        double number1;
+        char operation;
+        double number2;
+
+        double final_number;
+    };
+    
+
     Application* Init();
     int UnInit();
     
@@ -79,7 +89,7 @@ namespace GUI
         public:
             bool StartMenuStatus;
             bool SubMenuStatus;
-            bool check();
+            bool Check();
 
             int error;
 
@@ -109,4 +119,11 @@ namespace GUI
     extern Window* WindowStuff;
 
     extern Application* App;
+
+    extern Canvas canvas;
+    extern TaskBar taskbar;
+    extern SubMenu subMenu;
+    extern Windows_close close;
+
+    extern calculator calc;
 }

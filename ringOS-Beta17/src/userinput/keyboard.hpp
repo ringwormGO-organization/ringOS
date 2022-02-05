@@ -40,6 +40,16 @@ namespace QWERTYKeyboard
     #define F12 0x58
 
     /* Numbers */
+    /*#define ONE 0x02
+    #define TWO 0x03
+    #define THREE 0x04
+    #define FOUR 0x05
+    #define FIVE 0x06
+    #define SIX 0x07
+    #define SEVEN 0x08
+    #define EIGHT 0x09
+    #define NINE 0x0A
+    #define KEY_ZERO 0x0B*/
 
     char Translate(uint8_t scancode, bool uppercase);
 }

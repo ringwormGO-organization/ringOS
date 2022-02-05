@@ -9,6 +9,13 @@ namespace GUI
 
     Application* App;
 
+    Canvas canvas;
+    TaskBar taskbar;
+    SubMenu subMenu;
+    Windows_close close;
+
+    calculator calc;
+
     void Basic::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
     {
         for (size_t y1 = y; y1 < y + height; y1++)
@@ -25,11 +32,6 @@ namespace GUI
         Rectangle(x, y, width, height, colour);
     }
 
-    Canvas canvas;
-    TaskBar taskbar;
-    SubMenu subMenu;
-    Windows_close close;
-
     Application* Init()
     {
         if (!(App = (Application*)malloc(sizeof(Application))))
@@ -41,6 +43,11 @@ namespace GUI
             
         }
         
+        WindowStuff->StartMenuStatus = false;
+        WindowStuff->SubMenuStatus = false;
+
+        App->status = false;
+
         GlobalRenderer->BMPPicture();
         GlobalRenderer->TaskBar();
         return App;
@@ -54,7 +61,7 @@ namespace GUI
 
     /* ------------------------- WINDOWING SYSTEM ------------------------- */
 
-    bool Window::check()
+    bool Window::Check()
     {
         if (close.xbuttonclose != 0 && close.ybuttonclose 
         != 0 && close.xbuttonminus != 0 && close.ybuttonminus != 0)
@@ -205,13 +212,13 @@ namespace GUI
             default:
                 Error("Application unsupproted... Unable to open it");
                 error = 1;
-                App->x = NULL;
-                App->y = NULL;
-                App->width = NULL;
-                App->height = NULL;
-                App->color = NULL;
+                App->x = 0;
+                App->y = 0;
+                App->width = 0;
+                App->height = 0;
+                App->color = 0;
                 App->status = false;
-                App->type = NULL;
+                App->type = 0;
                 break;
         }
 
@@ -274,6 +281,8 @@ namespace GUI
         close.ybuttonclose = x + width - 60;
         close.ybuttonminus = y;
 
+        Check();
+
         /* Draw a buttons */
         Rectangle(x, y, width, 30, EDGE_COLOR);
 
@@ -299,7 +308,6 @@ namespace GUI
 
     void Window::Caluclator()
     {
-
         Rectangle(App->x, App->y, App->width, App->height, App->color);
 
         long x, y, width, height;
@@ -309,6 +317,7 @@ namespace GUI
         width = App->width;
         height = App->height;
         
+        //numbers
         for (int i = 40, num = 1; i < 160, num < 4; i+=40, num++)
         {
             Square(x + i, y + 80, 30, 30, WHITE);
@@ -336,11 +345,19 @@ namespace GUI
             GlobalRenderer->Print(to_string((int64_t)num), 2);
         }
 
+        // zero
         Square(x + 80, y + 176, 30, 30, WHITE);
-
         GlobalRenderer->Colour = RED;
         GlobalRenderer->CursorPosition2 = {x + 80, y + 176};
         GlobalRenderer->Print(to_string((int64_t)0), 2);
+
+    	//textbox
+        Rectangle(x + 20, y + 40, 260, 25, DEFAULT);
+
+        GlobalRenderer->Colour = DEF_BLACK;
+        GlobalRenderer->CursorPosition2 = {x + 25, y + 45};
+
+        GlobalRenderer->Print(to_string((int64_t)calc.final_number), 2);
 
         GlobalRenderer->Colour = DEFAULT;
     }

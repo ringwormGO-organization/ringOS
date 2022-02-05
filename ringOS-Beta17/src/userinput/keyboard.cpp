@@ -70,8 +70,26 @@ void HandleKeyboard(uint8_t scancode)
             isCapsLockPressed = false;
             return;
 
-/* --------------------------------------------------------------- */    
+/* --------------------------------------------------------------- */  
+        case Enter:
+            printf("\nringOS> ");
+            return;
 
+        case Spacebar:
+            GlobalRenderer->PutChar(' ');
+            return;
+
+        case BackSpace:
+           GlobalRenderer->ClearChar();
+           return;
+
+/* --------------------------------------------------------------- */
+        case ESC:
+            if (App->status == true)
+                WindowStuff->CloseApplication();
+            return;
+
+/* --------------------------------------------------------------- */    
         case LALT | F1:
             GlobalRenderer->CursorPosition2 = {0, 0};
             if (WindowStuff->StartMenuStatus == true)
@@ -115,26 +133,6 @@ void HandleKeyboard(uint8_t scancode)
                     Shutdown();
                 }
             	break;
-
-/* --------------------------------------------------------------- */  
-
-        case Enter:
-            printf("\nringOS> ");
-            return;
-
-        case Spacebar:
-            GlobalRenderer->PutChar(' ');
-            return;
-
-        case BackSpace:
-           GlobalRenderer->ClearChar();
-           return;
-
-/* --------------------------------------------------------------- */
-
-        case ESC:
-            if (App->status == true)
-                WindowStuff->CloseApplication();
             return;
     }
 

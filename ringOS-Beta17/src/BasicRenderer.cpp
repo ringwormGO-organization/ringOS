@@ -99,8 +99,8 @@ namespace Renderer
 
     void BasicRenderer::ClearChar()
     {
-
-        if (CursorPosition.X == 0){
+        if (CursorPosition.X == 0)
+        {
             CursorPosition.X = TargetFramebuffer->Width;
             CursorPosition.Y -= 16;
             if (CursorPosition.Y < 0) CursorPosition.Y = 0;
@@ -120,13 +120,63 @@ namespace Renderer
 
         CursorPosition.X -= 8;
 
-        if (CursorPosition.X < 0){
+        if (CursorPosition.X < 0)
+        {
             CursorPosition.X = TargetFramebuffer->Width;
             CursorPosition.Y -= 16;
             if (CursorPosition.Y < 0) CursorPosition.Y = 0;
         }
-
     }
+
+    void BasicRenderer::ClearChar(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                ClearChar();
+                break;
+
+            case 2:
+                ClearChar2();
+                break;
+            
+            default:
+                break;
+        }
+    }
+
+    /* PRIVATE */
+    void BasicRenderer::ClearChar2()
+    {
+        if (CursorPosition2.X == 0)
+        {
+            CursorPosition2.X = TargetFramebuffer->Width;
+            CursorPosition2.Y -= 16;
+            if (CursorPosition2.Y < 0) CursorPosition2.Y = 0;
+        }
+
+        unsigned int xOff = CursorPosition2.X;
+        unsigned int yOff = CursorPosition2.Y;
+
+        unsigned int* pixPtr = (unsigned int*)TargetFramebuffer->BaseAddress;
+        for (unsigned long y = yOff; y < yOff + 16; y++)
+        {
+            for (unsigned long x = xOff - 8; x < xOff; x++)
+            {
+                *(unsigned int*)(pixPtr + x + (y * TargetFramebuffer->PixelsPerScanLine)) = ClearColour;
+            }
+        }
+
+        CursorPosition2.X -= 8;
+
+        if (CursorPosition2.X < 0)
+        {
+            CursorPosition2.X = TargetFramebuffer->Width;
+            CursorPosition2.Y -= 16;
+            if (CursorPosition2.Y < 0) CursorPosition2.Y = 0;
+        }
+    }
+    /* PRIVATE */
 
     void BasicRenderer::Next()
     {
@@ -258,6 +308,17 @@ namespace Renderer
         {
             CursorPosition.X = 0; 
             CursorPosition.Y += 16;
+        }
+    }
+
+    void BasicRenderer::PutChar2(char chr)
+    {
+        PutChar(chr, CursorPosition2.X, CursorPosition2.Y);
+        CursorPosition2.X += 8;
+        if (CursorPosition2.X + 8 > TargetFramebuffer->Width)
+        {
+            CursorPosition2.X = 0; 
+            CursorPosition2.Y += 16;
         }
     }
 
