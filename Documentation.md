@@ -98,7 +98,7 @@ You need install two more apps:
 
 `sudo apt-get install mkisofs`
 
-From now you can simply enter bin directory and run [shell script]()
+From now you can simply enter bin directory and run [shell script](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-Beta17/ISO.sh)
 
 Enter kernel/bin directory.
 
