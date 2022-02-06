@@ -98,6 +98,8 @@ You need install two more apps:
 
 `sudo apt-get install mkisofs`
 
+From now you can simply enter bin directory and run [shell script]()
+
 Enter kernel/bin directory.
 
 Type these commands in order:

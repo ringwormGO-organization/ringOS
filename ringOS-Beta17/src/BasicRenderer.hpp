@@ -9,7 +9,7 @@
 #include "tga/tga.h"
 #include "cstr.hpp"
 #include "IO.hpp"
-#include "library/libc/stdio.hpp"
+#include "library/libc.hpp"
 #include "Window/Window.hpp"
 
 namespace Renderer

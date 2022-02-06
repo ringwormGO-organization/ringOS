@@ -42,7 +42,7 @@ extern "C" void _start(BootInfo* bootInfo)
 
     GlobalRenderer->Colour = 0xffffffff;
     
-    printf("\n\nClose application with ESC or Alt+F4\n\n");
+    printf("\n\nClose application with ESC or F4\n\n");
 
     //malloc example 2
     void* test = malloc(0x100);

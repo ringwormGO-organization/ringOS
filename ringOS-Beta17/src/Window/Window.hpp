@@ -13,9 +13,12 @@
 #define TASKBAR_COLOR 0xff00ffff
 #define STARTMENU_COLOR 0xff00ffff
 #define SUBMENU_COLOR 0x00008B
+
 #define EDGE_COLOR 0x580002
 #define EDGE_HEIGHT 30
 #define BUTTONS 2
+
+#define CALCULATOR_COLOR 0xffcc0000
 
 namespace GUI
 {
@@ -73,6 +76,8 @@ namespace GUI
 
     struct calculator
     {
+        bool alReady;
+
         double number1;
         char operation;
         double number2;

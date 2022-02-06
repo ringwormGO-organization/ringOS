@@ -4,6 +4,8 @@
 #include "../userinput/keyboard.hpp"
 #include "../scheduling/pit/pit.hpp"
 
+using namespace GUI;
+
 __attribute__((interrupt)) void PageFault_Handler(interrupt_frame* frame, unsigned long int error_code)
 {
     Panic("Page Fault Detected", error_code);

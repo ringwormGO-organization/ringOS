@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #include "../BasicRenderer.hpp"
-#include "../library/string.hpp"
+#include "../library/libc/string.hpp"
 
 class Shell
 {

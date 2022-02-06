@@ -47,6 +47,8 @@ namespace GUI
         WindowStuff->SubMenuStatus = false;
 
         App->status = false;
+        calc.alReady = false;
+        calc.operation = '+';
 
         GlobalRenderer->BMPPicture();
         GlobalRenderer->TaskBar();
@@ -227,6 +229,17 @@ namespace GUI
 
     void Window::CloseApplication()
     {
+        if (App->type == 1)
+        {
+            calc.alReady = false;
+
+            calc.number1 = 0;
+            calc.operation = '+';
+            calc.number2 = 0;
+
+            calc.final_number = 0;
+        }
+
         switch (ResoWidth | ResoHeight)
         {
             case 1920 | 1080:
@@ -357,7 +370,23 @@ namespace GUI
         GlobalRenderer->Colour = DEF_BLACK;
         GlobalRenderer->CursorPosition2 = {x + 25, y + 45};
 
-        GlobalRenderer->Print(to_string((int64_t)calc.final_number), 2);
+        if (calc.alReady == false)
+            GlobalRenderer->Print(to_string((int64_t)calc.number1), 2);
+
+        if (calc.alReady == true)
+            GlobalRenderer->Print(to_string((int64_t)calc.number1), 2);
+            GlobalRenderer->PutChar2(calc.operation);
+            GlobalRenderer->Print(to_string((int64_t)calc.number2), 2);
+
+            if (calc.final_number != 0)
+            {
+                GlobalRenderer->PutChar2('=');
+                GlobalRenderer->Print(to_string((int64_t)calc.final_number), 2);
+            }
+            else
+            {
+                
+            }
 
         GlobalRenderer->Colour = DEFAULT;
     }
