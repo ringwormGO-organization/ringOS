@@ -3,8 +3,6 @@
 #include "../BasicRenderer.hpp"
 #include "../library/libc.hpp"
 
-#define MAX 100
-
 namespace GUI
 {
     namespace QWERTYKeyboard

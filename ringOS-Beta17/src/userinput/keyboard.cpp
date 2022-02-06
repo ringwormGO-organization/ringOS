@@ -178,104 +178,163 @@ namespace GUI
 
     /* --------------------------------------------------------------- */
             case ONE:
-                if (calc.alReady == false)
-                    calc.number1 = 1;
-                if (calc.alReady == true)
-                    calc.number2 = 1;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 1;
+                    if (calc.alReady == true)
+                        calc.number2 = 1;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('1');
+                }
                 return;
 
             case TWO:
-                if (calc.alReady == false)
-                    calc.number1 = 2;
-                if (calc.alReady == true)
-                    calc.number2 = 2;
-
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 2;
+                    if (calc.alReady == true)
+                        calc.number2 = 2;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('2');
+                }
                 return;
 
             case THREE:
-                if (calc.alReady == false)
-                    calc.number1 = 3;
-                if (calc.alReady == true)
-                    calc.number2 = 3;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 3;
+                    if (calc.alReady == true)
+                        calc.number2 = 3;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('3');
+                }
                 return;
 
             case FOUR:
-                if (calc.alReady == false)
-                    calc.number1 = 4;
-                if (calc.alReady == true)
-                    calc.number2 = 4;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 4;
+                    if (calc.alReady == true)
+                        calc.number2 = 4;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('4');
+                }
                 return;
 
             case FIVE:
-                if (calc.alReady == false)
-                    calc.number1 = 5;
-                if (calc.alReady == true)
-                    calc.number2 = 5;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 5;
+                    if (calc.alReady == true)
+                        calc.number2 = 5;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('5');
+                }
                 return;
 
             case SIX:
-                if (calc.alReady == false)
-                    calc.number1 = 6;
-                if (calc.alReady == true)
-                    calc.number2 = 6;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 6;
+                    if (calc.alReady == true)
+                        calc.number2 = 6;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('6');
+                }
                 return;
 
             case SEVEN:
-                if (calc.alReady == false)
-                    calc.number1 = 7;
-                if (calc.alReady == true)
-                    calc.number2 = 7;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 7;
+                    if (calc.alReady == true)
+                        calc.number2 = 7;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('7');
+                }
                 return;
 
             case EIGHT:
-                if (calc.alReady == false)
-                    calc.number1 = 8;
-                if (calc.alReady == true)
-                    calc.number2 = 8;
-                
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 8;
+                    if (calc.alReady == true)
+                        calc.number2 = 8;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('8');
+                }
                 return;
 
             case NINE:
-                if (calc.alReady == false)
-                    calc.number1 = 9;
-                if (calc.alReady == true)
-                    calc.number2 = 9;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 9;
+                    if (calc.alReady == true)
+                        calc.number2 = 9;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('9');
+                }
                 return;
 
             case KEY_ZERO:
-                if (calc.alReady == false)
-                    calc.number1 = 0;
-                if (calc.alReady == true)
-                    calc.number2 = 0;
-
                 if (App->status == true && App->type == 1)
+                {
+                    if (calc.alReady == false)
+                        calc.number1 = 0;
+                    if (calc.alReady == true)
+                        calc.number2 = 0;
+
                     WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
+                }
+                else
+                {
+                    GlobalRenderer->PutChar('0');
+                }
                 return;
 
     /* --------------------------------------------------------------- */
