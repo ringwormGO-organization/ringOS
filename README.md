@@ -36,7 +36,7 @@ Beta16 version image of ringOS
 ### Bootloaders
 - [x] gnu-efi
 - [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev) (outside support)
-- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX)
+- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX) (still not implement)
 
 ### Framebuffer info and printing to the screen
 - [x] Framebuffer info
@@ -91,6 +91,9 @@ Beta16 version image of ringOS
 - [ ] GUI support in User Mode
 - [ ] Own GUI library
 - [ ] [Own scripting language for GUI](https://github.com/ringwormGO-organization/ringwormGO-Standard-Code)
+
+#### Default applications
+- [x] Calculator
 
 ### User Mode
 - [ ] Ring3
