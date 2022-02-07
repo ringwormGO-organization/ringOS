@@ -3,10 +3,11 @@
 #include "scheduling/pit/pit.hpp"
 #include "Window/Window.hpp"
 #include "Serial.hpp"
-#include "test.h"
 
-using namespace Renderer;
+#define VERSION "Beta17"
+
 using namespace GUI;
+using namespace GUI::Renderer;
 using namespace PIT;
 
 extern "C" void _start(BootInfo* bootInfo)
@@ -33,7 +34,7 @@ extern "C" void _start(BootInfo* bootInfo)
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
 	GlobalRenderer->Next();
-	printf("Welcome to ringOS!!\n");
+	printf("Welcome to ringOS!! Version: %s\n", VERSION);
 
 	GlobalRenderer->Colour = 0xffffff00;
 
@@ -42,7 +43,9 @@ extern "C" void _start(BootInfo* bootInfo)
 
     GlobalRenderer->Colour = 0xffffffff;
     
-    printf("\n\nClose application with ESC or F4\n\n");
+    printf("\n\nClose application with ESC or F4.\n");
+    printf("GUI has some bugs about mouse, but you can always use keyboard.\n");
+    printf("Caluclator only support numbers to 9.\n\n");
 
     //malloc example 2
     void* test = malloc(0x100);

@@ -7,12 +7,12 @@
 #include "BasicRenderer.hpp"
 #include "paging/PageFrameAllocator.hpp"
 
-using namespace Renderer;
+using namespace GUI::Renderer;
 
 void Panic(const char* panicMessage)
 {
-    GlobalRenderer->ClearColour = 0xff00ffff;
-    GlobalRenderer->Clear();
+    GlobalRenderer->ClearColour = BLUE;
+    GlobalRenderer->FullClear();
 
     GlobalRenderer->CursorPosition = {0, 0};
 
@@ -40,12 +40,7 @@ void Panic(const char* panicMessage, unsigned long int code)
 
     GlobalRenderer->Colour = 0;
 
-    GlobalRenderer->Print(":( Kernel Panic", 1);
-    GlobalRenderer->Next();
-    GlobalRenderer->Print("Restart your computer!!", 1);
-
-    GlobalRenderer->Next();
-    GlobalRenderer->Next();
+    printf(":( Kernel Panic\nRestart your computer!!\n\n");
 
     GlobalRenderer->Print(panicMessage);
     GlobalRenderer->Next();
@@ -57,23 +52,19 @@ void Panic(const char* panicMessage, unsigned long int code)
 
 void MorePanic()
 {
-    GlobalRenderer->Next();
-    GlobalRenderer->Next();
-
-
-    GlobalRenderer->Print("Free RAM: ", 1);
-    GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024), 1);
+    printf("\n\nFree RAM: ");
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024));
     GlobalRenderer->Print(" KB ", 1);
 
     GlobalRenderer->Next();
 
-    GlobalRenderer->Print("Used RAM: ", 1);
-    GlobalRenderer->Print(to_string(GlobalAllocator.GetUsedRAM() / 1024), 1);
-    GlobalRenderer->Print(" KB ", 1);
+    GlobalRenderer->Print("Used RAM: ");
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetUsedRAM() / 1024));
+    GlobalRenderer->Print(" KB ");
 
     GlobalRenderer->Next();
 
-    GlobalRenderer->Print("Reserved RAM: ", 1);
-    GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024), 1);
-    GlobalRenderer->Print(" KB ", 1);
+    GlobalRenderer->Print("Reserved RAM: ");
+    GlobalRenderer->Print(to_string(GlobalAllocator.GetReservedRAM() / 1024));
+    GlobalRenderer->Print(" KB ");
 }

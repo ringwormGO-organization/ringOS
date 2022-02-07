@@ -4,7 +4,6 @@
 
 namespace ACPI
 {
-
     void* FindTable(SDTHeader* sdtHeader, char* signature)
     {
 

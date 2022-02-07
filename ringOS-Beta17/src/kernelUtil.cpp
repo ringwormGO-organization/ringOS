@@ -5,7 +5,7 @@
 #include "IO.hpp"
 #include "memory/heap.hpp"
 
-using namespace Renderer;
+using namespace GUI::Renderer;
 
 KernelInfo kernelInfo; 
 
@@ -84,7 +84,7 @@ KernelInfo InitializeKernel(BootInfo* bootInfo)
     r = BasicRenderer(bootInfo->framebuffer, bootInfo->psf1_Font, bootInfo->bmpImage);
     GlobalRenderer = &r;
 
-    gdtInit();
+    GDTInit();
 
     PrepareMemory(bootInfo);
 

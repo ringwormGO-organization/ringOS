@@ -1,7 +1,6 @@
 #include "keyboard.hpp"
 
-using namespace Renderer;
-using namespace GUI;
+using namespace GUI::Renderer;
 
 namespace GUI
 {
@@ -374,7 +373,7 @@ namespace GUI
 
         if (ascii != 0)
         {
-            GlobalRenderer->PutChar(ascii);
+            GlobalRenderer->PutChar(ascii);          
         }
     }
 }

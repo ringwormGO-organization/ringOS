@@ -1,6 +1,6 @@
 #include "Reboot.hpp"
 
-using namespace Renderer;
+using namespace GUI::Renderer;
 
 void Reboot()
 {

@@ -1,6 +1,6 @@
 #include "mouse.hpp"
 
-using namespace Renderer;
+using namespace GUI::Renderer;
 
 uint8_t cursor[]
 {
@@ -279,10 +279,10 @@ namespace GUI
         }
         if (MousePacket[0] & PS2Middlebutton)
         {
-            GlobalRenderer->Print((to_string(MousePosition.X)));
-            GlobalRenderer->Print("|", 1);
+            /*GlobalRenderer->Print((to_string(MousePosition.X)));
+            GlobalRenderer->Print("|");
             GlobalRenderer->Print((to_string(MousePosition.Y)));
-            GlobalRenderer->Print(" ", 1);
+            GlobalRenderer->Print(" ");*/
         }
 
         if (MousePacket[0] & PS2Rightbutton)

@@ -2,7 +2,7 @@
 #include "ahci/ahci.hpp"
 #include "memory/heap.hpp"
 
-using namespace Renderer;
+using namespace GUI::Renderer;
 
 namespace PCI
 {
@@ -19,15 +19,15 @@ namespace PCI
         if (pciDeviceHeader->DeviceID == 0) return;
         if (pciDeviceHeader->DeviceID == 0xFFFF) return;
 
-        GlobalRenderer->Print(GetVendorName(pciDeviceHeader->VendorID), 1);
+        GlobalRenderer->Print(GetVendorName(pciDeviceHeader->VendorID));
         GlobalRenderer->Print(" / ", 1);
-        GlobalRenderer->Print(GetDeviceName(pciDeviceHeader->VendorID, pciDeviceHeader->DeviceID), 1);
+        GlobalRenderer->Print(GetDeviceName(pciDeviceHeader->VendorID, pciDeviceHeader->DeviceID));
         GlobalRenderer->Print(" / ", 1);
-        GlobalRenderer->Print(DeviceClasses[pciDeviceHeader->Class], 1);
+        GlobalRenderer->Print(DeviceClasses[pciDeviceHeader->Class]);
         GlobalRenderer->Print(" / ", 1);
-        GlobalRenderer->Print(GetSubclassName(pciDeviceHeader->Class, pciDeviceHeader->Subclass), 1);
+        GlobalRenderer->Print(GetSubclassName(pciDeviceHeader->Class, pciDeviceHeader->Subclass));
         GlobalRenderer->Print(" / ", 1);
-        GlobalRenderer->Print(GetProgIFName(pciDeviceHeader->Class, pciDeviceHeader->Subclass, pciDeviceHeader->ProgIF), 1);
+        GlobalRenderer->Print(GetProgIFName(pciDeviceHeader->Class, pciDeviceHeader->Subclass, pciDeviceHeader->ProgIF));
         GlobalRenderer->Next();
 
         switch (pciDeviceHeader->Class)

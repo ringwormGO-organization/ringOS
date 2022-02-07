@@ -4,7 +4,10 @@
 
 #include "../../BasicRenderer.hpp"
 
-namespace Renderer
+namespace GUI
 {
-    void printf(const char* fmt, ...);
+    namespace Renderer
+    {
+        void printf(const char* fmt, ...);
+    };
 };

@@ -4,7 +4,7 @@
 #include "../memory/heap.hpp"
 #include "../paging/PageFrameAllocator.hpp"
 
-using namespace Renderer;
+using namespace GUI::Renderer;
 
 namespace AHCI
 {

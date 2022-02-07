@@ -2,8 +2,8 @@
 
 Shell* ShellStuff;
 
-using namespace Renderer;
 using namespace GUI;
+using namespace GUI::Renderer;
 
 void Shell::ShellInit()
 {

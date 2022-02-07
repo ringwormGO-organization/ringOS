@@ -15,7 +15,7 @@ gdtInfoSelectors GDTInfoSelectors;
 const uint8_t BASE_DESC = GDT_DESC_PRESENT | GDT_DESC_READWRITE | GDT_DESC_CODEDATA;
 const uint8_t BASE_GRAN = GDT_GRAN_64BIT | GDT_GRAN_4K;
 
-void gdtInit()
+void GDTInit()
 {
     TSS DefaultTSS;
     gdtBaseInfo.Size = (sizeof(GDTEntry) * GDT_MAX_DESCRIPTORS) - 1; //get the total size where gdt entries are
