@@ -71,7 +71,8 @@ Beta16 version image of ringOS
 - [ ] NTFS
 
 ### Storage
-
+- [x] Read
+- [ ] Write
 - [x] SATA
 - [ ] IDE
 - [ ] NVMe
@@ -93,7 +94,7 @@ Beta16 version image of ringOS
 - [ ] [Own scripting language for GUI](https://github.com/ringwormGO-organization/ringwormGO-Standard-Code)
 
 #### Default applications
-- [x] Calculator
+- [x] Calculator (maximum number of number1 and number2 is 9)
 
 ### User Mode
 - [ ] Ring3
@@ -104,11 +105,17 @@ Beta16 version image of ringOS
 - [ ] Task Manager
 - [ ] Users - one or more of them
 
+### Porting stuff
+- [ ] Python
+- [ ] Lua
+- [ ] GCC and G++ compiler
+
 ### Other
 - [x] ACPI
 - [x] AHCI
 - [ ] Audio
 - [ ] Book
+- [ ] Installation
 - [ ] Networking
 - [x] Own build tool
 - [ ] Real hardware support
