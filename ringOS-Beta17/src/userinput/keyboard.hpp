@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include "../BasicRenderer.hpp"
-#include "../library/libc.hpp"
+#include "../library/stdio.hpp"
 
 namespace GUI
 {

@@ -39,7 +39,7 @@ extern "C" void _start(BootInfo* bootInfo)
 	GlobalRenderer->Colour = 0xffffff00;
 
 	//Resolution
-    printf("Resolution: %d x %d", ResoWidth, ResoHeight);
+    printf("Resolution: %ld x %ld", (long)ResoWidth, (long)ResoHeight);
 
     GlobalRenderer->Colour = 0xffffffff;
     

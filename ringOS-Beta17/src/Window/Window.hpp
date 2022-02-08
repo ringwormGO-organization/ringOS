@@ -99,8 +99,6 @@ namespace GUI
             int error;
 
             //resoultion
-            uint64_t ResoWidth;
-            uint64_t ResoHeight;
             uint64_t Width(uint64_t width);
             uint64_t Height(uint64_t height);
 

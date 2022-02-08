@@ -12,7 +12,7 @@
 #define PS2YOverflow 0b10000000
 
 extern uint8_t cursor[];
-extern uint8_t cursor2[];
+extern uint8_t cursor2[]; //it should be cursor resize
 
 void InitPS2Mouse();
 void HandlePS2Mouse(uint8_t data);

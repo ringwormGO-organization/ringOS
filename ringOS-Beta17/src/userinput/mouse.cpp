@@ -46,7 +46,7 @@ uint8_t cursor2[]
     0b11000011, 0b11100000,
     0b00000011, 0b11100000,
     0b00000001, 0b10011000,
-};
+}; //it should be curosor resize
 
 void MouseWait()
 {
@@ -204,7 +204,7 @@ namespace GUI
 
         if (MousePacket[0] & PS2Leftbutton)
         {
-            if (MousePosition.Y >= WindowStuff->ResoHeight - 80 && MousePosition.X <= 100)
+            if (MousePosition.Y >= canvas.height - 80 && MousePosition.X <= 100)
             {
                 if (WindowStuff->StartMenuStatus == true)
                 {
@@ -222,7 +222,7 @@ namespace GUI
                 WindowStuff->CloseApplication();
             }
             
-            switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+            switch (canvas.width | canvas.height)
             {
                 case 1920 | 1080:
                     if (WindowStuff->SubMenuStatus == true)
@@ -287,11 +287,11 @@ namespace GUI
 
         if (MousePacket[0] & PS2Rightbutton)
         {
-            if (MousePosition.Y >= WindowStuff->ResoHeight - 185 && MousePosition.Y <= WindowStuff->ResoHeight - 175)
+            if (MousePosition.Y >= canvas.height - 185 && MousePosition.Y <= canvas.height - 175)
             {
                 if (WindowStuff->StartMenuStatus == true)
                 {
-                    if (MousePosition.X <= WindowStuff->ResoWidth - 1324)
+                    if (MousePosition.X <= canvas.width - 1324)
                     {
                         WindowStuff->OpenApplication(1, 300, 300, 300, 300, 0xffcc0000);
                     }
@@ -299,7 +299,7 @@ namespace GUI
             }
             else
             {
-                switch (WindowStuff->ResoWidth | WindowStuff->ResoHeight)
+                switch (canvas.width | canvas.height)
                 {
                     case 1920 | 1080:
                         if (MousePosition.Y >= 925 && MousePosition.Y <= 935)

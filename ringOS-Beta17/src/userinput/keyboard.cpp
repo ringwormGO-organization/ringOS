@@ -373,7 +373,7 @@ namespace GUI
 
         if (ascii != 0)
         {
-            GlobalRenderer->PutChar(ascii);          
+            GlobalRenderer->PutChar(ascii);     
         }
     }
 }

@@ -78,26 +78,26 @@ namespace GUI
 
     uint64_t Window::Width(uint64_t width)
     {
-        return ResoWidth = width;
+        return canvas.width = width;
     }
 
     uint64_t Window::Height(uint64_t height)
     {
-        return ResoHeight = height;
+        return canvas.height = height;
     }
 
     void Window::DrawStartMenu()
     {
-        Rectangle(0, ResoHeight - 380, 300, 300, STARTMENU_COLOR);
+        Rectangle(0, canvas.height - 380, 300, 300, STARTMENU_COLOR);
         taskbar.taskbar_x = 0;
-        taskbar.taskbar_y = ResoHeight - 380;
+        taskbar.taskbar_y = canvas.height - 380;
         taskbar.taskbar_width = 300;
         taskbar.taskbar_height = 300;
 
         GlobalRenderer->Colour = 0xffff0000;
-        GlobalRenderer->CursorPosition2 = {0, ResoHeight - 185};
+        GlobalRenderer->CursorPosition2 = {0, (long)canvas.height - 185};
         GlobalRenderer->Print("CALCULATOR", 2);
-        GlobalRenderer->CursorPosition2 = {0, ResoHeight - 150};
+        GlobalRenderer->CursorPosition2 = {0, (long)canvas.height - 150};
         GlobalRenderer->Print("POWER", 2);
         
         GlobalRenderer->Colour = 0xffffffff;
@@ -108,7 +108,7 @@ namespace GUI
     void Window::DrawSubMenu(int type)
     {
         subMenu.x = taskbar.taskbar_x + 80;
-        subMenu.y = ResoHeight - 150;
+        subMenu.y = canvas.height - 150;
 
         subMenu.width = 100;
         subMenu.height = 100;
@@ -159,7 +159,7 @@ namespace GUI
 
     void Window::ClearStartMenu()
     {
-        switch (ResoWidth | ResoHeight)
+        switch (canvas.width | canvas.height)
         {
             case 1920 | 1080:
                 GlobalRenderer->BMPPicture();
@@ -171,12 +171,12 @@ namespace GUI
                 }
 
                 GlobalRenderer->Colour = RED;
-                GlobalRenderer->CursorPosition = {0, (long) ResoHeight - 80};
+                GlobalRenderer->CursorPosition = {0, (long)canvas.height - 80};
                 GlobalRenderer->Print("START");
                 GlobalRenderer->Colour = DEFAULT;
                 break;
             default:
-                Rectangle(0, ResoHeight - 380, 300, 300, 0x00000000);
+                Rectangle(0, canvas.height - 380, 300, 300, 0x00000000);
                 break;
         }
 
@@ -240,7 +240,7 @@ namespace GUI
             calc.final_number = 0;
         }
 
-        switch (ResoWidth | ResoHeight)
+        switch (canvas.width | canvas.height)
         {
             case 1920 | 1080:
                 GlobalRenderer->BMPPicture();
