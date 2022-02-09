@@ -14,6 +14,7 @@
 #include "acpi.hpp"
 #include "pci.hpp"
 #include "smbios.h"
+#include "filesystem/llfs.hpp"
 
 struct BootInfo 
 {
@@ -25,6 +26,7 @@ struct BootInfo
 	uint64_t mMapDescSize;
 	ACPI::RSDP2* rsdp;
 	struct SMBiosHeader* SMBIOS;
+	struct LLFSHeader* RAMFS;
 } ;
 
 extern uint64_t _KernelStart;
@@ -33,5 +35,7 @@ extern uint64_t _KernelEnd;
 struct KernelInfo {
     PageTableManager* pageTableManager;
 };
+
+void InitUserMode(BootInfo* bootInfo);
 
 KernelInfo InitializeKernel(BootInfo* BootInfo);

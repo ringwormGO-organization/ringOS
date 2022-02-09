@@ -211,6 +211,29 @@ uint8_t strEql(char* ch1, char* ch2)
     return result;
 }
 
+char tolower(char c)
+{
+    return (c >= 'A' && c <= 'Z') ? c + 32 : c;
+}
+
+char toupper(char c)
+{
+    return (c >= 'a' && c <= 'z') ? c - 32 : c;
+}
+
+int tonum(char c)
+{
+    c = toupper(c);
+    return (c) ? c - 64 : -1;
+}
+
+char str[2];
+char *tostr(char c)
+{
+    str[0] = c;
+    return str;
+}
+
 char char2low(char c)
 {
     return (c >= 'A' && c <= 'Z') ? c + 32 : c;
@@ -227,9 +250,9 @@ int char2num(char c)
     return (c) ? c - 64 : -1;
 }
 
-char str[2];
+char str2[2];
 char *char2str(char c)
 {
-    str[0] = c;
-    return str;
+    str2[0] = c;
+    return str2;
 }

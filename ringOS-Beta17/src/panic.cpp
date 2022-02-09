@@ -18,9 +18,9 @@ void Panic(const char* panicMessage)
 
     GlobalRenderer->Colour = 0;
 
-    GlobalRenderer->Print(":( Kernel Panic", 1);
+    GlobalRenderer->Print(":( Kernel Panic");
     GlobalRenderer->Next();
-    GlobalRenderer->Print("Restart your computer!!", 1);
+    GlobalRenderer->Print("Restart your computer!!");
 
 
     GlobalRenderer->Next();

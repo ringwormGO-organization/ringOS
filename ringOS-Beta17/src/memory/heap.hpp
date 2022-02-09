@@ -1,6 +1,9 @@
 #pragma once
+
 #include <stdint.h>
 #include <stddef.h>
+
+#include "../paging/PageFrameAllocator.hpp"
 
 struct HeapSegHdr
 {

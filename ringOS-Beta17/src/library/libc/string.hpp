@@ -36,6 +36,11 @@ int lstrstr(const char *str, const char *substr, int skip = 0);
 uint16_t strlength(char* ch);
 uint8_t strEql(char* ch1, char* ch2);
 
+char tolower(char c);
+char toupper(char c);
+int tonum(char c);
+char *tostr(char c);
+
 char char2low(char c);
 char char2up(char c);
 int char2num(char c);

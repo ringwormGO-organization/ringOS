@@ -37,7 +37,8 @@ void free(void* address)
 
 void* malloc(size_t size)
 {
-    if (size % 0x10 > 0){ // it is not a multiple of 0x10
+    if (size % 0x10 > 0) // it is not a multiple of 0x10
+    {
         size -= (size % 0x10);
         size += 0x10;
     }
@@ -45,14 +46,18 @@ void* malloc(size_t size)
     if (size == 0) return NULL;
 
     HeapSegHdr* currentSeg = (HeapSegHdr*) heapStart;
-    while(true){
-        if(currentSeg->free){
-            if (currentSeg->length > size){
+    while(true)
+    {
+        if(currentSeg->free)
+        {
+            if (currentSeg->length > size)
+            {
                 currentSeg->Split(size);
                 currentSeg->free = false;
                 return (void*)((uint64_t)currentSeg + sizeof(HeapSegHdr));
             }
-            if (currentSeg->length == size){
+            if (currentSeg->length == size)
+            {
                 currentSeg->free = false;
                 return (void*)((uint64_t)currentSeg + sizeof(HeapSegHdr));
             }

@@ -90,6 +90,7 @@ typedef struct
 	UINTN mMapDescSize;
 	void* rsdp;
 	void* SMBIOS;
+	void* LLFS;
 } BootInfo;
 
 Framebuffer framebuffer;
@@ -180,12 +181,12 @@ PSF1_FONT* LoadPSF1Font(EFI_FILE* Directory, CHAR16* Path, EFI_HANDLE ImageHandl
 
 BMPImage* LoadBMPImage(EFI_FILE* directory, CHAR16* path, EFI_HANDLE image, EFI_SYSTEM_TABLE* SystemTable, BootInfo* bootInfo)
 {
-    // Load BMP file
+    /* Load BMP file */
     EFI_FILE* bmpFile = LoadFile(directory, path, image, SystemTable);
     if (bmpFile == NULL)
     {
         ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
-        Print(L"An error occurred while attempting to load BMP file\n\r");
+        Print(L"An error occurred while attempting to load BMP file!\nLoading file from media!\n\r");
         return NULL;
     }
 
@@ -195,11 +196,11 @@ BMPImage* LoadBMPImage(EFI_FILE* directory, CHAR16* path, EFI_HANDLE image, EFI_
     BS->AllocatePool(EfiLoaderData, headerSize, (void**)&bmpHeader);
     bmpFile->Read(bmpFile, &headerSize, bmpHeader);
 
-    // Check if BMP file has valid header using magic bytes
+    /*  Check if BMP file has valid header using magic bytes */
     if (bmpHeader->magic[0] != BMP_MAGIC0 || bmpHeader->magic[1] != BMP_MAGIC1)
     {
         ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
-        Print(L"An error occurred while attempting to load BMP file\n\r");
+        Print(L"An error occurred while attempting to load BMP file!\nBMP Header invalid!\n\r");
         return NULL;
     }
 
@@ -214,9 +215,11 @@ BMPImage* LoadBMPImage(EFI_FILE* directory, CHAR16* path, EFI_HANDLE image, EFI_
         return NULL;
     }
 
-    // The BITMAPV5HEADER has the same structure as the BITMAPV4HEADER except for 4 uint32_t at the end
-    // that are not necessary for the rendering of the bitmap. (for now)
-    // As such, we only need to read the first 108 bytes of the BITMAPV5HEADER.
+    /* 
+	* The BITMAPV5HEADER has the same structure as the BITMAPV4HEADER except for 4 uint32_t at the end
+    * that are not necessary for the rendering of the bitmap. (for now)
+    * As such, we only need to read the first 108 bytes of the BITMAPV5HEADER. 
+	*/
     if (dibSize == 124) dibSize = 108;
     BITMAPV4HEADER* dibHeader;
     bmpFile->SetPosition(bmpFile, headerSize);
@@ -298,6 +301,19 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
 		Print(L"Kernel Loaded Successfully \n\r");
 	}
+
+	EFI_FILE* llfs = LoadFile(NULL, L"ram.llfs", ImageHandle, SystemTable);
+	if (llfs == NULL)
+	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
+		Print(L"Could not load llfs file \n\r");
+	}
+	else
+	{
+		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
+		Print(L"llfs file loaded successfully \n\r");
+	}
+
 
 
 	Elf64_Ehdr header;
@@ -469,6 +485,12 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		configTable++;
 	}
 
+	//Load LLFS
+	UINTN llfsSize = 0xFFFFFF;
+	void* llfsBuffer;
+	SystemTable->BootServices->AllocatePool(EfiLoaderData, llfsSize, (void **)&llfsBuffer);
+	llfs->Read(llfs, &llfsSize, llfsBuffer);
+
 	BootInfo bootInfo;
 	bootInfo.framebuffer = newBuffer;
 	bootInfo.psf1_Font = newFont;
@@ -477,6 +499,7 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	bootInfo.mMapDescSize = DescriptorSize;
 	bootInfo.rsdp = rsdp;
 	bootInfo.SMBIOS = SMBIOS;
+	bootInfo.LLFS = llfs;
 
 	// Load BMP desktop background image
     BMPImage* bmpImage = LoadBMPImage(NULL, L"Picture.bmp", ImageHandle, SystemTable, &bootInfo);
