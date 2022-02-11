@@ -101,7 +101,7 @@ Beta16 version image of ringOS
 - [ ] Ring3
 - [x] TSS
 - [x] ELF
-- [] syscall
+- [ ] syscall
 - [ ] Threads - one or more of them
 - [ ] Task Manager - GUI version
 - [] Task Manager - non GUI version
