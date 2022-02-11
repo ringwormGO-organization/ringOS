@@ -28,9 +28,6 @@ extern "C" void _start(BootInfo* bootInfo)
     //GUI initialization
     Init();
 
-    //User Mode initialization
-    //InitUserMode(bootInfo);
-
     GlobalRenderer->CursorPosition = {0, 0};
 
     //Welcome

@@ -133,7 +133,8 @@ EFI_FILE* LoadFile(EFI_FILE* Directory, CHAR16* Path, EFI_HANDLE ImageHandle, EF
 	EFI_SIMPLE_FILE_SYSTEM_PROTOCOL* FileSystem;
 	SystemTable->BootServices->HandleProtocol(LoadedImage->DeviceHandle, &gEfiSimpleFileSystemProtocolGuid, (void**)&FileSystem);
 
-	if (Directory == NULL){
+	if (Directory == NULL)
+	{
 		FileSystem->OpenVolume(FileSystem, &Directory);
 	}
 
@@ -500,6 +501,7 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	bootInfo.rsdp = rsdp;
 	bootInfo.SMBIOS = SMBIOS;
 	bootInfo.LLFS = llfs;
+
 
 	// Load BMP desktop background image
     BMPImage* bmpImage = LoadBMPImage(NULL, L"Picture.bmp", ImageHandle, SystemTable, &bootInfo);

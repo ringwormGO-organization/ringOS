@@ -14,7 +14,6 @@
 #include "acpi.hpp"
 #include "pci.hpp"
 #include "smbios.h"
-#include "filesystem/llfs.hpp"
 
 struct BootInfo 
 {
@@ -35,7 +34,5 @@ extern uint64_t _KernelEnd;
 struct KernelInfo {
     PageTableManager* pageTableManager;
 };
-
-void InitUserMode(BootInfo* bootInfo);
 
 KernelInfo InitializeKernel(BootInfo* BootInfo);

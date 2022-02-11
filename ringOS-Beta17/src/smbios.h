@@ -42,4 +42,4 @@ struct SMBiosType0
     uint32_t BIOSCharacteristics;
 };
 
-void SMBiosParse();
+void SMBiosParse(SMBiosHeader* hdr);

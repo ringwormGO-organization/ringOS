@@ -1,13 +1,14 @@
-
 OSNAME = ringOS
 
 GNUEFI = ../gnu-efi
 OVMFDIR = ../OVMFbin
 LDS = kernel.lld
 CC = g++
+CC2 = gcc
 ASMC = nasm
 LD = ld.lld
 
+CPPFLAGS = -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -g #-g required for debugging
 CFLAGS = -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -g #-g required for debugging
 ASMFLAGS = 
 LDFLAGS = -T $(LDS) -static -Bsymbolic -nostdlib
@@ -23,6 +24,7 @@ SRC = $(call rwildcard,$(SRCDIR),*.cpp)
 CSRC = $(call rwildcard,$(SRCDIR),*.c)    
 ASMSRC = $(call rwildcard,$(SRCDIR),*.asm)  
 OBJS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))
+OBJS += $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%_c.o, $(CSRC))
 OBJS += $(patsubst $(SRCDIR)/%.asm, $(OBJDIR)/%_asm.o, $(ASMSRC))
 
 DIRS = $(wildcard $(SRCDIR)/*)
@@ -37,7 +39,12 @@ $(OBJDIR)/interrupts/interrupts.o: $(SRCDIR)/interrupts/interrupts.cpp
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@ echo !==== COMPILING $^
 	@ mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CPPFLAGS) -c $^ -o $@
+
+$(OBJDIR)/%_c.o: $(SRCDIR)/%.c
+	@ echo !==== COMPILING $^
+	@ mkdir -p $(@D)
+	$(CC2) $(CFLAGS) -c $^ -o $@
 
 $(OBJDIR)/%_asm.o: $(SRCDIR)/%.asm
 	@ echo !==== COMPILING $^
@@ -52,6 +59,7 @@ setup:
 	@mkdir $(BUILDDIR)
 	@mkdir $(SRCDIR)
 	@mkdir $(OBJDIR)
+
 
 buildimg:
 	dd if=/dev/zero of=$(BUILDDIR)/$(OSNAME).img bs=512 count=93750

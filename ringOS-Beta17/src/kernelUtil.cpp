@@ -4,11 +4,6 @@
 #include "interrupts/interrupts.hpp"
 #include "IO.hpp"
 #include "memory/heap.hpp"
-#include "elf/Load.hpp"
-#include "filesystem/llfs.hpp"
-#include "filesystem/vfs.hpp"
-#include "UserMode/TaskMgr.hpp"
-#include "UserMode/userspace.h"
 
 using namespace GUI::Renderer;
 
@@ -85,72 +80,6 @@ void PrepareACPI(BootInfo* bootInfo)
     PCI::EnumeratePCI(mcfg);
 }
 
-extern "C" void IdleTask();
-
-void* GenerateUserspaceStack()
-{
-    void* Stack = GlobalAllocator.RequestPages(8);
-    uint64_t StackSize = 0x1000*8; //32k
-    for (uint64_t t = (uint64_t)Stack; t < (uint64_t)Stack + StackSize; t += 4096)
-    {
-        g_PageTableManager.MapUserSpaceMemory((void*)t);
-    }
-    return Stack;
-}
-
-void InitUserMode(BootInfo* bootInfo)
-{
-    //llfs
-    uint64_t fssize = LLFSGetFileSystemSize(bootInfo->RAMFS);
-    LLFSSource = (LLFSHeader*)GlobalAllocator.RequestPages(fssize/4096+1);
-    memcpy(LLFSSource, bootInfo->RAMFS, fssize);
-    LLFSMap(LLFSSource); //map as user memory
-
-    VFSSource = VFS_SOURCE_RAMFS;
-
-    //and lock the pages
-    GlobalAllocator.LockPages(LLFSSource,fssize/4096+1);
-
-    //init filesystem
-    VFSInit();
-
-    //map files from llfs into the vfs
-    LLFSEntry* firstEntry = (LLFSEntry*)((uint64_t)LLFSSource+sizeof(LLFSHeader));
-    uint64_t fsize = sizeof(LLFSHeader);
-    for(int i = 0; i<LLFSSource->Entries; i++)
-    {
-        FileDescriptor descriptor;
-        memcpy(descriptor.path,firstEntry->Filename,368);
-        descriptor.source = VFS_SOURCE_RAMFS;
-        VFSAdd(descriptor);
-        firstEntry = (LLFSEntry*)((uint64_t)firstEntry+sizeof(LLFSEntry)+firstEntry->FileSize);
-    }
-
-    printf("VFS total entries: %u\n",VFSTotalEntries);
-
-    //init taskmanager
-    TaskManager tmgr;
-    GlobalTaskManager = &tmgr;
-
-    void* lastAddr = malloc(1);
-    void* offset = malloc(0x0000100000200000-(uint64_t)lastAddr-sizeof(HeapSegHdr)*3);
-    void* address = malloc(1*1024*1024); //1 mb
-    //userspace
-    void* moldInit = LoadELFExecutable("/minit.melf",false);
-
-    if(moldInit == (void*)0)
-    {
-        printf("File is missing or corrupted.");
-    }
-
-    g_PageTableManager.MapUserSpaceMemory((void*)IdleTask);
-    GlobalTaskManager->AddTask((void*)IdleTask, GenerateUserspaceStack(), "Idle Task", TASK_SYSTEM,0);
-    GlobalTaskManager->AddTask(moldInit, GenerateUserspaceStack(),"/minit.melf",TASK_USER,VFSSizeFile(VFSOpenFile("/minit.melf")));
-    //jump in the userspace
-    GlobalTaskManager->isEnabled = 1;
-    RunInUserspace((void*)IdleTask,GenerateUserspaceStack());
-}
-
 BasicRenderer r = BasicRenderer(NULL, NULL, NULL);
 KernelInfo InitializeKernel(BootInfo* bootInfo)
 {
@@ -160,6 +89,11 @@ KernelInfo InitializeKernel(BootInfo* bootInfo)
     GDTInit();
 
     PrepareMemory(bootInfo);
+
+    printf("SMBIOS Address: %x\n", bootInfo->SMBIOS);
+    printf("SMBIOS Signature: %c%c%c%c\n", bootInfo->SMBIOS->Signature[0], bootInfo->SMBIOS->Signature[1], bootInfo->SMBIOS->Signature[2], bootInfo->SMBIOS->Signature[3]);
+
+    SMBiosParse(bootInfo->SMBIOS);
 
     //memset(bootInfo->framebuffer->BaseAddress, 0, bootInfo->framebuffer->BufferSize);
 
