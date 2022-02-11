@@ -90,7 +90,6 @@ typedef struct
 	UINTN mMapDescSize;
 	void* rsdp;
 	void* SMBIOS;
-	void* LLFS;
 } BootInfo;
 
 Framebuffer framebuffer;
@@ -303,20 +302,6 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		Print(L"Kernel Loaded Successfully \n\r");
 	}
 
-	EFI_FILE* llfs = LoadFile(NULL, L"ram.llfs", ImageHandle, SystemTable);
-	if (llfs == NULL)
-	{
-		ST->ConOut->SetAttribute(ST->ConOut, EFI_RED);
-		Print(L"Could not load llfs file \n\r");
-	}
-	else
-	{
-		ST->ConOut->SetAttribute(ST->ConOut, EFI_GREEN);
-		Print(L"llfs file loaded successfully \n\r");
-	}
-
-
-
 	Elf64_Ehdr header;
 	{
 		UINTN FileInfoSize;
@@ -486,12 +471,6 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 		configTable++;
 	}
 
-	//Load LLFS
-	UINTN llfsSize = 0xFFFFFF;
-	void* llfsBuffer;
-	SystemTable->BootServices->AllocatePool(EfiLoaderData, llfsSize, (void **)&llfsBuffer);
-	llfs->Read(llfs, &llfsSize, llfsBuffer);
-
 	BootInfo bootInfo;
 	bootInfo.framebuffer = newBuffer;
 	bootInfo.psf1_Font = newFont;
@@ -500,7 +479,6 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
 	bootInfo.mMapDescSize = DescriptorSize;
 	bootInfo.rsdp = rsdp;
 	bootInfo.SMBIOS = SMBIOS;
-	bootInfo.LLFS = llfs;
 
 
 	// Load BMP desktop background image

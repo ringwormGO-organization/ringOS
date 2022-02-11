@@ -25,7 +25,6 @@ struct BootInfo
 	uint64_t mMapDescSize;
 	ACPI::RSDP2* rsdp;
 	struct SMBiosHeader* SMBIOS;
-	struct LLFSHeader* RAMFS;
 } ;
 
 extern uint64_t _KernelStart;
