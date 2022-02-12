@@ -10,6 +10,7 @@ ringOS source code
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)
 
 #### Stable releases
+[**ringOS v1.0.0](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 [**Latest ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable2)
 
 #### Contributing and issues
@@ -102,7 +103,7 @@ Beta16 version image of ringOS
 - [ ] syscall
 - [ ] Threads - one or more of them
 - [ ] Task Manager - GUI version
-- [] Task Manager - non GUI version
+- [ ] Task Manager - non GUI version
 - [ ] Users - one or more of them
 
 #### Porting stuff
