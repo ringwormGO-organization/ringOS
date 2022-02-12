@@ -169,7 +169,9 @@ CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
 * [wiki.osdev.org](https://wiki.osdev.org/Main_Page)
 
-Other 
+Other
+
+**Code which is used will be removed soon except wiki osdev one.**
 ______________________
 
 Thank you for choosing ringOS
