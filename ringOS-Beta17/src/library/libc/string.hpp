@@ -33,6 +33,9 @@ char** strsplit_count(const char* s, const char* delim, size_t &nb);
 char *strstr(const char *str, const char *substr);
 int lstrstr(const char *str, const char *substr, int skip = 0);
 
+char *getline(const char *str, const char *substr, char *buffer, int skip);
+char *reverse(char s[]);
+
 uint16_t strlength(char* ch);
 uint8_t strEql(char* ch1, char* ch2);
 
@@ -45,3 +48,5 @@ char char2low(char c);
 char char2up(char c);
 int char2num(char c);
 char *char2str(char c);
+
+int string2int(const char* str);

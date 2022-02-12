@@ -66,6 +66,7 @@ namespace GUI
     {
         bool status;
         int type;
+        const char* name;
 
         long x;
         long y;
@@ -78,11 +79,11 @@ namespace GUI
     {
         bool alReady;
 
-        double number1;
+        int number1;
         char operation;
-        double number2;
+        int number2;
 
-        double final_number;
+        int final_number;
     };
     
 
@@ -109,10 +110,12 @@ namespace GUI
             void OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color);
             void CloseApplication();
 
+            void CaclualtorLogic(int number);
+
             void Error(const char* message);
 
         private:
-            int Edge(long x, long y, long width, const char* name);
+            int Edge();
             void AdvancedTaskbar();
 
             void Caluclator();

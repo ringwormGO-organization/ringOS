@@ -1,6 +1,8 @@
 USE THIS MODULES FOR PRIVATE USE
 IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE ASK ringwormGO FOR PERMISSION
 
+THIS IS LEGACY MODULE, CHECK settings.h FOR NEW VERSION OF MODULES
+
 //Welcome Info
     //Welcome
     GlobalRenderer->Colour = 0xff00ffff;
@@ -46,7 +48,7 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
     GlobalRenderer->Print(" ");
 	GlobalRenderer->Colour = 0xffff0000;
 
-    GlobalRenderer->CursorPosition = {0, GlobalRenderer->CursorPosition->Y + 16};
+    GlobalRenderer->CursorPosition = {0, GlobalRenderer->CursorPosition.Y + 16};
     GlobalRenderer->Print("Free RAM: ");
     GlobalRenderer->Print(to_string(GlobalAllocator.GetFreeRAM() / 1024));
     GlobalRenderer->Print(" KB ");
@@ -102,26 +104,11 @@ IF YOU PLANNING USE THIS MODULES TO MODIFICATE ringOS AND PUBLISH ringOS PLEASE 
     WindowStuff->Width(ResoWidth);
     WindowStuff->Height(ResoHeight);
 
-//BMP picture loading
-    if (bootInfo->bmpImage->height != bootInfo->framebuffer->Height || bootInfo->bmpImage->width != bootInfo->framebuffer->Width)
-    {
-        uint32_t previousColour = GlobalRenderer->Colour;
-        GlobalRenderer->Colour = 0xffff0000;
-        GlobalRenderer->Print("BMP image is not the same resolution as the screen resolution!");
-        GlobalRenderer->Next();
-        GlobalRenderer->Colour= previousColour;
-    }
+//SMBIOS
+    printf("SMBIOS Address: %x\n", bootInfo->SMBIOS);
+    printf("SMBIOS Signature: %c%c%c%c\n", bootInfo->SMBIOS->Signature[0], bootInfo->SMBIOS->Signature[1], bootInfo->SMBIOS->Signature[2], bootInfo->SMBIOS->Signature[3]);
 
-    // Bottom-up rendering
-    for (unsigned int y = 0; y < bootInfo->bmpImage->height; ++y)
-    {
-        for (unsigned int x = 0; x < bootInfo->bmpImage->width; ++x)
-        {
-            unsigned int* framebufferPtr = bootInfo->framebuffer->BaseAddress + bootInfo->bmpImage->width * y + x;
-            unsigned int* pixPtr = bootInfo->bmpImage->bitmapBuffer + (bootInfo->bmpImage->height - 1 - y) * bootInfo->bmpImage->width + x;
-            *framebufferPtr = *pixPtr;
-        }
-    }
+    SMBiosParse(bootInfo->SMBIOS);
 
 
 # ERRORS

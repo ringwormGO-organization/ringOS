@@ -57,6 +57,17 @@ namespace GUI
         #define NINE 0x0A
         #define KEY_ZERO 0x0B
 
+        #define KEYPAD_ONE 0x4F
+        #define KEYPAD_TWO 0x50
+        #define KEYPAD_THREE 0x51
+        #define KEYPAD_FOUR 0x6B //scan code 2
+        #define KEYPAD_FIVE 0x4C
+        #define KEYPAD_SIX 0x74 //scan code 2
+        #define KEYPAD_SEVEN 0x47
+        #define KEYPAD_EIGHT 0x48
+        #define KEYPAD_NINE 0x49
+        #define KEYPAD_KEY_ZERO 0x52
+
         /* KEYPAD +, -, *, / */
         #define PLUS 0x4E
         #define MINUS 0x4A

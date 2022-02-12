@@ -176,6 +176,38 @@ int lstrstr(const char *str, const char *substr, int skip)
     return -1;
 }
 
+char *getline(const char *str, const char *substr, char *buffer, int skip)
+{
+    int i = 0;
+    const char *strbck = str;
+    const char *a = str, *b = substr;
+    while (true)
+    {
+        if (!*b)
+        {
+            if (skip == 0)
+            {
+                int t = i;
+                while (strbck[i - 1] != '\n') i--;
+                while (strbck[t] != '\n') t++;
+                int size = t - i;
+                memcpy(buffer, const_cast<void*>(reinterpret_cast<const void*>(&strbck[i])), size);
+                buffer[size] = 0;
+                return buffer;
+            }
+            else skip--;
+        }
+        if (!*a) return 0;
+        if (*a++ != *b++)
+        {
+            a = ++str;
+            b = substr;
+            i++;
+        }
+    }
+    return 0;
+}
+
 char *reverse(char s[])
 {
     size_t c, j, i;
@@ -255,4 +287,14 @@ char *char2str(char c)
 {
     str2[0] = c;
     return str2;
+}
+
+int string2int(const char* str)
+{
+    int res = 0;
+    for (int i = 0; str[i] != '\0'; ++i)
+    {
+        res = res * 10 + str[i] - '0';
+    }
+    return res;
 }

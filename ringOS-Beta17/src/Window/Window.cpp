@@ -65,8 +65,8 @@ namespace GUI
 
     bool Window::Check()
     {
-        if (close.xbuttonclose != 0 && close.ybuttonclose 
-        != 0 && close.xbuttonminus != 0 && close.ybuttonminus != 0)
+        if (close.xbuttonclose != 0 || close.ybuttonclose 
+        != 0 || close.xbuttonminus != 0 || close.ybuttonminus != 0)
         {
             return true;
         }
@@ -194,8 +194,6 @@ namespace GUI
         App->width = width;
         App->height = height;
         App->color = color;
-        App->status = true;
-        App->type = type;
 
         switch (type)
         {
@@ -224,7 +222,11 @@ namespace GUI
                 break;
         }
 
-        Edge(x, y, width, name);
+        App->status = true;
+        App->type = type;
+        App->name = name;
+
+        Edge();
     }
 
     void Window::CloseApplication()
@@ -265,6 +267,25 @@ namespace GUI
         }
     }
 
+    void Window::CaclualtorLogic(int number)
+    {
+        switch (calc.alReady)
+        {
+            case false:
+                calc.number1 = number;
+                Caluclator();
+                break;
+
+            case true:
+                calc.number2 = number;
+                Caluclator();
+                break;
+            
+            default:
+                break;
+        }
+    }
+
     void Window::Error(const char* message)
     {
         GlobalRenderer->Colour = RED;
@@ -275,8 +296,9 @@ namespace GUI
     }
 
 
-    /*                              PRIVATE                             */
-    int Window::Edge(long x, long y, long width, const char* name)
+    /*               FUTURE METHODS ARE IN PRIVATE PART OF CLASS               */
+    /*               Draw Edge at top of window               */
+    int Window::Edge()
     {
         /* Declare a number of buttons */
         int buttons = BUTTONS;
@@ -287,6 +309,26 @@ namespace GUI
             return 1;
         }
 
+        /* Check if app parameters are not equal to zero */
+        if (App->x == 0 || App->y == 0 || App->width == 0 || App->height == 0
+        || App->color == 0 || App->status != true || App->type == 0 || App->name == "0")
+        {
+            return 1;
+        }
+
+        /* Set up window parameters */
+        bool status = App->status;
+        int type = App->type;
+        const char* name = App->name;
+
+        long x, y, width, height;
+        x = App->x;
+        y = App->y;
+        width = App->width;
+        height = App->height;
+
+        uint32_t color = App->color;
+
         /* Declare a button positions */
         close.xbuttonclose = x + width - 30;
         close.xbuttonminus = y;
@@ -294,7 +336,8 @@ namespace GUI
         close.ybuttonclose = x + width - 60;
         close.ybuttonminus = y;
 
-        Check();
+        /* Set a color for text */
+        GlobalRenderer->Colour = DEFAULT;
 
         /* Draw a buttons */
         Rectangle(x, y, width, 30, EDGE_COLOR);
@@ -321,16 +364,17 @@ namespace GUI
 
     void Window::Caluclator()
     {
+        /* Drawing window */
         Rectangle(App->x, App->y, App->width, App->height, App->color);
 
+        /* Declare window parameters */
         long x, y, width, height;
-
         x = App->x;
         y = App->y;
         width = App->width;
         height = App->height;
         
-        //numbers
+        /* Printing numbers 1 - 9 */ 
         for (int i = 40, num = 1; i < 160, num < 4; i+=40, num++)
         {
             Square(x + i, y + 80, 30, 30, WHITE);
@@ -358,15 +402,19 @@ namespace GUI
             GlobalRenderer->Print(to_string((int64_t)num), 2);
         }
 
-        // zero
+        /* number zero */
         Square(x + 80, y + 176, 30, 30, WHITE);
         GlobalRenderer->Colour = RED;
         GlobalRenderer->CursorPosition2 = {x + 80, y + 176};
         GlobalRenderer->Print(to_string((int64_t)0), 2);
 
-    	//textbox
+    	/* textbox */
         Rectangle(x + 20, y + 40, 260, 25, DEFAULT);
 
+        /* Calling Edge() function */
+        Edge();
+
+        /* Printing to textbox */
         GlobalRenderer->Colour = DEF_BLACK;
         GlobalRenderer->CursorPosition2 = {x + 25, y + 45};
 
@@ -375,12 +423,12 @@ namespace GUI
 
         if (calc.alReady == true)
             GlobalRenderer->Print(to_string((int64_t)calc.number1), 2);
-            GlobalRenderer->PutChar2(calc.operation);
+            GlobalRenderer->Print(char2str(calc.operation), 2);
             GlobalRenderer->Print(to_string((int64_t)calc.number2), 2);
 
             if (calc.final_number != 0)
             {
-                GlobalRenderer->PutChar2('=');
+                GlobalRenderer->Print(char2str('='), 2);
                 GlobalRenderer->Print(to_string((int64_t)calc.final_number), 2);
             }
             else

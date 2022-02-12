@@ -329,17 +329,6 @@ namespace GUI
             }
         }
 
-        void BasicRenderer::PutChar2(char chr)
-        {
-            PutChar(chr, CursorPosition2.X, CursorPosition2.Y);
-            CursorPosition2.X += 8;
-            if (CursorPosition2.X + 8 > TargetFramebuffer->Width)
-            {
-                CursorPosition2.X = 0; 
-                CursorPosition2.Y += 16;
-            }
-        }
-
         TaskBar taskbar;
         void BasicRenderer::TaskBar()
         {

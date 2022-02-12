@@ -33,7 +33,6 @@ namespace GUI
                 void Print(const char* str, int type);
                 void PutChar(char chr, unsigned int xOff, unsigned int yOff);
                 void PutChar(char chr);
-                void PutChar2(char chr);
                 void PutPix(uint32_t x, uint32_t y, uint32_t colour);
                 uint32_t GetPix(uint32_t x, uint32_t y);
                 void ClearChar();

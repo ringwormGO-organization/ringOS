@@ -4,6 +4,7 @@
 #include "interrupts/interrupts.hpp"
 #include "IO.hpp"
 #include "memory/heap.hpp"
+#include "settings.h"
 
 using namespace GUI::Renderer;
 
@@ -90,12 +91,9 @@ KernelInfo InitializeKernel(BootInfo* bootInfo)
 
     PrepareMemory(bootInfo);
 
-    printf("SMBIOS Address: %x\n", bootInfo->SMBIOS);
-    printf("SMBIOS Signature: %c%c%c%c\n", bootInfo->SMBIOS->Signature[0], bootInfo->SMBIOS->Signature[1], bootInfo->SMBIOS->Signature[2], bootInfo->SMBIOS->Signature[3]);
-
-    SMBiosParse(bootInfo->SMBIOS);
-
-    //memset(bootInfo->framebuffer->BaseAddress, 0, bootInfo->framebuffer->BufferSize);
+    #ifdef RESET_SCREEN
+        memset(bootInfo->framebuffer->BaseAddress, 0, bootInfo->framebuffer->BufferSize);
+    #endif
 
     InitializeHeap((void*)0x0000100000000000, 0x20);
 

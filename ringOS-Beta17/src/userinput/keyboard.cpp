@@ -6,7 +6,6 @@ namespace GUI
 {
     namespace QWERTYKeyboard
     {
-
         const char ASCIITable[] = 
         {
             0 ,  0 , '1', '2',
@@ -178,163 +177,144 @@ namespace GUI
     /* --------------------------------------------------------------- */
             case ONE:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 1;
-                    if (calc.alReady == true)
-                        calc.number2 = 1;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(1);
                 else
-                {
                     GlobalRenderer->PutChar('1');
-                }
                 return;
 
             case TWO:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 2;
-                    if (calc.alReady == true)
-                        calc.number2 = 2;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(2);
                 else
-                {
                     GlobalRenderer->PutChar('2');
-                }
                 return;
 
             case THREE:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 3;
-                    if (calc.alReady == true)
-                        calc.number2 = 3;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(3);
                 else
-                {
                     GlobalRenderer->PutChar('3');
-                }
                 return;
 
             case FOUR:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 4;
-                    if (calc.alReady == true)
-                        calc.number2 = 4;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(4);
                 else
-                {
                     GlobalRenderer->PutChar('4');
-                }
                 return;
 
             case FIVE:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 5;
-                    if (calc.alReady == true)
-                        calc.number2 = 5;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(5);
                 else
-                {
                     GlobalRenderer->PutChar('5');
-                }
                 return;
 
             case SIX:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 6;
-                    if (calc.alReady == true)
-                        calc.number2 = 6;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(6);
                 else
-                {
                     GlobalRenderer->PutChar('6');
-                }
                 return;
 
             case SEVEN:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 7;
-                    if (calc.alReady == true)
-                        calc.number2 = 7;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(7);
                 else
-                {
                     GlobalRenderer->PutChar('7');
-                }
                 return;
 
             case EIGHT:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 8;
-                    if (calc.alReady == true)
-                        calc.number2 = 8;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(8);
                 else
-                {
                     GlobalRenderer->PutChar('8');
-                }
                 return;
 
             case NINE:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 9;
-                    if (calc.alReady == true)
-                        calc.number2 = 9;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(9);
                 else
-                {
                     GlobalRenderer->PutChar('9');
-                }
                 return;
 
-            case KEY_ZERO:
+            case KEY_ZERO | KEYPAD_KEY_ZERO:
                 if (App->status == true && App->type == 1)
-                {
-                    if (calc.alReady == false)
-                        calc.number1 = 0;
-                    if (calc.alReady == true)
-                        calc.number2 = 0;
-
-                    WindowStuff->OpenApplication(1, 300, 300, 300, 300, CALCULATOR_COLOR);
-                }
+                    WindowStuff->CaclualtorLogic(0);
                 else
-                {
                     GlobalRenderer->PutChar('0');
-                }
                 return;
+
+            case KEYPAD_ONE:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(1);
+                else
+                    GlobalRenderer->PutChar('1');
+                return;
+
+            case KEYPAD_TWO:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(2);
+                else
+                    GlobalRenderer->PutChar('2');
+                return;
+
+            case KEYPAD_THREE:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(3);
+                else
+                    GlobalRenderer->PutChar('3');
+                return;
+
+            case KEYPAD_FOUR:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(4);
+                else
+                    GlobalRenderer->PutChar('4');
+                return;
+
+            case KEYPAD_FIVE:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(5);
+                else
+                    GlobalRenderer->PutChar('5');
+                return;
+
+            case KEYPAD_SIX:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(6);
+                else
+                    GlobalRenderer->PutChar('6');
+                return;
+
+            case KEYPAD_SEVEN:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(7);
+                else
+                    GlobalRenderer->PutChar('7');
+                return;
+
+            case KEYPAD_EIGHT:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(8);
+                else
+                    GlobalRenderer->PutChar('8');
+                return;
+
+            case KEYPAD_NINE:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(9);
+                else
+                    GlobalRenderer->PutChar('9');
+                return;
+
+            case KEYPAD_KEY_ZERO:
+                if (App->status == true && App->type == 1)
+                    WindowStuff->CaclualtorLogic(0);
+                else
+                    GlobalRenderer->PutChar('0');
+                return;
+
 
     /* --------------------------------------------------------------- */
             case PLUS:
