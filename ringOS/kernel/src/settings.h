@@ -10,7 +10,7 @@
 #define RESOLUTION
 //#define RAM_INFO
 //#define RSDP_CHECK
-#define SMBIOS_INFO
+//#define SMBIOS_CHECK
 //#define MALLOC_EXAMPLE
 //#define PAGE_FAULT
 
