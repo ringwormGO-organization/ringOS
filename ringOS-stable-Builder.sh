@@ -1,4 +1,4 @@
-# © 2021 ringwormGO
+# © 2022 ringwormGO
 
 #Type ./ringOS-stable-Builder-.sh to run script from terminal
 #If don't work, chmod +x ringOS-stable-Builder-.sh and run script normally
@@ -18,7 +18,7 @@ mkdir "ringOS-stable" && echo ringOS-stable directory successfully created || ec
 
 cd ringOS-stable && Successfully enter ringOS-stable directory || echo FAILED to enter ringOS-stable directory
 
-git clone -b ringOS-stable1 https://github.com/ringwormGO-organization/ringOS && echo Cloning successful || echo FAILED to clone
+git clone -b ringOS-stable2 https://github.com/ringwormGO-organization/ringOS && echo Cloning successful || echo FAILED to clone
 
 cd ringOS && echo In ringOS directory || echo FAILED to enter ringOS directory
 
