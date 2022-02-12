@@ -2,7 +2,6 @@
 
 #include <stdint.h> 
 
-#include "shell.hpp"
 #include "../BasicRenderer.hpp"
 #include "../ColorCodes.h"
 #include "../scheduling/pit/pit.hpp"

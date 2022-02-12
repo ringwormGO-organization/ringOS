@@ -201,13 +201,6 @@ namespace GUI
                 Caluclator();
                 name = "Calculator";
                 break;
-
-            case 2:
-                ShellStuff->shellx = x;
-                ShellStuff->shelly = y;
-                ShellStuff->ShellInit();    
-                name = "Shell";
-                break;
             
             default:
                 Error("Application unsupproted... Unable to open it");

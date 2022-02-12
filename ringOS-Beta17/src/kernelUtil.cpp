@@ -87,7 +87,10 @@ KernelInfo InitializeKernel(BootInfo* bootInfo)
     r = BasicRenderer(bootInfo->framebuffer, bootInfo->psf1_Font, bootInfo->bmpImage);
     GlobalRenderer = &r;
 
-    GDTInit();
+    GDTDescriptor gdtDescriptor;
+    gdtDescriptor.Size = sizeof(GDT) - 1;
+    gdtDescriptor.Offset = (uint64_t)&DefaultGDT;
+    LoadGDT(&gdtDescriptor);
 
     PrepareMemory(bootInfo);
 
