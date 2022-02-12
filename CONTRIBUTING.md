@@ -1,4 +1,13 @@
+# How to start contributing
 Just drop a Pull Request :)
+
+# Pull Request style
+1. Use CRLF. Set up your Git settings with this: `git config --global core.autocrlf true` and check if it is OK by `git config --global core.autocrlf`. It need to return `true`
+2. Use following style **WITH LOGIC**:
+
+```
+[LABEL NAME] Name of Pull Request
+```
 
 # Coding sytle for Pull Requests
 ### Indentation and line width
@@ -8,7 +17,7 @@ Just drop a Pull Request :)
 
 Right:
 
-```
+```c
 switch (Condition)
 {
     case 1:
@@ -18,7 +27,7 @@ switch (Condition)
 ```
 Wrong:
 
-```
+```c
 switch (Condition)
 {
 case 1:
@@ -28,7 +37,7 @@ case 1:
 ```
 When a function call does not fit onto a line, align arguments like this:
 
-```
+```c
 FunctionCall(arg1,
              arg2,
              arg3);
@@ -36,11 +45,11 @@ FunctionCall(arg1,
 
 When making new functions, use an return type.
 Right:
-```
+```c
 int func() {}
 ```
 Wrong:
-```
+```c
 func() {}
 ```
 
@@ -63,7 +72,7 @@ func() {}
 
 Right:
 
-```
+```c
 for (int i = 0; i < 5; i++)
     DoSomething();
 
@@ -72,7 +81,7 @@ func1(a, b);
 
 Wrong:
 
-```
+```c
 for (int i = 0 ; i < 5 ; i++)
     DoSomething();
     
@@ -83,14 +92,14 @@ func1(a , b) ;
 
 Right:
 
-```
+```c
 if (Condition)
     DoSomething();
 ```
 
 Wrong:
 
-```
+```c
 if(Condition)
     DoSomething();
 ```
@@ -103,7 +112,7 @@ Right:
 
 Wrong:
 
-```
+```c
 func (a, b);
 func( a, b );
 ```
@@ -113,7 +122,7 @@ func( a, b );
 
 Right:
 
-```
+```c
 x++;
 y++;
 
@@ -124,7 +133,7 @@ if (Condition)
 ```
 Also right but don't use it often
 
-```
+```c
 if (Condition) DoSomething(); 
 
 if (Condition)
@@ -132,7 +141,7 @@ if (Condition)
 ```
 Wrong:
 
-```
+```c
 x++; y++;
 ```
 
@@ -142,7 +151,7 @@ x++; y++;
 
 Right:
 
-```
+```c
 if (Condition)
     DoSomething();
 
@@ -176,7 +185,7 @@ else
 
 Wrong:
 
-```
+```c
 if (Condition) {
     DoSomething();
 }
@@ -204,7 +213,7 @@ else
 
 Right:
 
-```
+```c
 if (!func1())
     return;
 
@@ -220,7 +229,7 @@ if (j == 1)
 
 Wrong:
 
-```
+```c
 if (func1())
 {
     i = func2();
@@ -249,7 +258,7 @@ if (func1())
 2. Name a struct, class, union etc. with cappital letter and variable which lowercase letter
 
 **Right:**
-```
+```c
 struct Test
 {
   int number;
@@ -259,7 +268,7 @@ Test test;
 ```
 
 **Wrong:**
-```
+```c
 struct test
 {
   int Number;
@@ -273,7 +282,7 @@ test Test;
 
 Right:
 
-```
+```c
 // This is a one-line comment
 
 /* This is a C-style comment */
@@ -287,7 +296,7 @@ Right:
 
 Wrong:
 
-```
+```c
 //
 // This comment wastes two lines
 //
