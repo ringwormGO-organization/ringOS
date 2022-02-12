@@ -3,16 +3,16 @@ ringOS source code
 
 [Documentation](https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md)
 
-[Automatic build tool for Linux (run ringOS in Qemu, beta)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh)
+[Shell script for latest stable release](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-stable-Builder.sh)
 
-[Automatic Build Tool - stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
+[Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2)
 
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)
 
 #### Stable releases
-[**ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable1)
+[**ringOS v1.0.0](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 
-[**ringOSY stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOSY)
+[**Latest ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable2)
 
 #### Contributing and issues
 If you have problem or idea create an **issue**.
@@ -104,7 +104,7 @@ Beta16 version image of ringOS
 - [ ] syscall
 - [ ] Threads - one or more of them
 - [ ] Task Manager - GUI version
-- [] Task Manager - non GUI version
+- [ ] Task Manager - non GUI version
 - [ ] Users - one or more of them
 
 #### Porting stuff
