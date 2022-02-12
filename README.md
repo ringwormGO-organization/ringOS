@@ -11,6 +11,7 @@ ringOS source code
 
 #### Stable releases
 [**ringOS v1.0.0](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
+
 [**Latest ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable2)
 
 #### Contributing and issues
