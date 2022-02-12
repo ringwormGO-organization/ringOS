@@ -29,4 +29,4 @@ struct SMBiosEntry
     uint16_t Handle;
 };
 
-void SMBiosParse(SMBiosHeader* hdr);
+size_t SMBiosParse(SMBiosHeader* hdr);
