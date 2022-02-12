@@ -88,7 +88,7 @@ extern "C" void _start(BootInfo* bootInfo)
 
     #ifdef SMBIOS_CHECK
         printf("SMBIOS Address: %x\n", bootInfo->SMBIOS);
-        printf("SMBIOS Signature: %c%c%c%c\n", bootInfo->SMBIOS->Signature[0], bootInfo->SMBIOS->Signature[1], bootInfo->SMBIOS->Signature[2], bootInfo->SMBIOS->Signature[3]);
+        printf("SMBIOS Signature: %c%c%c%c\n", bootInfo->SMBIOS->EntryPointString[0], bootInfo->SMBIOS->EntryPointString[1], bootInfo->SMBIOS->EntryPointString[2], bootInfo->SMBIOS->EntryPointString[3]);
 
         SMBiosParse(bootInfo->SMBIOS);
     #endif
