@@ -10,7 +10,7 @@ ringOS source code
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)
 
 #### Stable releases
-[**ringOS v1.0.0](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
+[**ringOS v1.0.0**](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 
 [**Latest ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/tree/ringOS-stable2)
 
@@ -165,11 +165,9 @@ CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
 * [ilobilo's kernel](https://github.com/ilobilo/kernel)
 
-* [KonectOS-2](https://github.com/Keep-Konect/KonectOS-2)
-
 * [wiki.osdev.org](https://wiki.osdev.org/Main_Page)
 
-Other 
+Other
 ______________________
 
 Thank you for choosing ringOS
