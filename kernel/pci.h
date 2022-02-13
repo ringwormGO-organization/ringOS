@@ -1,10 +1,11 @@
 #pragma once
 #include <stdint.h>
 #include <stddef.h>
+
 #include "acpi.h"
 
-
-typedef struct DeviceHeader {
+typedef struct DeviceHeader 
+{
 uint16_t VendorID;
 uint16_t DeviceID;
 uint16_t Command;
@@ -20,4 +21,4 @@ uint8_t BIST;
 
 }DeviceHeader;
 
-void EnumeratePCI(MCFGHeader* mfghdr,void print(const char*,uint64_t length));
+void EnumeratePCI(MCFGHeader* mfghdr);

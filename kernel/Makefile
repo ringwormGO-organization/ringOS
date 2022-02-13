@@ -1,6 +1,6 @@
 # This is a Makefile meant for GNU Make. Assert that.
 ifneq (,)
-This makefile requires GNU Make.
+#This makefile requires GNU Make.
 endif
 
 # This is the name that our final kernel executable will have.
@@ -11,7 +11,7 @@ override KERNEL := kernel.elf
 # We are only using "cc" as a placeholder here. It may work by using
 # the host system's toolchain, but this is not guaranteed.
 ifeq ($(origin CC), default)
-CC := cc
+CC := gcc
 endif
 
 # Likewise, "ld" here is just a placeholder and your mileage may vary if using the
@@ -21,18 +21,7 @@ LD := ld
 endif
 
 # User controllable CFLAGS.
-CFLAGS ?= -Wall -Wextra -O2 -pipe
-
-# User controllable linker flags. We set none by default.
-LDFLAGS ?=
-
-# Internal C flags that should not be changed by the user.
-override INTERNALCFLAGS :=   \
-	-I.                  \
-	-std=gnu11           \
-	-ffreestanding       \
-	-fno-stack-protector \
-	-fno-pic             \
+CFLAGS ?= -Wall -Wextra -O2 -pipe -I. -std=gnu11 -ffreestanding -fno-stack-protector -fno-pic \
 	-mabi=sysv           \
 	-mno-80387           \
 	-mno-mmx             \
@@ -42,6 +31,9 @@ override INTERNALCFLAGS :=   \
 	-mno-red-zone        \
 	-mcmodel=kernel      \
 	-MMD
+
+# User controllable linker flags. We set none by default.
+LDFLAGS ?=
 
 # Internal linker flags that should not be changed by the user.
 override INTERNALLDFLAGS :=    \
@@ -64,12 +56,12 @@ stivale2.h:
 
 # Link rules for the final kernel executable.
 $(KERNEL): $(OBJ)
-	$(LD) $(OBJ) $(LDFLAGS) $(INTERNALLDFLAGS) -o $@
+	$(LD) $(OBJ) $(LDFLAGS) -o $@
 
 # Compilation rules for *.c files.
 -include $(HEADER_DEPS)
 %.o: %.c stivale2.h
-	$(CC) $(CFLAGS) $(INTERNALCFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Remove object files and the final executable.
 .PHONY: clean
