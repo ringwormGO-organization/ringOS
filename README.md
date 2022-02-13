@@ -99,8 +99,8 @@ Beta16 version image of ringOS
 
 #### User Mode
 - [ ] Ring3
-- [x] TSS
-- [x] ELF
+- [ ] TSS
+- [ ] ELF
 - [ ] syscall
 - [ ] Threads - one or more of them
 - [ ] Task Manager - GUI version
