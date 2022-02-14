@@ -5,7 +5,7 @@ ringOS source code
 
 [Shell script for latest stable release](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-stable-Builder.sh)
 
-[Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2)
+[Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
 
 [Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)
 
