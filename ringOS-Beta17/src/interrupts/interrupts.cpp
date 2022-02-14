@@ -49,7 +49,6 @@ __attribute__((interrupt)) void KeyboardInt_Handler(interrupt_frame* frame)
 
 __attribute__((interrupt)) void MouseInt_Handler(interrupt_frame* frame)
 {
-
     uint8_t mouseData = inb(0x60);
 
     HandlePS2Mouse(mouseData);

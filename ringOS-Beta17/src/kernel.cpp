@@ -109,5 +109,11 @@ extern "C" void _start(BootInfo* bootInfo)
         *number = 2;
     #endif
 
+    void* mall = malloc(4096);
+    void* char_mall = char_malloc(4096);
+
+    free(mall);
+    free(char_mall);
+
     while(true) asm ("hlt");
 }

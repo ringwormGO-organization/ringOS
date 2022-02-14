@@ -69,6 +69,40 @@ void* malloc(size_t size)
     return malloc(size);
 }
 
+char* char_malloc(size_t size)
+{
+    if (size % 0x10 > 0) // it is not a multiple of 0x10
+    {
+        size -= (size % 0x10);
+        size += 0x10;
+    }
+
+    if (size == 0) return NULL;
+
+    HeapSegHdr* currentSeg = (HeapSegHdr*) heapStart;
+    while(true)
+    {
+        if(currentSeg->free)
+        {
+            if (currentSeg->length > size)
+            {
+                currentSeg->Split(size);
+                currentSeg->free = false;
+                return (char*)((uint64_t)currentSeg + sizeof(HeapSegHdr));
+            }
+            if (currentSeg->length == size)
+            {
+                currentSeg->free = false;
+                return (char*)((uint64_t)currentSeg + sizeof(HeapSegHdr));
+            }
+        }
+        if (currentSeg->next == NULL) break;
+        currentSeg = currentSeg->next;
+    }
+    ExpandHeap(size);
+    return char_malloc(size);
+}
+
 HeapSegHdr* HeapSegHdr::Split(size_t splitLength)
 {
     if (splitLength < 0x10) return NULL;
@@ -90,7 +124,8 @@ HeapSegHdr* HeapSegHdr::Split(size_t splitLength)
 
 void ExpandHeap(size_t length)
 {
-    if (length % 0x1000) {
+    if (length % 0x1000) 
+    {
         length -= length % 0x1000;
         length += 0x1000;
     }
@@ -119,11 +154,11 @@ void HeapSegHdr::CombineForward()
 
     if (next == LastHdr) LastHdr = this;
 
-    if (next->next != NULL){
+    if (next->next != NULL)
+    {
         next->next->last = this;
     }
 
-    
 
     length = length + next->length + sizeof(HeapSegHdr);
 

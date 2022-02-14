@@ -29,7 +29,8 @@ namespace GUI
         {
             if (scancode > 58) return 0;
 
-            if (uppercase){
+            if (uppercase)
+            {
                 return ASCIITable[scancode] - 32;
             }
             else return ASCIITable[scancode];
