@@ -80,6 +80,7 @@ Beta16 version image of ringOS
 
 #### Timers
 - [x] PIT
+- [ ] RTC
 
 #### Shell
 - [ ] Shell
