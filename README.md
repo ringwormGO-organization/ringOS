@@ -151,7 +151,7 @@ CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 - lld
 - Qemu
 
-*See shell script to install software.*
+*See shell script to install software in root of main branch.*
 
 ## External dependencies
 * [printf](https://github.com/eyalroz/printf) *This is forked repository of [original mpaland's printf](https://github.com/mpaland/printf) and also ringwormGO has done little modification to be compatible with ringOS*
