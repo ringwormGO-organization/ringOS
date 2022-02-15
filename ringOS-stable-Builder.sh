@@ -21,4 +21,5 @@ make bootloader && echo Bootloader successfully created || echo FAILED to create
 cd ../kernel && echo In kernel directory || echo FAILED to enter kernel directory
 make kernel && echo Kernel successfully created || echo FAILED to create kernel
 make buildimg && echo Buildimg successfully created || echo FAILED to create buildimg
+./ISO.sh
 make run && echo Successfully run ringOS stable release || echo FAILED run ringOS stable release
