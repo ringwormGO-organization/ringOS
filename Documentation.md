@@ -19,22 +19,11 @@ Download a Zip file of Qemu release (example: https://github.com/Andrej123456789
 Unzip the downloaded Zip folder and navigate to the contents in your Terminal (Linux) or using WSL/WSL2 on Windows ('cd')
 
 --------------------------------------------------------------------------------------------------------------------------------
-For compiling Beta version.
+### Compile beta version from shell script
+#### How to run shell script:
+`./ringOS-stable-Builder-.sh`
 
-`git clone https://github.com/VanGutan/gnu-efi` 
-
-Create one ringOS folder, clone `gnu-efi`, `ringOS-beta17` rename as `kernel` and clone `git clone https://github.com/VanGutan/ringOS-Beta14-OVMFTemplate` and rename as `OVMFbin`.
-Copy `ringOS-Beta17-bootloader` folder into `gnu-efi` folder and rename it to `bootloader`.
-
-For cloning bootloader, you can use [Makefile](https://github.com/ringwormGO-organization/ringOS/blob/main/Makefile).
-
-Type these commands in order:
-
-`make gnu-efi`
-
-`make kernel`
-
-`make OVMFbin`
+If that don't work, type: `chmod +x ringOS-stable-Builder-.sh` and try again.
 
 ### Compiling
 The following commands work on Debian-based (ex. Ubuntu) Linux distros and within WSL/WSL2 on Windows. Users of non-Debian distros will need to locate the correct packages for their chosen operating system.
@@ -64,13 +53,12 @@ To compile the ringOS kernel you will need to run the following commands in your
 
 `make kernel`
 
+`make buildimg`
 ______________________________________________________________
 
 To run ringOS within Qemu on Linux or Windows:
 
 **Windows** double-click the  `run2.bat` file to initialize a Qemu VM and run ringOS.
-
-**Linux** `make buildimg` [run from with the 'kernel' folder]
 
 **Linux** `make run`
 
@@ -78,7 +66,7 @@ To run ringOS within Qemu on Linux or Windows:
 
 [Shell scipt](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
 
-[Manually download binary](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
+[Manually download binary](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
 
 ______
 
