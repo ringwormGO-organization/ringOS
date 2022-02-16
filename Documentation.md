@@ -20,10 +20,10 @@ Unzip the downloaded Zip folder and navigate to the contents in your Terminal (L
 
 --------------------------------------------------------------------------------------------------------------------------------
 ### Compile beta version from shell script
-#### How to run shell script:
-`./ringOS-stable-Builder-.sh`
+#### How to run shell script for Debian based Linux distros:
+`./ringOS-beta.sh`
 
-If that don't work, type: `chmod +x ringOS-stable-Builder-.sh` and try again.
+If that don't work, type: `chmod +x ringOS-beta.sh` and try again.
 
 ### Compiling
 The following commands work on Debian-based (ex. Ubuntu) Linux distros and within WSL/WSL2 on Windows. Users of non-Debian distros will need to locate the correct packages for their chosen operating system.
