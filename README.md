@@ -87,7 +87,7 @@ Beta16 version image of ringOS
 
 #### GUI - Windowing system
 - [x] Basic framebuffer windowing-system
-- [ ] Advanced framebuffer windowing-system (GUI library)
+- [ ] Advanced framebuffer windowing-system (GUI library, GUI API)
 - [x] BMP images
 - [ ] TGA images
 - [ ] Put GUI as process
@@ -99,6 +99,7 @@ Beta16 version image of ringOS
 
 #### User Mode
 - [ ] Ring3
+- [ ] Loading executables
 - [ ] TSS
 - [ ] ELF
 - [ ] syscall
