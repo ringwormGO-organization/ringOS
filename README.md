@@ -92,7 +92,7 @@ Beta16 version image of ringOS
 - [ ] TGA images
 - [ ] Put GUI as process
 - [ ] GUI support in User Mode
-- [ ] [Own scripting language for GUI](https://github.com/ringwormGO-organization/ringwormGO-Standard-Code)
+- [ ] [Own scripting language for GUI](#porting-stuff)
 
 ##### Default applications
 - [x] Calculator (maximum number of number1 and number2 is 9)
