@@ -4,10 +4,7 @@ This documentation is intended to guide you in developing, compiling, debugging 
 [SYSTEM REQUIREMENTS](https://github.com/ringwormGO-organization/ringOS#system-requiratmens)
 
 ## Compile and run in Qemu (betas)
-[You can use this script (Linux, run in Qemu)](https://github.com/Andrej123456789/ringOS/blob/main/ringOS-Builder-full.sh)
-
-[Stable release (Linux, run in Qemu)](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
-or continue manually.
+[You can use this script (Linux, run in Qemu)](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-beta.sh)
 
 ### Software you need
 1. [Qemu recommended](#install-qemu) or [Virtual Box, VmWare](#running-in-virtual-box-or-vmware)
@@ -62,7 +59,7 @@ To run ringOS within Qemu on Linux or Windows:
 
 **Linux** `make run`
 
-# Compile and run the latest stable release from shell script
+## Compile and run the latest stable release
 
 [Shell scipt](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-stable-Builder.sh)
 
@@ -146,12 +143,8 @@ Download code to be debugged, install gdb (```sudo apt-get install gdb```), open
 
 Click F5 to run.
 ______
-## Modules
-[Modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt) are for customizing ringOS.
-
-You can currently personalize the operating system output by using the provided [official modules](https://github.com/ringwormGO-organization/ringOS/blob/main-and-beta-things/ringOS-Beta17/Modules.txt)  and printing text in kernel.cpp.
-
-Feel free to customize some other parts like panic.cpp as appropriate for your use case.
+## Settings
+Check [settings.h](https://github.com/ringwormGO-organization/ringOS/blob/main/kernel/src/settings.h) for more info.
 
 ### License for modules
 The modules provided for customization are intended for private, non-commerical use only.
