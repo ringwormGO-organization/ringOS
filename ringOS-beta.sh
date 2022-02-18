@@ -6,6 +6,8 @@ sudo apt-get install nasm && echo NASM insatlled successfully || echo FAILED to 
 sudo apt-get install qemu-system-x86 && echo Qemu insatlled successfully || echo FAILED to install Qemu
 sudo apt-get install git && echo git insatlled successfully || echo FAILED to install git
 sudo apt-get install lld && echo lld installed successfully || echo FAILED to install lld
+sudo apt-get install xorriso && echo xorriso installed successfully || echo FAILED to install xorriso
+sudo apt-get install mkisofs && echo mkisofs installed successfully || echo FAILED to install mkisofs
 
 git clone -b main https://github.com/ringwormGO-organization/ringOS
 cd ringOS
