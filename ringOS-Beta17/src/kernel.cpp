@@ -2,6 +2,7 @@
 #include "memory/heap.hpp"
 #include "scheduling/pit/pit.hpp"
 #include "Window/Window.hpp"
+#include "Window/Library.hpp"
 #include "settings.h"
 
 #define VERSION "Beta17"
@@ -27,7 +28,7 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->FullClear();
 
     //GUI initialization
-    Init();
+    NewGUI::InitGUI();
 
     GlobalRenderer->CursorPosition = {0, 0};
 
@@ -108,12 +109,6 @@ extern "C" void _start(BootInfo* bootInfo)
         int* number = (int*)0x80000000000;
         *number = 2;
     #endif
-
-    void* mall = malloc(4096);
-    void* char_mall = char_malloc(4096);
-
-    free(mall);
-    free(char_mall);
 
     while(true) asm ("hlt");
 }

@@ -1,13 +1,11 @@
+/* 
+ * OLD GUI SYSTEM
+ *
+*/
+
 #pragma once
 
-#include <stdint.h> 
-
-#include "../BasicRenderer.hpp"
-#include "../ColorCodes.h"
-#include "../scheduling/pit/pit.hpp"
-#include "../memory/heap.hpp"
-#include "../shutdown.hpp"
-#include "../Reboot.hpp"
+#include "GUIInclude.hpp"
 
 #define TASKBAR_COLOR 0xff00ffff
 #define STARTMENU_COLOR 0xff00ffff
@@ -131,4 +129,4 @@ namespace GUI
     extern Windows_close close;
 
     extern calculator calc;
-}
+};

@@ -8,7 +8,7 @@ CC2 = gcc
 ASMC = nasm
 LD = ld.lld
 
-CPPFLAGS = -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -g #-g required for debugging
+CPPFLAGS = -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -fpermissive -g #-g required for debugging
 CFLAGS = -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -g #-g required for debugging
 ASMFLAGS = 
 LDFLAGS = -T $(LDS) -static -Bsymbolic -nostdlib

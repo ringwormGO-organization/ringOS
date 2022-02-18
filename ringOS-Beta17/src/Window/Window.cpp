@@ -1,3 +1,8 @@
+/* 
+ * OLD GUI SYSTEM
+ *
+*/
+
 #include "Window.hpp"
 
 using namespace GUI::Renderer;
