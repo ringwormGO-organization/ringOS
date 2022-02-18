@@ -10,11 +10,8 @@ sudo apt-get install lld && echo lld installed successfully || echo FAILED to in
 git clone -b main https://github.com/ringwormGO-organization/ringOS
 cd ringOS
 
-mv ringOS-Beta17-bootloader bootloader
 git clone https://github.com/VanGutan/gnu-efi
 mv bootloader gnu-efi/bootloader
-
-mv ringOS-Beta17 kernel
 
 git clone https://github.com/VanGutan/ringOS-Beta14-OVMFTemplate
 mv ringOS-Beta14-OVMFTemplate OVMFbin
