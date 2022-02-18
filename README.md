@@ -135,7 +135,7 @@ Beta16 version image of ringOS
 #### Real hardware
 Firmware: UEFI x86_64 PC
 
-RAM: 3GB is the **MAXIMUM** 
+RAM: 3GB is the **MAXIMUM**.
 
 #### In emulator
 Qemu: 38MB RAM min, 3GB recommended
