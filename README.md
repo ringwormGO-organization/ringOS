@@ -33,23 +33,23 @@ Beta 4 version image of ringOS
 Beta16 version image of ringOS
 
 ## Checklist
-#### Bootloaders
+### Bootloaders
 - [x] gnu-efi
 - [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev) (outside support)
 - [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX) (still not implement)
 
-#### Framebuffer info and printing to the screen
+### Framebuffer info and printing to the screen
 - [x] Framebuffer info
 - [x] Printing to the screen
 - [x] [printf](#external-dependencies)
 - [x] ```\n``` implementaion
 
-#### Memory
+### Memory
 - [x] Bitmap
 - [x] Paging
 - [x] ```malloc``` and ```free```
 
-#### Interrupts and IO
+### Interrupts and IO
 - [x] GDT
 - [x] IDT
 - [x] Exceptions
@@ -58,11 +58,11 @@ Beta16 version image of ringOS
 - [x] Keyboard
 - [x] Mouse
 
-#### Virtual Machine supprot
+### Virtual Machine supprot
 - [ ] VMWare Tools
 - [ ] Virtual Box Additions
 
-#### File systems
+### File systems
 - [ ] VFS
 - [ ] DEVFS
 - [ ] FAT32
@@ -71,21 +71,21 @@ Beta16 version image of ringOS
 - [ ] Ext4
 - [ ] NTFS
 
-#### Storage
+### Storage
 - [x] Read
 - [ ] Write
 - [x] SATA
 - [ ] IDE
 - [ ] NVMe
 
-#### Timers
+### Timers
 - [x] PIT
 - [ ] RTC
 
-#### Shell
+### Shell
 - [ ] Shell
 
-#### GUI - Windowing system
+### GUI - Windowing system
 - [x] Basic framebuffer windowing-system
 - [ ] Advanced framebuffer windowing-system (GUI library, GUI API)
 - [x] BMP images
@@ -94,10 +94,10 @@ Beta16 version image of ringOS
 - [ ] GUI support in User Mode
 - [ ] [Own scripting language for GUI](#porting-stuff)
 
-##### Default applications
+#### Default applications
 - [x] Calculator (maximum number of number1 and number2 is 9)
 
-#### User Mode
+### User Mode
 - [ ] Ring3
 - [ ] Loading executables
 - [ ] TSS
@@ -108,12 +108,12 @@ Beta16 version image of ringOS
 - [ ] Task Manager - non GUI version
 - [ ] Users - one or more of them
 
-#### Porting stuff
+### Porting stuff
 - [ ] Python
 - [ ] Lua
 - [ ] GCC and G++ compiler
 
-#### Other
+### Other
 - [x] ACPI
 - [x] AHCI
 - [ ] Audio
