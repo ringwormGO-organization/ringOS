@@ -1,6 +1,6 @@
 clear
 
-sudo apt upgrade && echo Upgrade successful || echo FAILED to upgrade
+sudo apt update && echo Update successful || echo FAILED to update
 sudo apt-get install build-essential mtools && echo build-essential mtools insatlled successfully || echo FAILED to install build-essential tools
 sudo apt-get install nasm && echo NASM insatlled successfully || echo FAILED to install nasm
 sudo apt-get install qemu-system-x86 && echo Qemu insatlled successfully || echo FAILED to install Qemu
