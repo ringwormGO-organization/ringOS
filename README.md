@@ -1,6 +1,8 @@
 # ringOS
 ringOS source code
 
+Currently on pause while [Termi](https://github.com/ringwormGO-organization/Termi) is in more active development!
+
 [Documentation](https://github.com/Andrej123456789/ringOS/blob/main/Documentation.md)
 
 [Shell script for latest stable release](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-stable-Builder.sh)
