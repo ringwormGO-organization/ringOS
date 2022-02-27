@@ -20,3 +20,7 @@ make buildimg && echo Buildimg successfully created || echo FAILED to create bui
 chmod +x ./ISO.sh
 ./ISO.sh
 make run
+
+cd ../
+chmod +x ./clean.sh
+./clean.sh
