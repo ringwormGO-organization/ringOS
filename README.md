@@ -158,6 +158,7 @@ CPU: minimum - Intel Celeron N3350; recommended - Intel Core i5
 
 ## External dependencies
 * [printf](https://github.com/eyalroz/printf) *This is forked repository of [original mpaland's printf](https://github.com/mpaland/printf) and also ringwormGO has done little modification to be compatible with ringOS*
+* [scalable-font2](https://gitlab.com/bztsrc/scalable-font2) *Just add font, not in use *
 
 ## Resources used:
 * [Poncho OSDEV 2](https://www.youtube.com/playlist?list=PLxN4E629pPnJxCQCLy7E0SQY_zuumOVyZ)
