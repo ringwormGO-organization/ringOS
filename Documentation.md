@@ -22,6 +22,8 @@ Unzip the downloaded Zip folder and navigate to the contents in your Terminal (L
 
 If that don't work, type: `chmod +x ringOS-beta.sh` and try again.
 
+This shell script will also install everything you need; if you have everything installed use `compile.sh`.
+
 ### Compiling
 The following commands work on Debian-based (ex. Ubuntu) Linux distros and within WSL/WSL2 on Windows. Users of non-Debian distros will need to locate the correct packages for their chosen operating system.
 
