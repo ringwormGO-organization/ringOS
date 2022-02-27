@@ -1,8 +1,3 @@
-/* 
- * OLD GUI SYSTEM
- *
-*/
-
 #pragma once
 
 #include "GUIInclude.hpp"

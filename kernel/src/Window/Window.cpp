@@ -1,14 +1,10 @@
-/* 
- * OLD GUI SYSTEM
- *
-*/
-
 #include "Window.hpp"
 
 using namespace GUI::Renderer;
 
 namespace GUI
 {
+    /* Getting required structs */
     Basic* BasicStuff;
     Window* WindowStuff;
 
@@ -21,6 +17,7 @@ namespace GUI
 
     calculator calc;
 
+    /* Function which draw rectangle */
     void Basic::Rectangle(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
     {
         for (size_t y1 = y; y1 < y + height; y1++)
@@ -32,11 +29,13 @@ namespace GUI
         }
     }
 
+    /* Function which draw square */
     void Basic::Square(size_t x, size_t y, size_t width, size_t height, uint32_t colour)
     {
         Rectangle(x, y, width, height, colour);
     }
 
+    /* malloc a Application struct and load taskbar and background picture */
     Application* Init()
     {
         if (!(App = (Application*)malloc(sizeof(Application))))
@@ -60,6 +59,7 @@ namespace GUI
         return App;
     }
 
+    /* free an application */
     int UnInit()
     {
         free(App);
@@ -68,6 +68,7 @@ namespace GUI
 
     /* ------------------------- WINDOWING SYSTEM ------------------------- */
 
+    /* Checking if something is zero */
     bool Window::Check()
     {
         if (close.xbuttonclose != 0 || close.ybuttonclose 
@@ -81,16 +82,19 @@ namespace GUI
         }
     }
 
+    /* Returning width to canvas.width */
     uint64_t Window::Width(uint64_t width)
     {
         return canvas.width = width;
     }
 
+    /* Returning height to canvas.height */
     uint64_t Window::Height(uint64_t height)
     {
         return canvas.height = height;
     }
 
+    /* Drawing Start Menu */
     void Window::DrawStartMenu()
     {
         Rectangle(0, canvas.height - 380, 300, 300, STARTMENU_COLOR);
@@ -110,6 +114,7 @@ namespace GUI
         StartMenuStatus = true;
     }
 
+    /* Drawing Sub Menu */
     void Window::DrawSubMenu(int type)
     {
         subMenu.x = taskbar.taskbar_x + 80;
@@ -162,6 +167,7 @@ namespace GUI
         }
     }
 
+    /* Closing Start Menu */
     void Window::ClearStartMenu()
     {
         switch (canvas.width | canvas.height)
@@ -190,6 +196,13 @@ namespace GUI
         StartMenuStatus = false;
     }
 
+    /* 
+     * Opening application, parameters are going to application struct
+     *
+     * 1 == calculator 
+     * other == error
+     * 
+    */
     void Window::OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color)
     {
         const char* name;
@@ -200,6 +213,7 @@ namespace GUI
         App->height = height;
         App->color = color;
 
+        /* Checking type of application */
         switch (type)
         {
             case 1:
@@ -227,8 +241,10 @@ namespace GUI
         Edge();
     }
 
+    /* Closing application and drawing background again and Start Menu if it is open before */
     void Window::CloseApplication()
     {
+        /* Deafulting changes in calculator */
         if (App->type == 1)
         {
             calc.alReady = false;
@@ -240,6 +256,7 @@ namespace GUI
             calc.final_number = 0;
         }
 
+        /* Checking resolution */
         switch (canvas.width | canvas.height)
         {
             case 1920 | 1080:
@@ -265,18 +282,20 @@ namespace GUI
         }
     }
 
+    /* Some calculator stuff */
     void Window::CaclualtorLogic(int number)
     {
+        /* Checking if we try to change first or second number */
         switch (calc.alReady)
         {
             case false:
-                calc.number1 = number;
-                Caluclator();
+                calc.number1 = number; /* First number is equal to our parameter which is equal to keyboard input */
+                Caluclator(); /* Calling Calculator function to draw it again which this change */
                 break;
 
             case true:
-                calc.number2 = number;
-                Caluclator();
+                calc.number2 = number; /* Second number is equal to our parameter which is equal to keyboard input */
+                Caluclator(); /* Calling Calculator function to draw it again which this change */
                 break;
             
             default:
@@ -284,6 +303,7 @@ namespace GUI
         }
     }
 
+    /* Printing an error which second cursor position */
     void Window::Error(const char* message)
     {
         GlobalRenderer->Colour = RED;
@@ -294,8 +314,9 @@ namespace GUI
     }
 
 
-    /*               FUTURE METHODS ARE IN PRIVATE PART OF CLASS               */
-    /*               Draw Edge at top of window               */
+    /*             
+     * Draw Edge at top of window               
+    */
     int Window::Edge()
     {
         /* Declare a number of buttons */
@@ -355,11 +376,13 @@ namespace GUI
         return 0;
     }
 
+    /* Something for drawing active application on taskbar */
     void Window::AdvancedTaskbar()
     {
         
     }
 
+    /* Calculator */
     void Window::Caluclator()
     {
         /* Drawing window */
@@ -434,6 +457,7 @@ namespace GUI
                 
             }
 
+        /* Setting color to default */
         GlobalRenderer->Colour = DEFAULT;
     }
 }

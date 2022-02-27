@@ -1,4 +1,5 @@
 #include "BasicRenderer.hpp"
+#include "font.hpp"
 
 using namespace GUI;
 
@@ -22,7 +23,8 @@ namespace GUI
             *(uint32_t*)((uint64_t)TargetFramebuffer->BaseAddress + (x*4) + (y * TargetFramebuffer->PixelsPerScanLine * 4)) = colour;
         }
 
-        uint32_t BasicRenderer::GetPix(uint32_t x, uint32_t y){
+        uint32_t BasicRenderer::GetPix(uint32_t x, uint32_t y)
+        {
             return *(uint32_t*)((uint64_t)TargetFramebuffer->BaseAddress + (x*4) + (y * TargetFramebuffer->PixelsPerScanLine * 4));
         }
 
@@ -300,6 +302,26 @@ namespace GUI
                     break;
             }
         }
+
+        /* Scalable Screen Font (https://gitlab.com/bztsrc/scalable-font2) */
+        typedef struct {
+            unsigned char  magic[4];
+            unsigned int   size;
+            unsigned char  type;
+            unsigned char  features;
+            unsigned char  width;
+            unsigned char  height;
+            unsigned char  baseline;
+            unsigned char  underline;
+            unsigned short fragments_offs;
+            unsigned int   characters_offs;
+            unsigned int   ligature_offs;
+            unsigned int   kerning_offs;
+            unsigned int   cmap_offs;
+        } __attribute__((packed)) ssfn_font_t;
+
+        /* font to be used */
+        ssfn_font_t *font = (ssfn_font_t*)&font_data;
 
         void BasicRenderer::PutChar(char chr, unsigned int xOff, unsigned int yOff)
         {

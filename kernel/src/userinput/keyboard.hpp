@@ -74,11 +74,11 @@ namespace GUI
         #define MULTIPLY 0x37
         #define DIVIDE 0x35 // also it can be 0xE0
 
-        extern char* command;
         char Translate(uint8_t scancode, bool uppercase);
     }
 
-    extern char* out;
+    extern char input[250];
+    extern int i;
 
     void HandleKeyboard(uint8_t scancode);
 }

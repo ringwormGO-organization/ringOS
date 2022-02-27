@@ -41,6 +41,9 @@ namespace GUI
     bool isRightShiftPressed;
     bool isCapsLockPressed;
 
+    char input[250];
+    int i;
+
     void HandleKeyboard(uint8_t scancode)
     {
         switch (scancode)
@@ -354,7 +357,7 @@ namespace GUI
 
         if (ascii != 0)
         {
-            GlobalRenderer->PutChar(ascii);     
+            GlobalRenderer->PutChar(ascii);
         }
     }
 }

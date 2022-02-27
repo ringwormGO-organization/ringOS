@@ -2,7 +2,6 @@
 #include "memory/heap.hpp"
 #include "scheduling/pit/pit.hpp"
 #include "Window/Window.hpp"
-#include "Window/Library.hpp"
 #include "settings.h"
 
 #define VERSION "Beta17"
@@ -28,7 +27,7 @@ extern "C" void _start(BootInfo* bootInfo)
     GlobalRenderer->FullClear();
 
     //GUI initialization
-    NewGUI::InitGUI();
+    GUI::Init();
 
     GlobalRenderer->CursorPosition = {0, 0};
 

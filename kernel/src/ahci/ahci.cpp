@@ -147,7 +147,7 @@ namespace AHCI
         cmdFIS->lba2 = (uint8_t)(sectorL >> 16);
         cmdFIS->lba3 = (uint8_t)sectorH;
         cmdFIS->lba4 = (uint8_t)(sectorH >> 8);
-        cmdFIS->lba4 = (uint8_t)(sectorH >> 16);
+        cmdFIS->lba5 = (uint8_t)(sectorH >> 16);
 
         cmdFIS->deviceRegister = 1<<6; //LBA mode
 
