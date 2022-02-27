@@ -124,6 +124,7 @@ Beta16 version image of ringOS
 - [ ] Networking
 - [x] Own build tool
 - [ ] Real hardware support
+- [ ] Use Rust to build ringOS
 - [x] PCI
 - [ ] PCIe
 - [x] SMBIOS
