@@ -1,0 +1,7 @@
+limine
+ovmf-x64
+*.elf
+*.iso
+*.hdd
+*.o
+*.d
