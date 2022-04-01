@@ -35,8 +35,8 @@ Beta16 version image of ringOS
 ## Checklist
 ### Bootloaders
 - [x] gnu-efi
-- [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev) (outside support)
-- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX) (still not implement)
+- [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev) (Limine boot protocol)
+- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX) (if Limine fail)
 
 ### Framebuffer info and printing to the screen
 - [x] Framebuffer info
