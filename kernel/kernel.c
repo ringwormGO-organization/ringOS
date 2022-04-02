@@ -1,3 +1,5 @@
+/* Credits to Limine */
+
 #include <stdint.h>
 #include <stddef.h>
 #include <limine.h>
@@ -333,5 +335,5 @@ FEAT_START
     }
 FEAT_END
 
-    for (;;);
+    for(;;) __asm__("hlt");
 }
