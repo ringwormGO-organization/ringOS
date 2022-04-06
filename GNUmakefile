@@ -42,7 +42,7 @@ barebones.iso: limine kernel
 		--efi-boot limine-cd-efi.bin \
 		-efi-boot-part --efi-boot-image --protective-msdos-label \
 		iso_root -o barebones.iso
-	limine/limine-s2deploy barebones.iso
+	limine/limine-deploy barebones.iso
 	rm -rf iso_root
 
 barebones.hdd: limine kernel
@@ -51,7 +51,7 @@ barebones.hdd: limine kernel
 	parted -s barebones.hdd mklabel gpt
 	parted -s barebones.hdd mkpart ESP fat32 2048s 100%
 	parted -s barebones.hdd set 1 esp on
-	limine/limine-s2deploy barebones.hdd
+	limine/limine-deploy barebones.hdd
 	sudo losetup -Pf --show barebones.hdd >loopback_dev
 	sudo mkfs.fat -F 32 `cat loopback_dev`p1
 	mkdir -p img_mount
