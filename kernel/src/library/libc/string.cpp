@@ -1,6 +1,7 @@
 #include "string.hpp"
 #include "../../memory/heap.hpp"
 
+
 size_t strlen(const char *str)
 {
     if (str == nullptr) return 0;
