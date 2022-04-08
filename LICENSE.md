@@ -1,5 +1,7 @@
 Bootloader (gnu-efi) is licensed uncer GPL!
 
+Lua is licensed under [Lua license](https://www.lua.org/license.html)
+
 MIT License
 
 Copyright (c) 2022 ringwormGO
