@@ -5,7 +5,7 @@ using namespace GUI;
 
 namespace GUI
 {
-    namespace Renderer
+    namespace Text
     {
         BasicRenderer* GlobalRenderer;
 

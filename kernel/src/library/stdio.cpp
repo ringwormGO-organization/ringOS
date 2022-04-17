@@ -1,7 +1,7 @@
 #include "stdio.hpp"
 #include "../BasicRenderer.hpp"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 void putchar_(char character)
 {

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd bin
 mkdir -p iso
 rm -rf iso/*.iso

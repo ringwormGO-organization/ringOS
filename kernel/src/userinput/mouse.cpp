@@ -1,6 +1,6 @@
 #include "mouse.hpp"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 uint8_t cursor[]
 {

@@ -494,7 +494,7 @@ EFI_STATUS efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
         Print(L"BMP image loaded %dx%d\n\r", bmpImage->width, bmpImage->height);
     }
 
-	void (*KernelStart)(BootInfo*) = ((__attribute__((sysv_abi)) void (*)(BootInfo*) ) header.e_entry);
+	int (*KernelStart)(BootInfo*) = ((__attribute__((sysv_abi)) int (*)(BootInfo*) ) header.e_entry);
 
 	bootInfo.bmpImage = bmpImage;
 

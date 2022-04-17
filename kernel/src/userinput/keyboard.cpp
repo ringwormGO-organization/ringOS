@@ -1,6 +1,6 @@
 #include "keyboard.hpp"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 namespace GUI
 {

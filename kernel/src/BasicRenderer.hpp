@@ -14,7 +14,7 @@
 
 namespace GUI
 {
-    namespace Renderer
+    namespace Text
     {
         class BasicRenderer
         {

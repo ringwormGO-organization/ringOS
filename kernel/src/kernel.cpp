@@ -4,13 +4,13 @@
 #include "Window/Window.hpp"
 #include "settings.h"
 
-#define VERSION "Beta17"
+#define VERSION "Beta19"
 
 using namespace GUI;
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 using namespace PIT;
 
-extern "C" void _start(BootInfo* bootInfo)
+extern "C" int _start(BootInfo* bootInfo)
 {
     KernelInfo kernelInfo = InitializeKernel(bootInfo);
 
@@ -110,4 +110,7 @@ extern "C" void _start(BootInfo* bootInfo)
     #endif
 
     while(true) asm ("hlt");
+
+    GUI::UnInit();
+    return 0;
 }

@@ -1,6 +1,6 @@
 #include "Window.hpp"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 namespace GUI
 {

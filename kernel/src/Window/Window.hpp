@@ -82,7 +82,7 @@ namespace GUI
     Application* Init();
     int UnInit();
     
-    class Window : Basic
+    class Window : protected Basic
     {
         public:
             bool StartMenuStatus;

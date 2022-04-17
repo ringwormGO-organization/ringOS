@@ -2,7 +2,7 @@
 #include "ahci/ahci.hpp"
 #include "memory/heap.hpp"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 namespace PCI
 {

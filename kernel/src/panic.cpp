@@ -6,7 +6,7 @@
 #include "shutdown.hpp"
 #include "Reboot.hpp"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 void Panic(const char* panicMessage)
 {

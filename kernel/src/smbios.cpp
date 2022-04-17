@@ -1,6 +1,6 @@
 #include "smbios.h"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 SMBiosHeader* hdr;
 

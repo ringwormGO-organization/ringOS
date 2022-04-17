@@ -6,7 +6,7 @@
 #include "memory/heap.hpp"
 #include "settings.h"
 
-using namespace GUI::Renderer;
+using namespace GUI::Text;
 
 KernelInfo kernelInfo; 
 
