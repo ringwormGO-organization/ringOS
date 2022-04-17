@@ -2,7 +2,7 @@
 Just drop a Pull Request :)
 
 # Pull Request style
-1. Use CRLF. Set up your Git settings with this: `git config --global core.autocrlf true` and check if it is OK by `git config --global core.autocrlf`. It need to return `true`
+1. Use LF. Set up your Git settings with this: `git config --global core.autocrlf false` and check if it is OK by `git config --global core.autocrlf`. It need to return `false`
 2. Use following style **WITH LOGIC**:
 
 ```
