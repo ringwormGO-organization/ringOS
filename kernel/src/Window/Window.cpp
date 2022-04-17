@@ -231,6 +231,7 @@ namespace GUI
                 App->color = 0;
                 App->status = false;
                 App->type = 0;
+                return;
                 break;
         }
 
@@ -283,24 +284,43 @@ namespace GUI
     }
 
     /* Some calculator stuff */
-    void Window::CaclualtorLogic(int number)
+    void Window::CaclualtorLogic(char number)
     {
         /* Checking if we try to change first or second number */
         switch (calc.alReady)
         {
             case false:
-                calc.number1 = number; /* First number is equal to our parameter which is equal to keyboard input */
-                Caluclator(); /* Calling Calculator function to draw it again which this change */
+                calc.number1 = tonum(number); /* First number is equal to our parameter which is equal to keyboard input */
+                Caluclator();
                 break;
 
             case true:
-                calc.number2 = number; /* Second number is equal to our parameter which is equal to keyboard input */
-                Caluclator(); /* Calling Calculator function to draw it again which this change */
+                calc.number2 = tonum(number); /* Second number is equal to our parameter which is equal to keyboard input */
+                Caluclator();
                 break;
             
             default:
                 break;
         }
+
+        switch (calc.alReady)
+        {
+            case false:
+                calc.num1[help_i] = number;
+                help_i++;
+                break;
+
+            case true:
+                calc.num2[help_j] = number;
+                help_j++;
+                break;
+
+            default:
+                break;
+        }
+
+        /* Calling Calculator function to draw it again which this change */
+        Caluclator();
     }
 
     /* Printing an error which second cursor position */

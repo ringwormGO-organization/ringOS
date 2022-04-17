@@ -427,8 +427,7 @@ char toupper(char c)
 
 int tonum(char c)
 {
-    c = toupper(c);
-    return (c) ? c - 64 : -1;
+    return c - '0';
 }
 
 char str[2];

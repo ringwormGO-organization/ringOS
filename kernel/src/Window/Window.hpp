@@ -72,10 +72,14 @@ namespace GUI
         bool alReady;
 
         int number1;
-        char operation;
         int number2;
 
-        int final_number;
+        char operation;
+
+        char num1[100];
+        char num2[100];
+
+        float final_number;
     };
     
 
@@ -102,11 +106,13 @@ namespace GUI
             void OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color);
             void CloseApplication();
 
-            void CaclualtorLogic(int number);
+            void CaclualtorLogic(char number);
 
             void Error(const char* message);
 
         private:
+            int help_i, help_j = 0;
+
             int Edge();
             void AdvancedTaskbar();
 
