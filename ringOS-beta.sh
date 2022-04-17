@@ -1,3 +1,5 @@
+#!/bin/bash
+
 clear
 
 sudo apt update && echo Update successful || echo FAILED to update

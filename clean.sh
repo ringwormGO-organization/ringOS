@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd kernel
 rm -rf lib
 
