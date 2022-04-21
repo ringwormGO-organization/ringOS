@@ -19,10 +19,12 @@ Support for Red Hat(-based) Linux distribution just come, if you want to improve
 
 --------------------------------------------------------------------------------------------------------------------------------
 ### Compile beta version from shell script
-#### How to run shell script for Debian based Linux distros:
-`./ringOS-beta.sh`
+#### How to run shell script:
+`./ringOS-beta-debian.sh` - for Debian based distos
+`./ringOS-beta-redhat.sh` - for RedHat based distos
+`./ringOS-beta-arch.sh` - for Arch based distos
 
-If that don't work, type: `chmod +x ./ringOS-beta.sh` and try again.
+If that don't work, type: `chmod +x ./file.sh` and try again.
 
 This shell script will also install everything you need; if you have everything installed use `compile.sh`.
 
