@@ -1,7 +1,5 @@
 #!/bin/bash
 
-clear
-
 git clone https://github.com/VanGutan/gnu-efi
 mv bootloader gnu-efi/bootloader
 

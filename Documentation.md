@@ -7,7 +7,7 @@ This documentation is intended to guide you in developing, compiling, debugging 
 [You can use this script (Linux, run in Qemu)](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-beta.sh)
 
 ### Software you need
-1. [Qemu recommended](#install-qemu) or [Virtual Box, VmWare](#running-in-virtual-box-or-vmware)
+1. [Qemu recommended](#install-qemu) or [Virtual Box, VMWare Workstation](#running-in-virtual-box-or-vmware)
 2. WSL/WSL2 (If developing on Windows) or Linux (recommended)
 
 ### Type of release for running in Qemu
@@ -15,12 +15,16 @@ Download a Zip file of Qemu release (example: https://github.com/Andrej123456789
 
 Unzip the downloaded Zip folder and navigate to the contents in your Terminal (Linux) or using WSL/WSL2 on Windows ('cd')
 
+Support for Red Hat(-based) Linux distribution just come, if you want to improve consider become a contributor.
+
 --------------------------------------------------------------------------------------------------------------------------------
 ### Compile beta version from shell script
-#### How to run shell script for Debian based Linux distros:
-`./ringOS-beta.sh`
+#### How to run shell script:
+`./ringOS-beta-debian.sh` - for Debian based distos
+`./ringOS-beta-redhat.sh` - for RedHat based distos
+`./ringOS-beta-arch.sh` - for Arch based distos
 
-If that don't work, type: `chmod +x ringOS-beta.sh` and try again.
+If that don't work, type: `chmod +x ./file.sh` and try again.
 
 This shell script will also install everything you need; if you have everything installed use `compile.sh`.
 
@@ -29,13 +33,32 @@ The following commands work on Debian-based (ex. Ubuntu) Linux distros and withi
 
 If this is your first time attemtping to to compile ringOS, you will need to run the following commands in your Terminal (Linux) or using WSL/WSL2 on Windows:
 
-`sudo apt update`
+`sudo apt-get update`
 
 `sudo apt-get install build-essential mtools`
 
-`sudo apt install nasm`
+`sudo apt-get install nasm`
 
 `sudo apt-get install lld`
+
+Packages for Red Hat(-based) distros (NOT TESTED YET!!!):
+`sudo yum check-update`
+
+`sudo yum group install "Development tools"`
+
+`sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms` for Red Hat Enterprise Linux
+
+`sudo yum install nasm`
+
+`sudo yum install qemu-kvm`
+
+`sudo yum install git`
+
+`sudo yum install lld`
+
+`sudo yum install xorriso`
+
+`sudo yum install mkisofs`
 ___________________________________________________________________
 
 To compile the bootloader (gnu-efi) you will need to run the following commands in your Terminal (Linux) or using WSL/WSL2 on Windows:
@@ -77,13 +100,19 @@ ______
 ___
 ## Running in Virtual Box or VMWare
 
-**Minimum RAM: 4096MB**
+**Recommended RAM: ~4096MB**
 
-You need install two more apps:
+You need install two more packages:
 
 `sudo apt-get install xorriso`
 
 `sudo apt-get install mkisofs`
+
+For Red Hat(-based) distros:
+
+`sudo yum install xorriso`
+
+`sudo yum install mkisofs`
 
 From now you can simply enter bin directory and run [shell script](https://github.com/ringwormGO-organization/ringOS/blob/main/ringOS-Beta17/ISO.sh)
 
@@ -101,9 +130,9 @@ Type these commands in order:
 
 `xorriso -as mkisofs -R -f -e ringOS.img -no-emul-boot -o ./iso/ringOS.iso iso`
 
-Open Virtual Box, create new virtual machine and put ISO as CD-ROM device and enable ICH9 CPU chipset.
+Open VirtualBox, create new virtual machine and put ISO as CD-ROM device and enable ICH9 CPU chipset.
 
-Open VMWare, create new virtual machine, put ISO, enter Boot Manager by pressing **ESC** during boot and select **EFI Internal Shell**.
+Open VMWare Workstation, create new virtual machine, put ISO, enter Boot Manager by pressing **ESC** during boot and select **EFI Internal Shell**.
 
 ![image](https://user-images.githubusercontent.com/83548580/143719557-aee05602-e163-4693-a124-2307aa09eac0.png)
 
@@ -115,7 +144,7 @@ Open VMWare, create new virtual machine, put ISO, enter Boot Manager by pressing
 
 ![image](https://user-images.githubusercontent.com/83548580/143719473-982e21ff-def5-4383-aa4f-3b249eab4e90.png)
 
-(You can execute this commands in WSL and run Virtual Box on Windows)
+(You can execute this commands in WSL and run VirtualBox on Windows)
 
 Operating system must be marked as EFI (Virtual box) or UEFI Firmware type (VMWare).
 _____

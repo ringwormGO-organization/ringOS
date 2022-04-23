@@ -1,9 +1,10 @@
 #!/bin/bash
 
-clear
+echo "ringOS stable builder for Debian(-based) Linux"
+echo "This script will ask you for password using sudo."
 
-sudo apt update && echo Update successful || echo FAILED to update
-sudo apt-get install build-essential mtools && echo build-essential mtools installed successfully || echo FAILED to install build-essential tools
+sudo apt-get update && echo Repository update successful || echo FAILED to update the repository
+sudo apt-get install build-essential mtools && echo build-essential mtools installed successfully || echo FAILED to install build-essential mtools
 sudo apt-get install nasm && echo NASM installed successfully || echo FAILED to install nasm
 sudo apt-get install qemu-system-x86 && echo Qemu installed successfully || echo FAILED to install Qemu
 sudo apt-get install git && echo git installed successfully || echo FAILED to install git
