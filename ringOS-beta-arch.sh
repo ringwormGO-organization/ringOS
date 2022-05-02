@@ -1,6 +1,7 @@
 #!/bin/bash
 
-clear
+echo "ringOS beta builder for Arch(-based) Linux"
+echo "This script will ask you for password using sudo."
 
 sudo pacman -Sy base-devel mtools && echo base-devel installed successfully || echo FAILED to install base-devel
 sudo pacman -S mtools && echo build-essential mtools installed successfully || echo FAILED to install build-essential tools

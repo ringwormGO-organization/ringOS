@@ -111,13 +111,12 @@ Beta16 version image of ringOS
 ### Porting stuff
 - [ ] Python
 - [x] Lua
+- [ ] GCC and G++ compiler
 
 #### Lua
 - [ ] All functions
 - [ ] Lua hello world
 - [ ] GUI library
-
-- [ ] GCC and G++ compiler
 
 ### Other
 - [x] ACPI
