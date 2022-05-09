@@ -181,140 +181,140 @@ namespace GUI
     /* --------------------------------------------------------------- */
             case ONE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('1');
+                    WindowStuff->CalculatorLogic('1');
                 else
                     GlobalRenderer->PutChar('1');
                 return;
 
             case TWO:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('2');
+                    WindowStuff->CalculatorLogic('2');
                 else
                     GlobalRenderer->PutChar('2');
                 return;
 
             case THREE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('3');
+                    WindowStuff->CalculatorLogic('3');
                 else
                     GlobalRenderer->PutChar('3');
                 return;
 
             case FOUR:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('4');
+                    WindowStuff->CalculatorLogic('4');
                 else
                     GlobalRenderer->PutChar('4');
                 return;
 
             case FIVE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('5');
+                    WindowStuff->CalculatorLogic('5');
                 else
                     GlobalRenderer->PutChar('5');
                 return;
 
             case SIX:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('6');
+                    WindowStuff->CalculatorLogic('6');
                 else
                     GlobalRenderer->PutChar('6');
                 return;
 
             case SEVEN:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('7');
+                    WindowStuff->CalculatorLogic('7');
                 else
                     GlobalRenderer->PutChar('7');
                 return;
 
             case EIGHT:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('8');
+                    WindowStuff->CalculatorLogic('8');
                 else
                     GlobalRenderer->PutChar('8');
                 return;
 
             case NINE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('9');
+                    WindowStuff->CalculatorLogic('9');
                 else
                     GlobalRenderer->PutChar('9');
                 return;
 
             case KEY_ZERO | KEYPAD_KEY_ZERO:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('0');
+                    WindowStuff->CalculatorLogic('0');
                 else
                     GlobalRenderer->PutChar('0');
                 return;
 
             case KEYPAD_ONE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('1');
+                    WindowStuff->CalculatorLogic('1');
                 else
                     GlobalRenderer->PutChar('1');
                 return;
 
             case KEYPAD_TWO:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('2');
+                    WindowStuff->CalculatorLogic('2');
                 else
                     GlobalRenderer->PutChar('2');
                 return;
 
             case KEYPAD_THREE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('3');
+                    WindowStuff->CalculatorLogic('3');
                 else
                     GlobalRenderer->PutChar('3');
                 return;
 
             case KEYPAD_FOUR:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('4');
+                    WindowStuff->CalculatorLogic('4');
                 else
                     GlobalRenderer->PutChar('4');
                 return;
 
             case KEYPAD_FIVE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('5');
+                    WindowStuff->CalculatorLogic('5');
                 else
                     GlobalRenderer->PutChar('5');
                 return;
 
             case KEYPAD_SIX:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('6');
+                    WindowStuff->CalculatorLogic('6');
                 else
                     GlobalRenderer->PutChar('6');
                 return;
 
             case KEYPAD_SEVEN:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('7');
+                    WindowStuff->CalculatorLogic('7');
                 else
                     GlobalRenderer->PutChar('7');
                 return;
 
             case KEYPAD_EIGHT:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('8');
+                    WindowStuff->CalculatorLogic('8');
                 else
                     GlobalRenderer->PutChar('8');
                 return;
 
             case KEYPAD_NINE:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('9');
+                    WindowStuff->CalculatorLogic('9');
                 else
                     GlobalRenderer->PutChar('9');
                 return;
 
             case KEYPAD_KEY_ZERO:
                 if (App->status == true && App->type == 1)
-                    WindowStuff->CaclualtorLogic('0');
+                    WindowStuff->CalculatorLogic('0');
                 else
                     GlobalRenderer->PutChar('0');
                 return;

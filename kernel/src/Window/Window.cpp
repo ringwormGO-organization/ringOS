@@ -217,7 +217,7 @@ namespace GUI
         switch (type)
         {
             case 1:
-                Caluclator();
+                Calculator();
                 name = "Calculator";
                 break;
             
@@ -284,43 +284,51 @@ namespace GUI
     }
 
     /* Some calculator stuff */
-    void Window::CaclualtorLogic(char number)
+    void Window::CalculatorLogic(char number)
     {
         /* Checking if we try to change first or second number */
         switch (calc.alReady)
         {
             case false:
-                calc.number1 = tonum(number); /* First number is equal to our parameter which is equal to keyboard input */
-                Caluclator();
+                calc.number1 = (int64_t)tonum(number); /* First number is equal to our parameter which is equal to keyboard input */
+                Calculator();
                 break;
 
             case true:
-                calc.number2 = tonum(number); /* Second number is equal to our parameter which is equal to keyboard input */
-                Caluclator();
+                calc.number2 = (int64_t)tonum(number); /* Second number is equal to our parameter which is equal to keyboard input */
+                Calculator();
                 break;
             
             default:
                 break;
         }
 
-        switch (calc.alReady)
+        /*switch (calc.alReady)
         {
             case false:
                 calc.num1[help_i] = number;
+                calc.num1[++help_i] = '\0';
+                help_i = i_help;
                 help_i++;
+                i_help++;
+                Calculator();
                 break;
 
             case true:
-                calc.num2[help_j] = number;
+                calc.num1[help_j] = number;
+                calc.num1[++help_j] = '\0';
+                help_j = j_help;
                 help_j++;
+                j_help++;
+                Calculator();
                 break;
-
+            
             default:
                 break;
-        }
+        }*/
 
         /* Calling Calculator function to draw it again which this change */
-        Caluclator();
+        Calculator();
     }
 
     /* Printing an error which second cursor position */
@@ -403,7 +411,7 @@ namespace GUI
     }
 
     /* Calculator */
-    void Window::Caluclator()
+    void Window::Calculator()
     {
         /* Drawing window */
         Rectangle(App->x, App->y, App->width, App->height, App->color);

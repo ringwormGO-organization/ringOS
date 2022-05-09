@@ -71,18 +71,17 @@ namespace GUI
     {
         bool alReady;
 
-        int number1;
-        int number2;
+        long int number1;
+        long int number2;
 
         char operation;
 
         char num1[100];
         char num2[100];
 
-        float final_number;
+        long int final_number;
     };
     
-
     Application* Init();
     int UnInit();
     
@@ -106,17 +105,17 @@ namespace GUI
             void OpenApplication(int type, size_t x, size_t y, size_t width, size_t height, uint32_t color);
             void CloseApplication();
 
-            void CaclualtorLogic(char number);
+            void CalculatorLogic(char number);
 
             void Error(const char* message);
 
         private:
-            int help_i, help_j = 0;
+            int help_i, i_help, help_j, j_help = 0;
 
             int Edge();
             void AdvancedTaskbar();
 
-            void Caluclator();
+            void Calculator();
     };
 
     extern Basic* BasicStuff;

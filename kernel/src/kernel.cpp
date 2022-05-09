@@ -4,7 +4,7 @@
 #include "Window/Window.hpp"
 #include "settings.h"
 
-#define VERSION "Beta19"
+#define VERSION "Beta20"
 
 using namespace GUI;
 using namespace GUI::Text;

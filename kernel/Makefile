@@ -8,8 +8,8 @@ CC2 = gcc
 ASMC = nasm
 LD = ld.lld
 
-CPPFLAGS = -std=c++11 -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -fpermissive -g #-g required for debugging
-CFLAGS = -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -g #-g required for debugging
+CPPFLAGS = -std=c++11 -Wswitch-bool -ffreestanding -fno-stack-protector -fshort-wchar -mno-red-zone -fno-exceptions -fpermissive -g #-g required for debugging
+CFLAGS = -Wswitch-bool -ffreestanding -fshort-wchar -mno-red-zone -fno-exceptions -Wswitch-bool -g #-g required for debugging
 ASMFLAGS = 
 LDFLAGS = -T $(LDS) -static -Bsymbolic -nostdlib
 
