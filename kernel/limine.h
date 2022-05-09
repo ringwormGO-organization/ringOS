@@ -24,23 +24,26 @@ struct limine_uuid {
     uint8_t d[8];
 };
 
+#define LIMINE_MEDIA_TYPE_GENERIC 0
+#define LIMINE_MEDIA_TYPE_OPTICAL 1
+#define LIMINE_MEDIA_TYPE_TFTP 2
+
 struct limine_file {
     uint64_t revision;
     LIMINE_PTR(void *) address;
     uint64_t size;
     LIMINE_PTR(char *) path;
     LIMINE_PTR(char *) cmdline;
-    uint64_t partition_index;
+    uint32_t media_type;
     uint32_t unused;
     uint32_t tftp_ip;
     uint32_t tftp_port;
+    uint32_t partition_index;
     uint32_t mbr_disk_id;
     struct limine_uuid gpt_disk_uuid;
     struct limine_uuid gpt_part_uuid;
     struct limine_uuid part_uuid;
 };
-
-typedef void (*limine_entry_point)(void);
 
 /* Boot info */
 
@@ -71,33 +74,6 @@ struct limine_stack_size_request {
     uint64_t revision;
     LIMINE_PTR(struct limine_stack_size_response *) response;
     uint64_t stack_size;
-};
-
-/* Executable layout */
-
-#define LIMINE_EXECUTABLE_LAYOUT_REQUEST { LIMINE_COMMON_MAGIC, 0xbbd4597377e1fdbb, 0x17540007cfa435ad }
-
-struct limine_executable_layout_response {
-    uint64_t revision;
-};
-
-struct limine_executable_layout_request {
-    uint64_t id[4];
-    uint64_t revision;
-    LIMINE_PTR(struct limine_executable_layout_response *) response;
-    LIMINE_PTR(limine_entry_point) entry_point;
-    uint64_t alignment;
-    uint64_t text_offset;
-    uint64_t text_address;
-    uint64_t text_size;
-    uint64_t data_offset;
-    uint64_t data_address;
-    uint64_t data_size;
-    uint64_t rodata_offset;
-    uint64_t rodata_address;
-    uint64_t rodata_size;
-    uint64_t bss_address;
-    uint64_t bss_size;
 };
 
 /* HHDM */
@@ -171,20 +147,20 @@ struct limine_framebuffer_request {
 
 struct limine_terminal;
 
-typedef void (*limine_terminal_write)(const char *, uint64_t);
+typedef void (*limine_terminal_write)(struct limine_terminal *, const char *, uint64_t);
 typedef void (*limine_terminal_callback)(struct limine_terminal *, uint64_t, uint64_t, uint64_t, uint64_t);
 
 struct limine_terminal {
     uint32_t columns;
     uint32_t rows;
     LIMINE_PTR(struct limine_framebuffer *) framebuffer;
-    LIMINE_PTR(limine_terminal_write) write;
 };
 
 struct limine_terminal_response {
     uint64_t revision;
     uint64_t terminal_count;
     LIMINE_PTR(struct limine_terminal **) terminals;
+    LIMINE_PTR(limine_terminal_write) write;
 };
 
 struct limine_terminal_request {
@@ -275,6 +251,8 @@ struct limine_memmap_request {
 /* Entry point */
 
 #define LIMINE_ENTRY_POINT_REQUEST { LIMINE_COMMON_MAGIC, 0x13d86c035a1cd3e1, 0x2b0caa89d8f3026a }
+
+typedef void (*limine_entry_point)(void);
 
 struct limine_entry_point_response {
     uint64_t revision;
