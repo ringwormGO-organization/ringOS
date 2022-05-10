@@ -5,6 +5,7 @@
         "initializer_list": "c",
         "utility": "c",
         "*.tcc": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "stddef.h": "c"
     }
 }

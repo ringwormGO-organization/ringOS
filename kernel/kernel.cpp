@@ -1,7 +1,9 @@
 #include <stdint.h>
 #include <stddef.h>
-#include <limine.h>
-#include <e9print.h>
+#include "limine.h"
+#include "e9print.h"
+
+#include "test.h"
 
 static void _start(void);
 
@@ -383,6 +385,8 @@ FEAT_START
     }
     e9_printf("Write function at: %x", term_response->write);
 FEAT_END
+
+    test();
 
     for (;;);
 }

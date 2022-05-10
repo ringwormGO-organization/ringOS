@@ -17,6 +17,7 @@ endif
 
 # User controllable CFLAGS.
 CFLAGS ?= -O2 -g -Wall -Wextra -Wpedantic -pipe
+CPPFLAGS ?= -g -Wall -Wextra -Wpedantic -pipe
 
 # User controllable linker flags. We set none by default.
 LDFLAGS ?=
@@ -39,6 +40,23 @@ override INTERNALCFLAGS :=   \
 	-mcmodel=kernel      \
 	-MMD
 
+override INTERNALCPPFLAGS :=   \
+	-std=c++11                 \
+	-ffreestanding             \
+	-fno-exceptions            \
+	-fno-stack-protector       \
+	-fno-omit-frame-pointer    \
+	-fno-rtti                  \
+	-fno-pic                   \
+	-mabi=sysv                 \
+	-mno-80387                 \
+	-mno-mmx                   \
+	-mno-3dnow                 \
+	-mno-sse                   \
+	-mno-sse2                  \
+	-mno-red-zone              \
+	-mcmodel=kernel            \
+
 # Internal linker flags that should not be changed by the user.
 override INTERNALLDFLAGS :=    \
 	-Tlinker.ld            \
@@ -48,7 +66,8 @@ override INTERNALLDFLAGS :=    \
 
 # Use find to glob all *.c files in the directory and extract the object names.
 override CFILES := $(shell find ./ -type f -name '*.c')
-override OBJ := $(CFILES:.c=.o)
+override CPPFILES := $(shell find ./ -type f -name '*.cpp')
+override OBJ := $(CFILES:.c=.o) $(CPPFILES:.cpp=.o)
 override HEADER_DEPS := $(CFILES:.c=.d)
 
 # Default target.
@@ -66,6 +85,9 @@ $(KERNEL): $(OBJ)
 -include $(HEADER_DEPS)
 %.o: %.c limine.h
 	$(CC) $(CFLAGS) $(INTERNALCFLAGS) -c $< -o $@
+
+%.o: %.cpp limine.h
+	$(CC) $(CPPFLAGS) $(INTERNALCPPFLAGS) -c $< -o $@
 
 # Remove object files and the final executable.
 .PHONY: clean
