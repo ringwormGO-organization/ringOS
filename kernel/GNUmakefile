@@ -6,7 +6,7 @@ override KERNEL := kernel.elf
 # We are only using "cc" as a placeholder here. It may work by using
 # the host system's toolchain, but this is not guaranteed.
 ifeq ($(origin CC), default)
-CC := cc
+CC := g++
 endif
 
 # Likewise, "ld" here is just a placeholder and your mileage may vary if using the
