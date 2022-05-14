@@ -2,5 +2,5 @@
 
 void test()
 {
-    e9_printf("Test %d\n", 30);
+    e9_printf("\nTest %d\n", 30);
 }
