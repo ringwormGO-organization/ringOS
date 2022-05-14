@@ -387,6 +387,8 @@ FEAT_START
 FEAT_END
 
     test();
+    
+    e9_printf("\u001b[31mColor test\n");
 
     for (;;);
 }
