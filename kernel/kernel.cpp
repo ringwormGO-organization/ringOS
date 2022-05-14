@@ -3,6 +3,8 @@
 #include "limine.h"
 #include "e9print.h"
 
+#include "gdt/gdt.h"
+
 #include "test.h"
 
 static void _start(void);
@@ -193,6 +195,11 @@ static void _start(void) {
     if (_terminal_request.response) {
         stivale2_print = write_shim;
     }
+
+    GDTDescriptor gdtDescriptor;
+    gdtDescriptor.Size = sizeof(GDT) - 1;
+    gdtDescriptor.Offset = (uint64_t)&DefaultGDT;
+    LoadGDT(&gdtDescriptor);
 
     e9_printf("\nWe're alive");
 
