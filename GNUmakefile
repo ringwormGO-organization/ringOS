@@ -72,7 +72,7 @@ barebones.hdd: limine kernel
 
 .PHONY: clean
 clean:
-	rm -rf iso_root barebones.iso barebones.hdd
+	rm -rf iso_root
 	$(MAKE) -C kernel clean
 
 .PHONY: distclean

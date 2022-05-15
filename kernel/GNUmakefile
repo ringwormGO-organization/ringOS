@@ -11,6 +11,7 @@ endif
 
 CC2 := gcc
 ASMC := nasm
+GAS := as
 
 # Likewise, "ld" here is just a placeholder and your mileage may vary if using the
 # host's "ld".
@@ -20,7 +21,7 @@ endif
 
 # User controllable CFLAGS.
 CFLAGS ?= -O2 -g -Wall -Wextra -Wpedantic -pipe
-CPPFLAGS ?= -g -Wall -Wextra -Wpedantic -pipe
+CPPFLAGS ?= -fpermissive -Wwrite-strings -g -Wall -Wextra -Wpedantic -pipe
 ASMFLAGS ?= 
 
 # User controllable linker flags. We set none by default.
@@ -45,7 +46,7 @@ override INTERNALCFLAGS :=   \
 	-MMD
 
 override INTERNALCPPFLAGS :=   \
-	-std=c++11                 \
+	-std=c++20                 \
 	-ffreestanding             \
 	-fno-exceptions            \
 	-fno-stack-protector       \
@@ -101,7 +102,7 @@ $(KERNEL): $(OBJ)
 	$(ASMC) $(ASMFLAGS) $^ -f elf64 -o $@
 	
 %.s_o: %.s	
-	$(ASMC) $(ASMFLAGS) $^ -f elf64 -o $@
+	$(GAS) $(ASMFLAGS) $^ -o $@
 
 # Remove object files and the final executable.
 .PHONY: clean

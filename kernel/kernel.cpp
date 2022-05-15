@@ -5,6 +5,9 @@
 
 #include "gdt/gdt.h"
 #include "idt/idt.h"
+#include "paging/physical_memory_manager.h"
+#include "paging/virtual_memory_m.h"
+#include "memory/malloc.h"
 
 #include "test.h"
 
@@ -200,6 +203,8 @@ static void _start(void) {
     create_descriptor();
     idt_init();
 
+    // PAGING
+
     e9_printf("\nWe're alive");
 
     uint64_t kernel_slide = (uint64_t)kernel_start - 0xffffffff80000000;
@@ -392,9 +397,14 @@ FEAT_START
     e9_printf("Write function at: %x", term_response->write);
 FEAT_END
 
+    current_page_directory = (page_directory *)*(uint32_t *)CURRENT_PAGE_DIR_ADDRESS;
+    memory_map  = (uint32_t *)MEMMAP_AREA;
+    max_blocks  = *(uint32_t *)PHYS_MEM_MAX_BLOCKS;
+    used_blocks = *(uint32_t *)PHYS_MEM_USED_BLOCKS;
+
+    e9_printf(CLEAR);
     test();
-    
-    e9_printf("\u001b[31mColor test\n");
+    e9_printf(ANSI_COLOR_RED "Color test\n" ANSI_COLOR_RESET);
 
     for (;;);
 }
