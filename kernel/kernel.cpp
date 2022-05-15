@@ -196,10 +196,11 @@ static void _start(void) {
         stivale2_print = write_shim;
     }
 
-    GDTDescriptor gdtDescriptor;
-    gdtDescriptor.Size = sizeof(GDT) - 1;
-    gdtDescriptor.Offset = (uint64_t)&DefaultGDT;
-    LoadGDT(&gdtDescriptor);
+    // GDT
+
+    create_descriptor();
+
+    //////////////////////////////////////////////////////////
 
     e9_printf("\nWe're alive");
 
