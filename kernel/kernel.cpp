@@ -199,6 +199,10 @@ static void _start(void) {
     // GDT
 
     create_descriptor();
+    
+    // IDT
+
+    idt_init();
 
     //////////////////////////////////////////////////////////
 
