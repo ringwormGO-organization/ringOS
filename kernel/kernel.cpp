@@ -4,6 +4,7 @@
 #include "e9print.h"
 
 #include "gdt/gdt.h"
+#include "idt/idt.h"
 
 #include "test.h"
 
