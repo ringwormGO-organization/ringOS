@@ -32,11 +32,25 @@ Beta 4 version image of ringOS
 ![ringOSBeta16](https://user-images.githubusercontent.com/83548580/142688916-7d1e3b52-946d-441e-acf1-137eb4c534c3.png)
 Beta16 version image of ringOS
 
+## Limine Status
+
+- [x] Limine Bootloader
+- [x] GDT
+- [x] IDT
+- [x] FONT
+- [ ] USER INPUT
+- [ ] KEYBOARD
+- [ ] MOUSE
+- [ ] GUI
+- [x] BMP
+- [ ] ICONS
+- [ ] APPS
+
 ## Checklist
 ### Bootloaders
 - [x] gnu-efi
 - [ ] [Limine](https://github.com/ringwormGO-organization/ringOS/tree/Limine_dev) (Limine boot protocol)
-- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX) (if Limine fail)
+- [ ] [POSIX](https://github.com/ringwormGO-organization/ringOS/tree/POSIX) (if Limine fails)
 
 ### Framebuffer info and printing to the screen
 - [x] Framebuffer info
