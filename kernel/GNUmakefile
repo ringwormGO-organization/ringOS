@@ -74,7 +74,8 @@ override INTERNALLDFLAGS :=    \
 override CFILES := $(shell find ./ -type f -name '*.c')
 override CPPFILES := $(shell find ./ -type f -name '*.cpp')
 override ASMFILES := $(shell find ./ -type f -name '*.asm')
-override OBJ := $(CFILES:.c=.c_o) $(CPPFILES:.cpp=.o) $(ASMFILES:.asm=.asm_o)
+override ASMFILES2 := $(shell find ./ -type f -name '*.s')
+override OBJ := $(CFILES:.c=.c_o) $(CPPFILES:.cpp=.o) $(ASMFILES:.asm=.asm_o) $(ASMFILES2:.s=.s_o)
 override HEADER_DEPS := $(CFILES:.c=.d)
 
 # Default target.
