@@ -98,6 +98,9 @@ $(KERNEL): $(OBJ)
 
 %.asm_o: %.asm	
 	$(ASMC) $(ASMFLAGS) $^ -f elf64 -o $@
+	
+%.s_o: %.s	
+	$(ASMC) $(ASMFLAGS) $^ -f elf64 -o $@
 
 # Remove object files and the final executable.
 .PHONY: clean
