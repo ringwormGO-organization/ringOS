@@ -5,4 +5,5 @@ ovmf-x64
 *.o
 *.c_o
 *.asm_o
+*.s_o
 *.d

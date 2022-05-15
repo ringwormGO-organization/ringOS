@@ -197,15 +197,8 @@ static void _start(void) {
         stivale2_print = write_shim;
     }
 
-    // GDT
-
     create_descriptor();
-    
-    // IDT
-
     idt_init();
-
-    //////////////////////////////////////////////////////////
 
     e9_printf("\nWe're alive");
 

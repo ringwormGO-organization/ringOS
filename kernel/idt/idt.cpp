@@ -1,3 +1,4 @@
+#include <stdbool.h>
 
 #include "idt.h"
 
@@ -5,14 +6,12 @@ static idtr_t idtr;
 
 static bool vectors[IDT_MAX_DESCRIPTORS];
 
-void* isr_stub_table[1000];
+extern "C" void* isr_stub_table[500];
  
 __attribute__((aligned(0x10))) 
 static idt_desc_t idt[256]; // Create an array of IDT entries; aligned for performance
 
-__attribute__((noreturn))
-void exception_handler(void);
-void exception_handler() {
+extern "C" __attribute__((noreturn)) void exception_handler() {
     __asm__ volatile ("cli; hlt"); // Completely hangs the computer
 }
 
@@ -29,12 +28,10 @@ void idt_set_descriptor(uint8_t vector, void* isr, uint8_t flags) {
     descriptor->rsv0           = 0;
 }
 
-void idt_init(void);
 void idt_init() {
 
     idtr.base = (uintptr_t)&idt[0];
     idtr.limit = (uint16_t)sizeof(idt_desc_t) * IDT_MAX_DESCRIPTORS - 1;
-    e9_printf("Hello");
  
     for (uint8_t vector = 0; vector < 32; vector++) {
         idt_set_descriptor(vector, isr_stub_table[vector], 0x8E);
