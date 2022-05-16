@@ -1,6 +1,6 @@
 #include <stdbool.h>
 
-#include "idt.h"
+#include "idt.hpp"
 
 static idtr_t idtr;
 

@@ -1,4 +1,4 @@
-#include "e9print.h"
+#include "e9print.hpp"
 #include <stddef.h>
 
 void (*stivale2_print)(const char *buf, size_t size) = NULL;

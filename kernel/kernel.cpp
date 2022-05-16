@@ -1,15 +1,15 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "limine.h"
-#include "e9print.h"
+#include "e9print.hpp"
 
-#include "gdt/gdt.h"
-#include "idt/idt.h"
-#include "paging/physical_memory_manager.h"
-#include "paging/virtual_memory_m.h"
-#include "memory/malloc.h"
+#include "gdt/gdt.hpp"
+#include "idt/idt.hpp"
+#include "paging/physical_memory_manager.hpp"
+#include "paging/virtual_memory_m.hpp"
+#include "memory/malloc.hpp"
 
-#include "test.h"
+#include "test.hpp"
 
 static void _start(void);
 
