@@ -10,6 +10,7 @@
 #include "memory/malloc.hpp"
 
 #include "test.hpp"
+#include "libc/stdio.h"
 
 static void _start(void);
 
@@ -402,9 +403,9 @@ FEAT_END
     max_blocks  = *(uint32_t *)PHYS_MEM_MAX_BLOCKS;
     used_blocks = *(uint32_t *)PHYS_MEM_USED_BLOCKS;
 
-    e9_printf(CLEAR);
+    printf(CLEAR);
     test();
-    e9_printf(ANSI_COLOR_RED "Color test\n" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_RED "Color test\n" ANSI_COLOR_RESET);
 
     for (;;);
 }
