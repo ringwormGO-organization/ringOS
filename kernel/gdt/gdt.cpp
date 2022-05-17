@@ -2,7 +2,6 @@
  
 void create_descriptor()
 {
-
 	uint32_t base;
 	uint32_t limit;
 	uint16_t flag;
@@ -22,5 +21,5 @@ void create_descriptor()
     descriptor |= base  << 16;                       // set base bits 15:0
     descriptor |= limit  & 0x0000FFFF;               // set limit bits 15:0
  
- 	e9_printf("0x%.16llX\n", descriptor);
+ 	e9_printf("GDT descriptor: 0x%.16llX\n", descriptor);
 }
