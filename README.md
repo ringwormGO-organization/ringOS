@@ -38,13 +38,13 @@ Beta16 version image of ringOS
 - [x] GDT
 - [x] IDT
 - [x] FONT
-- [ ] USER INPUT
-- [ ] KEYBOARD
-- [ ] MOUSE
+- [ ] User input
+- [ ] Keyboard
+- [ ] Mouse
 - [ ] GUI
 - [x] BMP
-- [ ] ICONS
-- [ ] APPS
+- [ ] Icons
+- [ ] Apps
 
 ## Checklist
 ### Bootloaders
