@@ -9,7 +9,7 @@
 #define ANSI_COLOR_RESET   "\x1b[0m"
 #define CLEAR "\e[1;1H\e[2J"
 
-#include "libc/printf.hpp"
+//#include "libc/printf.hpp"
 #include "../e9print.hpp"
 
 void putchar_(char character)

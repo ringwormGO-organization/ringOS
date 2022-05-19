@@ -192,8 +192,8 @@ extern "C" void _start(void)
     }
 
     e9_printf("\nWe're alive");
-
     uint64_t kernel_slide = (uint64_t)kernel_start - 0xffffffff80000000;
+    e9_printf("Kernel slide: %x", kernel_slide);
 
     create_descriptor();
     idt_init();
@@ -203,8 +203,70 @@ extern "C" void _start(void)
     max_blocks  = *(uint32_t *)PHYS_MEM_MAX_BLOCKS;
     used_blocks = *(uint32_t *)PHYS_MEM_USED_BLOCKS;
 
-    test();
-    printf(ANSI_COLOR_RED "Color test\n" ANSI_COLOR_RESET);
+FEAT_START
+    e9_printf("");
+    if (bootloader_info_request.response == NULL) {
+        e9_printf("Bootloader info not passed");
+        break;
+    }
+    struct limine_bootloader_info_response *bootloader_info_response = bootloader_info_request.response;
+    boot_copy(bootloader_info_response->revision, bootloader_info_response->name, bootloader_info_response->version);
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (kernel_address_request.response == NULL) {
+        e9_printf("Kernel address not passed");
+        break;
+    }
+    struct limine_kernel_address_response *ka_response = kernel_address_request.response;
+    kernel_address_copy(ka_response->revision, ka_response->physical_base, ka_response->virtual_base);
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (hhdm_request.response == NULL) {
+        e9_printf("HHDM not passed");
+        break;
+    }
+    struct limine_hhdm_response *hhdm_response = hhdm_request.response;
+    hhdm_copy(hhdm_response->revision, hhdm_response->offset);
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (memmap_request.response == NULL) {
+        e9_printf("Memory map not passed");
+        break;
+    }
+    struct limine_memmap_response *memmap_response = memmap_request.response;
+    memory_copy(memmap_response->revision, memmap_response->entry_count);
+
+    for (size_t i = 0; i < memmap_response->entry_count; i++) 
+    {
+        struct limine_memmap_entry *e = memmap_response->entries[i];
+        mem_entry_copy(e->base, e->base + e->length, get_memmap_type(e->type));
+    }
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (framebuffer_request.response == NULL) {
+        e9_printf("Framebuffer not passed");
+        break;
+    }
+    struct limine_framebuffer_response *fb_response = framebuffer_request.response;
+    framebuffer_start_copy(fb_response->revision, fb_response->framebuffer_count);
+    for (size_t i = 0; i < fb_response->framebuffer_count; i++) {
+        struct limine_framebuffer *fb = fb_response->framebuffers[i];
+        framebuffer_copy((unsigned int)fb->address, fb->width, fb->height, fb->pitch, fb->bpp, fb->memory_model,
+                            fb->red_mask_size, fb->red_mask_shift, fb->green_mask_size,
+                            fb->green_mask_shift, fb->blue_mask_size, fb->blue_mask_shift, 
+                            fb->edid_size, (unsigned int)fb->edid);
+    }
+FEAT_END
+
+    e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
     for (;;);
 }
