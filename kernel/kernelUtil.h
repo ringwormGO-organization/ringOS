@@ -16,6 +16,9 @@
 #include "libc/libc/string.hpp"
 #include "Settings.h"
 
+static char *get_memmap_type(uint64_t type);
+void print_file(struct limine_file* file);
+
 typedef struct Bootloader
 {
     uint64_t revision;
@@ -69,3 +72,70 @@ typedef struct Framebuffer
     uint64_t edid_size;
     unsigned int edid; /* from void* changed to unsigned int */
 } framebuffer ;
+
+typedef struct KernelFile
+{
+    uint64_t revision;
+    limine_file* file;
+} kernel_file ;
+
+typedef struct Modules
+{
+    uint64_t revision;
+    uint64_t module_count;
+    limine_file** mdl;
+} modules ;
+
+typedef struct RSDP
+{
+    uint64_t revision;
+    void* address;
+} Rsdp ;
+
+typedef struct SMBIOS
+{
+    uint64_t revision;
+    void* entry32;
+    void* entry64;
+} sm_bios ;
+
+typedef struct EFI_System_Table
+{
+    bool isPresent;
+
+    uint64_t revision;
+    void* address;    
+} efi_system_table ;
+
+typedef struct BootTime
+{
+    uint64_t revision;
+    int64_t time;
+} boot_time ;
+
+typedef struct SMP
+{
+    uint64_t revision;
+    uint32_t flags;
+    uint32_t bsp_lapic_id;
+    uint64_t cpu_count;
+
+    uint64_t extra_argument;
+    limine_goto_address goto_address;
+    uint64_t reserved;
+
+    uint32_t processor_id;
+    uint32_t lapic_id;
+} Smp ;
+
+typedef struct LimineTerminal
+{
+    uint64_t revision;
+    uint64_t terminal_count;
+
+    uint32_t columns;
+    uint32_t rows;
+    limine_framebuffer* framebuffer;
+
+    limine_terminal_write write;
+} terminal ;

@@ -139,7 +139,7 @@ static char *get_memmap_type(uint64_t type) {
     }
 }
 
-static void print_file(struct limine_file *file) {
+void print_file(struct limine_file* file) {
     e9_printf("File->Revision: %d", file->revision);
     e9_printf("File->Address: %x", file->address);
     e9_printf("File->Size: %x", file->size);
@@ -264,6 +264,120 @@ FEAT_START
                             fb->green_mask_shift, fb->blue_mask_size, fb->blue_mask_shift, 
                             fb->edid_size, (unsigned int)fb->edid);
     }
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (kf_request.response == NULL) {
+        e9_printf("Kernel file not passed");
+        break;
+    }
+    struct limine_kernel_file_response *kf_response = kf_request.response;
+    #ifdef WALL_OF_TEXT
+        e9_printf("Kernel file feature, revision %d", kf_response->revision);
+        print_file(kf_response->kernel_file);
+    #endif
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (module_request.response == NULL) {
+        e9_printf("Modules not passed");
+        break;
+    }
+    struct limine_module_response *module_response = module_request.response;
+    #ifdef WALL_OF_TEXT
+        e9_printf("Modules feature, revision %d", module_response->revision);
+        e9_printf("%d module(s)", module_response->module_count);
+        for (size_t i = 0; i < module_response->module_count; i++) 
+        {
+            struct limine_file *f = module_response->modules[i];
+            e9_printf("---");
+            print_file(f);
+        }
+    #endif
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (rsdp_request.response == NULL) {
+        e9_printf("RSDP not passed");
+        break;
+    }
+    struct limine_rsdp_response *rsdp_response = rsdp_request.response;
+    rsdp_copy(rsdp_response->revision, rsdp_response->address);
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (smbios_request.response == NULL) {
+        e9_printf("SMBIOS not passed");
+        break;
+    }
+    struct limine_smbios_response *smbios_response = smbios_request.response;
+    smbios_copy(smbios_response->revision,smbios_response->entry_32, smbios_response->entry_64);
+FEAT_END
+
+FEAT_START
+    efi_system_table efi;
+    e9_printf("");
+    if (est_request.response == NULL) {
+        e9_printf("EFI system table not passed");
+        efi.isPresent = false;
+        break;
+    }
+    struct limine_efi_system_table_response *est_response = est_request.response;
+    efi.isPresent = true;
+    efi_table_copy(est_response->revision,est_response->address);
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (boot_time_request.response == NULL) {
+        e9_printf("Boot time not passed");
+        break;
+    }
+    struct limine_boot_time_response *boot_time_response = boot_time_request.response;
+    boot_time_copy(boot_time_response->revision, boot_time_response->boot_time);
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (_smp_request.response == NULL) {
+        e9_printf("SMP info not passed");
+        break;
+    }
+    struct limine_smp_response *smp_response = _smp_request.response;
+    smp_copy(smp_response->revision, smp_response->flags, smp_response->bsp_lapic_id, smp_response->cpu_count);
+    for (size_t i = 0; i < smp_response->cpu_count; i++) {
+        struct limine_smp_info *cpu = smp_response->cpus[i];
+        smp_cpu_copy(cpu->extra_argument, cpu->goto_address, cpu->reserved, cpu->processor_id, 
+                        cpu->lapic_id);
+    }
+FEAT_END
+
+FEAT_START
+    e9_printf("");
+    if (_terminal_request.response == NULL) 
+    {
+        e9_printf("Terminal not passed");
+        break;
+    }
+    struct limine_terminal_response *term_response = _terminal_request.response;
+    terminal_copy(term_response->revision, term_response->terminal_count);
+
+    for (size_t i = 0; i < term_response->terminal_count; i++) 
+    {
+        struct limine_terminal *terminal = term_response->terminals[i];
+        terminal_framebuffer_copy(terminal->columns, terminal->rows, terminal->framebuffer);
+    }
+
+    terminal termix;
+    termix.write = term_response->write; /* not created function here because i think it is not needed */
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Write function at: %x", term_response->write);
+    #endif
 FEAT_END
 
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);

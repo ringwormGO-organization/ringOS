@@ -133,3 +133,162 @@ void framebuffer_copy(unsigned int address, uint16_t width, uint16_t height, uin
         #endif
     }
 }
+
+void file_copy(uint64_t revision, limine_file* file) /* broken */
+{
+    kernel_file* kf;
+
+    kf->revision = revision;
+    kf->file = file;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Kernel file feature, revision %d", kf->revision);
+        print_file(kf->file);
+    #endif
+}
+
+void moduels_copy(uint64_t revision, uint64_t module_count, limine_file** f) /* broken */
+{
+    modules* mdl; /* can't use word module because it is c++20 keyword */
+
+    mdl->revision = revision;
+    mdl->module_count = module_count;
+    mdl->mdl = f;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Modules feature, revision %d", mdl->revision);
+        e9_printf("%d module(s)", mdl->module_count);
+        for (size_t i = 0; i < mdl->module_count; i++) 
+        {
+            limine_file* new_module = mdl->mdl[i];
+            print_file(new_module);
+        }
+    #endif
+}
+
+void rsdp_copy(uint64_t revision, void* address)
+{
+    Rsdp rsdp;
+
+    rsdp.revision = revision;
+    rsdp.address = address;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("RSDP feature, revision %d", rsdp.revision);
+        e9_printf("RSDP at: %x", rsdp.address);
+    #endif    
+}
+
+void smbios_copy(uint64_t revision, void* entry32, void* entry64)
+{
+    sm_bios smbios;
+
+    smbios.revision = revision;
+    smbios.entry32 = entry32;
+    smbios.entry64 = entry64;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("SMBIOS feature, revision %d", smbios.revision);
+        e9_printf("SMBIOS 32-bit entry at: %x", smbios.entry32);
+        e9_printf("SMBIOS 64-bit entry at: %x", smbios.entry64);
+    #endif
+}
+
+void efi_table_copy(uint64_t revision, void* address)
+{
+    efi_system_table table;
+
+    if (table.isPresent == true)
+    {
+        table.revision = revision;
+        table.address = address;
+
+        #ifdef WALL_OF_TEXT
+            e9_printf("EFI system table feature, revision %d", table.revision);
+            e9_printf("EFI system table at: %x", table.address);
+        #endif
+    }
+
+    else
+    {
+        e9_printf("EFI system table is not present! Also check why this function is called if %s",
+                    "it is not present! Exiting function...");
+        return;
+    }
+}
+
+void boot_time_copy(uint64_t revision, int64_t time)
+{
+    boot_time bt;
+
+    bt.revision = revision;
+    bt.time = time;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Boot time feature, revision %d", bt.revision);
+        e9_printf("Boot time: %d", bt.time);
+    #endif
+}
+
+void smp_copy(uint64_t revision, uint32_t flags, uint32_t bsp_lapic_id, uint32_t cpu_count)
+{
+    Smp smp;
+
+    smp.revision = revision;
+    smp.flags = flags;
+    smp.bsp_lapic_id = bsp_lapic_id;
+    smp.cpu_count = cpu_count;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("SMP feature, revision %d", smp.revision);
+        e9_printf("Flags: %x", smp.flags);
+        e9_printf("BSP LAPIC ID: %x", smp.bsp_lapic_id);
+        e9_printf("CPU count: %d", smp.cpu_count);
+    #endif
+}
+
+void smp_cpu_copy(uint64_t extra_argument, limine_goto_address goto_address, uint64_t reserved, 
+                    uint32_t processor_id, uint32_t lapic_id)
+{
+    Smp smp2;
+
+    smp2.extra_argument = extra_argument;
+    smp2.goto_address = goto_address;
+    smp2.reserved = reserved;
+
+    smp2.processor_id = processor_id;
+    smp2.lapic_id = lapic_id;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Processor ID: %x", smp2.processor_id);
+        e9_printf("LAPIC ID: %x", smp2.lapic_id);
+    #endif
+}
+
+void terminal_copy(uint64_t revision, uint64_t terminal_count)
+{
+    terminal term;
+
+    term.revision = revision;
+    term.terminal_count = terminal_count;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Terminal feature, revision %d", term.revision);
+        e9_printf("%d terminal(s)", term.terminal_count);
+    #endif
+}
+
+void terminal_framebuffer_copy(uint32_t columns, uint32_t rows, limine_framebuffer* framebuffer)
+{
+    terminal termi; /* it is not real termi */
+
+    termi.columns = columns;
+    termi.rows = rows;
+    termi.framebuffer = framebuffer;
+
+    #ifdef WALL_OF_TEXT
+        e9_printf("Columns: %d", termi.columns);
+        e9_printf("Rows: %d", termi.rows);
+        e9_printf("Using framebuffer: %x", termi.framebuffer);
+    #endif
+}
