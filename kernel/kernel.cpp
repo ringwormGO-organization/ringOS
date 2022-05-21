@@ -375,6 +375,8 @@ FEAT_END
     create_descriptor();
     idt_init();
 
+    put();
+
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
     for (;;);
