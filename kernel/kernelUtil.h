@@ -8,11 +8,6 @@
 #include "gdt/gdt.hpp"
 #include "idt/idt.hpp"
 
-#include "paging/PageFrameAllocator.hpp"
-#include "paging/PageMapIndexer.hpp"
-#include "paging/PageTableManager.hpp"
-#include "paging/paging.hpp"
-
 #include "copy.hpp"
 /* #include "libc/stdio.h" */ /* need to fix */
 #include "libc/libc/string.hpp"
