@@ -23,6 +23,8 @@ SECTIONS
     /* that is the beginning of the region. */
     . = 0xffffffff80000000;
 
+    _KernelStart = .;
+
     .text : {
         *(.text .text.*)
     } :text
@@ -45,4 +47,6 @@ SECTIONS
         *(COMMON)
         *(.bss .bss.*)
     } :data
+
+    _KernelEnd = .;
 }

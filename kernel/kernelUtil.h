@@ -7,14 +7,19 @@
 
 #include "gdt/gdt.hpp"
 #include "idt/idt.hpp"
-#include "paging/physical_memory_manager.hpp"
-#include "paging/virtual_memory_m.hpp"
-#include "memory/malloc.hpp"
+
+#include "paging/PageFrameAllocator.hpp"
+#include "paging/PageMapIndexer.hpp"
+#include "paging/PageTableManager.hpp"
+#include "paging/paging.hpp"
 
 #include "copy.hpp"
 /* #include "libc/stdio.h" */ /* need to fix */
 #include "libc/libc/string.hpp"
 #include "Settings.h"
+
+extern uint64_t _KernelStart;
+extern uint64_t _KernelEnd;
 
 static char *get_memmap_type(uint64_t type);
 void print_file(struct limine_file* file);

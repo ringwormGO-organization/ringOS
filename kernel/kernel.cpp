@@ -195,14 +195,6 @@ extern "C" void _start(void)
     uint64_t kernel_slide = (uint64_t)kernel_start - 0xffffffff80000000;
     e9_printf("Kernel slide: %x", kernel_slide);
 
-    create_descriptor();
-    idt_init();
-
-    current_page_directory = (page_directory *)*(uint32_t *)CURRENT_PAGE_DIR_ADDRESS;
-    memory_map  = (uint32_t *)MEMMAP_AREA;
-    max_blocks  = *(uint32_t *)PHYS_MEM_MAX_BLOCKS;
-    used_blocks = *(uint32_t *)PHYS_MEM_USED_BLOCKS;
-
 FEAT_START
     e9_printf("");
     if (bootloader_info_request.response == NULL) {
@@ -379,6 +371,47 @@ FEAT_START
         e9_printf("Write function at: %x", term_response->write);
     #endif
 FEAT_END
+
+    create_descriptor();
+    idt_init();
+
+    EFI_MEMORY_DESCRIPTOR* efi_mem;
+    mem_map map;
+
+    framebuffer fb;
+    
+    PageTableManager* page_table_manager;
+
+    uint64_t mMapEntries = map.entry_base / map.entry_base2;
+
+    GlobalAllocator = PageFrameAllocator();
+    GlobalAllocator.ReadEFIMemoryMap(efi_mem, map.entry_count, map.entry_base2);
+
+    uint64_t kernelSize = (uint64_t)&_KernelEnd - (uint64_t)&_KernelStart;
+    uint64_t kernelPages = (uint64_t)kernelSize / 4096 + 1;
+
+    GlobalAllocator.LockPages(&_KernelStart, kernelPages);
+
+    PageTable* PML4 = (PageTable*)GlobalAllocator.RequestPage();
+    memset(PML4, 0, 0x1000);
+
+    g_PageTableManager = PageTableManager(PML4);
+
+    for (uint64_t t = 0; t < GetMemorySize(efi_mem, map.entry_count, map.entry_base2); t+= 0x1000)
+    {
+        g_PageTableManager.MapMemory((void*)t, (void*)t);
+    }
+
+    uint64_t fbBase = (uint64_t)fb.address;
+    uint64_t fbSize = (uint64_t)fb.framebuffer_count + 0x1000;
+    GlobalAllocator.LockPages((void*)fbBase, fbSize/ 0x1000 + 1);
+    for (uint64_t t = fbBase; t < fbBase + fbSize; t += 4096)
+    {
+        g_PageTableManager.MapMemory((void*)t, (void*)t);
+    }
+
+    asm ("mov %0, %%cr3" : : "r" (PML4));
+    page_table_manager = &g_PageTableManager;
 
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
