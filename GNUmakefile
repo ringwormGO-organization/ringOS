@@ -1,24 +1,24 @@
 .PHONY: all
-all: barebones.iso
+all: ringos.iso
 
 .PHONY: all-hdd
-all-hdd: barebones.hdd
+all-hdd: ringos.hdd
 
 .PHONY: run
-run: barebones.iso
-	qemu-system-x86_64 -M q35 -m 2G -cdrom barebones.iso -boot d
+run: ringos.iso
+	qemu-system-x86_64 -M q35 -m 2G -cdrom ringos.iso -boot d
 
 .PHONY: run-uefi
-run-uefi: ovmf-x64 barebones.iso
-	qemu-system-x86_64 -M q35 -m 2G -bios ovmf-x64/OVMF.fd -cdrom barebones.iso -boot d
+run-uefi: ovmf-x64 ringos.iso
+	qemu-system-x86_64 -M q35 -m 2G -bios ovmf-x64/OVMF.fd -cdrom ringos.iso -boot d
 
 .PHONY: run-hdd
-run-hdd: barebones.hdd
-	qemu-system-x86_64 -M q35 -m 2G -hda barebones.hdd
+run-hdd: ringos.hdd
+	qemu-system-x86_64 -M q35 -m 2G -hda ringos.hdd
 
 .PHONY: run-hdd-uefi
-run-hdd-uefi: ovmf-x64 barebones.hdd
-	qemu-system-x86_64 -M q35 -m 2G -bios ovmf-x64/OVMF.fd -hda barebones.hdd
+run-hdd-uefi: ovmf-x64 ringos.hdd
+	qemu-system-x86_64 -M q35 -m 2G -bios ovmf-x64/OVMF.fd -hda ringos.hdd
 
 ovmf-x64:
 	mkdir -p ovmf-x64
@@ -32,7 +32,7 @@ limine:
 kernel:
 	$(MAKE) -C kernel
 
-barebones.iso: limine kernel
+ringos.iso: limine kernel
 	rm -rf iso_root
 
 	mkdir -p iso_root
@@ -47,18 +47,18 @@ barebones.iso: limine kernel
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		--efi-boot limine-cd-efi.bin \
 		-efi-boot-part --efi-boot-image --protective-msdos-label \
-		iso_root -o barebones.iso
-	limine/limine-deploy barebones.iso
+		iso_root -o ringos.iso
+	limine/limine-deploy ringos.iso
 	rm -rf iso_root
 
-barebones.hdd: limine kernel
-	rm -f barebones.hdd
-	dd if=/dev/zero bs=1M count=0 seek=64 of=barebones.hdd
-	parted -s barebones.hdd mklabel gpt
-	parted -s barebones.hdd mkpart ESP fat32 2048s 100%
-	parted -s barebones.hdd set 1 esp on
-	limine/limine-deploy barebones.hdd
-	sudo losetup -Pf --show barebones.hdd >loopback_dev
+ringos.hdd: limine kernel
+	rm -f ringos.hdd
+	dd if=/dev/zero bs=1M count=0 seek=64 of=ringos.hdd
+	parted -s ringos.hdd mklabel gpt
+	parted -s ringos.hdd mkpart ESP fat32 2048s 100%
+	parted -s ringos.hdd set 1 esp on
+	limine/limine-deploy ringos.hdd
+	sudo losetup -Pf --show ringos.hdd >loopback_dev
 	sudo mkfs.fat -F 32 `cat loopback_dev`p1
 	mkdir -p img_mount
 	sudo mount `cat loopback_dev`p1 img_mount
