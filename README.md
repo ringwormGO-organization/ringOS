@@ -3,7 +3,7 @@ ringOS source code
 
 Documentation (will be added later)
 
-[Shell script for latest stable release (Debian, for other distros check gnu-efi branch)](https://github.com/ringwormGO-organization/ringOS/blob/gnu-efi/ringOS-stable-Builder-debian.sh)
+[Folder where are shell scripts to install all dependencies and download ringOS]()
 
 [Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
 
@@ -33,7 +33,10 @@ Beta16 version image of ringOS
 ![image](https://user-images.githubusercontent.com/83548580/169691987-e57a476b-5cfb-4d2d-a064-e0f38abc50cb.png)
 Image of Limine (main) version of ringOS
 
-## gnu-efi status
+### Notes
+1. If you want to change the background you have to configure `limine.cfg` *(still beats MS-Win 7+ when it comes to customization)*
+
+## gnu-efi version status
 Check old version of README on main branch.
 
 ## Checklist
