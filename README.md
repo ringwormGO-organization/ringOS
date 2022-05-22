@@ -3,7 +3,7 @@ ringOS source code
 
 Documentation (will be added later)
 
-[Folder where are shell scripts to install all dependencies and download ringOS]()
+[Folder where are shell scripts to install all dependencies and download ringOS](https://github.com/ringwormGO-organization/ringOS/tree/main/install-scripts)
 
 [Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
 
