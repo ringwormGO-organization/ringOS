@@ -1,0 +1,9 @@
+limine
+ovmf-x64
+*.elf
+*.hdd
+*.o
+*.c_o
+*.asm_o
+*.s_o
+*.d
