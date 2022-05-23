@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdint.h>
 
 #include "../gdt/gdt.hpp"

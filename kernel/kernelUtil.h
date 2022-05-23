@@ -8,7 +8,8 @@
 #include "gdt/gdt.hpp"
 #include "idt/idt.hpp"
 
-#include "paging/paging.h"
+#include "paging/pmm.hpp"
+#include "paging/vmm.hpp"
 
 #include "copy.hpp"
 /* #include "libc/stdio.h" */ /* need to fix */

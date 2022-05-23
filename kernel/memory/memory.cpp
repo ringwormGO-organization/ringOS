@@ -20,6 +20,12 @@ void memset(void* start, uint8_t value, uint64_t num){
     }
 }
 
+void memset64(void *dest, uint64_t data, size_t count)
+{
+    for (; count; count--, dest += sizeof(uint64_t))
+        *(uint64_t *)dest = data;
+}
+
 void memcpy(void *d, const void *s, size_t n)
 {
     uint64_t d0, d1, d2;
