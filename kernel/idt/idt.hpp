@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "../gdt/gdt.hpp"
+#include "../panic/panic.hpp"
 
 #define IDT_MAX_DESCRIPTORS 256
 
