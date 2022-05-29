@@ -1,5 +1,7 @@
 #include "kernelUtil.h"
 
+#include "panic/panic.hpp"
+
 extern "C" void _start(void);
 
 struct limine_entry_point_request entry_point_request = {
@@ -374,7 +376,7 @@ FEAT_END
 
     create_descriptor();
     idt_init();
-
+    
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
     for (;;)
