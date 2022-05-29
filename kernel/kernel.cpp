@@ -377,5 +377,9 @@ FEAT_END
 
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
-    for (;;);
+    for (;;)
+    {
+        uint8_t scancode = inb(0x60);
+        HandleKeyboard(scancode);
+    }
 }

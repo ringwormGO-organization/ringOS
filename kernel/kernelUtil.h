@@ -11,6 +11,9 @@
 #include "paging/pmm.hpp"
 #include "paging/vmm.hpp"
 
+#include "io.hpp"
+#include "userinput/keyboard.hpp"
+
 #include "copy.hpp"
 /* #include "libc/stdio.h" */ /* need to fix */
 #include "libc/libc/string.hpp"
