@@ -383,5 +383,6 @@ FEAT_END
     {
         uint8_t scancode = inb(0x60);
         HandleKeyboard(scancode);
+        PIC_EndMaster();
     }
 }

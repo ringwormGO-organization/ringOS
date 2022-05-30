@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 605800e6d21bd797c8d89e3aade1b6731ec5a41c
 #include "panic.hpp"
 
 void Panic(const char* panicMessage)
