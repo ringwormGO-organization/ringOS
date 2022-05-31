@@ -14,5 +14,7 @@ sudo apt-get install mkisofs && echo mkisofs installed successfully || echo FAIL
 
 git clone https://github.com/ringwormGO-organization/ringOS
 
+cd ringOS
+
 chmod +x ./compile.sh
 ./compile.sh

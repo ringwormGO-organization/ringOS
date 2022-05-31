@@ -14,5 +14,7 @@ sudo pacman -Ss mkisofs && echo mkisofs installed successfully || echo FAILED to
 
 git clone https://github.com/ringwormGO-organization/ringOS
 
+cd ringOS
+
 chmod +x ./compile.sh
 ./compile.sh

@@ -16,5 +16,7 @@ sudo yum install mkisofs && echo mkisofs installed successfully || echo FAILED t
 
 git clone https://github.com/ringwormGO-organization/ringOS
 
+cd ringOS
+
 chmod +x ./compile.sh
 ./compile.sh
