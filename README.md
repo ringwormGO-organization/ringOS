@@ -7,6 +7,8 @@ Documentation (will be added later)
 
 [Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
 
+[Latest beta release (2.5.0)](https://github.com/ringwormGO-organization/ringOS/releases/tag/v2.5.0)
+
 #### Stable releases
 [**ringOS v1.0.0**](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 
