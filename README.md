@@ -1,3 +1,7 @@
+**ringOS is now archived project!** 
+
+**It is not archived because of another project, but because of the scope of the project!**
+
 # ringOS
 ringOS source code
 
