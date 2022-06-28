@@ -2,7 +2,7 @@
 
 **It is not archived because of another project, but because of the scope of the project!**
 
-**We maybe return in future!**
+**We maybe return in future of ringOS development!**
 
 # ringOS
 ringOS source code
