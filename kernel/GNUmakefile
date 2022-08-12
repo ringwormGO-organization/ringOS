@@ -2,82 +2,94 @@
 # Change as needed.
 override KERNEL := kernel.elf
 
+# Convenience macro to reliably declare overridable command variables.
+define DEFAULT_VAR =
+    ifeq ($(origin $1), default)
+        override $(1) := $(2)
+    endif
+    ifeq ($(origin $1), undefined)
+        override $(1) := $(2)
+    endif
+endef
+
 # It is highly recommended to use a custom built cross toolchain to build a kernel.
 # We are only using "cc" as a placeholder here. It may work by using
 # the host system's toolchain, but this is not guaranteed.
-ifeq ($(origin CC), default)
-CC := g++
-endif
+$(eval $(call DEFAULT_VAR,CC,g++))
 
-CC2 := gcc
-ASMC := nasm
-GAS := as
+# Same thing for C compiler
+$(eval $(call DEFAULT_VAR,CCC,gcc))
 
-# Likewise, "ld" here is just a placeholder and your mileage may vary if using the
-# host's "ld".
-ifeq ($(origin LD), default)
-LD := ld
-endif
+# Same thing for "ld" (the linker).
+$(eval $(call DEFAULT_VAR,LD,ld))
 
-# User controllable CFLAGS.
-CFLAGS ?= -O2 -g -Wall -Wextra -Wpedantic -pipe
-CPPFLAGS ?= -fpermissive -Wwrite-strings -g -Wall -Wextra -Wpedantic -pipe
-ASMFLAGS ?= 
+# User controllable C/CPPFLAGS.
+CPPFLAGS ?= -O2 -g -Wall -Wextra -Wpedantic -pipe
+
+# User controllable nasm flags.
+NASMFLAGS ?= -F dwarf -g
 
 # User controllable linker flags. We set none by default.
 LDFLAGS ?=
 
+# Internal CPP flags that should not be changed by the user.
+override INTERNALCPPFLAGS +=       \
+    -I.                  \
+    -std=c++20             \
+    -ffreestanding       \
+    -fno-stack-protector \
+    -fno-stack-check     \
+    -fno-pie             \
+    -fno-pic             \
+    -m64                 \
+    -march=x86-64        \
+    -mabi=sysv           \
+    -mno-80387           \
+    -mno-mmx             \
+    -mno-sse             \
+    -mno-sse2            \
+    -mno-red-zone        \
+    -mcmodel=kernel      \
+    -MMD
+
 # Internal C flags that should not be changed by the user.
-override INTERNALCFLAGS :=   \
-	-I.                  \
-	-std=c11             \
-	-ffreestanding       \
-	-fno-stack-protector \
-	-fno-stack-check     \
-	-fno-pic             \
-	-mabi=sysv           \
-	-mno-80387           \
-	-mno-mmx             \
-	-mno-3dnow           \
-	-mno-sse             \
-	-mno-sse2            \
-	-mno-red-zone        \
-	-mcmodel=kernel      \
-	-MMD
-
-override INTERNALCPPFLAGS :=   \
-	-std=c++20                 \
-	-ffreestanding             \
-	-fno-exceptions            \
-	-fno-stack-protector       \
-	-fno-omit-frame-pointer    \
-	-fno-rtti                  \
-	-fno-pic                   \
-	-mabi=sysv                 \
-	-mno-80387                 \
-	-mno-mmx                   \
-	-mno-3dnow                 \
-	-mno-sse                   \
-	-mno-sse2                  \
-	-mno-red-zone              \
-	-mcmodel=kernel            \
-
-override INTERNALASMFLAGS := 
+override INTERNALCFLAGS +=       \
+    -I.                  \
+    -std=c11             \
+    -ffreestanding       \
+    -fno-stack-protector \
+    -fno-stack-check     \
+    -fno-pie             \
+    -fno-pic             \
+    -m64                 \
+    -march=x86-64        \
+    -mabi=sysv           \
+    -mno-80387           \
+    -mno-mmx             \
+    -mno-sse             \
+    -mno-sse2            \
+    -mno-red-zone        \
+    -mcmodel=kernel      \
+    -MMD
 
 # Internal linker flags that should not be changed by the user.
-override INTERNALLDFLAGS :=    \
-	-Tlinker.ld            \
-	-nostdlib              \
-	-zmax-page-size=0x1000 \
-	-static
+override LDFLAGS +=         \
+    -nostdlib               \
+    -static                 \
+    -z max-page-size=0x1000 \
+    -T linker.ld
 
-# Use find to glob all *.c files in the directory and extract the object names.
-override CFILES := $(shell find ./ -type f -name '*.c')
+# Internal nasm flags that should not be changed by the user.
+override NASMFLAGS += \
+    -f elf64
+
+# Use find to glob all *.cpp, *.S, and *.asm files in the directory and extract the object names.
 override CPPFILES := $(shell find ./ -type f -name '*.cpp')
-override ASMFILES := $(shell find ./ -type f -name '*.asm')
-override ASMFILES2 := $(shell find ./ -type f -name '*.s')
-override OBJ := $(CFILES:.c=.c_o) $(CPPFILES:.cpp=.o) $(ASMFILES:.asm=.asm_o) $(ASMFILES2:.s=.s_o)
-override HEADER_DEPS := $(CFILES:.c=.d)
+override CFILES := $(shell find ./ -type f -name '*.c')
+override ASFILES := $(shell find ./ -type f -name '*.S')
+override NASMFILES := $(shell find ./ -type f -name '*.asm')
+override OBJ := $(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(ASFILES:.S=.o) $(NASMFILES:.asm=.o)
+override HEADER_DEPS := $(CPPFILES:.cpp=.d) $(ASFILES:.S=.d)
 
 # Default target.
 .PHONY: all
@@ -88,21 +100,26 @@ limine.h:
 
 # Link rules for the final kernel executable.
 $(KERNEL): $(OBJ)
-	$(LD) $(OBJ) $(LDFLAGS) $(INTERNALLDFLAGS) -o $@
+	$(LD) $(OBJ) $(LDFLAGS) -o $@
+
+# Include header dependencies.
+-include $(HEADER_DEPS)
+
+# Compilation rules for *.cpp files.
+%.o: %.cpp limine.h
+	$(CC) $(INTERNALCPPFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # Compilation rules for *.c files.
--include $(HEADER_DEPS)
-%.c_o: %.c limine.h
-	$(CC2) $(CFLAGS) $(INTERNALCFLAGS) -c $< -o $@
+%.o: %.c limine.h
+	$(CCC) $(INTERNALCFLAGS) $(CPPFLAGS) -c $< -o $@
 
-%.o: %.cpp limine.h
-	$(CC) $(CPPFLAGS) $(INTERNALCPPFLAGS) -c $< -o $@
+# Compilation rules for *.S files.
+%.o: %.S limine.h
+	$(CC) $(INTERNALCPPFLAGS) $(CPPFLAGS) -c $< -o $@
 
-%.asm_o: %.asm	
-	$(ASMC) $(ASMFLAGS) $^ -f elf64 -o $@
-	
-%.s_o: %.s	
-	$(GAS) $(ASMFLAGS) $^ -o $@
+# Compilation rules for *.asm (nasm) files.
+%.o: %.asm
+	nasm $(NASMFLAGS) $< -o $@
 
 # Remove object files and the final executable.
 .PHONY: clean

@@ -56,21 +56,18 @@ void memory_copy(uint64_t revision, uint64_t entry_count)
     #endif   
 }
 
-void mem_entry_copy(uint64_t base, uint64_t base2, char* memory_type)
+void mem_entry_copy(uint64_t entry_count, uint64_t base, uint64_t base2, char* memory_type)
 {
     mem_map map2;
 
-    for (size_t i = 0; i < map2.entry_count; i++)
-    {
-        map2.entry_base = base;
-        map2.entry_base2 = base2;
-        strcpy(map2.memory_type, memory_type);
+    map2.entry_count = entry_count;
+    map2.entry_base = base;
+    map2.entry_base2 = base2;
+    strcpy(map2.memory_type, memory_type);
 
-        #ifdef WALL_OF_TEXT
-            e9_printf("%x->%x %s", map2.entry_base, map2.entry_base2, map2.memory_type);
-        #endif
-
-    }
+    #ifdef WALL_OF_TEXT
+        e9_printf("%x->%x %s", map2.entry_base, map2.entry_base2, map2.memory_type);
+    #endif
 }
 
 void framebuffer_start_copy(uint64_t revision, uint64_t framebuffer_count)
@@ -86,12 +83,12 @@ void framebuffer_start_copy(uint64_t revision, uint64_t framebuffer_count)
     #endif
 }
 
-void framebuffer_copy(unsigned int address, uint16_t width, uint16_t height, uint16_t pitch, 
+void framebuffer_copy(void* address, uint16_t width, uint16_t height, uint16_t pitch, 
                         uint16_t bpp, uint8_t memory_model, uint8_t red_mask_size, 
                         uint8_t red_mask_shift, 
                         uint8_t green_mask_size, uint8_t green_mask_shift, 
                         uint8_t blue_mask_size, uint8_t blue_mask_shift, uint64_t edid_size,
-                        unsigned int edid)
+                        void* edid)
 
 {
     framebuffer fb;

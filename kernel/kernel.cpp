@@ -1,7 +1,5 @@
 #include "kernelUtil.h"
 
-#include "panic/panic.hpp"
-
 extern "C" void _start(void);
 
 struct limine_entry_point_request entry_point_request = {
@@ -190,7 +188,7 @@ extern "C" void _start(void)
 
     if (_terminal_request.response) 
     {
-        stivale2_print = write_shim;
+        limine_print = write_shim;
     }
 
     e9_printf("\nWe're alive");
@@ -198,7 +196,6 @@ extern "C" void _start(void)
     e9_printf("Kernel slide: %x", kernel_slide);
 
 FEAT_START
-    e9_printf("");
     if (bootloader_info_request.response == NULL) {
         e9_printf("Bootloader info not passed");
         break;
@@ -208,7 +205,6 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (kernel_address_request.response == NULL) {
         e9_printf("Kernel address not passed");
         break;
@@ -218,7 +214,6 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (hhdm_request.response == NULL) {
         e9_printf("HHDM not passed");
         break;
@@ -228,7 +223,6 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (memmap_request.response == NULL) {
         e9_printf("Memory map not passed");
         break;
@@ -236,15 +230,14 @@ FEAT_START
     struct limine_memmap_response *memmap_response = memmap_request.response;
     memory_copy(memmap_response->revision, memmap_response->entry_count);
 
-    for (size_t i = 0; i < memmap_response->entry_count; i++) 
+    for (size_t i = 0; i < memmap_response->entry_count; i++)
     {
         struct limine_memmap_entry *e = memmap_response->entries[i];
-        mem_entry_copy(e->base, e->base + e->length, get_memmap_type(e->type));
+        mem_entry_copy(memmap_response->entry_count, e->base, e->base + e->length, get_memmap_type(e->type));
     }
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (framebuffer_request.response == NULL) {
         e9_printf("Framebuffer not passed");
         break;
@@ -253,15 +246,14 @@ FEAT_START
     framebuffer_start_copy(fb_response->revision, fb_response->framebuffer_count);
     for (size_t i = 0; i < fb_response->framebuffer_count; i++) {
         struct limine_framebuffer *fb = fb_response->framebuffers[i];
-        framebuffer_copy((unsigned int)fb->address, fb->width, fb->height, fb->pitch, fb->bpp, fb->memory_model,
+        framebuffer_copy(fb->address, fb->width, fb->height, fb->pitch, fb->bpp, fb->memory_model,
                             fb->red_mask_size, fb->red_mask_shift, fb->green_mask_size,
                             fb->green_mask_shift, fb->blue_mask_size, fb->blue_mask_shift, 
-                            fb->edid_size, (unsigned int)fb->edid);
+                            fb->edid_size, fb->edid);
     }
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (kf_request.response == NULL) {
         e9_printf("Kernel file not passed");
         break;
@@ -274,7 +266,6 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (module_request.response == NULL) {
         e9_printf("Modules not passed");
         break;
@@ -293,7 +284,6 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (rsdp_request.response == NULL) {
         e9_printf("RSDP not passed");
         break;
@@ -303,7 +293,6 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
     if (smbios_request.response == NULL) {
         e9_printf("SMBIOS not passed");
         break;
@@ -314,8 +303,10 @@ FEAT_END
 
 FEAT_START
     efi_system_table efi;
-    e9_printf("");
-    if (est_request.response == NULL) {
+
+    limine_efi_system_table_response* response = est_request.response;
+    e9_printf("EFI response: %d", response);
+    if (est_request.response == NULL || est_request.response == response) {
         e9_printf("EFI system table not passed");
         efi.isPresent = false;
         break;
@@ -326,7 +317,7 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
+    
     if (boot_time_request.response == NULL) {
         e9_printf("Boot time not passed");
         break;
@@ -336,7 +327,7 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
+    
     if (_smp_request.response == NULL) {
         e9_printf("SMP info not passed");
         break;
@@ -351,7 +342,7 @@ FEAT_START
 FEAT_END
 
 FEAT_START
-    e9_printf("");
+    
     if (_terminal_request.response == NULL) 
     {
         e9_printf("Terminal not passed");
@@ -366,23 +357,17 @@ FEAT_START
         terminal_framebuffer_copy(terminal->columns, terminal->rows, terminal->framebuffer);
     }
 
-    terminal termix;
-    termix.write = term_response->write; /* not created function here because i think it is not needed */
-
     #ifdef WALL_OF_TEXT
         e9_printf("Write function at: %x", term_response->write);
     #endif
 FEAT_END
 
     create_descriptor();
-    idt_init();
     
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
     for (;;)
     {
-        uint8_t scancode = inb(0x60);
-        HandleKeyboard(scancode);
-        PIC_EndMaster();
+        asm("hlt");
     }
 }

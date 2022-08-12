@@ -7,3 +7,5 @@ ovmf-x64
 *.asm_o
 *.s_o
 *.d
+
+.vscode

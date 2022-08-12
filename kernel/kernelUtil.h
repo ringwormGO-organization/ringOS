@@ -5,19 +5,13 @@
 #include "limine.h"
 #include "e9print.hpp"
 
-#include "gdt/gdt.hpp"
-#include "idt/idt.hpp"
-
-#include "paging/pmm.hpp"
-#include "paging/vmm.hpp"
-
-#include "io.hpp"
-#include "userinput/keyboard.hpp"
-
+#include "ANSI.h"
 #include "copy.hpp"
-/* #include "libc/stdio.h" */ /* need to fix */
-#include "libc/libc/string.hpp"
 #include "Settings.h"
+
+#include "gdt/gdt.h"
+
+#include "libc/string.h"
 
 extern uint64_t _KernelStart;
 extern uint64_t _KernelEnd;
@@ -61,7 +55,7 @@ typedef struct Framebuffer
     uint64_t revision;
     uint64_t framebuffer_count;
 
-    unsigned int address; /* from void* changed to unsigned int */
+    void* address;
     uint16_t width;
     uint16_t height;
     uint16_t pitch;
@@ -76,7 +70,7 @@ typedef struct Framebuffer
     uint8_t blue_mask_shift;
 
     uint64_t edid_size;
-    unsigned int edid; /* from void* changed to unsigned int */
+    void* edid;
 } framebuffer ;
 
 typedef struct KernelFile

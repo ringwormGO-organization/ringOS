@@ -2,4 +2,4 @@
 
 /* #define - enable, #undef - disable */
 
-#define WALL_OF_TEXT
+#undef WALL_OF_TEXT

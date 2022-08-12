@@ -34,15 +34,11 @@ kernel:
 
 ringos.iso: limine kernel
 	rm -rf iso_root
-
 	mkdir -p iso_root
 	mkdir -p iso_root/media
-
 	cp kernel/kernel.elf \
 		limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin iso_root/
-
-	cp -rf media/* iso_root/media/
-
+	cp media/* iso_root/media/
 	xorriso -as mkisofs -b limine-cd.bin \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		--efi-boot limine-cd-efi.bin \
@@ -72,7 +68,7 @@ ringos.hdd: limine kernel
 
 .PHONY: clean
 clean:
-	rm -rf iso_root
+	rm -rf iso_root ringos.iso ringos.hdd
 	$(MAKE) -C kernel clean
 
 .PHONY: distclean
