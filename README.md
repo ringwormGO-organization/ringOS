@@ -135,18 +135,17 @@ Check old version of README on main branch.
 - [ ] AHCI
 - [ ] Audio
 - [ ] Book
+- [x] Building with shell scripts, (also counts for gnu-efi)
 - [ ] Installation
 - [ ] Networking
-- [x] Own build tool (shell scripts, also count for gnu-efi)
 - [ ] Real hardware support
-- [ ] Use Rust to build ringOS
 - [ ] PCI
 - [ ] PCIe
 - [x] SMBIOS
 - [ ] USB
 
 # ringOSY
-[ringOSY](https://github.com/ringwormGO-organization/ringOSY)
+[ringOSY (archived)](https://github.com/ringwormGO-organization/ringOSY)
 
 ## System requiratmens
 ### Hardware
@@ -182,6 +181,8 @@ Virtual Box, VMWare: 4096MB RAM recommended, ([check this for more information](
 * [ilobilo's kernel](https://github.com/ilobilo/kernel)
 
 * [wiki.osdev.org](https://wiki.osdev.org/Main_Page)
+
+* [nanobyte](https://www.youtube.com/channel/UCSPIuWADJIMIf9Erf--XAsA)
 
 Other
 ______________________
