@@ -1,3 +1,5 @@
+**ringOS is in slow development, but it is still in development!**
+
 **ringOSY will be archived!**
 
 # ringOS

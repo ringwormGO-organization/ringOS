@@ -88,8 +88,8 @@ override CPPFILES := $(shell find ./ -type f -name '*.cpp')
 override CFILES := $(shell find ./ -type f -name '*.c')
 override ASFILES := $(shell find ./ -type f -name '*.S')
 override NASMFILES := $(shell find ./ -type f -name '*.asm')
-override OBJ := $(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(ASFILES:.S=.o) $(NASMFILES:.asm=.o)
-override HEADER_DEPS := $(CPPFILES:.cpp=.d) $(ASFILES:.S=.d)
+override OBJ := $(CPPFILES:.cpp=.o) $(CFILES:.c=.c_o) $(ASFILES:.S=.s_o) $(NASMFILES:.asm=.a_o)
+override HEADER_DEPS := $(CPPFILES:.cpp=.d) $(CFILES:.c=.c_d) $(ASFILES:.S=.s_d)
 
 # Default target.
 .PHONY: all

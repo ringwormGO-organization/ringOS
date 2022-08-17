@@ -9,8 +9,6 @@
 #include "copy.hpp"
 #include "Settings.h"
 
-#include "gdt/gdt.h"
-
 #include "libc/string.h"
 
 extern uint64_t _KernelStart;

@@ -362,8 +362,6 @@ FEAT_START
     #endif
 FEAT_END
 
-    create_descriptor();
-    
     e9_printf(ANSI_COLOR_RED "\nColor test\n" ANSI_COLOR_RESET);
 
     for (;;)
