@@ -1,18 +1,14 @@
 # ringOS
 ringOS source code
 
-Documentation (will be added later)
+[ringOS-X](https://github.com/ringwormGO-organization/ringOS-X) is next generation of ringOS featuring Limine bootloader.
 
-[Folder where are shell scripts to install all dependencies and download ringOS](https://github.com/ringwormGO-organization/ringOS/tree/main/install-scripts)
-
-[Latest stable release](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
-
-[Latest beta release (2.5.0)](https://github.com/ringwormGO-organization/ringOS/releases/tag/v2.5.0)
-
-#### Stable releases
+#### Releases
 [**ringOS v1.0.0**](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv1)
 
 [**Latest ringOS stable release**](https://github.com/ringwormGO-organization/ringOS/releases/tag/ringOSv2.0.0)
+
+[Latest beta release (2.5.0)](https://github.com/ringwormGO-organization/ringOS/releases/tag/v2.5.0)
 
 #### Contributing and issues
 If you have problem or idea create an **issue**.
